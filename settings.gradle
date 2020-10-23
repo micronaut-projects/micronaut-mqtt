@@ -1,3 +1,5 @@
-rootProject.name = 'xxx'
+rootProject.name = 'micronaut-mqtt'
 
-include 'xxx'
+include 'mqtt-core'
+include 'mqttv3'
+include 'mqttv5'

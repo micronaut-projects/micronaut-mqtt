@@ -1,6 +1,9 @@
 package io.micronaut.mqtt.bind;
 
-public interface MqttMessage<T> {
+import io.micronaut.core.annotation.Introspected;
+
+@Introspected
+public interface MqttBindingContext<T> {
 
     byte[] getPayload();
 
@@ -17,6 +20,8 @@ public interface MqttMessage<T> {
     String getTopic();
 
     void setTopic(String topic);
+
+    int getId();
 
     T getNativeMessage();
 }

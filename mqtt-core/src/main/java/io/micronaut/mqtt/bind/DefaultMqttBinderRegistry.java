@@ -5,11 +5,13 @@ import io.micronaut.core.bind.annotation.Bindable;
 import io.micronaut.core.type.Argument;
 import io.micronaut.core.util.ArrayUtils;
 
+import javax.inject.Singleton;
 import java.lang.annotation.Annotation;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
+@Singleton
 public class DefaultMqttBinderRegistry implements MqttBinderRegistry {
 
     private final Map<Class<? extends Annotation>, MqttBinder<?, ?>> byAnnotation = new LinkedHashMap<>();
@@ -45,20 +47,20 @@ public class DefaultMqttBinderRegistry implements MqttBinderRegistry {
     }
 
     @Override
-    public <T> Optional<MqttBinder<?, T>> findArgumentBinder(Argument<T> argument) {
+    public <T> MqttBinder<?, T> findArgumentBinder(Argument<T> argument) {
         Optional<Class<? extends Annotation>> opt = argument.getAnnotationMetadata().getAnnotationTypeByStereotype(Bindable.class);
         if (opt.isPresent()) {
             Class<? extends Annotation> annotationType = opt.get();
             MqttBinder binder = byAnnotation.get(annotationType);
             if (binder != null) {
-                return Optional.of(binder);
+                return binder;
             }
         } else {
             MqttBinder binder = byType.get(argument.typeHashCode());
             if (binder != null) {
-                return Optional.of(binder);
+                return binder;
             }
         }
-        return Optional.of((MqttBinder<?, T>) fallbackMqttBinder);
+        return (MqttBinder<?, T>) fallbackMqttBinder;
     }
 }

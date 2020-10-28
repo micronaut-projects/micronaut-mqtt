@@ -10,4 +10,5 @@ dependencies {
         exclude module:'groovy-all'
     }
     testImplementation "io.micronaut.test:micronaut-test-spock:$micronautTestVersion"
+    testImplementation project(":mqtt-test")
 }

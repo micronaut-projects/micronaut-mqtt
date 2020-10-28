@@ -6,5 +6,5 @@ import java.util.Optional;
 
 public interface MqttBinderRegistry {
 
-    <T> Optional<MqttBinder<?, T>> findArgumentBinder(Argument<T> argument);
+    <T> MqttBinder<?, T> findArgumentBinder(Argument<T> argument);
 }

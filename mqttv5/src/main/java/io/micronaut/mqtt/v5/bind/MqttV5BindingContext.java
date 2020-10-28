@@ -1,14 +1,16 @@
 package io.micronaut.mqtt.v5.bind;
 
 
+import io.micronaut.mqtt.bind.MqttBindingContext;
 import org.eclipse.paho.mqttv5.common.MqttMessage;
+import org.eclipse.paho.mqttv5.common.packet.MqttProperties;
 
-public class MqttV5Message implements io.micronaut.mqtt.bind.MqttMessage<MqttMessage> {
+public class MqttV5BindingContext implements MqttBindingContext<MqttMessage> {
 
     private final MqttMessage message;
     private String topic;
 
-    public MqttV5Message(MqttMessage message) {
+    public MqttV5BindingContext(MqttMessage message) {
         this.message = message;
     }
 
@@ -50,6 +52,19 @@ public class MqttV5Message implements io.micronaut.mqtt.bind.MqttMessage<MqttMes
     @Override
     public void setTopic(String topic) {
         this.topic = topic;
+    }
+
+    public MqttProperties getProperties() {
+        return message.getProperties();
+    }
+
+    public void setProperties(MqttProperties properties) {
+        message.setProperties(properties);
+    }
+
+    @Override
+    public int getId() {
+        return message.getId();
     }
 
     @Override

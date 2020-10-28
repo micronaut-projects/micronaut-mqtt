@@ -1,13 +1,8 @@
 package io.micronaut.mqtt.intercept;
 
 import io.micronaut.aop.MethodInvocationContext;
-import io.micronaut.core.convert.ConversionService;
 import io.micronaut.core.type.Argument;
 import io.micronaut.mqtt.bind.MqttBinder;
-import io.micronaut.mqtt.bind.MqttMessage;
-import io.micronaut.mqtt.exception.MqttClientException;
-import io.micronaut.mqtt.serdes.MqttPayloadSerDes;
-import io.micronaut.mqtt.serdes.MqttPayloadSerDesRegistry;
 
 import java.util.IdentityHashMap;
 import java.util.Map;

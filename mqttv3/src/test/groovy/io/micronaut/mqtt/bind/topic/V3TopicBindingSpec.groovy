@@ -1,0 +1,18 @@
+package io.micronaut.mqtt.bind.topic
+
+import io.micronaut.context.annotation.Requires
+import io.micronaut.mqtt.test.bind.topic.TopicBindingClient
+import io.micronaut.mqtt.test.bind.topic.TopicBindingSpec
+import io.micronaut.mqtt.v3.annotation.MqttClient
+
+class V3TopicBindingSpec extends TopicBindingSpec {
+
+    @Override
+    Class<? extends TopicBindingClient> getClient() {
+        return MyClient.class
+    }
+
+    @Requires(property = "spec.name", value = "V3TopicBindingSpec")
+    @MqttClient
+    static interface MyClient extends TopicBindingClient {}
+}

@@ -25,9 +25,8 @@ public class MqttClientFactory {
                                @Named(TaskExecutors.MESSAGE_CONSUMER) ExecutorService executorService) throws MqttException {
         ScheduledExecutorService consumerExecutor = (ScheduledExecutorService) executorService;
         MqttAsyncClient client = new MqttAsyncClient(configuration.getServerUri(), configuration.getClientId(), clientPersistence, new TimerPingSender(consumerExecutor), consumerExecutor);
-        client.connect(configuration.getConnectOptions()).waitForCompletion();
-
-        client.subscribe()
+        client.connect(configuration.getConnectOptions())
+                .waitForCompletion(configuration.getConnectionTimeout().toMillis());
         return client;
     }
 }

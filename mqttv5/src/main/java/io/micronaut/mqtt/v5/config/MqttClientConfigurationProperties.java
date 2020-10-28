@@ -8,12 +8,14 @@ import org.eclipse.paho.mqttv5.common.MqttMessage;
 import org.eclipse.paho.mqttv5.common.packet.MqttProperties;
 
 import javax.net.ssl.HostnameVerifier;
+import java.time.Duration;
 
 @ConfigurationProperties("mqtt.client")
 public class MqttClientConfigurationProperties  {
 
     private String serverUri;
     private String clientId;
+    private Duration connectionTimeout = Duration.ofSeconds(3);
 
     @ConfigurationBuilder
     private final MqttConnectionOptions connectOptions = new MqttConnectionOptions();
@@ -44,6 +46,14 @@ public class MqttClientConfigurationProperties  {
 
     public void setClientId(String clientId) {
         this.clientId = clientId;
+    }
+
+    public Duration getConnectionTimeout() {
+        return connectionTimeout;
+    }
+
+    public void setConnectionTimeout(Duration connectionTimeout) {
+        this.connectionTimeout = connectionTimeout;
     }
 
     @ConfigurationProperties("will-message")

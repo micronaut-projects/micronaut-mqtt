@@ -1,0 +1,10 @@
+dependencies {
+    compileOnly "io.micronaut:micronaut-inject-groovy"
+    api("io.micronaut:micronaut-runtime")
+    api("org.spockframework:spock-core:${spockVersion}") {
+        exclude module:'groovy-all'
+    }
+    api "io.micronaut.test:micronaut-test-spock:$micronautTestVersion"
+    api project(":mqtt-core")
+    api "org.testcontainers:spock:1.15.0-rc2"
+}

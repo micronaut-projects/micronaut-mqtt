@@ -1,13 +1,14 @@
 package io.micronaut.mqtt.v3.bind;
 
+import io.micronaut.mqtt.bind.MqttBindingContext;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-public class MqttV3Message implements io.micronaut.mqtt.bind.MqttMessage<MqttMessage> {
+public class MqttV3BindingContext implements MqttBindingContext<MqttMessage> {
 
     private final MqttMessage message;
     private String topic;
 
-    public MqttV3Message(MqttMessage message) {
+    public MqttV3BindingContext(MqttMessage message) {
         this.message = message;
     }
 
@@ -49,6 +50,11 @@ public class MqttV3Message implements io.micronaut.mqtt.bind.MqttMessage<MqttMes
     @Override
     public void setTopic(String topic) {
         this.topic = topic;
+    }
+
+    @Override
+    public int getId() {
+        return message.getId();
     }
 
     @Override

@@ -10,5 +10,7 @@ import java.lang.annotation.*;
 @Bindable
 public @interface Qos {
 
-    int value() default 1;
+    int DEFAULT_VALUE = 1;
+
+    int value() default DEFAULT_VALUE;
 }

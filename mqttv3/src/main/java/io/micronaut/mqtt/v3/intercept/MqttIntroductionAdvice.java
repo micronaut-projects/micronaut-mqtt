@@ -1,12 +1,12 @@
 package io.micronaut.mqtt.v3.intercept;
 
-import io.micronaut.core.convert.ConversionService;
+import io.micronaut.aop.MethodInvocationContext;
 import io.micronaut.mqtt.bind.MqttBinderRegistry;
+import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.exception.MqttClientException;
 import io.micronaut.mqtt.intercept.AbstractMqttIntroductionAdvice;
-import io.micronaut.mqtt.serdes.MqttPayloadSerDesRegistry;
 import io.micronaut.mqtt.v3.annotation.MqttClient;
-import io.micronaut.mqtt.v3.bind.MqttV3Message;
+import io.micronaut.mqtt.v3.bind.MqttV3BindingContext;
 import org.eclipse.paho.client.mqttv3.*;
 
 import javax.inject.Singleton;
@@ -19,16 +19,14 @@ public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<IMqtt
     private final MqttAsyncClient mqttAsyncClient;
 
     public MqttIntroductionAdvice(MqttAsyncClient mqttAsyncClient,
-                                  ConversionService<?> conversionService,
-                                  MqttPayloadSerDesRegistry serDesRegistry,
                                   MqttBinderRegistry binderRegistry) {
-        super(conversionService, serDesRegistry, binderRegistry);
+        super(binderRegistry);
         this.mqttAsyncClient = mqttAsyncClient;
     }
 
     @Override
-    public io.micronaut.mqtt.bind.MqttMessage<MqttMessage> createMessage() {
-        return new MqttV3Message(new MqttMessage());
+    public MqttBindingContext<MqttMessage> createBindingContext(MethodInvocationContext<Object, Object> context) {
+        return new MqttV3BindingContext(new MqttMessage());
     }
 
     @Override

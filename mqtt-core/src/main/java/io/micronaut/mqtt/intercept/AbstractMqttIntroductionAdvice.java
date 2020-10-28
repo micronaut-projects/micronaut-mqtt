@@ -1,3 +1,18 @@
+/*
+ * Copyright 2017-2020 original authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package io.micronaut.mqtt.intercept;
 
 import io.micronaut.aop.InterceptedMethod;
@@ -6,9 +21,7 @@ import io.micronaut.aop.MethodInvocationContext;
 import io.micronaut.caffeine.cache.Cache;
 import io.micronaut.caffeine.cache.Caffeine;
 import io.micronaut.core.annotation.AnnotationValue;
-import io.micronaut.core.convert.ConversionService;
 import io.micronaut.core.type.Argument;
-import io.micronaut.core.type.MutableArgumentValue;
 import io.micronaut.inject.ExecutableMethod;
 import io.micronaut.mqtt.annotation.Qos;
 import io.micronaut.mqtt.annotation.Retained;
@@ -17,22 +30,24 @@ import io.micronaut.mqtt.bind.MqttBinder;
 import io.micronaut.mqtt.bind.MqttBinderRegistry;
 import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.exception.MqttClientException;
-import io.micronaut.mqtt.serdes.MqttPayloadSerDesRegistry;
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.annotation.Annotation;
-import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 
 /**
+ * Intercepts calls to MQTT clients to publish messages.
  *
  * @param <L> The listener type
+ * @param <M> The message type
+ * @author James Kleeh
+ * @since 1.0.0
  */
 public abstract class AbstractMqttIntroductionAdvice<L, M> implements MethodInterceptor<Object, Object> {
 
@@ -91,7 +106,37 @@ public abstract class AbstractMqttIntroductionAdvice<L, M> implements MethodInte
         return context.proceed();
     }
 
-    protected MqttPublisherState getPublisherState(MethodInvocationContext<Object, Object> context) {
+    /**
+     * @param context The method context
+     * @return The binding context to bind data used in publishing
+     */
+    public abstract MqttBindingContext<M> createBindingContext(MethodInvocationContext<Object, Object> context);
+
+    /**
+     * Publishes the message.
+     *
+     * @param topic The topic to publish the message to
+     * @param message The message to publish
+     * @param listener The publish action listener
+     * @return The result of the publish method
+     */
+    public abstract Object publish(String topic, M message, L listener);
+
+    /**
+     * Create a listener.
+     *
+     * @param onSuccess The code to call when a message is sent successfully
+     * @param onError The consumer to call in the case of an exception
+     * @return A publish action listener
+     */
+    public abstract L createListener(Runnable onSuccess, Consumer<Throwable> onError);
+
+    /**
+     * @return The implement specific client annotation class
+     */
+    public abstract Class<? extends Annotation> getRequiredAnnotation();
+
+    private MqttPublisherState getPublisherState(MethodInvocationContext<Object, Object> context) {
         return publisherCache.get(context.getExecutableMethod(), (method) -> {
             MqttPublisherState state = new MqttPublisherState();
 
@@ -110,14 +155,6 @@ public abstract class AbstractMqttIntroductionAdvice<L, M> implements MethodInte
             return state;
         });
     }
-
-    public abstract MqttBindingContext<M> createBindingContext(MethodInvocationContext<Object, Object> context);
-
-    public abstract Object publish(String topic, M message, L listener);
-
-    public abstract L createListener(Runnable onSuccess, Consumer<Throwable> onError);
-
-    public abstract Class<? extends Annotation> getRequiredAnnotation();
 
     private Object publish(MqttPublisherState state, MethodInvocationContext<Object, Object> context, L listener) {
         MqttBindingContext<M> bindingContext = createBindingContext(context);

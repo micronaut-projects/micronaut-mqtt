@@ -26,6 +26,12 @@ import io.micronaut.mqtt.serdes.MqttPayloadSerDesRegistry;
 import javax.inject.Singleton;
 import java.util.Optional;
 
+/**
+ * A binder responsible for binding to the payload of the message.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Singleton
 public class PayloadMqttBinder implements AnnotatedMqttBinder<MqttBindingContext<?>, Body> {
 
@@ -41,15 +47,15 @@ public class PayloadMqttBinder implements AnnotatedMqttBinder<MqttBindingContext
     }
 
     @Override
-    public void bindTo(MqttBindingContext<?> context, Object value, Argument<?> argument) {
+    public void bindTo(MqttBindingContext<?> context, Object value, Argument<Object> argument) {
         serDesRegistry.findSerdes(argument)
                 .map(serDes -> ((MqttPayloadSerDes<Object>) serDes).serialize(value))
                 .ifPresent(context::setPayload);
     }
 
     @Override
-    public Optional<?> bindFrom(MqttBindingContext<?> context, ArgumentConversionContext<?> conversionContext) {
+    public Optional<Object> bindFrom(MqttBindingContext<?> context, ArgumentConversionContext<Object> conversionContext) {
         return serDesRegistry.findSerdes(conversionContext.getArgument())
-                .map(serDes -> ((MqttPayloadSerDes<Object>) serDes).deserialize(context.getPayload(), (Argument<Object>) conversionContext.getArgument()));
+                .map(serDes -> serDes.deserialize(context.getPayload(), conversionContext.getArgument()));
     }
 }

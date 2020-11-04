@@ -17,10 +17,19 @@ package io.micronaut.mqtt.v5.annotation;
 
 import java.lang.annotation.*;
 
+/**
+ * Used for binding arguments to {@link org.eclipse.paho.mqttv5.common.packet.MqttProperties}.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
 public @interface MqttProperties {
 
+    /**
+     * @return The properties to set
+     */
     MqttProperty[] value() default {};
 }

@@ -15,22 +15,29 @@
  */
 package io.micronaut.mqtt.exception;
 
-import io.micronaut.messaging.exceptions.MessageListenerException;
+import io.micronaut.context.annotation.Primary;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Singleton;
 
 /**
- * An exception thrown while subscribing to MQTT topics.
+ * The exception handler for subscriber exceptions that is used if the subscriber
+ * does not implement {@link MqttSubscriberExceptionHandler}.
  *
  * @author James Kleeh
  * @since 1.0.0
  */
-public class MqttSubscriberException extends MessageListenerException {
+@Singleton
+@Primary
+public class DefaultMqttSubscriberExceptionHandler implements MqttSubscriberExceptionHandler {
 
-    public MqttSubscriberException(String message) {
-        super(message);
+    private static final Logger LOG = LoggerFactory.getLogger(DefaultMqttSubscriberExceptionHandler.class);
+
+    @Override
+    public void handle(MqttSubscriberException exception) {
+        if (LOG.isErrorEnabled()) {
+            LOG.error(exception.getMessage(), exception);
+        }
     }
-
-    public MqttSubscriberException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
 }

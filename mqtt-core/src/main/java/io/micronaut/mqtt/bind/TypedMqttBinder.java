@@ -17,7 +17,13 @@ package io.micronaut.mqtt.bind;
 
 import io.micronaut.core.type.Argument;
 
-interface TypedMqttBinder<M, T> extends MqttBinder<M, T> {
+/**
+ * Argument binder based on the type of the argument.
+ *
+ * @param <M> The message context
+ * @param <T> The type
+ */
+public interface TypedMqttBinder<M, T> extends MqttBinder<M, T> {
 
     Argument<T> getArgumentType();
 

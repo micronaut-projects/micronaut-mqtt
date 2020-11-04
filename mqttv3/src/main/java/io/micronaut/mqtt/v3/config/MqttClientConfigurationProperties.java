@@ -24,6 +24,7 @@ import org.eclipse.paho.client.mqttv3.*;
 import javax.net.ssl.HostnameVerifier;
 import javax.validation.constraints.NotNull;
 import java.time.Duration;
+import java.util.Optional;
 
 /**
  * Configuration for the MQTT client.
@@ -38,6 +39,7 @@ public class MqttClientConfigurationProperties  {
     private String serverUri;
     private String clientId;
     private Duration connectionTimeout = Duration.ofSeconds(3);
+    private Boolean manualAcks;
 
     @ConfigurationBuilder()
     private final MqttConnectOptions connectOptions = new MqttConnectOptions();
@@ -99,6 +101,20 @@ public class MqttClientConfigurationProperties  {
      */
     public void setConnectionTimeout(Duration connectionTimeout) {
         this.connectionTimeout = connectionTimeout;
+    }
+
+    /**
+     * @return An optional boolean to set the client in manual acknowledge mode
+     */
+    public Optional<Boolean> getManualAcks() {
+        return Optional.ofNullable(manualAcks);
+    }
+
+    /**
+     * @param manualAcks Set to true if you wish to manually acknowledge messages
+     */
+    public void setManualAcks(Boolean manualAcks) {
+        this.manualAcks = manualAcks;
     }
 
     @ConfigurationProperties("will-message")

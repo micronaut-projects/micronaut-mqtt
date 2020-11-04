@@ -28,6 +28,12 @@ import javax.inject.Singleton;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
 
+/**
+ * A factory to create an MQTT client.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Factory
 public final class MqttClientFactory {
 
@@ -39,6 +45,7 @@ public final class MqttClientFactory {
                                @Named(TaskExecutors.MESSAGE_CONSUMER) ExecutorService executorService) throws MqttException {
         ScheduledExecutorService consumerExecutor = (ScheduledExecutorService) executorService;
         MqttAsyncClient client = new MqttAsyncClient(configuration.getServerUri(), configuration.getClientId(), clientPersistence, new ScheduledExecutorPingSender(consumerExecutor), consumerExecutor, highResolutionTimer);
+        configuration.getManualAcks().ifPresent(client::setManualAcks);
         client.connect(configuration.getConnectOptions())
                 .waitForCompletion(configuration.getConnectionTimeout().toMillis());
         return client;

@@ -17,8 +17,17 @@ package io.micronaut.mqtt.bind;
 
 import java.lang.annotation.Annotation;
 
+/**
+ * An {@link MqttBinder} that binds based on the presence of an annotation on the argument.
+ *
+ * @param <M> The message context
+ * @param <T> The annotation type
+ */
 public interface AnnotatedMqttBinder<M, T extends Annotation> extends MqttBinder<M, Object> {
 
+    /**
+     * @return The annotation type
+     */
     Class<T> getAnnotationType();
 
 }

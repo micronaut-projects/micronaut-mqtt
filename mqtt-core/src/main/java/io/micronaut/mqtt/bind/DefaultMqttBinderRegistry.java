@@ -25,6 +25,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * A default implementation of {@link MqttBinderRegistry} that searches
+ * for binders based on argument annotations, then based on the argument
+ * type.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Singleton
 public class DefaultMqttBinderRegistry implements MqttBinderRegistry {
 

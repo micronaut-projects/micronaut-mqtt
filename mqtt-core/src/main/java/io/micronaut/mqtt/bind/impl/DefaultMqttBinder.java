@@ -27,6 +27,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * The {@link FallbackMqttBinder} to bind arguments that don't match any
+ * annotated or typed based binder. Matches arguments to properties in the message
+ * based on the argument name. If the name is not recognized, the argument is bound
+ * with the payload of the message.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Singleton
 public class DefaultMqttBinder implements FallbackMqttBinder<MqttBindingContext<?>> {
 
@@ -43,7 +52,7 @@ public class DefaultMqttBinder implements FallbackMqttBinder<MqttBindingContext<
     }
 
     @Override
-    public void bindTo(MqttBindingContext<?> context, Object value, Argument<?> argument) {
+    public void bindTo(MqttBindingContext<?> context, Object value, Argument<Object> argument) {
         BeanProperty<MqttBindingContext, ?> property = this.properties.get(argument.getName());
         if (property != null) {
             if (!property.isReadOnly()) {
@@ -55,7 +64,7 @@ public class DefaultMqttBinder implements FallbackMqttBinder<MqttBindingContext<
     }
 
     @Override
-    public Optional<?> bindFrom(MqttBindingContext<?> context, ArgumentConversionContext<?> conversionContext) {
+    public Optional<Object> bindFrom(MqttBindingContext<?> context, ArgumentConversionContext<Object> conversionContext) {
         BeanProperty<MqttBindingContext, ?> property = this.properties.get(conversionContext.getArgument().getName());
         if (property != null) {
             return property.get(context, conversionContext);

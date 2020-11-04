@@ -15,15 +15,36 @@
  */
 package io.micronaut.mqtt.v3.bind;
 
+import io.micronaut.core.annotation.Internal;
 import io.micronaut.mqtt.bind.MqttBindingContext;
+import io.micronaut.mqtt.exception.MqttSubscriberException;
+import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
+import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class MqttV3BindingContext implements MqttBindingContext<MqttMessage> {
+/**
+ * A binding context for MQTT v3 messages.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
+@Internal
+public final class MqttV3BindingContext implements MqttBindingContext<MqttMessage> {
 
+    private static final Logger LOG = LoggerFactory.getLogger(MqttV3BindingContext.class);
+
+    private final MqttAsyncClient client;
     private final MqttMessage message;
     private String topic;
 
-    public MqttV3BindingContext(MqttMessage message) {
+    /**
+     * @param client The client
+     * @param message The message
+     */
+    public MqttV3BindingContext(MqttAsyncClient client, MqttMessage message) {
+        this.client = client;
         this.message = message;
     }
 
@@ -70,6 +91,18 @@ public class MqttV3BindingContext implements MqttBindingContext<MqttMessage> {
     @Override
     public int getId() {
         return message.getId();
+    }
+
+    @Override
+    public void acknowlege() {
+        try {
+            if (LOG.isTraceEnabled()) {
+                LOG.trace("Acknowledging message id {} with qos {}", message.getId(), message.getQos());
+            }
+            client.messageArrivedComplete(message.getId(), message.getQos());
+        } catch (MqttException e) {
+            throw new MqttSubscriberException("Failed to acknowledge the message", e);
+        }
     }
 
     @Override

@@ -17,21 +17,35 @@ package io.micronaut.mqtt.v5.bind;
 
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.core.beans.BeanIntrospection;
+import io.micronaut.core.beans.BeanProperty;
 import io.micronaut.core.convert.ArgumentConversionContext;
 import io.micronaut.core.convert.ConversionService;
 import io.micronaut.core.type.Argument;
 import io.micronaut.mqtt.bind.AnnotatedMqttBinder;
 import io.micronaut.mqtt.v5.annotation.MqttProperty;
 import org.eclipse.paho.mqttv5.common.packet.MqttProperties;
+import org.eclipse.paho.mqttv5.common.packet.UserProperty;
 
+import javax.inject.Singleton;
+import java.util.List;
 import java.util.Optional;
 
+/**
+ * Binds arguments to and from {@link MqttProperties}.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Introspected(classes = MqttProperties.class)
+@Singleton
 public class MqttPropertyBinder implements AnnotatedMqttBinder<MqttV5BindingContext, MqttProperty> {
 
     private final ConversionService<?> conversionService;
     private final BeanIntrospection<MqttProperties> introspection;
 
+    /**
+     * @param conversionService The conversion service
+     */
     public MqttPropertyBinder(ConversionService<?> conversionService) {
         this.conversionService = conversionService;
         this.introspection = BeanIntrospection.getIntrospection(MqttProperties.class);
@@ -43,22 +57,39 @@ public class MqttPropertyBinder implements AnnotatedMqttBinder<MqttV5BindingCont
     }
 
     @Override
-    public void bindTo(MqttV5BindingContext context, Object value, Argument<?> argument) {
+    public void bindTo(MqttV5BindingContext context, Object value, Argument<Object> argument) {
         String name = getParameterName(argument);
-        introspection.getProperty(name).ifPresent(bp -> bp.convertAndSet(context.getProperties(), value));
+        Optional<BeanProperty<MqttProperties, Object>> property = introspection.getProperty(name);
+        if (property.isPresent()) {
+            property.get().convertAndSet(context.getProperties(), value);
+        } else {
+            conversionService.convert(value, Argument.STRING)
+                    .map(val -> new UserProperty(name, val))
+                    .ifPresent(context.getProperties().getUserProperties()::add);
+        }
     }
 
     @Override
-    public Optional<?> bindFrom(MqttV5BindingContext context, ArgumentConversionContext<?> conversionContext) {
+    public Optional<Object> bindFrom(MqttV5BindingContext context, ArgumentConversionContext<Object> conversionContext) {
         String name = getParameterName(conversionContext.getArgument());
-        return introspection.getProperty(name)
-                .map(bp -> bp.get(context.getProperties()))
-                .flatMap(val -> conversionService.convert(val, conversionContext));
-
+        Optional<BeanProperty<MqttProperties, Object>> property = introspection.getProperty(name);
+        if (property.isPresent()) {
+            return property.get().get(context.getProperties(), conversionContext);
+        } else {
+            List<UserProperty> userProperties = context.getProperties().getUserProperties();
+            for (UserProperty up: userProperties) {
+                if (up.getKey().equals(name)) {
+                    return conversionService.convert(up.getValue(), conversionContext);
+                }
+            }
+        }
+        return Optional.empty();
     }
 
     private String getParameterName(Argument<?> argument) {
-        return argument.getAnnotationMetadata().getValue(MqttProperty.class, String.class).orElse(argument.getName());
+        return argument.findAnnotation(MqttProperty.class)
+                .flatMap(av -> av.stringValue("name"))
+                .orElse(argument.getName());
     }
 
 }

@@ -19,6 +19,7 @@ import io.micronaut.context.BeanContext;
 import io.micronaut.mqtt.bind.MqttBinderRegistry;
 import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.exception.MqttSubscriberException;
+import io.micronaut.mqtt.exception.MqttSubscriberExceptionHandler;
 import io.micronaut.mqtt.intercept.AbstractMqttSubscriberAdvice;
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext;
 import org.eclipse.paho.mqttv5.client.IMqttToken;
@@ -35,6 +36,12 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.function.Consumer;
 
+/**
+ * The MQTT v5 implementation of {@link AbstractMqttSubscriberAdvice}.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Singleton
 public class MqttSubscriberAdvice extends AbstractMqttSubscriberAdvice<MqttMessage> {
 
@@ -43,25 +50,30 @@ public class MqttSubscriberAdvice extends AbstractMqttSubscriberAdvice<MqttMessa
 
     public MqttSubscriberAdvice(BeanContext beanContext,
                                 MqttBinderRegistry binderRegistry,
+                                MqttSubscriberExceptionHandler exceptionHandler,
                                 MqttAsyncClient mqttAsyncClient) {
-        super(beanContext, binderRegistry);
+        super(beanContext, binderRegistry, exceptionHandler);
         this.mqttAsyncClient = mqttAsyncClient;
     }
 
     @Override
-    public void subscribe(String topic, int qos, Consumer<MqttBindingContext<MqttMessage>> callback) {
+    public void subscribe(String[] topics, int[] qos, Consumer<MqttBindingContext<MqttMessage>> callback) {
         try {
             //workaround for https://github.com/eclipse/paho.mqtt.java/issues/826
             final MqttProperties props = new MqttProperties();
             props.setSubscriptionIdentifiers(Arrays.asList(new Integer[] { 0 }));
 
-            mqttAsyncClient.subscribe(new MqttSubscription(topic, qos), null, null, (actualTopic, message) -> {
-                MqttV5BindingContext context = new MqttV5BindingContext(message);
+            MqttSubscription[] subscriptions = new MqttSubscription[topics.length];
+            for (int i = 0; i < topics.length; i++) {
+                subscriptions[i] = new MqttSubscription(topics[i], qos[i]);
+            }
+            mqttAsyncClient.subscribe(subscriptions, null, null, (actualTopic, message) -> {
+                MqttV5BindingContext context = new MqttV5BindingContext(mqttAsyncClient, message);
                 context.setTopic(actualTopic);
                 callback.accept(context);
             }, props);
         } catch (MqttException e) {
-            throw new MqttSubscriberException(String.format("Failed to subscribe to the topic: %s", topic), e);
+            throw new MqttSubscriberException(String.format("Failed to subscribe to the topics: %s", (Object) topics), e);
         }
     }
 

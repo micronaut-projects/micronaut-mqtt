@@ -20,9 +20,32 @@ import io.micronaut.core.type.Argument;
 
 import java.util.Optional;
 
+/**
+ * Argument binder to bind publisher and subscriber method arguments
+ * to and from the message context.
+ *
+ * @param <M> The message context
+ * @param <T> The type
+ */
 public interface MqttBinder<M, T> {
 
-    void bindTo(M context, T value, Argument<?> argument);
+    /**
+     * Binds the given value to the given context. Publisher
+     * method arguments will be passed to this method.
+     *
+     * @param context The message context
+     * @param value The argument value
+     * @param argument The publisher argument
+     */
+    void bindTo(M context, T value, Argument<T> argument);
 
-    Optional<?> bindFrom(M context, ArgumentConversionContext<?> conversionContext);
+    /**
+     * Binds the given context and returns an optional value. Subscriber
+     * method arguments will be passed to this method.
+     *
+     * @param context The method context
+     * @param conversionContext The argument conversion context
+     * @return An optional value
+     */
+    Optional<T> bindFrom(M context, ArgumentConversionContext<T> conversionContext);
 }

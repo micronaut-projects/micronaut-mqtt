@@ -25,6 +25,12 @@ import io.micronaut.mqtt.bind.MqttBindingContext;
 import javax.inject.Singleton;
 import java.util.Optional;
 
+/**
+ * An annotated argument binder for {@link Qos}.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Singleton
 public class QosMqttBinder implements AnnotatedMqttBinder<MqttBindingContext<?>, Qos> {
 
@@ -40,13 +46,13 @@ public class QosMqttBinder implements AnnotatedMqttBinder<MqttBindingContext<?>,
     }
 
     @Override
-    public void bindTo(MqttBindingContext<?> context, Object value, Argument<?> argument) {
+    public void bindTo(MqttBindingContext<?> context, Object value, Argument<Object> argument) {
         conversionService.convert(value, Argument.INT)
                 .ifPresent(context::setQos);
     }
 
     @Override
-    public Optional<?> bindFrom(MqttBindingContext<?> context, ArgumentConversionContext<?> conversionContext) {
+    public Optional<Object> bindFrom(MqttBindingContext<?> context, ArgumentConversionContext<Object> conversionContext) {
         return conversionService.convert(context.getQos(), conversionContext);
     }
 }

@@ -20,7 +20,10 @@ import io.micronaut.core.bind.annotation.Bindable;
 import java.lang.annotation.*;
 
 /**
- * Used for binding the message Qos.
+ * Used for binding the message Qos. This annotation should not be used on subscriber
+ * classes or methods as the Qos must be set per topic. Use {@link Topic#qos()} instead.
+ * The annotation may be applied to publisher classes and methods because a publisher may only
+ * publish to a single topic.
  *
  * @author James Kleeh
  * @since 1.0.0

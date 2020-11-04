@@ -30,6 +30,12 @@ import javax.inject.Singleton;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
 
+/**
+ * A factory to create an MQTT client.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Factory
 public final class MqttClientFactory {
 

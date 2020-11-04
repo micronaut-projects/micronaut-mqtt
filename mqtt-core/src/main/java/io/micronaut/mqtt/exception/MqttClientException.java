@@ -17,6 +17,12 @@ package io.micronaut.mqtt.exception;
 
 import io.micronaut.messaging.exceptions.MessagingClientException;
 
+/**
+ * An exception thrown while publishing to MQTT topics.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 public class MqttClientException extends MessagingClientException {
 
     public MqttClientException(String message) {

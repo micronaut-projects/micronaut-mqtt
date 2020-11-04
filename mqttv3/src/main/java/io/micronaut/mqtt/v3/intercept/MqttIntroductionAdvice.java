@@ -28,6 +28,12 @@ import javax.inject.Singleton;
 import java.lang.annotation.Annotation;
 import java.util.function.Consumer;
 
+/**
+ * The MQTT v3 implementation of {@link AbstractMqttIntroductionAdvice}.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Singleton
 public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<IMqttActionListener, MqttMessage> {
 
@@ -41,7 +47,7 @@ public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<IMqtt
 
     @Override
     public MqttBindingContext<MqttMessage> createBindingContext(MethodInvocationContext<Object, Object> context) {
-        return new MqttV3BindingContext(new MqttMessage());
+        return new MqttV3BindingContext(mqttAsyncClient, new MqttMessage());
     }
 
     @Override

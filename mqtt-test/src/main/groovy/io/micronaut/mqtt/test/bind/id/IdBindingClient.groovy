@@ -13,24 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.exception;
+package io.micronaut.mqtt.test.bind.id
 
-import io.micronaut.messaging.exceptions.MessageListenerException;
+import io.micronaut.mqtt.annotation.Topic
 
-/**
- * An exception thrown while subscribing to MQTT topics.
- *
- * @author James Kleeh
- * @since 1.0.0
- */
-public class MqttSubscriberException extends MessageListenerException {
 
-    public MqttSubscriberException(String message) {
-        super(message);
-    }
+interface IdBindingClient {
 
-    public MqttSubscriberException(String message, Throwable cause) {
-        super(message, cause);
-    }
+    @Topic("test/id/1")
+    void send()
 
+    @Topic("test/id/2")
+    void send2()
 }

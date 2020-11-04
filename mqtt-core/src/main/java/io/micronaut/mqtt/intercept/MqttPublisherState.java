@@ -62,7 +62,7 @@ final class MqttPublisherState {
 
     public void bind(Object message, MethodInvocationContext<Object, Object> context) {
         Map<String, Object> parameterValues = context.getParameterValueMap();
-        for (Argument<?> argument: context.getArguments()) {
+        for (Argument argument: context.getArguments()) {
             MqttBinder<Object, Object> binder = binderCache.get(argument);
             if (binder != null) {
                 binder.bindTo(message, parameterValues.get(argument.getName()), argument);

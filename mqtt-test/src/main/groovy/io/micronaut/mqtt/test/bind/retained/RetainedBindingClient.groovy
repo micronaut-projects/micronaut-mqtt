@@ -15,6 +15,7 @@
  */
 package io.micronaut.mqtt.test.bind.retained
 
+import io.micronaut.messaging.annotation.Body
 import io.micronaut.mqtt.annotation.Retained
 import io.micronaut.mqtt.annotation.Topic
 
@@ -22,10 +23,10 @@ import io.micronaut.mqtt.annotation.Topic
 @Retained(false)
 interface RetainedBindingClient {
 
-    void argument(@Retained Boolean retained)
+    void argument(@Retained Boolean retained, @Body String payload)
 
     @Retained(true)
-    void override()
+    void override(String payload)
 
-    void classLevel()
+    void classLevel(String payload)
 }

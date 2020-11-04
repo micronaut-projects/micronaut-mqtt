@@ -13,24 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.exception;
+package io.micronaut.mqtt.test.intercept
 
-import io.micronaut.messaging.exceptions.MessageListenerException;
+import io.micronaut.mqtt.annotation.Topic
 
-/**
- * An exception thrown while subscribing to MQTT topics.
- *
- * @author James Kleeh
- * @since 1.0.0
- */
-public class MqttSubscriberException extends MessageListenerException {
+@Topic("test/topic2")
+interface MultipleTopicsClient {
 
-    public MqttSubscriberException(String message) {
-        super(message);
-    }
+    void send(@Topic String topic)
 
-    public MqttSubscriberException(String message, Throwable cause) {
-        super(message, cause);
-    }
+    @Topic("test/topic1")
+    void override()
 
 }

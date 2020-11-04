@@ -13,24 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.exception;
+package io.micronaut.mqtt.annotation;
 
-import io.micronaut.messaging.exceptions.MessageListenerException;
+import java.lang.annotation.*;
 
 /**
- * An exception thrown while subscribing to MQTT topics.
+ * Used to supply multiple topics on subscriber methods. Subscribers can subscribe
+ * to multiple topics with individual qos settings, however publishers can only
+ * publish to a single topic so this annotation should not be used in that context.
  *
  * @author James Kleeh
  * @since 1.0.0
  */
-public class MqttSubscriberException extends MessageListenerException {
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE, ElementType.METHOD})
+public @interface Topics {
 
-    public MqttSubscriberException(String message) {
-        super(message);
-    }
-
-    public MqttSubscriberException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
+    Topic[] value() default {};
 }

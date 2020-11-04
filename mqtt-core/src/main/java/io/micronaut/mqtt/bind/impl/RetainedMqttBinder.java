@@ -25,6 +25,12 @@ import io.micronaut.mqtt.bind.MqttBindingContext;
 import javax.inject.Singleton;
 import java.util.Optional;
 
+/**
+ * An annotated argument binder for {@link Retained}.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Singleton
 public class RetainedMqttBinder implements AnnotatedMqttBinder<MqttBindingContext<?>, Retained> {
 
@@ -40,13 +46,13 @@ public class RetainedMqttBinder implements AnnotatedMqttBinder<MqttBindingContex
     }
 
     @Override
-    public void bindTo(MqttBindingContext<?> message, Object value, Argument<?> argument) {
+    public void bindTo(MqttBindingContext<?> message, Object value, Argument<Object> argument) {
         conversionService.convert(value, Argument.BOOLEAN)
                 .ifPresent(message::setRetained);
     }
 
     @Override
-    public Optional<?> bindFrom(MqttBindingContext<?> message, ArgumentConversionContext<?> conversionContext) {
+    public Optional<Object> bindFrom(MqttBindingContext<?> message, ArgumentConversionContext<Object> conversionContext) {
         return conversionService.convert(message.isRetained(), conversionContext);
     }
 }

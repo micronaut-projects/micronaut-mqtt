@@ -41,6 +41,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+/**
+ * The MQTT v5 implementation of {@link AbstractMqttIntroductionAdvice}.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Singleton
 public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<MqttActionListener, MqttMessage> {
 
@@ -81,7 +87,7 @@ public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<MqttA
             }
         });
         message.setProperties(properties);
-        return new MqttV5BindingContext(message);
+        return new MqttV5BindingContext(mqttAsyncClient, message);
     }
 
     @Override

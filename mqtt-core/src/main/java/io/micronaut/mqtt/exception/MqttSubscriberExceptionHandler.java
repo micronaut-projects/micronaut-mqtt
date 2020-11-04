@@ -15,7 +15,20 @@
  */
 package io.micronaut.mqtt.exception;
 
+import io.micronaut.context.annotation.DefaultImplementation;
 import io.micronaut.core.exceptions.ExceptionHandler;
 
-public interface MqttSubscriberExceptionHandler extends ExceptionHandler<Throwable> {
+/**
+ * Responsible for handling exceptions thrown during the subscription process. Can be
+ * implemented in {@link io.micronaut.mqtt.annotation.MqttSubscriber} beans to handle
+ * exceptions thrown specific to that class.
+ *
+ * Replace this with your own {@link io.micronaut.context.annotation.Primary} bean to handle
+ * exceptions not handled by any other listeners.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
+@DefaultImplementation(DefaultMqttSubscriberExceptionHandler.class)
+public interface MqttSubscriberExceptionHandler extends ExceptionHandler<MqttSubscriberException> {
 }

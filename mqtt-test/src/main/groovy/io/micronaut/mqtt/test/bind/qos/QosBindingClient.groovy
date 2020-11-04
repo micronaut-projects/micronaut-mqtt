@@ -13,24 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.exception;
+package io.micronaut.mqtt.test.bind.qos
 
-import io.micronaut.messaging.exceptions.MessageListenerException;
+import io.micronaut.mqtt.annotation.Qos
+import io.micronaut.mqtt.annotation.Topic
 
-/**
- * An exception thrown while subscribing to MQTT topics.
- *
- * @author James Kleeh
- * @since 1.0.0
- */
-public class MqttSubscriberException extends MessageListenerException {
+@Topic("test/qos")
+@Qos(0)
+interface QosBindingClient {
 
-    public MqttSubscriberException(String message) {
-        super(message);
-    }
+    void argument(@Qos int qos)
 
-    public MqttSubscriberException(String message, Throwable cause) {
-        super(message, cause);
-    }
+    @Qos(2)
+    void override()
 
+    void classLevel()
 }

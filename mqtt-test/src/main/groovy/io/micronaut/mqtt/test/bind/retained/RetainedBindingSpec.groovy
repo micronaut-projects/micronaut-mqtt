@@ -17,85 +17,64 @@ package io.micronaut.mqtt.test.bind.retained
 
 import io.micronaut.context.annotation.Requires
 import io.micronaut.core.util.StringUtils
+import io.micronaut.messaging.annotation.Body
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import spock.lang.Ignore
+import spock.lang.Stepwise
 import spock.util.concurrent.PollingConditions
 
+@Stepwise
 abstract class RetainedBindingSpec extends AbstractMQTTTest {
-
-    @Ignore
-    void "test retained binding method overrides class"() {
-        def ctx = startContext() //the subscriber is disabled
-        def client = ctx.getBean(getClient())
-        //publish a message before there is a subscriber
-        client.override()
-        ctx.close()
-
-        when:
-        ctx = startContext("retainedbindingspec": true)
-        def sub = ctx.getBean(MySubscriber)
-        def polling = new PollingConditions(timeout: 3)
-
-        then: //the subscriber received the message
-        polling.eventually {
-            assert sub.received
-        }
-
-        cleanup:
-        ctx.close()
-    }
 
     void "test retained binding class value is used"() {
         def ctx = startContext() //the subscriber is disabled
         def client = ctx.getBean(getClient())
         //publish a message before there is a subscriber
-        client.classLevel()
+        client.classLevel("classLevel")
         ctx.close()
 
         when:
         ctx = startContext("retainedbindingspec": true)
         def sub = ctx.getBean(MySubscriber)
-        def polling = new PollingConditions(timeout: 3)
+        def polling = new PollingConditions(initialDelay: 3)
 
         then: //the subscriber didn't receive the message
         polling.eventually {
-            assert !sub.received
+            assert sub.payload == null
         }
 
         cleanup:
         ctx.close()
     }
-
 
     void "test retained binding argument set to false"() {
         def ctx = startContext() //the subscriber is disabled
         def client = ctx.getBean(getClient())
         //publish a message before there is a subscriber
-        client.argument(false)
+        client.argument(false, "argumentFalse")
         ctx.close()
 
         when:
         ctx = startContext("retainedbindingspec": true)
         def sub = ctx.getBean(MySubscriber)
-        def polling = new PollingConditions(timeout: 3)
+        def polling = new PollingConditions(initialDelay: 3)
 
         then: //the subscriber didn't receive the message
         polling.eventually {
-            assert !sub.received
+            assert sub.payload == null
         }
 
         cleanup:
         ctx.close()
     }
 
-    @Ignore
-    void "test retained binding argument set to true"() {
+    void "test retained binding method overrides class"() {
         def ctx = startContext() //the subscriber is disabled
         def client = ctx.getBean(getClient())
         //publish a message before there is a subscriber
-        client.argument(true)
+        client.override("overrides")
         ctx.close()
 
         when:
@@ -105,11 +84,33 @@ abstract class RetainedBindingSpec extends AbstractMQTTTest {
 
         then: //the subscriber received the message
         polling.eventually {
-            assert sub.received
+            assert sub.payload == "overrides"
         }
 
         cleanup:
         ctx.close()
+    }
+
+    void "test retained binding argument set to true"() {
+        def ctx = startContext() //the subscriber is disabled
+        def client = ctx.getBean(getClient())
+        //publish a message before there is a subscriber
+        client.argument(true, "argumentTrue")
+        ctx.close()
+
+        when:
+        def ctx2 = startContext("retainedbindingspec": true)
+        def sub = ctx2.getBean(MySubscriber)
+        def polling = new PollingConditions(timeout: 3)
+
+        then: //the subscriber received the message
+        polling.eventually {
+            assert sub.payload == "argumentTrue"
+        }
+
+        cleanup:
+        ctx.close()
+        ctx2.close()
     }
 
     abstract Class<? extends RetainedBindingClient> getClient()
@@ -118,11 +119,11 @@ abstract class RetainedBindingSpec extends AbstractMQTTTest {
     @MqttSubscriber
     static class MySubscriber {
 
-        Boolean received = null
+        String payload = null
 
         @Topic("test/retained")
-        void get() {
-            this.received = true
+        void get(@Body String payload) {
+            this.payload = payload
         }
     }
 }

@@ -26,6 +26,12 @@ import io.micronaut.mqtt.exception.MqttClientException;
 import javax.inject.Singleton;
 import java.util.Optional;
 
+/**
+ * An annotated argument binder for {@link Id}.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Singleton
 public class IdMqttBinder implements AnnotatedMqttBinder<MqttBindingContext<?>, Id> {
 
@@ -41,12 +47,12 @@ public class IdMqttBinder implements AnnotatedMqttBinder<MqttBindingContext<?>, 
     }
 
     @Override
-    public void bindTo(MqttBindingContext<?> context, Object value, Argument<?> argument) {
+    public void bindTo(MqttBindingContext<?> context, Object value, Argument<Object> argument) {
         throw new MqttClientException("The message ID cannot be set when publishing messages");
     }
 
     @Override
-    public Optional<?> bindFrom(MqttBindingContext<?> context, ArgumentConversionContext<?> conversionContext) {
+    public Optional<Object> bindFrom(MqttBindingContext<?> context, ArgumentConversionContext<Object> conversionContext) {
         return conversionService.convert(context.getId(), conversionContext);
     }
 }

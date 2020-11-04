@@ -21,6 +21,12 @@ import java.lang.annotation.*;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+/**
+ * Used for binding arguments to {@link org.eclipse.paho.mqttv5.common.packet.MqttProperties}.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 @Documented
 @Retention(RUNTIME)
 @Target({ElementType.PARAMETER, ElementType.TYPE, ElementType.METHOD})
@@ -38,8 +44,10 @@ public @interface MqttProperty {
 
     /**
      * Never used if applied to a parameter. Supplies the property name if used on
-     * a class or method.
+     * a class or method. If the name is not one of the supported property names, the
+     * name and value will be populated via a {@link org.eclipse.paho.mqttv5.common.packet.UserProperty}.
      *
+     * @see org.eclipse.paho.mqttv5.common.packet.MqttProperties for a list of names
      * @return The name of property
      */
     String name() default "";

@@ -15,13 +15,19 @@
  */
 package io.micronaut.mqtt.annotation;
 
-import io.micronaut.context.annotation.AliasFor;
 import io.micronaut.core.bind.annotation.Bindable;
 
 import java.lang.annotation.*;
 
 /**
- * Used for binding the message topic and other parameters.
+ * Used for binding the message topic and other parameters. Use multiple annotations to
+ * subscribe to multiple topics.
+ *
+ * When used on a subscriber, any topic annotations from the class level will be used
+ * in <b>addition</b> to any annotations found on the method level.
+ *
+ * Only one instance of the annotation can be applied to publishers because publishers
+ * cannot publish to multiple topics.
  *
  * @author James Kleeh
  * @since 1.0.0
@@ -29,14 +35,11 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD, ElementType.PARAMETER})
+@Repeatable(value = Topics.class)
 @Bindable
 public @interface Topic {
 
-    String value() default "";
+    String value();
 
-    @AliasFor(annotation = Qos.class, member = "value")
     int qos() default 1;
-
-    @AliasFor(annotation = Retained.class, member = "value")
-    boolean retained() default false;
 }

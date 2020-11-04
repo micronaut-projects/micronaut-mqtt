@@ -15,5 +15,12 @@
  */
 package io.micronaut.mqtt.bind;
 
+/**
+ * A binder to use when no other binders match the argument.
+ *
+ * @param <M> The message type
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 public interface FallbackMqttBinder<M> extends MqttBinder<M, Object> {
 }

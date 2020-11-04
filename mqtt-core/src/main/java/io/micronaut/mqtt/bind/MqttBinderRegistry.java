@@ -17,7 +17,20 @@ package io.micronaut.mqtt.bind;
 
 import io.micronaut.core.type.Argument;
 
+/**
+ * A registry of binders for binding to and from MQTT messages.
+ *
+ * @author James Kleeh
+ * @since 1.0.0
+ */
 public interface MqttBinderRegistry {
 
+    /**
+     * Finds a binder for the given argument.
+     *
+     * @param argument The argument
+     * @param <T> The argument type
+     * @return A binder
+     */
     <T> MqttBinder<?, T> findArgumentBinder(Argument<T> argument);
 }

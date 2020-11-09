@@ -3,7 +3,7 @@ package io.micronaut.mqtt.bind.topic
 import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.test.bind.topic.TopicBindingClient
 import io.micronaut.mqtt.test.bind.topic.TopicBindingSpec
-import io.micronaut.mqtt.v3.annotation.MqttClient
+import io.micronaut.mqtt.v3.annotation.MqttPublisher
 
 class V3TopicBindingSpec extends TopicBindingSpec {
 
@@ -13,6 +13,6 @@ class V3TopicBindingSpec extends TopicBindingSpec {
     }
 
     @Requires(property = "spec.name", value = "V3TopicBindingSpec")
-    @MqttClient
+    @MqttPublisher
     static interface MyClient extends TopicBindingClient {}
 }

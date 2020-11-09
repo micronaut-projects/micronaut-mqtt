@@ -1,15 +1,9 @@
 package io.micronaut.mqtt.bind.retained
 
 import io.micronaut.context.annotation.Requires
-import io.micronaut.core.util.StringUtils
-import io.micronaut.mqtt.annotation.MqttSubscriber
-import io.micronaut.mqtt.annotation.Retained
-import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.mqtt.test.bind.retained.RetainedBindingClient
 import io.micronaut.mqtt.test.bind.retained.RetainedBindingSpec
-import io.micronaut.mqtt.v3.annotation.MqttClient
-import spock.util.concurrent.PollingConditions
+import io.micronaut.mqtt.v3.annotation.MqttPublisher
 
 class V3RetainedBindingSpec extends RetainedBindingSpec {
 
@@ -19,7 +13,7 @@ class V3RetainedBindingSpec extends RetainedBindingSpec {
     }
 
     @Requires(property = "spec.name", value = "V3RetainedBindingSpec")
-    @MqttClient
+    @MqttPublisher
     static interface MyClient extends RetainedBindingClient {
 
     }

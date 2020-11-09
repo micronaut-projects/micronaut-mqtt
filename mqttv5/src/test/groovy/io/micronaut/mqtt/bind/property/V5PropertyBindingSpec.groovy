@@ -6,7 +6,7 @@ import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.test.AbstractMQTTTest
-import io.micronaut.mqtt.v5.annotation.MqttClient
+import io.micronaut.mqtt.v5.annotation.MqttPublisher
 import io.micronaut.mqtt.v5.annotation.MqttProperty
 import spock.util.concurrent.PollingConditions
 
@@ -50,7 +50,7 @@ class V5PropertyBindingSpec extends AbstractMQTTTest {
 
     @Requires(property = "spec.name", value = "V5PropertyBindingSpec")
     @Topic("test/property")
-    @MqttClient
+    @MqttPublisher
     static interface MyClient {
 
         @MqttProperty(name = "contentType", value = "application/json")
@@ -77,7 +77,7 @@ class V5PropertyBindingSpec extends AbstractMQTTTest {
         }
 
         @Topic("test/property/custom")
-        void getCustom(@MqttProperty(name = "customUserProperty") String cup) {
+        void getCustom(@MqttProperty("customUserProperty") String cup) {
             this.customProp = cup
         }
     }

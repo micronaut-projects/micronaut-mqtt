@@ -20,7 +20,7 @@ import io.micronaut.mqtt.bind.MqttBinderRegistry;
 import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.exception.MqttClientException;
 import io.micronaut.mqtt.intercept.AbstractMqttIntroductionAdvice;
-import io.micronaut.mqtt.v3.annotation.MqttClient;
+import io.micronaut.mqtt.v3.annotation.MqttPublisher;
 import io.micronaut.mqtt.v3.bind.MqttV3BindingContext;
 import org.eclipse.paho.client.mqttv3.*;
 
@@ -76,7 +76,7 @@ public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<IMqtt
 
     @Override
     public Class<? extends Annotation> getRequiredAnnotation() {
-        return MqttClient.class;
+        return MqttPublisher.class;
     }
 
 }

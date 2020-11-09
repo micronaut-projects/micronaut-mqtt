@@ -39,7 +39,7 @@ import java.lang.annotation.*;
 @Bindable
 public @interface Topic {
 
-    String value();
+    String value() default "";
 
     int qos() default 1;
 }

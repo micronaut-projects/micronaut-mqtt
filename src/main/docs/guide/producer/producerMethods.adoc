@@ -1,0 +1,6 @@
+All methods that publish messages to MQTT must meet the following conditions:
+
+* The method must reside in a class annotated with `@MqttPublisher`.
+* The method must provide the topic to publish to, either through an argument, or the topic annotation on the method or class.
+
+IMPORTANT: If the topic cannot be found, an exception will be thrown. Unless a reactive type or future is returned from the publishing method, the action is blocking.

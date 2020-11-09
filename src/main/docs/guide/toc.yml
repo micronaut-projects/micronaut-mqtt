@@ -1,7 +1,37 @@
-introduction:
-  title: Introduction
-releaseHistory: Release History
-quickStart:
-  title: Quick Start
+introduction: Introduction
+whatsNew:  Release History
+quickStart: MQTT Quick Start
+v3:
+  title: MQTT V3
+  v3config: Configuration
+v5:
+  title: MQTT V5
+  v5config: Configuration
+  producerProperties: Publish Properties
+producer:
+  title: MQTT publishers
+  producerMethods:
+    title: Defining Publisher Methods
+    producerParameters:
+      title: Publisher Parameters
+      producerTopic: Topic
+      producerQos: Qos
+      producerRetained: Retained
+      producerPayload: Payload
+consumer:
+  title: MQTT Subscribers
+  consumerMethods:
+    title: Defining @MqttSubscriber Methods
+    consumerParameters:
+      title: Subscriber Parameters
+      consumerTopic: Topic
+      consumerProperties: Properties
+      consumerPayload: Payload
+    consumerAcknowledge: Acknowledging Messages
+  consumerExceptions: Handling Consumer Exceptions
+  consumerExecutor: Consumer Execution
+customBinding: Customizing Parameter Binding
+serdes:
+  title: Message Serialization/Deserialization (SerDes)
+  custom: Custom SerDes
 repository: Repository
-

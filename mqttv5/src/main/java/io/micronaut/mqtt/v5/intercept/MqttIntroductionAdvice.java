@@ -24,7 +24,7 @@ import io.micronaut.mqtt.bind.MqttBinderRegistry;
 import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.exception.MqttClientException;
 import io.micronaut.mqtt.intercept.AbstractMqttIntroductionAdvice;
-import io.micronaut.mqtt.v5.annotation.MqttClient;
+import io.micronaut.mqtt.v5.annotation.MqttPublisher;
 import io.micronaut.mqtt.v5.annotation.MqttProperty;
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext;
 import org.eclipse.paho.mqttv5.client.IMqttToken;
@@ -33,6 +33,7 @@ import org.eclipse.paho.mqttv5.client.MqttAsyncClient;
 import org.eclipse.paho.mqttv5.common.MqttException;
 import org.eclipse.paho.mqttv5.common.MqttMessage;
 import org.eclipse.paho.mqttv5.common.packet.MqttProperties;
+import org.eclipse.paho.mqttv5.common.packet.UserProperty;
 
 import javax.inject.Singleton;
 import java.lang.annotation.Annotation;
@@ -71,7 +72,6 @@ public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<MqttA
     public MqttBindingContext<MqttMessage> createBindingContext(MethodInvocationContext<Object, Object> context) {
         MqttMessage message = new MqttMessage();
         List<AnnotationValue<MqttProperty>> propertyAnnotations = context.getAnnotationValuesByType(MqttProperty.class);
-        Collections.reverse(propertyAnnotations); //set the values in the class first so methods can override
         MqttProperties properties = new MqttProperties();
         propertyAnnotations.forEach((prop) -> {
             String name = prop.get("name", String.class).orElse(null);
@@ -82,7 +82,7 @@ public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<MqttA
                 if (property.isPresent()) {
                     property.get().convertAndSet(properties, value);
                 } else {
-                    throw new MqttClientException(String.format("Attempted to set property [%s], but could not match the name to any of the properties in %s", name, MqttProperties.class.getName()));
+                    properties.getUserProperties().add(new UserProperty(name, value));
                 }
             }
         });
@@ -107,7 +107,7 @@ public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<MqttA
 
     @Override
     public Class<? extends Annotation> getRequiredAnnotation() {
-        return MqttClient.class;
+        return MqttPublisher.class;
     }
 
 }

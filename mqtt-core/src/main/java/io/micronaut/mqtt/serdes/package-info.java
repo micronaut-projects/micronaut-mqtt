@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 /**
- * Classes for serializing and deserializing RabbitMQ message bodies.
+ * Classes for serializing and deserializing MQTT message payloads.
  *
  * @author graemerocher
  * @since 1.0

@@ -1,0 +1,11 @@
+It is also supported to supply properties when publishing messages. Any of the link:{apirabbit}client/BasicProperties.html[BasicProperties] can be set dynamically per execution or statically for all executions. Properties can be set using the ann:configuration.rabbitmq.annotation.RabbitProperty[] annotation.
+
+snippet::io.micronaut.rabbitmq.docs.properties.ProductClient[tags="imports,clazz", project-base="docs-examples/example]
+
+<1> Properties can be defined at the class level and will apply to all methods. If a property is defined on the method with the same name as one on the class, the value on the method will be used.
+<2> Multiple annotations can be used to set multiple properties on the method or class level.
+<3> Properties can be set per execution. The name is inferred from the argument if the annotation value is not set. The value passed to the method will always be used, even if null.
+
+For method arguments, if the value is not supplied to the annotation, the argument name will be used as the property name. For example, `@RabbitProperty String userId` would result in the property `userId` being set on the properties object before publishing.
+
+IMPORTANT: If the annotation or argument name cannot be matched to a property name, an exception will be thrown. If the supplied value cannot be converted to the type defined in link:{apirabbit}client/BasicProperties.html[BasicProperties], an exception will be thrown.

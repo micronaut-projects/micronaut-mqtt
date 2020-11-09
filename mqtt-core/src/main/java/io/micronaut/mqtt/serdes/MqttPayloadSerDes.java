@@ -21,7 +21,7 @@ import io.micronaut.core.type.Argument;
 import javax.annotation.Nullable;
 
 /**
- * Responsible for serializing and deserializing RabbitMQ message bodies.
+ * Responsible for serializing and deserializing MQTT message payloads.
  *
  * @param <T> The type to be serialized/deserialized
  * @author James Kleeh
@@ -41,7 +41,7 @@ public interface MqttPayloadSerDes<T> extends Ordered {
 
     /**
      * Serializes the data into a byte[] to be published
-     * to RabbitMQ.
+     * to MQTT.
      *
      * @param data The data to serialize
      * @return The message body

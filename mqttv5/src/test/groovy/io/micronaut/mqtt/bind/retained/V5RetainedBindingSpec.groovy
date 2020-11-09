@@ -3,7 +3,7 @@ package io.micronaut.mqtt.bind.retained
 import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.test.bind.retained.RetainedBindingClient
 import io.micronaut.mqtt.test.bind.retained.RetainedBindingSpec
-import io.micronaut.mqtt.v5.annotation.MqttClient
+import io.micronaut.mqtt.v5.annotation.MqttPublisher
 
 class V5RetainedBindingSpec extends RetainedBindingSpec {
 
@@ -13,7 +13,7 @@ class V5RetainedBindingSpec extends RetainedBindingSpec {
     }
 
     @Requires(property = "spec.name", value = "V5RetainedBindingSpec")
-    @MqttClient
+    @MqttPublisher
     static interface MyClient extends RetainedBindingClient {
 
     }

@@ -1,0 +1,3 @@
+== MQTT V3
+
+This section outlines details specific to the V3 implementation.

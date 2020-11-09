@@ -3,7 +3,7 @@ package io.micronaut.mqtt.bind.qos
 import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.test.bind.qos.QosBindingClient
 import io.micronaut.mqtt.test.bind.qos.QosBindingSpec
-import io.micronaut.mqtt.v5.annotation.MqttClient
+import io.micronaut.mqtt.v5.annotation.MqttPublisher
 
 class V5QosBindingSpec extends QosBindingSpec {
 
@@ -13,7 +13,7 @@ class V5QosBindingSpec extends QosBindingSpec {
     }
 
     @Requires(property = "spec.name", value = "V5QosBindingSpec")
-    @MqttClient
+    @MqttPublisher
     static interface MyClient extends QosBindingClient {
 
     }

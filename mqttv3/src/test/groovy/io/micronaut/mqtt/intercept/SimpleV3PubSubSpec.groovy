@@ -3,7 +3,7 @@ package io.micronaut.mqtt.intercept
 import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.test.intercept.SimplePubSubClient
 import io.micronaut.mqtt.test.intercept.SimplePubSubSpec
-import io.micronaut.mqtt.v3.annotation.MqttClient
+import io.micronaut.mqtt.v3.annotation.MqttPublisher
 
 class SimpleV3PubSubSpec extends SimplePubSubSpec {
 
@@ -13,6 +13,6 @@ class SimpleV3PubSubSpec extends SimplePubSubSpec {
     }
 
     @Requires(property = "spec.name", value = "SimpleV3PubSubSpec")
-    @MqttClient
+    @MqttPublisher
     static interface SimpleV3PubSubClient extends SimplePubSubClient {}
 }

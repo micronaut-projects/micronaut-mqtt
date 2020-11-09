@@ -1,0 +1,2 @@
+All options are available to be set for publishing messages, either through static values in annotations on the class or method, or through annotations on the method arguments.
+

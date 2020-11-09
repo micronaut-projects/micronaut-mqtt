@@ -15,6 +15,7 @@
  */
 package io.micronaut.mqtt.v5.bind;
 
+import io.micronaut.core.annotation.AnnotationValue;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.core.beans.BeanIntrospection;
 import io.micronaut.core.beans.BeanProperty;
@@ -63,9 +64,11 @@ public class MqttPropertyBinder implements AnnotatedMqttBinder<MqttV5BindingCont
         if (property.isPresent()) {
             property.get().convertAndSet(context.getProperties(), value);
         } else {
+            List<UserProperty> userProperties = context.getProperties().getUserProperties();
+            userProperties.removeIf(up -> up.getKey().equals(name));
             conversionService.convert(value, Argument.STRING)
                     .map(val -> new UserProperty(name, val))
-                    .ifPresent(context.getProperties().getUserProperties()::add);
+                    .ifPresent(userProperties::add);
         }
     }
 
@@ -88,7 +91,7 @@ public class MqttPropertyBinder implements AnnotatedMqttBinder<MqttV5BindingCont
 
     private String getParameterName(Argument<?> argument) {
         return argument.findAnnotation(MqttProperty.class)
-                .flatMap(av -> av.stringValue("name"))
+                .flatMap(AnnotationValue::stringValue)
                 .orElse(argument.getName());
     }
 

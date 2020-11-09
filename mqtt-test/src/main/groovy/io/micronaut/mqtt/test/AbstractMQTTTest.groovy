@@ -21,7 +21,8 @@ import org.slf4j.LoggerFactory
 import org.testcontainers.containers.BindMode
 import org.testcontainers.containers.GenericContainer
 import org.testcontainers.containers.output.Slf4jLogConsumer
-import org.testcontainers.containers.wait.strategy.LogMessageWaitStrategy;
+import org.testcontainers.containers.wait.strategy.LogMessageWaitStrategy
+import org.testcontainers.utility.DockerImageName;
 import spock.lang.Specification;
 
 import java.util.Map;
@@ -29,7 +30,7 @@ import java.util.Map;
 abstract class AbstractMQTTTest extends Specification {
 
     static GenericContainer mqttContainer =
-            new GenericContainer("eclipse-mosquitto:1.6.12")
+            new GenericContainer(DockerImageName.parse("eclipse-mosquitto:1.6.12"))
                     .withExposedPorts(1883)
                     .waitingFor(new LogMessageWaitStrategy().withRegEx("(?s).*mosquitto version 1.6.12 running.*"))
                     .withClasspathResourceMapping("mosquitto.conf",

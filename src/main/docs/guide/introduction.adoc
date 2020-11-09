@@ -1,1 +1,3 @@
-TODO
+This project includes integration between Micronaut and MQTT. The link:https://www.eclipse.org/paho/index.php?page=clients/java/index.php[Eclipse Paho Client] is used to do the actual publishing and subscribing.
+
+There are two variants to support both MQTT V3 and V5.

@@ -1,0 +1,9 @@
+All properties on the link:{apimqttv3}org/eclipse/paho/client/mqttv3/MqttConnectOptions.html[MqttConnectOptions] are available to be modified, either through configuration or a link:{apimicronaut}context/event/BeanCreatedEventListener.html[BeanCreatedEventListener].
+
+The properties that can be converted from the string values in a configuration file can be configured directly.
+
+include::{includedir}configurationProperties/io.micronaut.mqtt.v3.config.MqttClientConfigurationProperties.adoc[]
+
+NOTE: Without any configuration the defaults in the link:{apimqttv3}org/eclipse/paho/client/mqttv3/MqttConnectOptions.html[MqttConnectOptions] will be used.
+
+TIP: It is also possible to disable the integration entirely with `rabbitmq.enabled: false`

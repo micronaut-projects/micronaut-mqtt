@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.v3.annotation;
+package io.micronaut.mqtt.v5.annotation;
 
 import io.micronaut.aop.Introduction;
 import io.micronaut.context.annotation.Type;
-import io.micronaut.mqtt.v3.intercept.MqttIntroductionAdvice;
+import io.micronaut.mqtt.v5.intercept.MqttIntroductionAdvice;
 import io.micronaut.retry.annotation.Recoverable;
 
 import javax.inject.Scope;
@@ -44,11 +44,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Type(MqttIntroductionAdvice.class)
 @Recoverable
 @Singleton
-public @interface MqttClient {
-
-    /**
-     * @return The topic to publish messages to.
-     */
-    String value() default "";
+public @interface MqttPublisher {
 
 }

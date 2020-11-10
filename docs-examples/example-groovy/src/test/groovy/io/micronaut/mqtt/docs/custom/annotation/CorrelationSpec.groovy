@@ -13,9 +13,9 @@ class CorrelationSpec extends AbstractMQTTTest {
         when:
 // tag::producer[]
         ProductClient productClient = applicationContext.getBean(ProductClient)
-        productClient.send("body".bytes, "a".bytes)
-        productClient.send("body2".bytes, "b".bytes)
-        productClient.send("body3".bytes, "c".bytes)
+        productClient.send("a".bytes)
+        productClient.send("b".bytes)
+        productClient.send("c".bytes)
 // end::producer[]
 
         ProductListener productListener = applicationContext.getBean(ProductListener)

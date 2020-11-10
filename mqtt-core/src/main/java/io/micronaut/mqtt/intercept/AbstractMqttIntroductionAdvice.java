@@ -141,8 +141,10 @@ public abstract class AbstractMqttIntroductionAdvice<L, M> implements MethodInte
             MqttPublisherState state = new MqttPublisherState();
 
             method.findAnnotation(Topic.class)
-                    .flatMap(AnnotationValue::stringValue)
-                    .ifPresent(state::setTopic);
+                    .ifPresent(topicAnn -> {
+                        topicAnn.stringValue().ifPresent(state::setTopic);
+                        topicAnn.intValue("qos").ifPresent(state::setQos);
+                    });
             method.findAnnotation(Qos.class)
                     .ifPresent((av) -> av.intValue().ifPresent(state::setQos));
             method.findAnnotation(Retained.class)

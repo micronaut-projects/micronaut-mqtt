@@ -2,7 +2,6 @@ package io.micronaut.mqtt.docs.serdes;
 
 // tag::imports[]
 import io.micronaut.mqtt.serdes.MqttPayloadSerDes;
-import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.convert.ConversionService;
 import io.micronaut.core.type.Argument;
 import org.jetbrains.annotations.Nullable;
@@ -12,6 +11,8 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 // end::imports[]
+
+import io.micronaut.context.annotation.Requires;
 
 @Requires(property = "spec.name", value = "ProductInfoSerDesSpec")
 // tag::clazz[]
@@ -41,7 +42,7 @@ public class ProductInfoSerDes implements MqttPayloadSerDes<ProductInfo> { // <2
             Optional<Boolean> sealed = conversionService.convert(parts[2], Boolean.class);
 
             if (count.isPresent() && sealed.isPresent()) {
-                return new ProductInfo(size, count.get(), sealed.get());
+                return new ProductInfo(size, count.get(), sealed.get()); // <4>
             }
         }
         return null;
@@ -53,7 +54,7 @@ public class ProductInfoSerDes implements MqttPayloadSerDes<ProductInfo> { // <2
         if (data == null) {
             return null;
         }
-        return (data.getSize() + "|" + data.getCount() + "|" + data.getSealed()).getBytes(CHARSET);
+        return (data.getSize() + "|" + data.getCount() + "|" + data.getSealed()).getBytes(CHARSET); // <5>
     }
 
     @Override

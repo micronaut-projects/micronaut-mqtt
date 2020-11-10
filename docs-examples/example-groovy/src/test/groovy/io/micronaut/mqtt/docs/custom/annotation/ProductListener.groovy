@@ -14,7 +14,7 @@ class ProductListener {
     Set<String> messages = Collections.synchronizedSet(new HashSet<>())
 
     @Topic("product")
-    void receive(byte[] data, @Correlation byte[] correlation) { // <1>
+    void receive(@Correlation byte[] correlation) { // <1>
         messages.add(new String(correlation))
     }
 }

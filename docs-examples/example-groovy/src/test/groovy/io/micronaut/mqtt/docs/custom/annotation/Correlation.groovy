@@ -1,9 +1,9 @@
-package io.micronaut.mqtt.docs.custom.annotation;
+package io.micronaut.mqtt.docs.custom.annotation
 
 // tag::imports[]
-import io.micronaut.core.bind.annotation.Bindable;
+import io.micronaut.core.bind.annotation.Bindable
 
-import java.lang.annotation.*;
+import java.lang.annotation.*
 // end::imports[]
 
 // tag::clazz[]

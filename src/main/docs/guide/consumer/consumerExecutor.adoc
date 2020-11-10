@@ -8,8 +8,10 @@ For example:
 micronaut:
     executors:
         consumer:
-            type: fixed
-            nThreads: 25
+            type: scheduled
+            corePoolSize: 25
 ----
 
-If no configuration is supplied, a fixed thread pool with 2 times the amount of available processors is used.
+If no configuration is supplied, a scheduled thread pool with 2 times the amount of available processors is used.
+
+NOTE: The executor type *must* be `scheduled`.

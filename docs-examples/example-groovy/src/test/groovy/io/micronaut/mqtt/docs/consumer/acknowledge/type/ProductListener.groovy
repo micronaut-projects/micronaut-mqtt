@@ -16,11 +16,10 @@ class ProductListener {
 
     AtomicInteger messageCount = new AtomicInteger()
 
-    @Topic(value = "product") // <1>
-    void receive(byte[] data, Acknowledgement acknowledgement) { // <2>
+    @Topic("product")
+    void receive(byte[] data, Acknowledgement acknowledgement) { // <1>
         messageCount.getAndUpdate({ intValue -> ++intValue })
-        println new String(data)
-        acknowledgement
+        acknowledgement.ack() // <2>
     }
 }
 // end::clazz[]

@@ -3,10 +3,11 @@ package io.micronaut.mqtt.docs.properties
 // tag::imports[]
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.MqttSubscriber
-import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.v5.annotation.MqttProperty
 import java.util.*
 // end::imports[]
+
+import io.micronaut.context.annotation.Requires
 
 @Requires(property = "spec.name", value = "PropertiesSpec")
 // tag::clazz[]
@@ -17,9 +18,9 @@ class ProductListener {
 
     @Topic("product")
     fun receive(data: ByteArray,
-                @MqttProperty("userId") user: String, // <2>
-                @MqttProperty contentType: String?, // <3>
-                @MqttProperty appId: String) { // <4>
+                @MqttProperty("userId") user: String, // <1>
+                @MqttProperty contentType: String?, // <2>
+                @MqttProperty appId: String) { // <3>
         messageProperties.add("$user|$contentType|$appId")
     }
 }

@@ -16,16 +16,19 @@ public class BindingSpec extends AbstractRabbitMQTest {
 // tag::producer[]
         ProductClient productClient = applicationContext.getBean(ProductClient.class);
         productClient.send("message body".getBytes());
-        productClient.send("product", "message body2".getBytes());
+        productClient.send("product/a", "message body2".getBytes());
+        productClient.send("product/b", "message body2".getBytes());
 // end::producer[]
 
         ProductListener productListener = applicationContext.getBean(ProductListener.class);
 
         try {
             await().atMost(5, SECONDS).until(() ->
-                    productListener.messageLengths.size() == 2 &&
-                            productListener.messageLengths.contains(12) &&
-                            productListener.messageLengths.contains(13)
+                    productListener.messageLengths.size() == 1 &&
+                    productListener.messageLengths.contains(12) &&
+                    productListener.topics.size() == 2 &&
+                    productListener.topics.get(0).equals("product/a") &&
+                    productListener.topics.get(1).equals("product/b")
             );
         } finally {
             applicationContext.close();

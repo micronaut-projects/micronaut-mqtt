@@ -1,7 +1,6 @@
 package io.micronaut.mqtt.docs.custom.type;
 
 // tag::imports[]
-import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.convert.ArgumentConversionContext;
 import io.micronaut.core.convert.ConversionService;
 import io.micronaut.core.type.Argument;
@@ -13,6 +12,8 @@ import javax.inject.Singleton;
 import java.util.*;
 import java.util.stream.Collectors;
 // end::imports[]
+
+import io.micronaut.context.annotation.Requires;
 
 @Requires(property = "spec.name", value = "ProductInfoSpec")
 // tag::clazz[]
@@ -36,7 +37,7 @@ public class ProductInfoTypeBinder implements TypedMqttBinder<MqttV5BindingConte
         if (value.getSize() != null) {
             userPropertiesList.add(new UserProperty("productSize", value.getSize()));
         }
-        userPropertiesList.add(new UserProperty("productCount", value.getCount().toString()));
+        userPropertiesList.add(new UserProperty("productCount", value.getCount().toString())); // <4>
         userPropertiesList.add(new UserProperty("productSealed", value.getSealed().toString()));
     }
 
@@ -52,7 +53,7 @@ public class ProductInfoTypeBinder implements TypedMqttBinder<MqttV5BindingConte
                 .flatMap(value -> conversionService.convert(value, Boolean.class));
 
         if (count.isPresent() && sealed.isPresent()) {
-            return Optional.of(new ProductInfo(size, count.get(), sealed.get()));
+            return Optional.of(new ProductInfo(size, count.get(), sealed.get())); // <5>
         } else {
             return Optional.empty();
         }

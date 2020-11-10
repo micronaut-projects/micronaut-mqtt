@@ -1,7 +1,6 @@
 package io.micronaut.mqtt.docs.serdes
 
 // tag::imports[]
-import io.micronaut.context.annotation.Requires
 import io.micronaut.core.convert.ConversionService
 import io.micronaut.core.type.Argument
 import io.micronaut.mqtt.serdes.MqttPayloadSerDes
@@ -9,6 +8,8 @@ import io.micronaut.mqtt.serdes.MqttPayloadSerDes
 import javax.inject.Singleton
 import java.nio.charset.Charset
 // end::imports[]
+
+import io.micronaut.context.annotation.Requires
 
 @Requires(property = "spec.name", value = "ProductInfoSerDesSpec")
 // tag::clazz[]
@@ -29,14 +30,14 @@ class ProductInfoSerDes(private val conversionService: ConversionService<*>)// <
             val sealed = conversionService.convert(parts[2], Boolean::class.java)
 
             if (count.isPresent && sealed.isPresent) {
-                return ProductInfo(size, count.get(), sealed.get())
+                return ProductInfo(size, count.get(), sealed.get()) // <4>
             }
         }
         return null
     }
 
     override fun serialize(data: ProductInfo?): ByteArray {
-        return (data?.size + "|" + data?.count + "|" + data?.sealed).toByteArray(CHARSET)
+        return (data?.size + "|" + data?.count + "|" + data?.sealed).toByteArray(CHARSET) // <5>
     }
 
     override fun supports(argument: Argument<ProductInfo>): Boolean { // <6>

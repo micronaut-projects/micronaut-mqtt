@@ -18,9 +18,9 @@ public class CorrelationSpec extends AbstractRabbitMQTest {
 
 // tag::producer[]
         ProductClient productClient = applicationContext.getBean(ProductClient.class);
-        productClient.send("body".getBytes(), "a".getBytes());
-        productClient.send("body2".getBytes(), "b".getBytes());
-        productClient.send("body3".getBytes(), "c".getBytes());
+        productClient.send("a".getBytes());
+        productClient.send("b".getBytes());
+        productClient.send("c".getBytes());
 // end::producer[]
 
         ProductListener productListener = applicationContext.getBean(ProductListener.class);

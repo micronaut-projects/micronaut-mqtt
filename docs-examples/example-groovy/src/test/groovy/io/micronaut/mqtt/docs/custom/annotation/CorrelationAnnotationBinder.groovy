@@ -30,12 +30,12 @@ class CorrelationAnnotationBinder implements AnnotatedMqttBinder<MqttV5BindingCo
 
     @Override
     void bindTo(MqttV5BindingContext context, Object value, Argument<Object> argument) {
-        context.properties.correlationData = (byte[]) value
+        context.properties.correlationData = (byte[]) value // <4>
     }
 
     @Override
     Optional<Object> bindFrom(MqttV5BindingContext context, ArgumentConversionContext<Object> conversionContext) {
-        conversionService.convert(context.properties.correlationData, conversionContext)
+        conversionService.convert(context.properties.correlationData, conversionContext) // <5>
     }
 }
 // end::clazz[]

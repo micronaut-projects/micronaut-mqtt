@@ -6,4 +6,4 @@ include::{includedir}configurationProperties/io.micronaut.mqtt.v3.config.MqttCli
 
 NOTE: Without any configuration the defaults in the link:{apimqttv3}org/eclipse/paho/client/mqttv3/MqttConnectOptions.html[MqttConnectOptions] will be used.
 
-TIP: It is also possible to disable the integration entirely with `rabbitmq.enabled: false`
+TIP: It is also possible to disable the integration entirely with `mqtt.enabled: false`

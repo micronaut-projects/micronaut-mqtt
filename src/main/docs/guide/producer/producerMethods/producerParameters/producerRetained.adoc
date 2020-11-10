@@ -1,7 +1,6 @@
-Headers can be set on the message with the link:{apimicronaut}messaging/annotation/Header.html[@Header] annotation applied to the method or an argument of the method. Apply the annotation to the method itself if the value is static for every execution. Apply the annotation to an argument of the method if the value should be set per execution.
+The retained flagg can be set for publishing messages through the ann:mqtt.annotation.Retained[] annotation. The annotation can also be applied to a method argument to set the retained flag per execution.
 
-snippet::io.micronaut.rabbitmq.docs.headers.ProductClient[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.publisher.retained.ProductClient[tags="imports,clazz", project-base="docs-examples/example]
 
-<1> Headers can be defined at the class level and will apply to all methods. If a header is defined on the method with the same name as one on the class, the value on the method will be used.
-<2> Multiple annotations can be used to set multiple headers on the method or class level.
-<3> Headers can be set per execution. The name is inferred from the argument if the annotation value is not set. The value passed to the method will always be used, even if null.
+<1> The retained flag is set via the `Retained` annotation.
+<2> The retained flag must be set per execution

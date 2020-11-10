@@ -37,7 +37,7 @@ class ProductInfoTypeBinder implements TypedMqttBinder<MqttV5BindingContext, Pro
         if (value.size != null) {
             userPropertiesList.add(new UserProperty("productSize", value.size))
         }
-        userPropertiesList.add(new UserProperty("productCount", value.count.toString()))
+        userPropertiesList.add(new UserProperty("productCount", value.count.toString())) // <4>
         userPropertiesList.add(new UserProperty("productSealed", value.sealed.toString()))
     }
 
@@ -53,7 +53,7 @@ class ProductInfoTypeBinder implements TypedMqttBinder<MqttV5BindingContext, Pro
                 .flatMap(value -> conversionService.convert(value, Boolean.class))
 
         if (count.isPresent() && sealed.isPresent()) {
-            return Optional.of(new ProductInfo(size, count.get(), sealed.get()))
+            return Optional.of(new ProductInfo(size, count.get(), sealed.get())) // <5>
         } else {
             return Optional.empty()
         }

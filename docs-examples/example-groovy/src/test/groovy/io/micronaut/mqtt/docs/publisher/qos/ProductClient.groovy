@@ -1,18 +1,22 @@
-package io.micronaut.mqtt.docs.custom.annotation
+package io.micronaut.mqtt.docs.publisher.qos
 
 // tag::imports[]
+import io.micronaut.mqtt.annotation.Qos
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.v5.annotation.MqttPublisher
 // end::imports[]
 
 import io.micronaut.context.annotation.Requires
 
-@Requires(property = "spec.name", value = "CorrelationSpec")
+@Requires(property = "spec.name", value = "PublisherQosSpec")
 // tag::clazz[]
 @MqttPublisher
 interface ProductClient {
 
+    @Topic(value = "product", qos = 2) // <1>
+    void send(byte[] data)
+
     @Topic("product")
-    void send(@Correlation byte[] correlation)
+    void send(byte[] data, @Qos int qos) // <2>
 }
 // end::clazz[]

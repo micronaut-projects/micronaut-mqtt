@@ -1,6 +1,6 @@
 All methods that consume messages from MQTT must meet the following conditions:
 
 * The method must reside in a class annotated with ann:mqtt.annotation.MqttSubscriber[].
-* The method must be annotated with ann:configuration.rabbitmq.annotation.Queue[].
+* The method must be annotated with one or more ann:mqtt.annotation.Topic[] annotations.
 
 NOTE: In order for all of the functionality to work as designed in this guide your classes must be compiled with the parameters flag set to `true`. If your application was created with the Micronaut CLI, then that has already been configured for you.

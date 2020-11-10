@@ -41,7 +41,7 @@ class ProductInfoSerDes implements MqttPayloadSerDes<ProductInfo> { // <2>
             Optional<Boolean> sealed = conversionService.convert(parts[2], Boolean.class)
 
             if (count.isPresent() && sealed.isPresent()) {
-                return new ProductInfo(size, count.get(), sealed.get())
+                return new ProductInfo(size, count.get(), sealed.get()) // <4>
             }
         }
         return null
@@ -53,7 +53,7 @@ class ProductInfoSerDes implements MqttPayloadSerDes<ProductInfo> { // <2>
         if (data == null) {
             return null
         }
-        return "${data.size}|${data.count}|${data.sealed}".getBytes(CHARSET)
+        return "${data.size}|${data.count}|${data.sealed}".getBytes(CHARSET) // <5>
     }
 
     @Override

@@ -44,9 +44,7 @@ public class MqttClientConfigurationProperties  {
     @ConfigurationBuilder()
     private final MqttConnectOptions connectOptions = new MqttConnectOptions();
 
-    public MqttClientConfigurationProperties(@Nullable HostnameVerifier hostnameVerifier,
-                                             WillMessage willMessage) {
-        connectOptions.setSSLHostnameVerifier(hostnameVerifier);
+    public MqttClientConfigurationProperties(WillMessage willMessage) {
         if (willMessage.getTopic() != null) {
             connectOptions.setWill(willMessage.getTopic(), willMessage.getPayload(), willMessage.getQos(), willMessage.isRetained());
         }

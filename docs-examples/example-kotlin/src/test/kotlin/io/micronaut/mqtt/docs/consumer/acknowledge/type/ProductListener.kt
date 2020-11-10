@@ -4,10 +4,11 @@ package io.micronaut.mqtt.docs.consumer.acknowledge.type
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.messaging.Acknowledgement
-import io.micronaut.context.annotation.Requires
 
 import java.util.concurrent.atomic.AtomicInteger
 // end::imports[]
+
+import io.micronaut.context.annotation.Requires
 
 @Requires(property = "spec.name", value = "AcknowledgeSpec")
 // tag::clazz[]
@@ -16,10 +17,10 @@ class ProductListener {
 
     val messageCount = AtomicInteger()
 
-    @Topic(value = "product") // <1>
-    fun receive(data: ByteArray, acknowledgement: Acknowledgement) { // <2>
+    @Topic("product")
+    fun receive(data: ByteArray, acknowledgement: Acknowledgement) { // <1>
         messageCount.getAndUpdate { intValue -> intValue + 1 }
-        acknowledgement.ack() // <4>
+        acknowledgement.ack() // <2>
     }
 }
 // end::clazz[]

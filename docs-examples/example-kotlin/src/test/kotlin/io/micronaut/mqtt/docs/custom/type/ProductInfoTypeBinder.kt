@@ -1,7 +1,6 @@
 package io.micronaut.mqtt.docs.custom.type
 
 // tag::imports[]
-import io.micronaut.context.annotation.Requires
 import io.micronaut.core.convert.ArgumentConversionContext
 import io.micronaut.core.convert.ConversionService
 import io.micronaut.core.type.Argument
@@ -15,6 +14,8 @@ import java.util.Optional
 import java.util.stream.Collectors
 // end::imports[]
 
+import io.micronaut.context.annotation.Requires
+
 @Requires(property = "spec.name", value = "ProductInfoSpec")
 // tag::clazz[]
 @Singleton // <1>
@@ -24,7 +25,7 @@ class ProductInfoTypeBinder constructor(private val conversionService: Conversio
     override fun bindTo(context: MqttV5BindingContext, value: ProductInfo, argument: Argument<ProductInfo>) {
         val userPropertiesList = context.properties.userProperties
         if (value.size != null) {
-            userPropertiesList.add(UserProperty("productSize", value.size))
+            userPropertiesList.add(UserProperty("productSize", value.size)) // <4>
         }
         userPropertiesList.add(UserProperty("productCount", value.count.toString()))
         userPropertiesList.add(UserProperty("productSealed", value.sealed.toString()))
@@ -41,7 +42,7 @@ class ProductInfoTypeBinder constructor(private val conversionService: Conversio
                 .flatMap { value -> conversionService.convert(value, Boolean::class.java) }
 
         if (count.isPresent && sealed.isPresent) {
-            return Optional.of(ProductInfo(size, count.get(), sealed.get()))
+            return Optional.of(ProductInfo(size, count.get(), sealed.get())) // <5>
         } else {
             return Optional.empty()
         }

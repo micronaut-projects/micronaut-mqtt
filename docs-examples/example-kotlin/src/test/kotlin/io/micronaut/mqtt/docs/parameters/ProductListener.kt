@@ -3,11 +3,11 @@ package io.micronaut.mqtt.docs.parameters
 // tag::imports[]
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.MqttSubscriber
-import io.micronaut.context.annotation.Requires
 import java.util.*
 import kotlin.collections.ArrayList
-
 // end::imports[]
+
+import io.micronaut.context.annotation.Requires
 
 @Requires(property = "spec.name", value = "BindingSpec")
 // tag::clazz[]

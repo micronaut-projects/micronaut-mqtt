@@ -6,4 +6,4 @@ include::{includedir}configurationProperties/io.micronaut.mqtt.v5.config.MqttCli
 
 NOTE: Without any configuration the defaults in the 'MqttConnectionOptions' will be used.
 
-TIP: It is also possible to disable the integration entirely with `rabbitmq.enabled: false`
+TIP: It is also possible to disable the integration entirely with `mqtt.enabled: false`

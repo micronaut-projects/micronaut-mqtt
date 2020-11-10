@@ -10,7 +10,7 @@ To create an MQTT client that produces messages you can simply define an interfa
 
 For example the following is a trivial `MqttPublisher` interface:
 
-snippet::io.micronaut.rabbitmq.docs.quickstart.ProductClient[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.quickstart.ProductClient[tags="imports,clazz", project-base="docs-examples/example]
 
 <1> The `MqttPublisher` annotation is used to designate this interface as a client.
 <2> The ann:mqtt.annotation.Topic[] annotation indicates which topic the message should be published to.
@@ -19,7 +19,7 @@ snippet::io.micronaut.rabbitmq.docs.quickstart.ProductClient[tags="imports,clazz
 
 At compile time Micronaut will produce an implementation of the above interface. You can retrieve an instance of `ProductClient` either by looking up the bean from the link:{apimicronaut}context/ApplicationContext.html[ApplicationContext] or by injecting the bean with `@Inject`:
 
-snippet::io.micronaut.rabbitmq.docs.quickstart.QuickstartSpec[tags="producer"] project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.quickstart.QuickstartSpec[tags="producer"] project-base="docs-examples/example]
 
 NOTE: Because the `send` method returns `void` this means the method will publish the message and block until the broker acknowledges the message.
 
@@ -29,7 +29,7 @@ To listen to MQTT messages you can use the ann:mqtt.annotation.MqttSubscriber[] 
 
 The following example will listen for messages published by the `ProductClient` in the previous section:
 
-snippet::io.micronaut.rabbitmq.docs.quickstart.ProductListener[tags="imports,clazz"] project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.quickstart.ProductListener[tags="imports,clazz"] project-base="docs-examples/example]
 
 
 <1> The ann:mqtt.annotation.MqttSubscriber[] is used to designate the bean as a message listener.

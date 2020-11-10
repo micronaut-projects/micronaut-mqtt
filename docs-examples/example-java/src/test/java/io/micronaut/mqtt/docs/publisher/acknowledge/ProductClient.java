@@ -3,12 +3,13 @@ package io.micronaut.mqtt.docs.publisher.acknowledge;
 // tag::imports[]
 import io.micronaut.mqtt.annotation.Topic;
 import io.micronaut.mqtt.v5.annotation.MqttPublisher;
-import io.micronaut.context.annotation.Requires;
 import io.reactivex.Completable;
 import io.reactivex.Maybe;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Mono;
 // end::imports[]
+
+import io.micronaut.context.annotation.Requires;
 
 @Requires(property = "spec.name", value = "PublisherAcknowledgeSpec")
 // tag::clazz[]

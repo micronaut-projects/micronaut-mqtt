@@ -2,11 +2,12 @@ package io.micronaut.mqtt.docs.custom.annotation;
 
 // tag::imports[]
 import io.micronaut.mqtt.annotation.MqttSubscriber;
-import io.micronaut.context.annotation.Requires;
 import io.micronaut.mqtt.annotation.Topic;
 
 import java.util.*;
 // end::imports[]
+
+import io.micronaut.context.annotation.Requires;
 
 @Requires(property = "spec.name", value = "CorrelationSpec")
 // tag::clazz[]

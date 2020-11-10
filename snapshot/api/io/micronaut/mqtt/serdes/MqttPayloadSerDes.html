@@ -113,7 +113,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public interface <span class="typeNameLabel">MqttPayloadSerDes&lt;T&gt;</span>
 extends io.micronaut.core.order.Ordered</pre>
-<div class="block">Responsible for serializing and deserializing RabbitMQ message bodies.</div>
+<div class="block">Responsible for serializing and deserializing MQTT message payloads.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>1.1.0</dd>
@@ -164,7 +164,7 @@ extends io.micronaut.core.order.Ordered</pre>
 <td class="colFirst"><code>byte[]</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../io/micronaut/mqtt/serdes/MqttPayloadSerDes.html#serialize-T-">serialize</a></span>(<a href="../../../../io/micronaut/mqtt/serdes/MqttPayloadSerDes.html" title="type parameter in MqttPayloadSerDes">T</a>&nbsp;data)</code>
 <div class="block">Serializes the data into a byte[] to be published
- to RabbitMQ.</div>
+ to MQTT.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
@@ -226,7 +226,7 @@ extends io.micronaut.core.order.Ordered</pre>
 byte[]&nbsp;serialize(@Nullable
                            <a href="../../../../io/micronaut/mqtt/serdes/MqttPayloadSerDes.html" title="type parameter in MqttPayloadSerDes">T</a>&nbsp;data)</pre>
 <div class="block">Serializes the data into a byte[] to be published
- to RabbitMQ.</div>
+ to MQTT.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>data</code> - The data to serialize</dd>

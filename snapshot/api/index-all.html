@@ -393,7 +393,7 @@
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/serdes/package-summary.html">io.micronaut.mqtt.serdes</a> - package io.micronaut.mqtt.serdes</dt>
 <dd>
-<div class="block">Classes for serializing and deserializing RabbitMQ message bodies.</div>
+<div class="block">Classes for serializing and deserializing MQTT message payloads.</div>
 </dd>
 <dt><a href="io/micronaut/mqtt/v3/annotation/package-summary.html">io.micronaut.mqtt.v3.annotation</a> - package io.micronaut.mqtt.v3.annotation</dt>
 <dd>&nbsp;</dd>
@@ -464,25 +464,17 @@
 <dd>
 <div class="block">A generic context for binding to MQTT messages.</div>
 </dd>
-<dt><a href="io/micronaut/mqtt/v3/annotation/MqttClient.html" title="annotation in io.micronaut.mqtt.v3.annotation"><span class="typeNameLink">MqttClient</span></a> - Annotation Type in <a href="io/micronaut/mqtt/v3/annotation/package-summary.html">io.micronaut.mqtt.v3.annotation</a></dt>
-<dd>
-<div class="block">An introduction advice that automatically implements interfaces and abstract classes and publishes Mqtt messages.</div>
-</dd>
-<dt><a href="io/micronaut/mqtt/v5/annotation/MqttClient.html" title="annotation in io.micronaut.mqtt.v5.annotation"><span class="typeNameLink">MqttClient</span></a> - Annotation Type in <a href="io/micronaut/mqtt/v5/annotation/package-summary.html">io.micronaut.mqtt.v5.annotation</a></dt>
-<dd>
-<div class="block">An introduction advice that automatically implements interfaces and abstract classes and publishes Mqtt messages.</div>
-</dd>
 <dt><a href="io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.html" title="class in io.micronaut.mqtt.v3.config"><span class="typeNameLink">MqttClientConfigurationProperties</span></a> - Class in <a href="io/micronaut/mqtt/v3/config/package-summary.html">io.micronaut.mqtt.v3.config</a></dt>
 <dd>
 <div class="block">Configuration for the MQTT client.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.html#MqttClientConfigurationProperties-javax.net.ssl.HostnameVerifier-io.micronaut.mqtt.v3.config.MqttClientConfigurationProperties.WillMessage-">MqttClientConfigurationProperties(HostnameVerifier, MqttClientConfigurationProperties.WillMessage)</a></span> - Constructor for class io.micronaut.mqtt.v3.config.<a href="io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.html" title="class in io.micronaut.mqtt.v3.config">MqttClientConfigurationProperties</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.html#MqttClientConfigurationProperties-io.micronaut.mqtt.v3.config.MqttClientConfigurationProperties.WillMessage-">MqttClientConfigurationProperties(MqttClientConfigurationProperties.WillMessage)</a></span> - Constructor for class io.micronaut.mqtt.v3.config.<a href="io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.html" title="class in io.micronaut.mqtt.v3.config">MqttClientConfigurationProperties</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html" title="class in io.micronaut.mqtt.v5.config"><span class="typeNameLink">MqttClientConfigurationProperties</span></a> - Class in <a href="io/micronaut/mqtt/v5/config/package-summary.html">io.micronaut.mqtt.v5.config</a></dt>
 <dd>
 <div class="block">Configuration for the MQTT client.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#MqttClientConfigurationProperties-javax.net.ssl.HostnameVerifier-io.micronaut.mqtt.v5.config.MqttClientConfigurationProperties.WillMessage-">MqttClientConfigurationProperties(HostnameVerifier, MqttClientConfigurationProperties.WillMessage)</a></span> - Constructor for class io.micronaut.mqtt.v5.config.<a href="io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html" title="class in io.micronaut.mqtt.v5.config">MqttClientConfigurationProperties</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#MqttClientConfigurationProperties-io.micronaut.mqtt.v5.config.MqttClientConfigurationProperties.WillMessage-">MqttClientConfigurationProperties(MqttClientConfigurationProperties.WillMessage)</a></span> - Constructor for class io.micronaut.mqtt.v5.config.<a href="io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html" title="class in io.micronaut.mqtt.v5.config">MqttClientConfigurationProperties</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/exception/MqttClientException.html" title="class in io.micronaut.mqtt.exception"><span class="typeNameLink">MqttClientException</span></a> - Exception in <a href="io/micronaut/mqtt/exception/package-summary.html">io.micronaut.mqtt.exception</a></dt>
 <dd>
@@ -524,7 +516,7 @@
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/serdes/MqttPayloadSerDes.html" title="interface in io.micronaut.mqtt.serdes"><span class="typeNameLink">MqttPayloadSerDes</span></a>&lt;<a href="io/micronaut/mqtt/serdes/MqttPayloadSerDes.html" title="type parameter in MqttPayloadSerDes">T</a>&gt; - Interface in <a href="io/micronaut/mqtt/serdes/package-summary.html">io.micronaut.mqtt.serdes</a></dt>
 <dd>
-<div class="block">Responsible for serializing and deserializing RabbitMQ message bodies.</div>
+<div class="block">Responsible for serializing and deserializing MQTT message payloads.</div>
 </dd>
 <dt><a href="io/micronaut/mqtt/serdes/MqttPayloadSerDesRegistry.html" title="interface in io.micronaut.mqtt.serdes"><span class="typeNameLink">MqttPayloadSerDesRegistry</span></a> - Interface in <a href="io/micronaut/mqtt/serdes/package-summary.html">io.micronaut.mqtt.serdes</a></dt>
 <dd>
@@ -544,6 +536,14 @@
 </dd>
 <dt><span class="memberNameLink"><a href="io/micronaut/mqtt/v5/bind/MqttPropertyBinder.html#MqttPropertyBinder-io.micronaut.core.convert.ConversionService-">MqttPropertyBinder(ConversionService&lt;?&gt;)</a></span> - Constructor for class io.micronaut.mqtt.v5.bind.<a href="io/micronaut/mqtt/v5/bind/MqttPropertyBinder.html" title="class in io.micronaut.mqtt.v5.bind">MqttPropertyBinder</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/micronaut/mqtt/v3/annotation/MqttPublisher.html" title="annotation in io.micronaut.mqtt.v3.annotation"><span class="typeNameLink">MqttPublisher</span></a> - Annotation Type in <a href="io/micronaut/mqtt/v3/annotation/package-summary.html">io.micronaut.mqtt.v3.annotation</a></dt>
+<dd>
+<div class="block">An introduction advice that automatically implements interfaces and abstract classes and publishes Mqtt messages.</div>
+</dd>
+<dt><a href="io/micronaut/mqtt/v5/annotation/MqttPublisher.html" title="annotation in io.micronaut.mqtt.v5.annotation"><span class="typeNameLink">MqttPublisher</span></a> - Annotation Type in <a href="io/micronaut/mqtt/v5/annotation/package-summary.html">io.micronaut.mqtt.v5.annotation</a></dt>
+<dd>
+<div class="block">An introduction advice that automatically implements interfaces and abstract classes and publishes Mqtt messages.</div>
+</dd>
 <dt><a href="io/micronaut/mqtt/annotation/MqttSubscriber.html" title="annotation in io.micronaut.mqtt.annotation"><span class="typeNameLink">MqttSubscriber</span></a> - Annotation Type in <a href="io/micronaut/mqtt/annotation/package-summary.html">io.micronaut.mqtt.annotation</a></dt>
 <dd>
 <div class="block">Class level annotation to indicate that a bean will be consumers of messages
@@ -666,7 +666,7 @@
 <dt><span class="memberNameLink"><a href="io/micronaut/mqtt/serdes/MqttPayloadSerDes.html#serialize-T-">serialize(T)</a></span> - Method in interface io.micronaut.mqtt.serdes.<a href="io/micronaut/mqtt/serdes/MqttPayloadSerDes.html" title="interface in io.micronaut.mqtt.serdes">MqttPayloadSerDes</a></dt>
 <dd>
 <div class="block">Serializes the data into a byte[] to be published
- to RabbitMQ.</div>
+ to MQTT.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.html#setClientId-java.lang.String-">setClientId(String)</a></span> - Method in class io.micronaut.mqtt.v3.config.<a href="io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.html" title="class in io.micronaut.mqtt.v3.config">MqttClientConfigurationProperties</a></dt>
 <dd>&nbsp;</dd>

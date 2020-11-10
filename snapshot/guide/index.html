@@ -45,11 +45,23 @@
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#releaseHistory"><strong>2</strong><span>Release History</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#whatsNew"><strong>2</strong><span>Release History</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#quickStart"><strong>3</strong><span>Quick Start</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#quickStart"><strong>3</strong><span>MQTT Quick Start</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#repository"><strong>4</strong><span>Repository</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#v3"><strong>4</strong><span>MQTT V3</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#v5"><strong>5</strong><span>MQTT V5</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#producer"><strong>6</strong><span>MQTT publishers</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#consumer"><strong>7</strong><span>MQTT Subscribers</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#customBinding"><strong>8</strong><span>Customizing Parameter Binding</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#serdes"><strong>9</strong><span>Message Serialization/Deserialization (SerDes)</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#repository"><strong>10</strong><span>Repository</span></a></div>
                                 
                             </div>
                         </div>
@@ -82,11 +94,57 @@
         
         <div class="toc-item" style="margin-left:0px" id="toc-item-introduction"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-releaseHistory"><a href="#releaseHistory"><strong>2</strong><span>Release History</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-whatsNew"><a href="#whatsNew"><strong>2</strong><span>Release History</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-quickStart"><a href="#quickStart"><strong>3</strong><span>Quick Start</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-quickStart"><a href="#quickStart"><strong>3</strong><span>MQTT Quick Start</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-repository"><a href="#repository"><strong>4</strong><span>Repository</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-v3"><a href="#v3"><strong>4</strong><span>MQTT V3</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-v3config"><a href="#v3config"><strong>4.1</strong><span>Configuration</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-v5"><a href="#v5"><strong>5</strong><span>MQTT V5</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-v5config"><a href="#v5config"><strong>5.1</strong><span>Configuration</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-properties"><a href="#properties"><strong>5.2</strong><span>Properties</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-producer"><a href="#producer"><strong>6</strong><span>MQTT publishers</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-producerMethods"><a href="#producerMethods"><strong>6.1</strong><span>Defining Publisher Methods</span></a></div>
+        
+        <div class="toc-item" style="margin-left:20px" id="toc-item-producerParameters"><a href="#producerParameters"><strong>6.1.1</strong><span>Publisher Parameters</span></a></div>
+        
+        <div class="toc-item" style="margin-left:30px" id="toc-item-producerTopic"><a href="#producerTopic"><strong>6.1.1.1</strong><span>Topic</span></a></div>
+        
+        <div class="toc-item" style="margin-left:30px" id="toc-item-producerQos"><a href="#producerQos"><strong>6.1.1.2</strong><span>Qos</span></a></div>
+        
+        <div class="toc-item" style="margin-left:30px" id="toc-item-producerRetained"><a href="#producerRetained"><strong>6.1.1.3</strong><span>Retained</span></a></div>
+        
+        <div class="toc-item" style="margin-left:30px" id="toc-item-producerPayload"><a href="#producerPayload"><strong>6.1.1.4</strong><span>Payload</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-consumer"><a href="#consumer"><strong>7</strong><span>MQTT Subscribers</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerMethods"><a href="#consumerMethods"><strong>7.1</strong><span>Defining @MqttSubscriber Methods</span></a></div>
+        
+        <div class="toc-item" style="margin-left:20px" id="toc-item-consumerParameters"><a href="#consumerParameters"><strong>7.1.1</strong><span>Subscriber Parameters</span></a></div>
+        
+        <div class="toc-item" style="margin-left:30px" id="toc-item-consumerTopic"><a href="#consumerTopic"><strong>7.1.1.1</strong><span>Topic</span></a></div>
+        
+        <div class="toc-item" style="margin-left:30px" id="toc-item-consumerPayload"><a href="#consumerPayload"><strong>7.1.1.2</strong><span>Payload</span></a></div>
+        
+        <div class="toc-item" style="margin-left:20px" id="toc-item-consumerAcknowledge"><a href="#consumerAcknowledge"><strong>7.1.2</strong><span>Acknowledging Messages</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerExceptions"><a href="#consumerExceptions"><strong>7.2</strong><span>Handling Consumer Exceptions</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerExecutor"><a href="#consumerExecutor"><strong>7.3</strong><span>Consumer Execution</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-customBinding"><a href="#customBinding"><strong>8</strong><span>Customizing Parameter Binding</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-serdes"><a href="#serdes"><strong>9</strong><span>Message Serialization/Deserialization (SerDes)</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-custom"><a href="#custom"><strong>9.1</strong><span>Custom SerDes</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-repository"><a href="#repository"><strong>10</strong><span>Repository</span></a></div>
         
         </div>
     </div>
@@ -109,13 +167,16 @@
 
 
 <div class="paragraph">
-<p>TODO</p>
+<p>This project includes integration between Micronaut and MQTT. The <a href="https://www.eclipse.org/paho/index.php?page=clients/java/index.php">Eclipse Paho Client</a> is used to do the actual publishing and subscribing.</p>
+</div>
+<div class="paragraph">
+<p>There are two variants to support both MQTT V3 and V5.</p>
 </div>
 
-<h1 id="releaseHistory"><a class="anchor" href="#releaseHistory"></a>2 Release History</h1>
+<h1 id="whatsNew"><a class="anchor" href="#whatsNew"></a>2 Release History</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/releaseHistory.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/whatsNew.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -128,7 +189,7 @@
 <p><a href="https://github.com/micronaut-projects/micronaut-mqtt/releases">https://github.com/micronaut-projects/micronaut-mqtt/releases</a></p>
 </div>
 
-<h1 id="quickStart"><a class="anchor" href="#quickStart"></a>3 Quick Start</h1>
+<h1 id="quickStart"><a class="anchor" href="#quickStart"></a>3 MQTT Quick Start</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/quickStart.adoc"'>
@@ -138,10 +199,2314 @@
 
 
 <div class="paragraph">
-<p>TODO</p>
+<p>To add support for MQTT to an existing project, you must first add a dependency to your build depending on the version of MQTT you require:</p>
+</div>
+<div class="paragraph">
+<p>        <div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="gradle">implementation(<span class="hljs-string">"io.micronaut.mqtt:micronaut-mqttv3")</span></code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="maven">&lt;dependency&gt;
+    &lt;groupId&gt;io.micronaut.mqtt&lt;/groupId&gt;
+    &lt;artifactId&gt;micronaut-mqttv3&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</p>
+</div>
+<div class="paragraph">
+<p>        <div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="gradle">implementation(<span class="hljs-string">"io.micronaut.mqtt:micronaut-mqttv5")</span></code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="maven">&lt;dependency&gt;
+    &lt;groupId&gt;io.micronaut.mqtt&lt;/groupId&gt;
+    &lt;artifactId&gt;micronaut-mqttv5&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</p>
+</div>
+<div class="sect1">
+<h2 id="_creating_an_mqtt_publisher_with_mqttpublisher">Creating an MQTT Publisher with @MqttPublisher</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To create an MQTT client that produces messages you can simply define an interface that is annotated with <code>MqttPublisher</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example the following is a trivial <code>MqttPublisher</code> interface:</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
+import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+
+@MqttPublisher <b class="conum">(1)</b>
+public interface ProductClient {
+
+    @Topic("product") <b class="conum">(2)</b>
+    void send(byte[] data); <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.v5.annotation.MqttPublisher
+
+@MqttPublisher <b class="conum">(1)</b>
+interface ProductClient {
+
+    @Topic("product") <b class="conum">(2)</b>
+    void send(byte[] data) <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.Topic
+
+@MqttPublisher <b class="conum">(1)</b>
+interface ProductClient {
+
+    @Topic("product") <b class="conum">(2)</b>
+    fun send(data: ByteArray)  <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>MqttPublisher</code> annotation is used to designate this interface as a client.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <a href="../api/io/micronaut/mqtt/annotation/Topic.html">@Topic</a> annotation indicates which topic the message should be published to.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>send</code> method accepts single parameter which is the payload of the message.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>At compile time Micronaut will produce an implementation of the above interface. You can retrieve an instance of <code>ProductClient</code> either by looking up the bean from the <a href="https://docs.micronaut.io/latest/api/io/micronaut/context/ApplicationContext.html">ApplicationContext</a> or by injecting the bean with <code>@Inject</code>:</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">ProductClient productClient = applicationContext.getBean(ProductClient.class);
+productClient.send("quickstart".getBytes());</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">def productClient = applicationContext.getBean(ProductClient)
+productClient.send("quickstart".getBytes())</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">val productClient = ctx.getBean(ProductClient::class.java)
+productClient.send("quickstart".toByteArray())</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Because the <code>send</code> method returns <code>void</code> this means the method will publish the message and block until the broker acknowledges the message.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_an_mqtt_subscriber_with_mqttsubscriber">Creating an MQTT Subscriber with @MqttSubscriber</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To listen to MQTT messages you can use the <a href="../api/io/micronaut/mqtt/annotation/MqttSubscriber.html">@MqttSubscriber</a> annotation to define a message listener.</p>
+</div>
+<div class="paragraph">
+<p>The following example will listen for messages published by the <code>ProductClient</code> in the previous section:</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
+import io.micronaut.mqtt.annotation.MqttSubscriber;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+@MqttSubscriber <b class="conum">(1)</b>
+public class ProductListener {
+
+    List&lt;String&gt; messageLengths = Collections.synchronizedList(new ArrayList&lt;&gt;());
+
+    @Topic("product") <b class="conum">(2)</b>
+    public void receive(byte[] data) { <b class="conum">(3)</b>
+        messageLengths.add(new String(data));
+        System.out.println("Java received " + data.length + " bytes from RabbitMQ");
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
+
+@MqttSubscriber <b class="conum">(1)</b>
+class ProductListener {
+
+    List&lt;String&gt; messageLengths = Collections.synchronizedList([])
+
+    @Topic("product") <b class="conum">(2)</b>
+    void receive(byte[] data) { <b class="conum">(3)</b>
+        messageLengths.add(new String(data))
+        println("Groovy received ${data.length} bytes from RabbitMQ")
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.MqttSubscriber
+import java.util.*
+
+@MqttSubscriber <b class="conum">(1)</b>
+class ProductListener {
+
+    val messageLengths: MutableList&lt;String&gt; = Collections.synchronizedList(ArrayList())
+
+    @Topic("product") <b class="conum">(2)</b>
+    fun receive(data: ByteArray) { <b class="conum">(3)</b>
+        val string = String(data)
+        messageLengths.add(string)
+        println("Kotlin received ${data.size} bytes from RabbitMQ: ${string}")
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <a href="../api/io/micronaut/mqtt/annotation/MqttSubscriber.html">@MqttSubscriber</a> is used to designate the bean as a message listener.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <a href="../api/io/micronaut/mqtt/annotation/Topic.html">@Topic</a> annotation is used to indicate which topic to subscribe to.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>receive</code> method accepts a single parameter which is the payload of the message.</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 
-<h1 id="repository"><a class="anchor" href="#repository"></a>4 Repository</h1>
+<h1 id="v3"><a class="anchor" href="#v3"></a>4 MQTT V3</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/v3.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>This section outlines details specific to the V3 implementation.</p>
+</div>
+
+<h2 id="v3config"><a class="anchor" href="#v3config"></a>4.1 Configuration</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/v3/v3config.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>All properties on the <a href="https://www.eclipse.org/paho/files/javadoc/org/eclipse/paho/client/mqttv3/MqttConnectOptions.html">MqttConnectOptions</a> are available to be modified, either through configuration or a <a href="https://docs.micronaut.io/latest/api/io/micronaut/context/event/BeanCreatedEventListener.html">BeanCreatedEventListener</a>.</p>
+</div>
+<div class="paragraph">
+<p>The properties that can be converted from the string values in a configuration file can be configured directly.</p>
+</div>
+<a id="io.micronaut.mqtt.v3.config.MqttClientConfigurationProperties" href="#io.micronaut.mqtt.v3.config.MqttClientConfigurationProperties">&#128279;</a>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Configuration Properties for <a href="../api/io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.html">MqttClientConfigurationProperties</a></caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.server-uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The server URI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.client-id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.connection-timeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.Duration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How long to wait for a connection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.manual-acks</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.Boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set to true if you wish to manually acknowledge messages</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class [C</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.user-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.max-reconnect-delay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.keep-alive-interval</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.max-inflight</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.socket-factory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">javax.net.SocketFactory</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.sslproperties</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Properties</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.https-hostname-verification-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.sslhostname-verifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">javax.net.ssl.HostnameVerifier</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.clean-session</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.server-uris</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.String[]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.mqtt-version</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.automatic-reconnect</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.executor-service-timeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.custom-web-socket-headers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Properties</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Without any configuration the defaults in the <a href="https://www.eclipse.org/paho/files/javadoc/org/eclipse/paho/client/mqttv3/MqttConnectOptions.html">MqttConnectOptions</a> will be used.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+It is also possible to disable the integration entirely with <code>mqtt.enabled: false</code>
+</td>
+</tr>
+</table>
+</div>
+
+<h1 id="v5"><a class="anchor" href="#v5"></a>5 MQTT V5</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/v5.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>This section outlines details specific to the V5 implementation.</p>
+</div>
+
+<h2 id="v5config"><a class="anchor" href="#v5config"></a>5.1 Configuration</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/v5/v5config.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>All properties on the 'MqttConnectionOptions' are available to be modified, either through configuration or a <a href="https://docs.micronaut.io/latest/api/io/micronaut/context/event/BeanCreatedEventListener.html">BeanCreatedEventListener</a>.</p>
+</div>
+<div class="paragraph">
+<p>The properties that can be converted from the string values in a configuration file can be configured directly.</p>
+</div>
+<a id="io.micronaut.mqtt.v5.config.MqttClientConfigurationProperties" href="#io.micronaut.mqtt.v5.config.MqttClientConfigurationProperties">&#128279;</a>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Configuration Properties for <a href="../api/io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html">MqttClientConfigurationProperties</a></caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.server-uri</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The server URI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.client-id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.connection-timeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.time.Duration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How long to wait for a connection</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.user-name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class [B</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.clean-start</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.keep-alive-interval</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.max-reconnect-delay</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.server-uris</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.String[]</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.automatic-reconnect</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.session-expiry-interval</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.Long</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.receive-maximum</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.Integer</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.maximum-packet-size</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.Long</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.topic-alias-maximum</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.Integer</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.request-response-info</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.request-problem-info</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.user-properties</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.List</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.auth-method</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.auth-data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class [B</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.socket-factory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">javax.net.SocketFactory</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.sslproperties</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Properties</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.sslhostname-verifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">javax.net.ssl.HostnameVerifier</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.use-subscription-identifiers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.https-hostname-verification-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.custom-web-socket-headers</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Map</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.send-reason-messages</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.executor-service-timeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Without any configuration the defaults in the 'MqttConnectionOptions' will be used.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+It is also possible to disable the integration entirely with <code>mqtt.enabled: false</code>
+</td>
+</tr>
+</table>
+</div>
+
+<h2 id="properties"><a class="anchor" href="#properties"></a>5.2 Properties</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/v5/properties.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="sect2">
+<h3 id="_publishers">Publishers</h3>
+<div class="paragraph">
+<p>It is also supported to supply properties when publishing messages. Any of the org.eclipse.paho.mqttv5.common.packet.MqttProperties can be set dynamically per execution or statically for all executions. Properties can be set using the <a href="../api/io/micronaut/mqtt/v5/annotation/MqttProperty.html">@MqttProperty</a> annotation.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
+import io.micronaut.mqtt.v5.annotation.MqttProperty;
+import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+
+@MqttPublisher
+@MqttProperty(name = "appId", value = "myApp") <b class="conum">(1)</b>
+public interface ProductClient {
+
+    @Topic("product")
+    @MqttProperty(name = "contentType", value = "application/json") <b class="conum">(2)</b>
+    @MqttProperty(name = "userId", value = "guest")
+    void send(byte[] data);
+
+    @Topic("product")
+    void send(@MqttProperty("userId") String user, @MqttProperty String contentType, byte[] data); <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.v5.annotation.MqttProperty
+import io.micronaut.mqtt.v5.annotation.MqttPublisher
+
+@MqttPublisher
+@MqttProperty(name = "appId", value = "myApp") <b class="conum">(1)</b>
+interface ProductClient {
+
+    @Topic("product")
+    @MqttProperty(name = "contentType", value = "application/json") <b class="conum">(2)</b>
+    @MqttProperty(name = "userId", value = "guest")
+    void send(byte[] data)
+
+    @Topic("product")
+    void send(@MqttProperty("userId") String user, @MqttProperty String contentType, byte[] data) <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.v5.annotation.MqttProperties
+import io.micronaut.mqtt.v5.annotation.MqttProperty
+
+@MqttPublisher
+@MqttProperty(name = "appId", value = "myApp") <b class="conum">(1)</b>
+interface ProductClient {
+
+    @Topic("product")
+    @MqttProperties( <b class="conum">(2)</b>
+            MqttProperty(name = "contentType", value = "application/json"),
+            MqttProperty(name = "userId", value = "guest")
+    )
+    fun send(data: ByteArray)
+
+    @Topic("product")
+    fun send(@MqttProperty("userId") user: String, @MqttProperty contentType: String?, data: ByteArray)  <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Properties can be defined at the class level and will apply to all methods. If a property is defined on the method with the same name as one on the class, both values will be added.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Multiple annotations can be used to set multiple properties on the method or class level.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Properties can be set per execution. The name is inferred from the argument if the annotation value is not set. Parameter values override any property value set from method or class level annotations.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For method arguments, if the value is not supplied to the annotation, the argument name will be used as the property name. For example, <code>@MqttProperty String userId</code> would result in the property <code>userId</code> being set on the properties object before publishing.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If the annotation or argument name cannot be matched to a property name in the <code>MqttProperties</code> class, a user property will be added instead.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_subscribers">Subscribers</h3>
+<div class="paragraph">
+<p>Any properties found in messages received can be bound to subscriber arguments through the <a href="../api/io/micronaut/mqtt/v5/annotation/MqttProperty.html">@MqttProperty</a> annotation.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
+import io.micronaut.mqtt.annotation.MqttSubscriber;
+import io.micronaut.mqtt.v5.annotation.MqttProperty;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+@MqttSubscriber
+public class ProductListener {
+
+    List&lt;String&gt; messageProperties = Collections.synchronizedList(new ArrayList&lt;&gt;());
+
+    @Topic("product")
+    public void receive(byte[] data,
+                        @MqttProperty("userId") String user,  <b class="conum">(2)</b>
+                        @Nullable @MqttProperty String contentType,  <b class="conum">(3)</b>
+                        @MqttProperty String appId) {  <b class="conum">(4)</b>
+        messageProperties.add(user + "|" + contentType + "|" + appId);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.v5.annotation.MqttProperty
+
+import javax.annotation.Nullable
+
+@MqttSubscriber
+class ProductListener {
+
+    List&lt;String&gt; messageProperties = Collections.synchronizedList([])
+
+    @Topic("product")
+    void receive(byte[] data,
+                 @MqttProperty("userId") String user,  <b class="conum">(2)</b>
+                 @Nullable @MqttProperty String contentType,  <b class="conum">(3)</b>
+                 @MqttProperty String appId) {  <b class="conum">(4)</b>
+        messageProperties.add(user + "|" + contentType + "|" + appId)
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.v5.annotation.MqttProperty
+import java.util.*
+
+@MqttSubscriber
+class ProductListener {
+
+    val messageProperties: MutableList&lt;String&gt; = Collections.synchronizedList(ArrayList())
+
+    @Topic("product")
+    fun receive(data: ByteArray,
+                @MqttProperty("userId") user: String, <b class="conum">(1)</b>
+                @MqttProperty contentType: String?, <b class="conum">(2)</b>
+                @MqttProperty appId: String) { <b class="conum">(3)</b>
+        messageProperties.add("$user|$contentType|$appId")
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The property will be bound from the user property <code>userId</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The property will be bound from the content type property and does not require the property to be present.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The property will be bound from the user property <code>appId</code>.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Arguments are required by default and an exception will be thrown if they cannot be found or converted to the requested type. Making the argument nullable allows null values to be accepted.
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+<h1 id="producer"><a class="anchor" href="#producer"></a>6 MQTT publishers</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The example in the quick start presented a trivial definition of an interface that be implemented automatically for you using the '@MqttPublisher' annotation.</p>
+</div>
+<div class="paragraph">
+<p>The implementation that powers <code>@MqttPublisher</code> is, however, very flexible and offers a range of options for defining MQTT producers.</p>
+</div>
+
+<h2 id="producerMethods"><a class="anchor" href="#producerMethods"></a>6.1 Defining Publisher Methods</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>All methods that publish messages to MQTT must meet the following conditions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The method must reside in a class annotated with <code>@MqttPublisher</code>.</p>
+</li>
+<li>
+<p>The method must provide the topic to publish to, either through an argument, or the topic annotation on the method or class.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If the topic cannot be found, an exception will be thrown. Unless a reactive type or future is returned from the publishing method, the action is blocking.
+</td>
+</tr>
+</table>
+</div>
+
+<h2 id="producerParameters"><a class="anchor" href="#producerParameters"></a>6.1.1 Publisher Parameters</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods/producerParameters.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>All options are available to be set for publishing messages, either through static values in annotations on the class or method, or through annotations on the method arguments.</p>
+</div>
+
+<h2 id="producerTopic"><a class="anchor" href="#producerTopic"></a>6.1.1.1 Topic</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods/producerParameters/producerTopic.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>To set the topic to publish to, apply the <a href="../api/io/micronaut/mqtt/annotation/Topic.html">@Topic</a> annotation to the method or an argument of the method. Apply the annotation to the class or method if the value is static for every execution. Apply the annotation to an argument of the method if the value should be set per execution.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
+import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+
+@MqttPublisher
+public interface ProductClient {
+
+    @Topic("product") <b class="conum">(1)</b>
+    void send(byte[] data);
+
+    void send(@Topic String binding, byte[] data); <b class="conum">(2)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.v5.annotation.MqttPublisher
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic("product") <b class="conum">(1)</b>
+    void send(byte[] data)
+
+    void send(@Topic String binding, byte[] data) <b class="conum">(2)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.Topic
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic("product") <b class="conum">(1)</b>
+    fun send(data: ByteArray)
+
+    fun send(@Topic binding: String, data: ByteArray)  <b class="conum">(2)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The topic is static</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The topic must be set per execution</td>
+</tr>
+</table>
+</div>
+
+<h2 id="producerQos"><a class="anchor" href="#producerQos"></a>6.1.1.2 Qos</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods/producerParameters/producerQos.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Quality of service can be set for publishing messages either through the <a href="../api/io/micronaut/mqtt/annotation/Topic.html">@Topic</a> or <a href="../api/io/micronaut/mqtt/annotation/Qos.html">@Qos</a> annotations. The <a href="../api/io/micronaut/mqtt/annotation/Qos.html">@Qos</a> annotation can be applied to a method argument to set the Qos per execution.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Qos;
+import io.micronaut.mqtt.annotation.Topic;
+import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+
+@MqttPublisher
+public interface ProductClient {
+
+    @Topic(value = "product", qos = 2) <b class="conum">(1)</b>
+    void send(byte[] data);
+
+    @Topic("product")
+    void send(byte[] data, @Qos int qos); <b class="conum">(2)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.Qos
+import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.v5.annotation.MqttPublisher
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic(value = "product", qos = 2) <b class="conum">(1)</b>
+    void send(byte[] data)
+
+    @Topic("product")
+    void send(byte[] data, @Qos int qos) <b class="conum">(2)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.annotation.Qos
+import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.v5.annotation.MqttPublisher
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic(value = "product", qos = 2) <b class="conum">(1)</b>
+    fun send(data: ByteArray?)
+
+    @Topic("product")
+    fun send(data: ByteArray?, @Qos qos: Int) <b class="conum">(2)</b>
+}
+// end:clazz[]</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Qos is set via the topic annotation. It can be set through <code>@Qos</code> instead if that is preferred.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The Qos must be set per execution</td>
+</tr>
+</table>
+</div>
+
+<h2 id="producerRetained"><a class="anchor" href="#producerRetained"></a>6.1.1.3 Retained</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods/producerParameters/producerRetained.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The retained flagg can be set for publishing messages through the <a href="../api/io/micronaut/mqtt/annotation/Retained.html">@Retained</a> annotation. The annotation can also be applied to a method argument to set the retained flag per execution.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Retained;
+import io.micronaut.mqtt.annotation.Topic;
+import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+
+@MqttPublisher
+public interface ProductClient {
+
+    @Topic("product")
+    @Retained(true)<b class="conum">(1)</b>
+    void send(byte[] data);
+
+    @Topic("product")
+    void send(byte[] data, @Retained boolean retained); <b class="conum">(2)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.Retained
+import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.v5.annotation.MqttPublisher
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic("product")
+    @Retained(true)<b class="conum">(1)</b>
+    void send(byte[] data)
+
+    @Topic("product")
+    void send(byte[] data, @Retained boolean retained) <b class="conum">(2)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.annotation.Retained
+import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.v5.annotation.MqttPublisher
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic("product")
+    @Retained(true) <b class="conum">(1)</b>
+    fun send(data: ByteArray?)
+
+    @Topic("product")
+    fun send(data: ByteArray?, @Retained retained: Boolean) <b class="conum">(2)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The retained flag is set via the <code>Retained</code> annotation.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The retained flag must be set per execution</td>
+</tr>
+</table>
+</div>
+
+<h2 id="producerPayload"><a class="anchor" href="#producerPayload"></a>6.1.1.4 Payload</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods/producerParameters/producerPayload.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Most examples up to this point have been using a <code>byte[]</code> as the body type for simplicity. This library supports most standard Java types and JSON serialization (using Jackson) by default. The functionality is extensible and it is possible to add support for additional types and serialization strategies. See the section on <a href="#serdes">Message Serialization/Deserialization</a> for more information.</p>
+</div>
+
+<h1 id="consumer"><a class="anchor" href="#consumer"></a>7 MQTT Subscribers</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The example in the quick start presented a trivial definition of a class that listens for messages using the <a href="../api/io/micronaut/mqtt/annotation/MqttSubscriber.html">@MqttSubscriber</a> annotation.</p>
+</div>
+<div class="paragraph">
+<p>The implementation that powers <code>@MqttSubscriber</code> (defined by the <a href="../api/io/micronaut/mqtt/intercept/AbstractMqttSubscriberAdvice.html">AbstractMqttSubscriberAdvice</a> class) is, however, very flexible and offers a range of options for defining MQTT consumers.</p>
+</div>
+
+<h2 id="consumerMethods"><a class="anchor" href="#consumerMethods"></a>7.1 Defining @MqttSubscriber Methods</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerMethods.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>All methods that consume messages from MQTT must meet the following conditions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The method must reside in a class annotated with <a href="../api/io/micronaut/mqtt/annotation/MqttSubscriber.html">@MqttSubscriber</a>.</p>
+</li>
+<li>
+<p>The method must be annotated with one or more <a href="../api/io/micronaut/mqtt/annotation/Topic.html">@Topic</a> annotations.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In order for all of the functionality to work as designed in this guide your classes must be compiled with the parameters flag set to <code>true</code>. If your application was created with the Micronaut CLI, then that has already been configured for you.
+</td>
+</tr>
+</table>
+</div>
+
+<h2 id="consumerParameters"><a class="anchor" href="#consumerParameters"></a>7.1.1 Subscriber Parameters</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerMethods/consumerParameters.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>In order for the consumer method to be invoked, all arguments must be satisfied. To allow execution of the method with a null value, the argument <strong>must</strong> be declared as nullable. If the arguments cannot be satisfied, an exception will be thrown. See the section on <a href="#consumerExceptions">consumer exceptions</a> for details on how to handle exceptions thrown during the subscription process.</p>
+</div>
+
+<h2 id="consumerTopic"><a class="anchor" href="#consumerTopic"></a>7.1.1.1 Topic</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerMethods/consumerParameters/consumerTopic.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>A <a href="../api/io/micronaut/mqtt/annotation/Topic.html">@Topic</a> annotation is required for a method to be a consumer of messages from MQTT. Simply apply the annotation to the method and supply the name of the topic you would like to listen to. Multiple topics can be subscribed to by supplying multiple annotations. Each topic can have its own qos value set in the annotation.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
+import io.micronaut.mqtt.annotation.MqttSubscriber;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+@MqttSubscriber
+public class ProductListener {
+
+    List&lt;Integer&gt; messageLengths = Collections.synchronizedList(new ArrayList&lt;&gt;());
+    List&lt;String&gt; topics = Collections.synchronizedList(new ArrayList&lt;&gt;());
+
+    @Topic("product") <b class="conum">(1)</b>
+    public void receive(byte[] data) {
+        messageLengths.add(data.length);
+    }
+
+    @Topic("product/a")
+    @Topic("product/b") <b class="conum">(2)</b>
+    public void receive(byte[] data, @Topic String topic) {
+        topics.add(topic);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
+
+@MqttSubscriber
+class ProductListener {
+
+    List&lt;Integer&gt; messageLengths = Collections.synchronizedList([])
+
+    @Topic("product") <b class="conum">(1)</b>
+    void receive(byte[] data) {
+        messageLengths.add(data.length)
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.MqttSubscriber
+import java.util.*
+import kotlin.collections.ArrayList
+
+@MqttSubscriber
+class ProductListener {
+
+    val messageLengths: MutableList&lt;Int&gt; = Collections.synchronizedList(ArrayList())
+
+    @Topic("product") <b class="conum">(1)</b>
+    fun receive(data: ByteArray) {
+        messageLengths.add(data.size)
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The topic annotation is set per method. Multiple methods may be defined with different topics in the same class.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Multiple topics are subscribed to and the topic received is an argument to the method. The value will change depending on which topic the message was sent to.</td>
+</tr>
+</table>
+</div>
+
+<h2 id="consumerPayload"><a class="anchor" href="#consumerPayload"></a>7.1.1.2 Payload</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerMethods/consumerParameters/consumerPayload.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Most examples up to this point have been using a <code>byte[]</code> as the body type for simplicity. This library supports most standard Java types and JSON deserialization (using Jackson) by default. The functionality is extensible and it is possible to add support for additional types and deserialization strategies. See the section on <a href="#serdes">Message Serialization/Deserialization</a> for more information.</p>
+</div>
+
+<h2 id="consumerAcknowledge"><a class="anchor" href="#consumerAcknowledge"></a>7.1.2 Acknowledging Messages</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerMethods/consumerAcknowledge.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>If manual acknowledge is enabled through the <code>mqtt.client.manual-acks</code> configuration property, messages can be acknowledged manually.</p>
+</div>
+<div class="paragraph">
+<p>For methods that accept an argument of type <a href="https://docs.micronaut.io/latest/api/io/micronaut/messaging.Acknowledgement.html">Acknowledgement</a>, the message will only be acknowledged when the <code>ack</code> method is called. The <code>nack</code> method is not relevant for MQTT and should not be called.</p>
+</div>
+<div class="sect2">
+<h3 id="_acknowledgement_type">Acknowledgement Type</h3>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
+import io.micronaut.mqtt.annotation.MqttSubscriber;
+import io.micronaut.messaging.Acknowledgement;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+@MqttSubscriber
+public class ProductListener {
+
+    AtomicInteger messageCount = new AtomicInteger();
+
+    @Topic("product")
+    public void receive(byte[] data, Acknowledgement acknowledgement) { <b class="conum">(1)</b>
+        messageCount.getAndUpdate((intValue) -&gt; ++intValue);
+        acknowledgement.ack(); <b class="conum">(2)</b>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.messaging.Acknowledgement
+import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
+
+import java.util.concurrent.atomic.AtomicInteger
+
+@MqttSubscriber
+class ProductListener {
+
+    AtomicInteger messageCount = new AtomicInteger()
+
+    @Topic("product")
+    void receive(byte[] data, Acknowledgement acknowledgement) { <b class="conum">(1)</b>
+        messageCount.getAndUpdate({ intValue -&gt; ++intValue })
+        acknowledgement.ack() <b class="conum">(2)</b>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.messaging.Acknowledgement
+
+import java.util.concurrent.atomic.AtomicInteger
+
+@MqttSubscriber
+class ProductListener {
+
+    val messageCount = AtomicInteger()
+
+    @Topic("product")
+    fun receive(data: ByteArray, acknowledgement: Acknowledgement) { <b class="conum">(1)</b>
+        messageCount.getAndUpdate { intValue -&gt; intValue + 1 }
+        acknowledgement.ack() <b class="conum">(2)</b>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The acknowledgement argument is injected into the method. That signifies that this library is no longer in control of acknowledgement in any way for this consumer.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The message is acknowledged</td>
+</tr>
+</table>
+</div>
+</div>
+
+<h2 id="consumerExceptions"><a class="anchor" href="#consumerExceptions"></a>7.2 Handling Consumer Exceptions</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerExceptions.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Exceptions can occur in a number of different ways. Possible problem areas include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Binding the message to the method arguments</p>
+</li>
+<li>
+<p>Exceptions thrown from the consumer methods</p>
+</li>
+<li>
+<p>Exceptions as a result of message acknowledgement</p>
+</li>
+<li>
+<p>Exceptions thrown attempting to add the consumer to the channel</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If the consumer bean implements <a href="../api/io/micronaut/configuration/rabbitmq/exception/RabbitListenerExceptionHandler.html">RabbitListenerExceptionHandler</a>, then exceptions will be sent to the method implementation.</p>
+</div>
+<div class="paragraph">
+<p>If the consumer bean does not implement <a href="../api/io/micronaut/configuration/rabbitmq/exception/RabbitListenerExceptionHandler.html">RabbitListenerExceptionHandler</a>, then the exceptions will be routed to the primary exception handler bean. To override the default exception handler, replace the <a href="../api/io/micronaut/configuration/rabbitmq/exception/DefaultRabbitListenerExceptionHandler.html">DefaultRabbitListenerExceptionHandler</a> with your own implementation that is designated as <code>@Primary</code>.</p>
+</div>
+
+<h2 id="consumerExecutor"><a class="anchor" href="#consumerExecutor"></a>7.3 Consumer Execution</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerExecutor.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>MQTT allows an <a href="{jdkapi}/java/util/concurrent/ExecutorService.html">ExecutorService</a> to be supplied for new connections. The service is used to execute consumers. A single connection is used for the entire application and it is configured to use the <code>consumer</code> named executor service. The executor can be configured through application configuration. See <a href="https://docs.micronaut.io/latest/api/io/micronaut/scheduling/executor/ExecutorConfiguration.html">ExecutorConfiguration</a> for the full list of options.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="title">Configuring the <code>consumer</code> thread pool</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">micronaut:
+    executors:
+        consumer:
+            type: scheduled
+            corePoolSize: 25</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If no configuration is supplied, a scheduled thread pool with 2 times the amount of available processors is used.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The executor type <strong>must</strong> be <code>scheduled</code>.
+</td>
+</tr>
+</table>
+</div>
+
+<h1 id="customBinding"><a class="anchor" href="#customBinding"></a>8 Customizing Parameter Binding</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/customBinding.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="sect2">
+<h3 id="_default_binding_functionality">Default Binding Functionality</h3>
+<div class="paragraph">
+<p>Argument binding is achieved through an <a href="../api/io/micronaut/mqtt/bind/MqttBinderRegistry.html">MqttBinderRegistry</a>. The registry is responsible for choosing which <a href="../api/io/micronaut/mqtt/bind/MqttBinder.html">@MqttBinder</a> should be responsible for binding an argument. There are two methods, <code>bindFrom</code> and <code>bindTo</code>, that control binding to subscribers and publishers respectively.</p>
+</div>
+<div class="paragraph">
+<p>The registry supports argument binders that are used based on an annotation applied to the argument or the argument type. All argument binders must implement either <a href="../api/io/micronaut/mqtt/bind/AnnotatedMqttBinder.html">AnnotatedMqttBinder</a> or <a href="../api/io/micronaut/mqtt/bind/TypedMqttBinder.html">TypedMqttBinder</a>. The exception to that rule is the <a href="../api/io/micronaut/mqtt/bind/FallbackMqttBinder.html">FallbackMqttBinder</a> which is used when no other binders support a given argument. The binder registry follows a small sequence of steps to attempt to find a binder that supports the argument.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Search the annotation based binders for one that matches any annotation on the argument that is annotated with <a href="https://docs.micronaut.io/latest/api/io/micronaut/core/bind/annotation/Bindable.html">@Bindable</a>.</p>
+</li>
+<li>
+<p>Search the type based binders for one that matches or is a subclass of the argument type.</p>
+</li>
+<li>
+<p>Return the default binder.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The default binder checks if the argument name matches one of the supported properties. If the name does not match, the body of the message is bound to the argument.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="../api/io/micronaut/mqtt/bind/MqttBindingContext.html">MqttBindingContext</a> is the context used to binding data from and to messages. Each implementation (v3 and v5) has their own implementation. If you know your binder will only be working with a specific implementation, binders can reference the implementation instead of the interface.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_custom_binding">Custom Binding</h3>
+<div class="paragraph">
+<p>To inject your own argument binding behavior, it is as simple as registering a bean. The existing binder registry will inject it and include it in the normal processing.</p>
+</div>
+<div class="sect3">
+<h4 id="_annotation_binding">Annotation Binding</h4>
+<div class="paragraph">
+<p>A custom annotation can be created to bind consumer arguments. A custom binder can then be created to use that annotation. In this example an annotation is used to bind to the correlation data (only available in v5).</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.core.bind.annotation.Bindable;
+
+import java.lang.annotation.*;
+
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.PARAMETER})
+@Bindable <b class="conum">(1)</b>
+public @interface Correlation {
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.core.bind.annotation.Bindable
+
+import java.lang.annotation.*
+
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target([ElementType.PARAMETER])
+@Bindable <b class="conum">(1)</b>
+@interface Correlation {
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.core.bind.annotation.Bindable
+
+
+@MustBeDocumented
+@Retention(AnnotationRetention.RUNTIME)
+@Target(AnnotationTarget.VALUE_PARAMETER)
+@Bindable <b class="conum">(1)</b>
+annotation class Correlation</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <a href="https://docs.micronaut.io/latest/api/io/micronaut/core/bind/annotation/Bindable.html">@Bindable</a> annotation is required for the annotation to be considered for binding.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.core.type.Argument;
+import io.micronaut.mqtt.bind.AnnotatedMqttBinder;
+import io.micronaut.core.convert.ArgumentConversionContext;
+import io.micronaut.core.convert.ConversionService;
+import io.micronaut.mqtt.v5.bind.MqttV5BindingContext;
+
+import javax.inject.Singleton;
+import java.util.Optional;
+
+@Singleton <b class="conum">(1)</b>
+public class CorrelationAnnotationBinder implements AnnotatedMqttBinder&lt;MqttV5BindingContext, Correlation&gt; { <b class="conum">(2)</b>
+
+    private final ConversionService&lt;?&gt; conversionService;
+
+    public CorrelationAnnotationBinder(ConversionService&lt;?&gt; conversionService) { <b class="conum">(3)</b>
+        this.conversionService = conversionService;
+    }
+
+    @Override
+    public Class&lt;Correlation&gt; getAnnotationType() {
+        return Correlation.class;
+    }
+
+    @Override
+    public void bindTo(MqttV5BindingContext context, Object value, Argument&lt;Object&gt; argument) {
+        context.getProperties().setCorrelationData((byte[]) value); <b class="conum">(4)</b>
+    }
+
+    @Override
+    public Optional&lt;Object&gt; bindFrom(MqttV5BindingContext context, ArgumentConversionContext&lt;Object&gt; conversionContext) {
+        return conversionService.convert(context.getProperties().getCorrelationData(), conversionContext); <b class="conum">(5)</b>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.core.type.Argument
+import io.micronaut.mqtt.bind.AnnotatedMqttBinder
+import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
+import io.micronaut.core.convert.ArgumentConversionContext
+import io.micronaut.core.convert.ConversionService
+
+import javax.inject.Singleton
+
+@Singleton <b class="conum">(1)</b>
+class CorrelationAnnotationBinder implements AnnotatedMqttBinder&lt;MqttV5BindingContext, Correlation&gt; { <b class="conum">(2)</b>
+
+    private final ConversionService conversionService
+
+    CorrelationAnnotationBinder(ConversionService conversionService) { <b class="conum">(3)</b>
+        this.conversionService = conversionService
+    }
+
+    @Override
+    Class&lt;Correlation&gt; getAnnotationType() {
+        Correlation
+    }
+
+    @Override
+    void bindTo(MqttV5BindingContext context, Object value, Argument&lt;Object&gt; argument) {
+        context.properties.correlationData = (byte[]) value <b class="conum">(4)</b>
+    }
+
+    @Override
+    Optional&lt;Object&gt; bindFrom(MqttV5BindingContext context, ArgumentConversionContext&lt;Object&gt; conversionContext) {
+        conversionService.convert(context.properties.correlationData, conversionContext) <b class="conum">(5)</b>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.core.convert.ArgumentConversionContext
+import io.micronaut.core.convert.ConversionService
+import io.micronaut.core.type.Argument
+import io.micronaut.mqtt.bind.AnnotatedMqttBinder
+import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
+import java.util.*
+
+import javax.inject.Singleton
+
+@Singleton <b class="conum">(1)</b>
+class CorrelationAnnotationBinder(private val conversionService: ConversionService&lt;*&gt;)<b class="conum">(3)</b>
+    : AnnotatedMqttBinder&lt;MqttV5BindingContext, Correlation&gt; { <b class="conum">(2)</b>
+
+    override fun getAnnotationType(): Class&lt;Correlation&gt; {
+        return Correlation::class.java
+    }
+
+    override fun bindTo(context: MqttV5BindingContext, value: Any, argument: Argument&lt;Any&gt;) {
+       context.properties.correlationData = value as? ByteArray <b class="conum">(4)</b>
+    }
+
+    override fun bindFrom(context: MqttV5BindingContext, conversionContext: ArgumentConversionContext&lt;Any&gt;): Optional&lt;Any&gt; {
+        return conversionService.convert(context.properties.correlationData, conversionContext) <b class="conum">(5)</b>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The class is made a bean by annotating with <code>@Singleton</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The custom annotation is used as the generic type for the interface.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The conversion service is injected into the instance.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The correlation data is set from the publisher method value.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The correlation data is returned to be bound to a consumer method value.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The annotation can now be used on the argument in a consumer method.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.MqttSubscriber;
+import io.micronaut.mqtt.annotation.Topic;
+
+import java.util.*;
+
+@MqttSubscriber
+public class ProductListener {
+
+    Set&lt;String&gt; messages = Collections.synchronizedSet(new HashSet&lt;&gt;());
+
+    @Topic("product")
+    public void receive(byte[] data, @Correlation byte[] correlation) { <b class="conum">(1)</b>
+        messages.add(new String(correlation));
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
+
+@MqttSubscriber
+class ProductListener {
+
+    Set&lt;String&gt; messages = Collections.synchronizedSet(new HashSet&lt;&gt;())
+
+    @Topic("product")
+    void receive(@Correlation byte[] correlation) { <b class="conum">(1)</b>
+        messages.add(new String(correlation))
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
+import java.nio.charset.StandardCharsets
+
+import java.util.Collections
+import java.util.HashSet
+
+@MqttSubscriber
+class ProductListener {
+
+    val messages: MutableSet&lt;String&gt; = Collections.synchronizedSet(HashSet())
+
+    @Topic("product")
+    fun receive(@Correlation data: ByteArray) { <b class="conum">(1)</b>
+        messages.add(String(data, StandardCharsets.UTF_8))
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And in a publisher method.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
+import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+
+@MqttPublisher
+public interface ProductClient {
+
+    @Topic("product")
+    void send(@Correlation byte[] correlation);
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.v5.annotation.MqttPublisher
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic("product")
+    void send(@Correlation byte[] correlation)
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.Topic
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic("product")
+    fun send(@Correlation data: ByteArray)
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_type_binding">Type Binding</h4>
+<div class="paragraph">
+<p>A custom binder can be created to support any argument type. For example the following class could be created to bind values from user properties (V5 only). This functionality could allow the work of retrieving and converting the properties to occur in a single place instead of multiple times in your code.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.annotation.concurrent.Immutable;
+
+@Immutable
+public class ProductInfo {
+
+    private String size;
+    private Long count;
+    private Boolean sealed;
+
+    public ProductInfo(@Nullable String size, <b class="conum">(1)</b>
+                       @Nonnull Long count, <b class="conum">(2)</b>
+                       @Nonnull Boolean sealed) { <b class="conum">(3)</b>
+        this.size = size;
+        this.count = count;
+        this.sealed = sealed;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public Boolean getSealed() {
+        return sealed;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import javax.annotation.Nonnull
+import javax.annotation.Nullable
+import javax.annotation.concurrent.Immutable
+
+@Immutable
+class ProductInfo {
+
+    private String size
+    private Long count
+    private Boolean sealed
+
+    ProductInfo(@Nullable String size, <b class="conum">(1)</b>
+                @Nonnull Long count, <b class="conum">(2)</b>
+                @Nonnull Boolean sealed) { <b class="conum">(3)</b>
+        this.size = size
+        this.count = count
+        this.sealed = sealed
+    }
+
+    String getSize() {
+        size
+    }
+
+    Long getCount() {
+        count
+    }
+
+    Boolean getSealed() {
+        sealed
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import javax.annotation.concurrent.Immutable
+
+@Immutable
+class ProductInfo(val size: String?, <b class="conum">(1)</b>
+                  val count: Long, <b class="conum">(2)</b>
+                  val sealed: Boolean)<b class="conum">(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>size</code> argument is not required</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>count</code> argument is required</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>sealed</code> argument is required</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A type argument binder can then be created to create the <code>ProductInfo</code> instance to bind to and from method arguments.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.core.convert.ArgumentConversionContext;
+import io.micronaut.core.convert.ConversionService;
+import io.micronaut.core.type.Argument;
+import io.micronaut.mqtt.bind.TypedMqttBinder;
+import io.micronaut.mqtt.v5.bind.MqttV5BindingContext;
+import org.eclipse.paho.mqttv5.common.packet.UserProperty;
+
+import javax.inject.Singleton;
+import java.util.*;
+import java.util.stream.Collectors;
+
+@Singleton <b class="conum">(1)</b>
+public class ProductInfoTypeBinder implements TypedMqttBinder&lt;MqttV5BindingContext, ProductInfo&gt; { <b class="conum">(2)</b>
+
+    private final ConversionService&lt;?&gt; conversionService;
+
+    ProductInfoTypeBinder(ConversionService&lt;?&gt; conversionService) { <b class="conum">(3)</b>
+        this.conversionService = conversionService;
+    }
+
+    @Override
+    public Argument&lt;ProductInfo&gt; getArgumentType() {
+        return Argument.of(ProductInfo.class);
+    }
+
+    @Override
+    public void bindTo(MqttV5BindingContext context, ProductInfo value, Argument&lt;ProductInfo&gt; argument) {
+        List&lt;UserProperty&gt; userPropertiesList = context.getProperties().getUserProperties();
+        if (value.getSize() != null) {
+            userPropertiesList.add(new UserProperty("productSize", value.getSize()));
+        }
+        userPropertiesList.add(new UserProperty("productCount", value.getCount().toString())); <b class="conum">(4)</b>
+        userPropertiesList.add(new UserProperty("productSealed", value.getSealed().toString()));
+    }
+
+    @Override
+    public Optional&lt;ProductInfo&gt; bindFrom(MqttV5BindingContext context, ArgumentConversionContext&lt;ProductInfo&gt; conversionContext) {
+        List&lt;UserProperty&gt; userPropertiesList = context.getProperties().getUserProperties();
+        Map&lt;String, String&gt; userProperties = userPropertiesList.stream()
+                .collect(Collectors.toMap(UserProperty::getKey, UserProperty::getValue));
+        String size = userProperties.get("productSize");
+        Optional&lt;Long&gt; count = Optional.ofNullable(userProperties.get("productCount"))
+                .flatMap(value -&gt; conversionService.convert(value, Long.class));
+        Optional&lt;Boolean&gt; sealed = Optional.ofNullable(userProperties.get("productSealed"))
+                .flatMap(value -&gt; conversionService.convert(value, Boolean.class));
+
+        if (count.isPresent() &amp;&amp; sealed.isPresent()) {
+            return Optional.of(new ProductInfo(size, count.get(), sealed.get())); <b class="conum">(5)</b>
+        } else {
+            return Optional.empty();
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.bind.TypedMqttBinder
+import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
+import io.micronaut.core.convert.ArgumentConversionContext
+import io.micronaut.core.convert.ConversionService
+import io.micronaut.core.type.Argument
+import org.eclipse.paho.mqttv5.common.packet.UserProperty
+
+import javax.inject.Singleton
+import java.util.stream.Collectors
+
+@Singleton <b class="conum">(1)</b>
+class ProductInfoTypeBinder implements TypedMqttBinder&lt;MqttV5BindingContext, ProductInfo&gt; { <b class="conum">(2)</b>
+
+    private final ConversionService conversionService
+
+    ProductInfoTypeBinder(ConversionService conversionService) { <b class="conum">(3)</b>
+        this.conversionService = conversionService
+    }
+
+    @Override
+    Argument&lt;ProductInfo&gt; getArgumentType() {
+        return Argument.of(ProductInfo)
+    }
+
+    @Override
+    void bindTo(MqttV5BindingContext context, ProductInfo value, Argument&lt;ProductInfo&gt; argument) {
+        List&lt;UserProperty&gt; userPropertiesList = context.properties.userProperties
+        if (value.size != null) {
+            userPropertiesList.add(new UserProperty("productSize", value.size))
+        }
+        userPropertiesList.add(new UserProperty("productCount", value.count.toString())) <b class="conum">(4)</b>
+        userPropertiesList.add(new UserProperty("productSealed", value.sealed.toString()))
+    }
+
+    @Override
+    Optional&lt;ProductInfo&gt; bindFrom(MqttV5BindingContext context, ArgumentConversionContext&lt;ProductInfo&gt; conversionContext) {
+        List&lt;UserProperty&gt; userPropertiesList = context.properties.userProperties
+        Map&lt;String, String&gt; userProperties = userPropertiesList.stream()
+                .collect(Collectors.toMap(UserProperty::getKey, UserProperty::getValue))
+        String size = userProperties.get("productSize")
+        Optional&lt;Long&gt; count = Optional.ofNullable(userProperties.get("productCount"))
+                .flatMap(value -&gt; conversionService.convert(value, Long.class))
+        Optional&lt;Boolean&gt; sealed = Optional.ofNullable(userProperties.get("productSealed"))
+                .flatMap(value -&gt; conversionService.convert(value, Boolean.class))
+
+        if (count.isPresent() &amp;&amp; sealed.isPresent()) {
+            return Optional.of(new ProductInfo(size, count.get(), sealed.get())) <b class="conum">(5)</b>
+        } else {
+            return Optional.empty()
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.core.convert.ArgumentConversionContext
+import io.micronaut.core.convert.ConversionService
+import io.micronaut.core.type.Argument
+import io.micronaut.mqtt.bind.*
+import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
+import org.eclipse.paho.mqttv5.common.MqttMessage
+import org.eclipse.paho.mqttv5.common.packet.UserProperty
+
+import javax.inject.Singleton
+import java.util.Optional
+import java.util.stream.Collectors
+
+@Singleton <b class="conum">(1)</b>
+class ProductInfoTypeBinder constructor(private val conversionService: ConversionService&lt;*&gt;) <b class="conum">(3)</b>
+    : TypedMqttBinder&lt;MqttV5BindingContext, ProductInfo&gt; { <b class="conum">(2)</b>
+
+    override fun bindTo(context: MqttV5BindingContext, value: ProductInfo, argument: Argument&lt;ProductInfo&gt;) {
+        val userPropertiesList = context.properties.userProperties
+        if (value.size != null) {
+            userPropertiesList.add(UserProperty("productSize", value.size)) <b class="conum">(4)</b>
+        }
+        userPropertiesList.add(UserProperty("productCount", value.count.toString()))
+        userPropertiesList.add(UserProperty("productSealed", value.sealed.toString()))
+    }
+
+    override fun bindFrom(context: MqttV5BindingContext, conversionContext: ArgumentConversionContext&lt;ProductInfo&gt;): Optional&lt;ProductInfo&gt; {
+        val userPropertiesList = context.properties.userProperties
+        val userProperties = userPropertiesList.stream()
+                .collect(Collectors.toMap(UserProperty::getKey, UserProperty::getValue))
+        val size = userProperties.get("productSize")
+        val count = Optional.ofNullable(userProperties.get("productCount"))
+                .flatMap { value -&gt; conversionService.convert(value, Long::class.java) }
+        val sealed = Optional.ofNullable(userProperties.get("productSealed"))
+                .flatMap { value -&gt; conversionService.convert(value, Boolean::class.java) }
+
+        if (count.isPresent &amp;&amp; sealed.isPresent) {
+            return Optional.of(ProductInfo(size, count.get(), sealed.get())) <b class="conum">(5)</b>
+        } else {
+            return Optional.empty()
+        }
+    }
+
+    override fun getArgumentType(): Argument&lt;ProductInfo&gt; {
+        return Argument.of(ProductInfo::class.java)
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The class is made a bean by annotating with <code>@Singleton</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The custom type is used as the generic type for the interface.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The conversion service is injected into the instance.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The properties are populated into user properties when publishing</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The properties are read and converted into a <code>ProductInfo</code> to be bound to a subscriber argument</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+<h1 id="serdes"><a class="anchor" href="#serdes"></a>9 Message Serialization/Deserialization (SerDes)</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/serdes.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The serialization and deserialization of message payloads is handled through instances of <a href="../api/io/micronaut/mqtt/serdes/MqttPayloadSerDes.html">MqttPayloadSerDes</a>. The ser-des (Serializer/Deserializer) is responsible for both serialization and deserialization of MQTT message payloads into the types defined in your publisher and subscriber methods.</p>
+</div>
+<div class="paragraph">
+<p>The ser-des are managed by a <a href="../api/io/micronaut/mqtt/serdes/MqttPayloadSerDesRegistry.html">MqttPayloadSerDesRegistry</a>. All ser-des beans are injected in order into the registry and then searched for when serialization or deserialization is needed. The first ser-des that returns true for <a href="../api/io/micronaut/mqtt/serdes/MqttPayloadSerDes.html#supports-java.lang.Class-">MqttPayloadSerDes#supports(Class)</a> is returned and used.</p>
+</div>
+<div class="paragraph">
+<p>By default, standard Java lang types and JSON format (with Jackson) are supported. You can supply your own ser-des by simply registering a bean of type <a href="../api/io/micronaut/mqtt/serdes/MqttPayloadSerDes.html">MqttPayloadSerDes</a>. All ser-des implement the <a href="https://docs.micronaut.io/latest/api/io/micronaut/core/order/Ordered.html">Ordered</a> interface, so custom implementations can come before, after, or in between the default implementations.</p>
+</div>
+
+<h2 id="custom"><a class="anchor" href="#custom"></a>9.1 Custom SerDes</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/serdes/custom.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>A custom serializer/deserializer would be necessary to support custom data formats. In the section on <a href="#customBinding">Custom Binding</a> an example was demonstrated that allowed binding a <code>ProductInfo</code> type from the properties of the message. If instead that object should represent the payload of the message with a custom data format, you could register your own serializer/deserializer to do so.</p>
+</div>
+<div class="paragraph">
+<p>In this example a simple data format of the string representation of the fields are concatenated together with a pipe character.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.serdes.MqttPayloadSerDes;
+import io.micronaut.core.convert.ConversionService;
+import io.micronaut.core.type.Argument;
+import org.jetbrains.annotations.Nullable;
+
+import javax.inject.Singleton;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+
+@Singleton <b class="conum">(1)</b>
+public class ProductInfoSerDes implements MqttPayloadSerDes&lt;ProductInfo&gt; { <b class="conum">(2)</b>
+
+    private static final Charset CHARSET = StandardCharsets.UTF_8;
+
+    private final ConversionService&lt;?&gt; conversionService;
+
+    public ProductInfoSerDes(ConversionService&lt;?&gt; conversionService) { <b class="conum">(3)</b>
+        this.conversionService = conversionService;
+    }
+
+    @Nullable
+    @Override
+    public ProductInfo deserialize(byte[] payload, Argument&lt;ProductInfo&gt; argument) {
+        String body = new String(payload, CHARSET);
+        String[] parts = body.split("\\|");
+        if (parts.length == 3) {
+            String size = parts[0];
+            if (size.equals("null")) {
+                size = null;
+            }
+
+            Optional&lt;Long&gt; count = conversionService.convert(parts[1], Long.class);
+            Optional&lt;Boolean&gt; sealed = conversionService.convert(parts[2], Boolean.class);
+
+            if (count.isPresent() &amp;&amp; sealed.isPresent()) {
+                return new ProductInfo(size, count.get(), sealed.get()); <b class="conum">(4)</b>
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public byte[] serialize(@Nullable ProductInfo data) {
+        if (data == null) {
+            return null;
+        }
+        return (data.getSize() + "|" + data.getCount() + "|" + data.getSealed()).getBytes(CHARSET); <b class="conum">(5)</b>
+    }
+
+    @Override
+    public boolean supports(Argument&lt;ProductInfo&gt; argument) { <b class="conum">(6)</b>
+        return argument.getType().isAssignableFrom(ProductInfo.class);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.core.convert.ConversionService
+import io.micronaut.core.type.Argument
+import org.jetbrains.annotations.Nullable
+
+import javax.inject.Singleton
+import java.nio.charset.Charset
+
+@Singleton <b class="conum">(1)</b>
+class ProductInfoSerDes implements MqttPayloadSerDes&lt;ProductInfo&gt; { <b class="conum">(2)</b>
+
+    private static final Charset CHARSET = Charset.forName("UTF-8")
+
+    private final ConversionService conversionService
+
+    ProductInfoSerDes(ConversionService conversionService) { <b class="conum">(3)</b>
+        this.conversionService = conversionService
+    }
+
+    @Nullable
+    @Override
+    ProductInfo deserialize(byte[] payload, Argument&lt;ProductInfo&gt; argument) {
+        String body = new String(payload, CHARSET)
+        String[] parts = body.split("\\|")
+        if (parts.length == 3) {
+            String size = parts[0]
+            if (size == "null") {
+                size = null
+            }
+
+            Optional&lt;Long&gt; count = conversionService.convert(parts[1], Long.class)
+            Optional&lt;Boolean&gt; sealed = conversionService.convert(parts[2], Boolean.class)
+
+            if (count.isPresent() &amp;&amp; sealed.isPresent()) {
+                return new ProductInfo(size, count.get(), sealed.get()) <b class="conum">(4)</b>
+            }
+        }
+        return null
+    }
+
+    @Nullable
+    @Override
+    byte[] serialize(@Nullable ProductInfo data) {
+        if (data == null) {
+            return null
+        }
+        return "${data.size}|${data.count}|${data.sealed}".getBytes(CHARSET) <b class="conum">(5)</b>
+    }
+
+    @Override
+    boolean supports(Argument&lt;ProductInfo&gt; argument) { <b class="conum">(6)</b>
+        argument.type.isAssignableFrom(ProductInfo)
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.core.convert.ConversionService
+import io.micronaut.core.type.Argument
+import io.micronaut.mqtt.serdes.MqttPayloadSerDes
+
+import javax.inject.Singleton
+import java.nio.charset.Charset
+
+@Singleton <b class="conum">(1)</b>
+class ProductInfoSerDes(private val conversionService: ConversionService&lt;*&gt;)<b class="conum">(3)</b>
+    : MqttPayloadSerDes&lt;ProductInfo&gt; { <b class="conum">(2)</b>
+
+    override fun deserialize(payload: ByteArray, argument: Argument&lt;ProductInfo&gt;): ProductInfo? {
+        val body = String(payload, CHARSET)
+        val parts = body.split("\\|".toRegex())
+        if (parts.size == 3) {
+            var size: String? = parts[0]
+            if (size == "null") {
+                size = null
+            }
+
+            val count = conversionService.convert(parts[1], Long::class.java)
+            val sealed = conversionService.convert(parts[2], Boolean::class.java)
+
+            if (count.isPresent &amp;&amp; sealed.isPresent) {
+                return ProductInfo(size, count.get(), sealed.get()) <b class="conum">(4)</b>
+            }
+        }
+        return null
+    }
+
+    override fun serialize(data: ProductInfo?): ByteArray {
+        return (data?.size + "|" + data?.count + "|" + data?.sealed).toByteArray(CHARSET) <b class="conum">(5)</b>
+    }
+
+    override fun supports(argument: Argument&lt;ProductInfo&gt;): Boolean { <b class="conum">(6)</b>
+        return argument.type.isAssignableFrom(ProductInfo::class.java)
+    }
+
+    companion object {
+        private val CHARSET = Charset.forName("UTF-8")
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The class is declared as a singleton so it will be registered with the context</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The generic specifies what type we want to accept and return</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The conversion service is injected to convert the parts of the message to the required types</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The deserialize method takes the bytes from the message and constructs a <code>ProductInfo</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The serialize method takes the <code>ProductInfo</code> and returns the bytes to publish.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>The supports method ensures only the correct body types are processed by this ser-des</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Because the <code>getOrder</code> method was not overridden, the default order of 0 is used. All default ser-des have a lower precedent than the default order which means this ser-des will be checked before the others.
+</td>
+</tr>
+</table>
+</div>
+
+<h1 id="repository"><a class="anchor" href="#repository"></a>10 Repository</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/repository.adoc"'>

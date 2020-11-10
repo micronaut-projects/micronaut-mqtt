@@ -15,14 +15,12 @@
  */
 package io.micronaut.mqtt.v5.config;
 
-import edu.umd.cs.findbugs.annotations.Nullable;
 import io.micronaut.context.annotation.ConfigurationBuilder;
 import io.micronaut.context.annotation.ConfigurationProperties;
 import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.eclipse.paho.mqttv5.common.MqttMessage;
 import org.eclipse.paho.mqttv5.common.packet.MqttProperties;
 
-import javax.net.ssl.HostnameVerifier;
 import javax.validation.constraints.NotNull;
 import java.time.Duration;
 
@@ -42,9 +40,7 @@ public class MqttClientConfigurationProperties  {
     @ConfigurationBuilder
     private final MqttConnectionOptions connectOptions = new MqttConnectionOptions();
 
-    public MqttClientConfigurationProperties(@Nullable HostnameVerifier hostnameVerifier,
-                                             WillMessage willMessage) {
-        connectOptions.setSSLHostnameVerifier(hostnameVerifier);
+    public MqttClientConfigurationProperties(WillMessage willMessage) {
         if (willMessage.getTopic() != null) {
             connectOptions.setWill(willMessage.getTopic(), new MqttMessage(willMessage.getPayload(), willMessage.getQos(), willMessage.isRetained(), willMessage.getProperties()));
         }

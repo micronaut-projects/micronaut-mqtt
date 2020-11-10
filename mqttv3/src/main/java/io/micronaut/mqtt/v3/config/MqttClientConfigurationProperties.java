@@ -15,13 +15,11 @@
  */
 package io.micronaut.mqtt.v3.config;
 
-import edu.umd.cs.findbugs.annotations.Nullable;
 import io.micronaut.context.annotation.ConfigurationBuilder;
 import io.micronaut.context.annotation.ConfigurationProperties;
 import io.micronaut.context.annotation.Context;
 import org.eclipse.paho.client.mqttv3.*;
 
-import javax.net.ssl.HostnameVerifier;
 import javax.validation.constraints.NotNull;
 import java.time.Duration;
 import java.util.Optional;

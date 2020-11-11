@@ -1,10 +1,10 @@
 package io.micronaut.mqtt.docs.quickstart
 
 // tag::imports[]
-import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 // end::imports[]
+import io.micronaut.context.annotation.Requires
 
 @Requires(property = "spec.name", value = "QuickstartSpec")
 // tag::clazz[]

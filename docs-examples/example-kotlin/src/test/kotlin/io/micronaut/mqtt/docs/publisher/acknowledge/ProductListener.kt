@@ -1,11 +1,11 @@
 package io.micronaut.mqtt.docs.publisher.acknowledge
 
 // tag::imports[]
-import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 import java.util.*
 // end::imports[]
+import io.micronaut.context.annotation.Requires
 
 @Requires(property = "spec.name", value = "PublisherAcknowledgeSpec")
 // tag::clazz[]

@@ -1,13 +1,13 @@
 package io.micronaut.mqtt.docs.parameters;
 
-import io.micronaut.mqtt.AbstractRabbitMQTest;
+import io.micronaut.mqtt.AbstractMQTTTest;
 import io.micronaut.context.ApplicationContext;
 import org.junit.jupiter.api.Test;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
 
-public class BindingSpec extends AbstractRabbitMQTest {
+public class BindingSpec extends AbstractMQTTTest {
 
     @Test
     void testDynamicBinding() {

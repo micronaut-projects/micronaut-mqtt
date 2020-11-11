@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public abstract class AbstractRabbitMQTest {
+public abstract class AbstractMQTTTest {
 
     protected static GenericContainer mqttContainer = new GenericContainer(DockerImageName.parse("eclipse-mosquitto:1.6.12"))
             .withExposedPorts(1883)

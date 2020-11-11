@@ -1,13 +1,13 @@
 package io.micronaut.mqtt.docs.properties;
 
-import io.micronaut.mqtt.AbstractRabbitMQTest;
+import io.micronaut.mqtt.AbstractMQTTTest;
 import io.micronaut.context.ApplicationContext;
 import org.junit.jupiter.api.Test;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
 
-public class PropertiesSpec extends AbstractRabbitMQTest {
+public class PropertiesSpec extends AbstractMQTTTest {
 
     @Test
     void testPublishingAndReceivingProperties() {

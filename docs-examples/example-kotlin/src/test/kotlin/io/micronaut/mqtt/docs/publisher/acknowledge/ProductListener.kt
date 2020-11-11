@@ -1,13 +1,10 @@
 package io.micronaut.mqtt.docs.publisher.acknowledge
 
 // tag::imports[]
-import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.MqttSubscriber
-
-import java.util.ArrayList
-import java.util.Collections
+import io.micronaut.mqtt.annotation.Topic
+import java.util.*
 // end::imports[]
-
 import io.micronaut.context.annotation.Requires
 
 @Requires(property = "spec.name", value = "PublisherAcknowledgeSpec")
@@ -21,7 +18,7 @@ class ProductListener {
     fun receive(data: ByteArray) { // <3>
         val length = data.size
         messageLengths.add(length)
-        println("Kotlin received $length bytes from RabbitMQ")
+        println("Kotlin received $length bytes from MQTT")
     }
 }
 // end::clazz[]

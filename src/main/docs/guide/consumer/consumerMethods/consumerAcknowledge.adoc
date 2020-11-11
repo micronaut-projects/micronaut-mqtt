@@ -1,6 +1,6 @@
 If manual acknowledge is enabled through the `mqtt.client.manual-acks` configuration property, messages can be acknowledged manually.
 
-For methods that accept an argument of type link:{apimicronaut}messaging.Acknowledgement.html[Acknowledgement], the message will only be acknowledged when the `ack` method is called. The `nack` method is not relevant for MQTT and should not be called.
+For methods that accept an argument of type link:{apimicronaut}messaging/Acknowledgement.html[Acknowledgement], the message will only be acknowledged when the `ack` method is called. The `nack` method is not relevant for MQTT and should not be called.
 
 === Acknowledgement Type
 

@@ -1,6 +1,6 @@
 === Publishers
 
-It is also supported to supply properties when publishing messages. Any of the org.eclipse.paho.mqttv5.common.packet.MqttProperties can be set dynamically per execution or statically for all executions. Properties can be set using the ann:mqtt.v5.annotation.MqttProperty[] annotation.
+It is also supported to supply properties when publishing messages. Any of the `org.eclipse.paho.mqttv5.common.packet.MqttProperties` can be set dynamically per execution or statically for all executions. Properties can be set using the ann:mqtt.v5.annotation.MqttProperty[] annotation.
 
 snippet::io.micronaut.mqtt.docs.properties.ProductClient[tags="imports,clazz", project-base="docs-examples/example]
 

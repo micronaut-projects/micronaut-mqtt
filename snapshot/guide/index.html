@@ -53,7 +53,7 @@
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#v5"><strong>5</strong><span>MQTT V5</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#producer"><strong>6</strong><span>MQTT publishers</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#producer"><strong>6</strong><span>MQTT Publishers</span></a></div>
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#consumer"><strong>7</strong><span>MQTT Subscribers</span></a></div>
                                 
@@ -108,7 +108,7 @@
         
         <div class="toc-item" style="margin-left:10px" id="toc-item-properties"><a href="#properties"><strong>5.2</strong><span>Properties</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-producer"><a href="#producer"><strong>6</strong><span>MQTT publishers</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-producer"><a href="#producer"><strong>6</strong><span>MQTT Publishers</span></a></div>
         
         <div class="toc-item" style="margin-left:10px" id="toc-item-producerMethods"><a href="#producerMethods"><strong>6.1</strong><span>Defining Publisher Methods</span></a></div>
         
@@ -122,6 +122,8 @@
         
         <div class="toc-item" style="margin-left:30px" id="toc-item-producerPayload"><a href="#producerPayload"><strong>6.1.1.4</strong><span>Payload</span></a></div>
         
+        <div class="toc-item" style="margin-left:20px" id="toc-item-producerAcknowledge"><a href="#producerAcknowledge"><strong>6.1.2</strong><span>Publisher Acknowledgements</span></a></div>
+        
         <div class="toc-item" style="margin-left:0px" id="toc-item-consumer"><a href="#consumer"><strong>7</strong><span>MQTT Subscribers</span></a></div>
         
         <div class="toc-item" style="margin-left:10px" id="toc-item-consumerMethods"><a href="#consumerMethods"><strong>7.1</strong><span>Defining @MqttSubscriber Methods</span></a></div>
@@ -134,9 +136,9 @@
         
         <div class="toc-item" style="margin-left:20px" id="toc-item-consumerAcknowledge"><a href="#consumerAcknowledge"><strong>7.1.2</strong><span>Acknowledging Messages</span></a></div>
         
-        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerExceptions"><a href="#consumerExceptions"><strong>7.2</strong><span>Handling Consumer Exceptions</span></a></div>
+        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerExceptions"><a href="#consumerExceptions"><strong>7.2</strong><span>Handling Subscriber Exceptions</span></a></div>
         
-        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerExecutor"><a href="#consumerExecutor"><strong>7.3</strong><span>Consumer Execution</span></a></div>
+        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerExecutor"><a href="#consumerExecutor"><strong>7.3</strong><span>Subscriber Execution</span></a></div>
         
         <div class="toc-item" style="margin-left:0px" id="toc-item-customBinding"><a href="#customBinding"><strong>8</strong><span>Customizing Parameter Binding</span></a></div>
         
@@ -1009,7 +1011,7 @@ Arguments are required by default and an exception will be thrown if they cannot
 </div>
 </div>
 
-<h1 id="producer"><a class="anchor" href="#producer"></a>6 MQTT publishers</h1>
+<h1 id="producer"><a class="anchor" href="#producer"></a>6 MQTT Publishers</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer.adoc"'>
@@ -1312,6 +1314,142 @@ interface ProductClient {
 <p>Most examples up to this point have been using a <code>byte[]</code> as the body type for simplicity. This library supports most standard Java types and JSON serialization (using Jackson) by default. The functionality is extensible and it is possible to add support for additional types and serialization strategies. See the section on <a href="#serdes">Message Serialization/Deserialization</a> for more information.</p>
 </div>
 
+<h2 id="producerAcknowledge"><a class="anchor" href="#producerAcknowledge"></a>6.1.2 Publisher Acknowledgements</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods/producerAcknowledge.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>MQTT supports publisher acknowledgements that behave different based on the qos of the message being sent. The broker will acknowledge the message and then that will cause the publishing method to complete. For publishers that return <code>void</code>, that means the method will block the current thread until the acknowledgement is received. For futures and reactive types, they will complete after the acknowledgement is received.</p>
+</div>
+<div class="paragraph">
+<p>Since the publisher is cold, the message will not actually be published until the stream is subscribed to.</p>
+</div>
+<div class="paragraph">
+<p>Micronaut comes with RxJava2 by default, and the <a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Completable.html">Completable</a> type is the reactive type that best fits the publisher acknowledgement use case. No value of any type is returned, the message is either acknowledged (completed) or not (error).</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
+import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+import io.reactivex.Completable;
+import io.reactivex.Maybe;
+import org.reactivestreams.Publisher;
+import reactor.core.publisher.Mono;
+
+@MqttPublisher
+public interface ProductClient {
+
+    @Topic("product")
+    Completable send(byte[] data); <b class="conum">(1)</b>
+
+    @Topic("product")
+    Maybe&lt;Void&gt; sendMaybe(byte[] data); <b class="conum">(2)</b>
+
+    @Topic("product")
+    Mono&lt;Void&gt; sendMono(byte[] data); <b class="conum">(3)</b>
+
+    @Topic("product")
+    Publisher&lt;Void&gt; sendPublisher(byte[] data); <b class="conum">(4)</b>
+
+    @Topic("product")
+    CompletableFuture&lt;Void&gt; sendFuture(byte[] data); <b class="conum">(5)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.reactivex.Completable
+import io.reactivex.Maybe
+import org.reactivestreams.Publisher
+import reactor.core.publisher.Mono
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic("product")
+    Completable send(byte[] data) <b class="conum">(1)</b>
+
+    @Topic("product")
+    Maybe&lt;Void&gt; sendMaybe(byte[] data) <b class="conum">(2)</b>
+
+    @Topic("product")
+    Mono&lt;Void&gt; sendMono(byte[] data) <b class="conum">(3)</b>
+
+    @Topic("product")
+    Publisher&lt;Void&gt; sendPublisher(byte[] data) <b class="conum">(4)</b>
+
+    @Topic("product")
+    CompletableFuture&lt;Void&gt; sendFuture(byte[] data) <b class="conum">(5)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.Topic
+import io.reactivex.Completable
+import io.reactivex.Maybe
+import org.reactivestreams.Publisher
+import reactor.core.publisher.Mono
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic("product")
+    fun send(data: ByteArray): Completable  <b class="conum">(1)</b>
+
+    @Topic("product")
+    fun sendMaybe(data: ByteArray): Maybe&lt;Void&gt;  <b class="conum">(2)</b>
+
+    @Topic("product")
+    fun sendMono(data: ByteArray): Mono&lt;Void&gt;  <b class="conum">(3)</b>
+
+    @Topic("product")
+    fun sendPublisher(data: ByteArray): Publisher&lt;Void&gt;  <b class="conum">(4)</b>
+
+    @Topic("product")
+    fun sendFuture(data: ByteArray): CompletableFuture&lt;Void&gt;  <b class="conum">(5)</b>
+
+    @Topic("product")
+    suspend fun sendSuspend(data: ByteArray): Unit //suspend methods work too!
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The recommended approach of using a <code>Completable</code> as the return type for those using <a href="https://github.com/ReactiveX/RxJava">RxJava 2</a>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A <code>Maybe</code> also closely matches the use case of publisher acknowledgement.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>For those that prefer <a href="https://projectreactor.io/">Project Reactor</a>, a <code>Mono</code> can be used. Note that Micronaut does not ship with Reactor.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>For those who prefer not to use any reactive library in their code, a <code>Publisher</code> can be returned.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Futures are also supported</td>
+</tr>
+</table>
+</div>
+
 <h1 id="consumer"><a class="anchor" href="#consumer"></a>7 MQTT Subscribers</h1>
 
 <div class='contribute-btn'>
@@ -1325,7 +1463,7 @@ interface ProductClient {
 <p>The example in the quick start presented a trivial definition of a class that listens for messages using the <a href="../api/io/micronaut/mqtt/annotation/MqttSubscriber.html">@MqttSubscriber</a> annotation.</p>
 </div>
 <div class="paragraph">
-<p>The implementation that powers <code>@MqttSubscriber</code> (defined by the <a href="../api/io/micronaut/mqtt/intercept/AbstractMqttSubscriberAdvice.html">AbstractMqttSubscriberAdvice</a> class) is, however, very flexible and offers a range of options for defining MQTT consumers.</p>
+<p>The implementation that powers <code>@MqttSubscriber</code> (defined by the <a href="../api/io/micronaut/mqtt/intercept/AbstractMqttSubscriberAdvice.html">AbstractMqttSubscriberAdvice</a> class) is, however, very flexible and offers a range of options for defining MQTT subscribers.</p>
 </div>
 
 <h2 id="consumerMethods"><a class="anchor" href="#consumerMethods"></a>7.1 Defining @MqttSubscriber Methods</h2>
@@ -1373,7 +1511,7 @@ In order for all of the functionality to work as designed in this guide your cla
 
 
 <div class="paragraph">
-<p>In order for the consumer method to be invoked, all arguments must be satisfied. To allow execution of the method with a null value, the argument <strong>must</strong> be declared as nullable. If the arguments cannot be satisfied, an exception will be thrown. See the section on <a href="#consumerExceptions">consumer exceptions</a> for details on how to handle exceptions thrown during the subscription process.</p>
+<p>In order for the subscriber method to be invoked, all arguments must be satisfied. To allow execution of the method with a null value, the argument <strong>must</strong> be declared as nullable. If the arguments cannot be satisfied, an exception will be thrown. See the section on <a href="#consumerExceptions">consumer exceptions</a> for details on how to handle exceptions thrown during the subscription process.</p>
 </div>
 
 <h2 id="consumerTopic"><a class="anchor" href="#consumerTopic"></a>7.1.1.1 Topic</h2>
@@ -1386,7 +1524,7 @@ In order for all of the functionality to work as designed in this guide your cla
 
 
 <div class="paragraph">
-<p>A <a href="../api/io/micronaut/mqtt/annotation/Topic.html">@Topic</a> annotation is required for a method to be a consumer of messages from MQTT. Simply apply the annotation to the method and supply the name of the topic you would like to listen to. Multiple topics can be subscribed to by supplying multiple annotations. Each topic can have its own qos value set in the annotation.</p>
+<p>A <a href="../api/io/micronaut/mqtt/annotation/Topic.html">@Topic</a> annotation is required for a method to be a subscriber of messages from MQTT. Simply apply the annotation to the method and supply the name of the topic you would like to listen to. Multiple topics can be subscribed to by supplying multiple annotations. Each topic can have its own qos value set in the annotation.</p>
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
@@ -1562,7 +1700,7 @@ class ProductListener {
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The acknowledgement argument is injected into the method. That signifies that this library is no longer in control of acknowledgement in any way for this consumer.</td>
+<td>The acknowledgement argument is injected into the method</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -1572,7 +1710,7 @@ class ProductListener {
 </div>
 </div>
 
-<h2 id="consumerExceptions"><a class="anchor" href="#consumerExceptions"></a>7.2 Handling Consumer Exceptions</h2>
+<h2 id="consumerExceptions"><a class="anchor" href="#consumerExceptions"></a>7.2 Handling Subscriber Exceptions</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerExceptions.adoc"'>
@@ -1590,24 +1728,24 @@ class ProductListener {
 <p>Binding the message to the method arguments</p>
 </li>
 <li>
-<p>Exceptions thrown from the consumer methods</p>
+<p>Exceptions thrown from the subscriber methods</p>
 </li>
 <li>
 <p>Exceptions as a result of message acknowledgement</p>
 </li>
 <li>
-<p>Exceptions thrown attempting to add the consumer to the channel</p>
+<p>Exceptions thrown attempting to subscribe to a topic</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>If the consumer bean implements <a href="../api/io/micronaut/mqtt/exception/MqttSubscriberExceptionHandler.html">MqttSubscriberExceptionHandler</a>, then exceptions will be sent to the method implementation.</p>
+<p>If the subscriber bean implements <a href="../api/io/micronaut/mqtt/exception/MqttSubscriberExceptionHandler.html">MqttSubscriberExceptionHandler</a>, then exceptions will be sent to the method implementation.</p>
 </div>
 <div class="paragraph">
-<p>If the consumer bean does not implement <a href="../api/io/micronaut/mqtt/exception/MqttSubscriberExceptionHandler.html">MqttSubscriberExceptionHandler</a>, then the exceptions will be routed to the primary exception handler bean. To override the default exception handler, replace the <a href="../api/io/micronaut/mqtt/exception/DefaultMqttSubscriberExceptionHandler.html">DefaultMqttSubscriberExceptionHandler</a> with your own implementation that is designated as <code>@Primary</code>.</p>
+<p>If the subscriber bean does not implement <a href="../api/io/micronaut/mqtt/exception/MqttSubscriberExceptionHandler.html">MqttSubscriberExceptionHandler</a>, then the exceptions will be routed to the primary exception handler bean. To override the default exception handler, replace the <a href="../api/io/micronaut/mqtt/exception/DefaultMqttSubscriberExceptionHandler.html">DefaultMqttSubscriberExceptionHandler</a> with your own implementation that is designated as <code>@Primary</code>.</p>
 </div>
 
-<h2 id="consumerExecutor"><a class="anchor" href="#consumerExecutor"></a>7.3 Consumer Execution</h2>
+<h2 id="consumerExecutor"><a class="anchor" href="#consumerExecutor"></a>7.3 Subscriber Execution</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerExecutor.adoc"'>
@@ -1617,7 +1755,7 @@ class ProductListener {
 
 
 <div class="paragraph">
-<p>MQTT allows an <a href="{jdkapi}/java/util/concurrent/ExecutorService.html">ExecutorService</a> to be supplied for new connections. The service is used to execute consumers. A single connection is used for the entire application and it is configured to use the <code>consumer</code> named executor service. The executor can be configured through application configuration. See <a href="https://docs.micronaut.io/latest/api/io/micronaut/scheduling/executor/ExecutorConfiguration.html">ExecutorConfiguration</a> for the full list of options.</p>
+<p>MQTT allows an <a href="{jdkapi}/java/util/concurrent/ExecutorService.html">ExecutorService</a> to be supplied for new connections. The service is used to execute subscribers. A single connection is used for the entire application and it is configured to use the <code>consumer</code> named executor service. The executor can be configured through application configuration. See <a href="https://docs.micronaut.io/latest/api/io/micronaut/scheduling/executor/ExecutorConfiguration.html">ExecutorConfiguration</a> for the full list of options.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -1693,7 +1831,7 @@ The executor type <strong>must</strong> be <code>scheduled</code>.
 <div class="sect3">
 <h4 id="_annotation_binding">Annotation Binding</h4>
 <div class="paragraph">
-<p>A custom annotation can be created to bind consumer arguments. A custom binder can then be created to use that annotation. In this example an annotation is used to bind to the correlation data (only available in v5).</p>
+<p>A custom annotation can be created to bind subscriber arguments. A custom binder can then be created to use that annotation. In this example an annotation is used to bind to the correlation data (only available in v5).</p>
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
@@ -1865,12 +2003,12 @@ class CorrelationAnnotationBinder(private val conversionService: ConversionServi
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>The correlation data is returned to be bound to a consumer method value.</td>
+<td>The correlation data is returned to be bound to a subscriber method value.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The annotation can now be used on the argument in a consumer method.</p>
+<p>The annotation can now be used on the argument in a subscriber method.</p>
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">

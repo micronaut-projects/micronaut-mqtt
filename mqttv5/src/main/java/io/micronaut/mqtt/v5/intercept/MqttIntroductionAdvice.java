@@ -37,7 +37,6 @@ import org.eclipse.paho.mqttv5.common.packet.UserProperty;
 
 import javax.inject.Singleton;
 import java.lang.annotation.Annotation;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;

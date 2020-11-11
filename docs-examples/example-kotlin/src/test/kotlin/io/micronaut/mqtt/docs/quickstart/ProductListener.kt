@@ -1,12 +1,11 @@
 package io.micronaut.mqtt.docs.quickstart
 
 // tag::imports[]
-import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
 import java.util.*
 // end::imports[]
-
-import io.micronaut.context.annotation.Requires
 
 @Requires(property = "spec.name", value = "QuickstartSpec")
 // tag::clazz[]
@@ -19,7 +18,7 @@ class ProductListener {
     fun receive(data: ByteArray) { // <3>
         val string = String(data)
         messageLengths.add(string)
-        println("Kotlin received ${data.size} bytes from RabbitMQ: ${string}")
+        println("Kotlin received ${data.size} bytes from MQTT: ${string}")
     }
 }
 // end::clazz[]

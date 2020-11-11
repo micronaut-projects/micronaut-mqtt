@@ -1,11 +1,10 @@
 package io.micronaut.mqtt.docs.publisher.acknowledge
 
 // tag::imports[]
+import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 // end::imports[]
-
-import io.micronaut.context.annotation.Requires
 
 @Requires(property = "spec.name", value = "PublisherAcknowledgeSpec")
 // tag::clazz[]
@@ -18,7 +17,7 @@ class ProductListener {
     void receive(byte[] data) { // <3>
         Integer length = data.length
         messageLengths.add(length)
-        println("Groovy received " + length + " bytes from RabbitMQ")
+        println("Groovy received " + length + " bytes from MQTT")
     }
 }
 // end::clazz[]

@@ -1,6 +1,6 @@
 package io.micronaut.mqtt.docs.publisher.acknowledge;
 
-import io.micronaut.mqtt.AbstractRabbitMQTest;
+import io.micronaut.mqtt.AbstractMQTTTest;
 import io.micronaut.context.ApplicationContext;
 import io.reactivex.Completable;
 import io.reactivex.CompletableObserver;
@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
 
-public class PublisherAcknowledgeSpec extends AbstractRabbitMQTest {
+public class PublisherAcknowledgeSpec extends AbstractMQTTTest {
 
     @Test
     void testPublisherAcknowledgement() {

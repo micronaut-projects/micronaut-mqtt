@@ -345,8 +345,8 @@ Because the <code>send</code> method returns <code>void</code> this means the me
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
-import io.micronaut.mqtt.annotation.MqttSubscriber;
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.MqttSubscriber;
+import io.micronaut.mqtt.annotation.Topic;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -360,7 +360,7 @@ public class ProductListener {
     @Topic("product") <b class="conum">(2)</b>
     public void receive(byte[] data) { <b class="conum">(3)</b>
         messageLengths.add(new String(data));
-        System.out.println("Java received " + data.length + " bytes from RabbitMQ");
+        System.out.println("Java received " + data.length + " bytes from MQTT");
     }
 }</code></pre>
 </div>
@@ -378,15 +378,15 @@ class ProductListener {
     @Topic("product") <b class="conum">(2)</b>
     void receive(byte[] data) { <b class="conum">(3)</b>
         messageLengths.add(new String(data))
-        println("Groovy received ${data.length} bytes from RabbitMQ")
+        println("Groovy received ${data.length} bytes from MQTT")
     }
 }</code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.annotation.MqttSubscriber
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
 import java.util.*
 
 @MqttSubscriber <b class="conum">(1)</b>
@@ -398,7 +398,7 @@ class ProductListener {
     fun receive(data: ByteArray) { <b class="conum">(3)</b>
         val string = String(data)
         messageLengths.add(string)
-        println("Kotlin received ${data.size} bytes from RabbitMQ: ${string}")
+        println("Kotlin received ${data.size} bytes from MQTT: ${string}")
     }
 }</code></pre>
 </div>
@@ -611,7 +611,7 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 
 
 <div class="paragraph">
-<p>All properties on the 'MqttConnectionOptions' are available to be modified, either through configuration or a <a href="https://docs.micronaut.io/latest/api/io/micronaut/context/event/BeanCreatedEventListener.html">BeanCreatedEventListener</a>.</p>
+<p>All properties on the <code>MqttConnectionOptions</code> are available to be modified, either through configuration or a <a href="https://docs.micronaut.io/latest/api/io/micronaut/context/event/BeanCreatedEventListener.html">BeanCreatedEventListener</a>.</p>
 </div>
 <div class="paragraph">
 <p>The properties that can be converted from the string values in a configuration file can be configured directly.</p>
@@ -776,7 +776,7 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Without any configuration the defaults in the 'MqttConnectionOptions' will be used.
+Without any configuration the defaults in the <code>MqttConnectionOptions</code> will be used.
 </td>
 </tr>
 </table>
@@ -806,7 +806,7 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 <div class="sect2">
 <h3 id="_publishers">Publishers</h3>
 <div class="paragraph">
-<p>It is also supported to supply properties when publishing messages. Any of the org.eclipse.paho.mqttv5.common.packet.MqttProperties can be set dynamically per execution or statically for all executions. Properties can be set using the <a href="../api/io/micronaut/mqtt/v5/annotation/MqttProperty.html">@MqttProperty</a> annotation.</p>
+<p>It is also supported to supply properties when publishing messages. Any of the <code>org.eclipse.paho.mqttv5.common.packet.MqttProperties</code> can be set dynamically per execution or statically for all executions. Properties can be set using the <a href="../api/io/micronaut/mqtt/v5/annotation/MqttProperty.html">@MqttProperty</a> annotation.</p>
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
@@ -1019,7 +1019,7 @@ Arguments are required by default and an exception will be thrown if they cannot
 
 
 <div class="paragraph">
-<p>The example in the quick start presented a trivial definition of an interface that be implemented automatically for you using the '@MqttPublisher' annotation.</p>
+<p>The example in the quick start presented a trivial definition of an interface that be implemented automatically for you using the <code>@MqttPublisher</code> annotation.</p>
 </div>
 <div class="paragraph">
 <p>The implementation that powers <code>@MqttPublisher</code> is, however, very flexible and offers a range of options for defining MQTT producers.</p>
@@ -1491,7 +1491,7 @@ class ProductListener {
 <p>If manual acknowledge is enabled through the <code>mqtt.client.manual-acks</code> configuration property, messages can be acknowledged manually.</p>
 </div>
 <div class="paragraph">
-<p>For methods that accept an argument of type <a href="https://docs.micronaut.io/latest/api/io/micronaut/messaging.Acknowledgement.html">Acknowledgement</a>, the message will only be acknowledged when the <code>ack</code> method is called. The <code>nack</code> method is not relevant for MQTT and should not be called.</p>
+<p>For methods that accept an argument of type <a href="https://docs.micronaut.io/latest/api/io/micronaut/messaging/Acknowledgement.html">Acknowledgement</a>, the message will only be acknowledged when the <code>ack</code> method is called. The <code>nack</code> method is not relevant for MQTT and should not be called.</p>
 </div>
 <div class="sect2">
 <h3 id="_acknowledgement_type">Acknowledgement Type</h3>
@@ -1601,10 +1601,10 @@ class ProductListener {
 </ul>
 </div>
 <div class="paragraph">
-<p>If the consumer bean implements <a href="../api/io/micronaut/configuration/rabbitmq/exception/RabbitListenerExceptionHandler.html">RabbitListenerExceptionHandler</a>, then exceptions will be sent to the method implementation.</p>
+<p>If the consumer bean implements <a href="../api/io/micronaut/mqtt/exception/MqttSubscriberExceptionHandler.html">MqttSubscriberExceptionHandler</a>, then exceptions will be sent to the method implementation.</p>
 </div>
 <div class="paragraph">
-<p>If the consumer bean does not implement <a href="../api/io/micronaut/configuration/rabbitmq/exception/RabbitListenerExceptionHandler.html">RabbitListenerExceptionHandler</a>, then the exceptions will be routed to the primary exception handler bean. To override the default exception handler, replace the <a href="../api/io/micronaut/configuration/rabbitmq/exception/DefaultRabbitListenerExceptionHandler.html">DefaultRabbitListenerExceptionHandler</a> with your own implementation that is designated as <code>@Primary</code>.</p>
+<p>If the consumer bean does not implement <a href="../api/io/micronaut/mqtt/exception/MqttSubscriberExceptionHandler.html">MqttSubscriberExceptionHandler</a>, then the exceptions will be routed to the primary exception handler bean. To override the default exception handler, replace the <a href="../api/io/micronaut/mqtt/exception/DefaultMqttSubscriberExceptionHandler.html">DefaultMqttSubscriberExceptionHandler</a> with your own implementation that is designated as <code>@Primary</code>.</p>
 </div>
 
 <h2 id="consumerExecutor"><a class="anchor" href="#consumerExecutor"></a>7.3 Consumer Execution</h2>

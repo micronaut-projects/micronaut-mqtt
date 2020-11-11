@@ -11,6 +11,8 @@ import reactor.core.publisher.Mono;
 
 import io.micronaut.context.annotation.Requires;
 
+import java.util.concurrent.CompletableFuture;
+
 @Requires(property = "spec.name", value = "PublisherAcknowledgeSpec")
 // tag::clazz[]
 @MqttPublisher
@@ -27,5 +29,8 @@ public interface ProductClient {
 
     @Topic("product")
     Publisher<Void> sendPublisher(byte[] data); // <4>
+
+    @Topic("product")
+    CompletableFuture<Void> sendFuture(byte[] data); // <5>
 }
 // end::clazz[]

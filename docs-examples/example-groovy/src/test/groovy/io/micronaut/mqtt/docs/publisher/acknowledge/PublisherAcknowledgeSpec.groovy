@@ -13,6 +13,7 @@ import org.reactivestreams.Subscription
 import reactor.core.publisher.Mono
 import spock.util.concurrent.PollingConditions
 
+import java.util.concurrent.CompletableFuture
 import java.util.concurrent.atomic.AtomicInteger
 
 class PublisherAcknowledgeSpec extends AbstractMQTTTest {
@@ -25,12 +26,13 @@ class PublisherAcknowledgeSpec extends AbstractMQTTTest {
         AtomicInteger errorCount = new AtomicInteger(0)
 
         when:
-        // tag::producer[]
         ProductClient productClient = applicationContext.getBean(ProductClient)
         Completable completable = productClient.send("completable body".bytes)
         Maybe<Void> maybe = productClient.sendMaybe("maybe body".bytes)
         Mono<Void> mono = productClient.sendMono("mono body".bytes)
         Publisher<Void> publisher = productClient.sendPublisher("publisher body".bytes)
+        CompletableFuture<Void> future = productClient.sendFuture("future body".bytes)
+        ProductListener listener = applicationContext.getBean(ProductListener.class)
 
         completable.subscribe(new CompletableObserver() {
             @Override
@@ -92,12 +94,19 @@ class PublisherAcknowledgeSpec extends AbstractMQTTTest {
         }
         mono.subscribe(subscriber)
         publisher.subscribe(subscriber)
-// end::producer[]
+        future.whenComplete {v, t ->
+            if (t == null) {
+                successCount.incrementAndGet()
+            } else {
+                errorCount.incrementAndGet()
+            }
+        }
 
         then:
         conditions.eventually {
             errorCount.get() == 0
-            successCount.get() == 4
+            successCount.get() == 5
+            listener.messageLengths.size() == 5
         }
 
         cleanup:

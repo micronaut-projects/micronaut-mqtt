@@ -1,0 +1,15 @@
+MQTT supports publisher acknowledgements that behave different based on the qos of the message being sent. The broker will acknowledge the message and then that will cause the publishing method to complete. For publishers that return `void`, that means the method will block the current thread until the acknowledgement is received. For futures and reactive types, they will complete after the acknowledgement is received.
+
+Since the publisher is cold, the message will not actually be published until the stream is subscribed to.
+
+Micronaut comes with RxJava2 by default, and the link:http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Completable.html[Completable] type is the reactive type that best fits the publisher acknowledgement use case. No value of any type is returned, the message is either acknowledged (completed) or not (error).
+
+For example:
+
+snippet::io.micronaut.mqtt.docs.publisher.acknowledge.ProductClient[tags="imports,clazz", project-base="docs-examples/example]
+
+<1> The recommended approach of using a `Completable` as the return type for those using link:https://github.com/ReactiveX/RxJava[RxJava 2].
+<2> A `Maybe` also closely matches the use case of publisher acknowledgement.
+<3> For those that prefer link:https://projectreactor.io/[Project Reactor], a `Mono` can be used. Note that Micronaut does not ship with Reactor.
+<4> For those who prefer not to use any reactive library in their code, a `Publisher` can be returned.
+<5> Futures are also supported

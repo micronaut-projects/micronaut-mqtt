@@ -6,5 +6,5 @@ For methods that accept an argument of type link:{apimicronaut}messaging.Acknowl
 
 snippet::io.micronaut.mqtt.docs.consumer.acknowledge.type.ProductListener[tags="imports,clazz", project-base="docs-examples/example]
 
-<1> The acknowledgement argument is injected into the method. That signifies that this library is no longer in control of acknowledgement in any way for this consumer.
+<1> The acknowledgement argument is injected into the method
 <2> The message is acknowledged

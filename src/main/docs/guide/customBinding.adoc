@@ -18,7 +18,7 @@ To inject your own argument binding behavior, it is as simple as registering a b
 
 ==== Annotation Binding
 
-A custom annotation can be created to bind consumer arguments. A custom binder can then be created to use that annotation. In this example an annotation is used to bind to the correlation data (only available in v5).
+A custom annotation can be created to bind subscriber arguments. A custom binder can then be created to use that annotation. In this example an annotation is used to bind to the correlation data (only available in v5).
 
 snippet::io.micronaut.mqtt.docs.custom.annotation.Correlation[tags="imports,clazz", project-base="docs-examples/example]
 
@@ -30,9 +30,9 @@ snippet::io.micronaut.mqtt.docs.custom.annotation.CorrelationAnnotationBinder[ta
 <2> The custom annotation is used as the generic type for the interface.
 <3> The conversion service is injected into the instance.
 <4> The correlation data is set from the publisher method value.
-<5> The correlation data is returned to be bound to a consumer method value.
+<5> The correlation data is returned to be bound to a subscriber method value.
 
-The annotation can now be used on the argument in a consumer method.
+The annotation can now be used on the argument in a subscriber method.
 
 snippet::io.micronaut.mqtt.docs.custom.annotation.ProductListener[tags="imports,clazz", project-base="docs-examples/example]
 

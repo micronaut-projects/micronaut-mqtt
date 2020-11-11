@@ -10,6 +10,7 @@ import reactor.core.publisher.Mono
 // end::imports[]
 
 import io.micronaut.context.annotation.Requires
+import java.util.concurrent.CompletableFuture
 
 @Requires(property = "spec.name", value = "PublisherAcknowledgeSpec")
 // tag::clazz[]
@@ -27,5 +28,11 @@ interface ProductClient {
 
     @Topic("product")
     fun sendPublisher(data: ByteArray): Publisher<Void>  // <4>
+
+    @Topic("product")
+    fun sendFuture(data: ByteArray): CompletableFuture<Void>  // <5>
+
+    @Topic("product")
+    suspend fun sendSuspend(data: ByteArray): Unit //suspend methods work too!
 }
 // end::clazz[]

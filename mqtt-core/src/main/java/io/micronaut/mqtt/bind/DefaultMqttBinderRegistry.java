@@ -16,14 +16,18 @@
 package io.micronaut.mqtt.bind;
 
 import io.micronaut.core.bind.annotation.Bindable;
+import io.micronaut.core.convert.ArgumentConversionContext;
 import io.micronaut.core.type.Argument;
 import io.micronaut.core.util.ArrayUtils;
+import kotlin.coroutines.Continuation;
 
 import javax.inject.Singleton;
 import java.lang.annotation.Annotation;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
+
+import static io.micronaut.core.util.KotlinUtils.KOTLIN_COROUTINES_SUPPORTED;
 
 /**
  * A default implementation of {@link MqttBinderRegistry} that searches
@@ -66,6 +70,19 @@ public class DefaultMqttBinderRegistry implements MqttBinderRegistry {
                 }
             }
         }
+        if (KOTLIN_COROUTINES_SUPPORTED) {
+            //Do nothing with the continuation
+            byType.put(Argument.of(Continuation.class).typeHashCode(), new MqttBinder<Object, Object>() {
+                @Override
+                public void bindTo(Object context, Object value, Argument<Object> argument) { }
+
+                @Override
+                public Optional<Object> bindFrom(Object context, ArgumentConversionContext<Object> conversionContext) {
+                    return Optional.empty();
+                }
+            });
+        }
+
     }
 
     @Override
@@ -79,6 +96,10 @@ public class DefaultMqttBinderRegistry implements MqttBinderRegistry {
             }
         } else {
             MqttBinder binder = byType.get(argument.typeHashCode());
+            if (binder != null) {
+                return binder;
+            }
+            binder = byType.get(Argument.of(argument.getType()).typeHashCode());
             if (binder != null) {
                 return binder;
             }

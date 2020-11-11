@@ -6,6 +6,8 @@ import io.micronaut.mqtt.AbstractMqttKotest
 import io.reactivex.CompletableObserver
 import io.reactivex.MaybeObserver
 import io.reactivex.disposables.Disposable
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 import org.opentest4j.AssertionFailedError
 import org.reactivestreams.Subscriber
 import org.reactivestreams.Subscription
@@ -24,12 +26,17 @@ class PublisherAcknowledgeSpec : AbstractMqttKotest({
         val errorCount = AtomicInteger(0)
 
         `when`("The messages are published") {
-            // tag::producer[]
             val productClient = ctx.getBean(ProductClient::class.java)
             val completable = productClient.send("completable body".toByteArray())
             val maybe = productClient.sendMaybe("maybe body".toByteArray())
             val mono = productClient.sendMono("mono body".toByteArray())
             val publisher = productClient.sendPublisher("publisher body".toByteArray())
+            val future = productClient.sendFuture("future body".toByteArray())
+            val deferred = async {
+                productClient.sendSuspend("suspend body".toByteArray())
+            }
+
+            val listener = ctx.getBean(ProductListener::class.java)
 
             completable.subscribe(object : CompletableObserver {
                 override fun onSubscribe(d: Disposable) { }
@@ -80,12 +87,26 @@ class PublisherAcknowledgeSpec : AbstractMqttKotest({
             })
             mono.subscribe(subscriber)
             publisher.subscribe(subscriber)
-// end::producer[]
+            future.handle { _, t ->
+                if (t == null) {
+                    successCount.incrementAndGet()
+                } else {
+                    errorCount.incrementAndGet()
+                }
+            }
+            deferred.invokeOnCompletion {
+                if (it == null) {
+                    successCount.incrementAndGet()
+                } else {
+                    errorCount.incrementAndGet()
+                }
+            }
 
             then("The messages are published") {
                 eventually(10.seconds, AssertionFailedError::class) {
                     errorCount.get() shouldBe 0
-                    successCount.get() shouldBe 4
+                    successCount.get() shouldBe 6
+                    listener.messageLengths.size shouldBe 6
                 }
             }
         }

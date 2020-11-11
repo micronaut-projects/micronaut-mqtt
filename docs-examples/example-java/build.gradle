@@ -7,23 +7,15 @@ repositories {
 }
 
 dependencies {
-    testImplementation project(":mqtt-test")
-    testImplementation project(":mqttv5")
-    testImplementation "io.micronaut.test:micronaut-test-junit5:$micronautTestVersion"
-    testAnnotationProcessor "io.micronaut:micronaut-inject-java"
     testCompile 'org.awaitility:awaitility:4.0.3'
-    testCompile "org.junit.jupiter:junit-jupiter-api"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
-    testImplementation "io.micronaut.reactor:micronaut-reactor"
+
 }
 
 compileJava.options.compilerArgs += '-parameters'
 compileTestJava.options.compilerArgs += '-parameters'
 
-test {
-    useJUnitPlatform()
-
-    jvmArgs '-Duser.country=US'
-    jvmArgs '-Duser.language=en'
-    failFast = true
+micronaut {
+    testRuntime "junit5"
 }
+
+mainClassName = "io.micronaut.mqtt.docs.Application"

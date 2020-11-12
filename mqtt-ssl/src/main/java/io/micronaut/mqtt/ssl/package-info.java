@@ -13,16 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.docs
-
-import io.micronaut.runtime.Micronaut.*
-
 /**
- * Main class.
+ * MQTT SSL connection management.
  */
-fun main(args: Array<String>) {
-    build()
-            .args(*args)
-            .packages("com.example")
-            .start()
-}
+@Configuration
+@Requires(property = "mqtt.client.ssl")
+package io.micronaut.mqtt.ssl;
+
+import io.micronaut.context.annotation.Configuration;
+import io.micronaut.context.annotation.Requires;

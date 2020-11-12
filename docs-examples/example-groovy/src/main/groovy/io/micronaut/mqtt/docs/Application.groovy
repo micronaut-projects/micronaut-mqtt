@@ -18,6 +18,9 @@ package io.micronaut.mqtt.docs
 import io.micronaut.runtime.Micronaut
 import groovy.transform.CompileStatic
 
+/**
+ * Main class.
+ */
 @CompileStatic
 class Application {
     static void main(String[] args) {

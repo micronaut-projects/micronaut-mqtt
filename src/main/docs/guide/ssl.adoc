@@ -1,0 +1,13 @@
+This library supports connecting to MQTT brokers over SSL. Because that feature requires a third party dependency (Bouncy Castle), the functionality exists in a separate module that you must express a dependency on.
+
+dependency:micronaut-mqtt-ssl[groupId="io.micronaut.mqtt"]
+
+After adding the dependency, you must configure the client with the appropriate certificate authority, certificate, key, and password.
+
+include::{includedir}configurationProperties/io.micronaut.mqtt.ssl.MqttCertificateConfiguration.adoc[]
+
+NOTE: The files can be configured with the `file:` prefix to reference absolute paths on the file system or `classpath:` to reference files on the classpath.
+
+Once the configuration is in place the client will connect over SSL.
+
+TIP: The server URI must start with `ssl:`.

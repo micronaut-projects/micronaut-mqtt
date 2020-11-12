@@ -17,12 +17,16 @@ package io.micronaut.mqtt.v5.config;
 
 import io.micronaut.context.annotation.ConfigurationBuilder;
 import io.micronaut.context.annotation.ConfigurationProperties;
+import io.micronaut.mqtt.config.MqttSSLConfiguration;
 import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.eclipse.paho.mqttv5.common.MqttMessage;
 import org.eclipse.paho.mqttv5.common.packet.MqttProperties;
 
+import javax.net.SocketFactory;
+import javax.net.ssl.HostnameVerifier;
 import javax.validation.constraints.NotNull;
 import java.time.Duration;
+import java.util.Properties;
 
 /**
  * Configuration for the MQTT client.
@@ -31,13 +35,13 @@ import java.time.Duration;
  * @since 1.0.0
  */
 @ConfigurationProperties("mqtt.client")
-public class MqttClientConfigurationProperties  {
+public class MqttClientConfigurationProperties implements MqttSSLConfiguration {
 
     private String serverUri;
     private String clientId;
     private Duration connectionTimeout = Duration.ofSeconds(3);
 
-    @ConfigurationBuilder
+    @ConfigurationBuilder(excludes = {"socketFactory", "SSLProperties", "httpsHostnameVerificationEnabled", "SSLHostnameVerifier"})
     private final MqttConnectionOptions connectOptions = new MqttConnectionOptions();
 
     public MqttClientConfigurationProperties(WillMessage willMessage) {
@@ -95,6 +99,46 @@ public class MqttClientConfigurationProperties  {
      */
     public void setConnectionTimeout(Duration connectionTimeout) {
         this.connectionTimeout = connectionTimeout;
+    }
+
+    @Override
+    public SocketFactory getSocketFactory() {
+        return connectOptions.getSocketFactory();
+    }
+
+    @Override
+    public void setSocketFactory(SocketFactory socketFactory) {
+        connectOptions.setSocketFactory(socketFactory);
+    }
+
+    @Override
+    public Properties getSSLProperties() {
+        return connectOptions.getSSLProperties();
+    }
+
+    @Override
+    public void setSSLProperties(Properties props) {
+        connectOptions.setSSLProperties(props);
+    }
+
+    @Override
+    public boolean isHttpsHostnameVerificationEnabled() {
+        return connectOptions.isHttpsHostnameVerificationEnabled();
+    }
+
+    @Override
+    public void setHttpsHostnameVerificationEnabled(boolean httpsHostnameVerificationEnabled) {
+        connectOptions.setHttpsHostnameVerificationEnabled(httpsHostnameVerificationEnabled);
+    }
+
+    @Override
+    public HostnameVerifier getSSLHostnameVerifier() {
+        return connectOptions.getSSLHostnameVerifier();
+    }
+
+    @Override
+    public void setSSLHostnameVerifier(HostnameVerifier hostnameVerifier) {
+        connectOptions.setSSLHostnameVerifier(hostnameVerifier);
     }
 
     @ConfigurationProperties("will-message")

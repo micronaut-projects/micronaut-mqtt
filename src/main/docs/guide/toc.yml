@@ -8,6 +8,7 @@ v5:
   title: MQTT V5
   v5config: Configuration
   properties: Properties
+ssl: SSL Connections
 producer:
   title: MQTT Publishers
   producerMethods:

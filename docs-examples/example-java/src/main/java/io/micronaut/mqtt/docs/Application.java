@@ -17,6 +17,9 @@ package io.micronaut.mqtt.docs;
 
 import io.micronaut.runtime.Micronaut;
 
+/**
+ * Main class.
+ */
 public class Application {
 
     public static void main(String[] args) {

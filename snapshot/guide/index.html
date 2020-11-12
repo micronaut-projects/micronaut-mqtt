@@ -53,15 +53,17 @@
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#v5"><strong>5</strong><span>MQTT V5</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#producer"><strong>6</strong><span>MQTT Publishers</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#ssl"><strong>6</strong><span>SSL Connections</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#consumer"><strong>7</strong><span>MQTT Subscribers</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#producer"><strong>7</strong><span>MQTT Publishers</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#customBinding"><strong>8</strong><span>Customizing Parameter Binding</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#consumer"><strong>8</strong><span>MQTT Subscribers</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#serdes"><strong>9</strong><span>Message Serialization/Deserialization (SerDes)</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#customBinding"><strong>9</strong><span>Customizing Parameter Binding</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#repository"><strong>10</strong><span>Repository</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#serdes"><strong>10</strong><span>Message Serialization/Deserialization (SerDes)</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#repository"><strong>11</strong><span>Repository</span></a></div>
                                 
                             </div>
                         </div>
@@ -108,45 +110,47 @@
         
         <div class="toc-item" style="margin-left:10px" id="toc-item-properties"><a href="#properties"><strong>5.2</strong><span>Properties</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-producer"><a href="#producer"><strong>6</strong><span>MQTT Publishers</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-ssl"><a href="#ssl"><strong>6</strong><span>SSL Connections</span></a></div>
         
-        <div class="toc-item" style="margin-left:10px" id="toc-item-producerMethods"><a href="#producerMethods"><strong>6.1</strong><span>Defining Publisher Methods</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-producer"><a href="#producer"><strong>7</strong><span>MQTT Publishers</span></a></div>
         
-        <div class="toc-item" style="margin-left:20px" id="toc-item-producerParameters"><a href="#producerParameters"><strong>6.1.1</strong><span>Publisher Parameters</span></a></div>
+        <div class="toc-item" style="margin-left:10px" id="toc-item-producerMethods"><a href="#producerMethods"><strong>7.1</strong><span>Defining Publisher Methods</span></a></div>
         
-        <div class="toc-item" style="margin-left:30px" id="toc-item-producerTopic"><a href="#producerTopic"><strong>6.1.1.1</strong><span>Topic</span></a></div>
+        <div class="toc-item" style="margin-left:20px" id="toc-item-producerParameters"><a href="#producerParameters"><strong>7.1.1</strong><span>Publisher Parameters</span></a></div>
         
-        <div class="toc-item" style="margin-left:30px" id="toc-item-producerQos"><a href="#producerQos"><strong>6.1.1.2</strong><span>Qos</span></a></div>
+        <div class="toc-item" style="margin-left:30px" id="toc-item-producerTopic"><a href="#producerTopic"><strong>7.1.1.1</strong><span>Topic</span></a></div>
         
-        <div class="toc-item" style="margin-left:30px" id="toc-item-producerRetained"><a href="#producerRetained"><strong>6.1.1.3</strong><span>Retained</span></a></div>
+        <div class="toc-item" style="margin-left:30px" id="toc-item-producerQos"><a href="#producerQos"><strong>7.1.1.2</strong><span>Qos</span></a></div>
         
-        <div class="toc-item" style="margin-left:30px" id="toc-item-producerPayload"><a href="#producerPayload"><strong>6.1.1.4</strong><span>Payload</span></a></div>
+        <div class="toc-item" style="margin-left:30px" id="toc-item-producerRetained"><a href="#producerRetained"><strong>7.1.1.3</strong><span>Retained</span></a></div>
         
-        <div class="toc-item" style="margin-left:20px" id="toc-item-producerAcknowledge"><a href="#producerAcknowledge"><strong>6.1.2</strong><span>Publisher Acknowledgements</span></a></div>
+        <div class="toc-item" style="margin-left:30px" id="toc-item-producerPayload"><a href="#producerPayload"><strong>7.1.1.4</strong><span>Payload</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-consumer"><a href="#consumer"><strong>7</strong><span>MQTT Subscribers</span></a></div>
+        <div class="toc-item" style="margin-left:20px" id="toc-item-producerAcknowledge"><a href="#producerAcknowledge"><strong>7.1.2</strong><span>Publisher Acknowledgements</span></a></div>
         
-        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerMethods"><a href="#consumerMethods"><strong>7.1</strong><span>Defining @MqttSubscriber Methods</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-consumer"><a href="#consumer"><strong>8</strong><span>MQTT Subscribers</span></a></div>
         
-        <div class="toc-item" style="margin-left:20px" id="toc-item-consumerParameters"><a href="#consumerParameters"><strong>7.1.1</strong><span>Subscriber Parameters</span></a></div>
+        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerMethods"><a href="#consumerMethods"><strong>8.1</strong><span>Defining @MqttSubscriber Methods</span></a></div>
         
-        <div class="toc-item" style="margin-left:30px" id="toc-item-consumerTopic"><a href="#consumerTopic"><strong>7.1.1.1</strong><span>Topic</span></a></div>
+        <div class="toc-item" style="margin-left:20px" id="toc-item-consumerParameters"><a href="#consumerParameters"><strong>8.1.1</strong><span>Subscriber Parameters</span></a></div>
         
-        <div class="toc-item" style="margin-left:30px" id="toc-item-consumerPayload"><a href="#consumerPayload"><strong>7.1.1.2</strong><span>Payload</span></a></div>
+        <div class="toc-item" style="margin-left:30px" id="toc-item-consumerTopic"><a href="#consumerTopic"><strong>8.1.1.1</strong><span>Topic</span></a></div>
         
-        <div class="toc-item" style="margin-left:20px" id="toc-item-consumerAcknowledge"><a href="#consumerAcknowledge"><strong>7.1.2</strong><span>Acknowledging Messages</span></a></div>
+        <div class="toc-item" style="margin-left:30px" id="toc-item-consumerPayload"><a href="#consumerPayload"><strong>8.1.1.2</strong><span>Payload</span></a></div>
         
-        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerExceptions"><a href="#consumerExceptions"><strong>7.2</strong><span>Handling Subscriber Exceptions</span></a></div>
+        <div class="toc-item" style="margin-left:20px" id="toc-item-consumerAcknowledge"><a href="#consumerAcknowledge"><strong>8.1.2</strong><span>Acknowledging Messages</span></a></div>
         
-        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerExecutor"><a href="#consumerExecutor"><strong>7.3</strong><span>Subscriber Execution</span></a></div>
+        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerExceptions"><a href="#consumerExceptions"><strong>8.2</strong><span>Handling Subscriber Exceptions</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-customBinding"><a href="#customBinding"><strong>8</strong><span>Customizing Parameter Binding</span></a></div>
+        <div class="toc-item" style="margin-left:10px" id="toc-item-consumerExecutor"><a href="#consumerExecutor"><strong>8.3</strong><span>Subscriber Execution</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-serdes"><a href="#serdes"><strong>9</strong><span>Message Serialization/Deserialization (SerDes)</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-customBinding"><a href="#customBinding"><strong>9</strong><span>Customizing Parameter Binding</span></a></div>
         
-        <div class="toc-item" style="margin-left:10px" id="toc-item-custom"><a href="#custom"><strong>9.1</strong><span>Custom SerDes</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-serdes"><a href="#serdes"><strong>10</strong><span>Message Serialization/Deserialization (SerDes)</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-repository"><a href="#repository"><strong>10</strong><span>Repository</span></a></div>
+        <div class="toc-item" style="margin-left:10px" id="toc-item-custom"><a href="#custom"><strong>10.1</strong><span>Custom SerDes</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-repository"><a href="#repository"><strong>11</strong><span>Repository</span></a></div>
         
         </div>
     </div>
@@ -514,26 +518,6 @@ class ProductListener {
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.socket-factory</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">javax.net.SocketFactory</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.sslproperties</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Properties</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.https-hostname-verification-enabled</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.sslhostname-verifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">javax.net.ssl.HostnameVerifier</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.clean-session</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -561,6 +545,26 @@ class ProductListener {
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.custom-web-socket-headers</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Properties</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.socket-factory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">javax.net.SocketFactory</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.sslproperties</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Properties</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.https-hostname-verification-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.sslhostname-verifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">javax.net.ssl.HostnameVerifier</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -730,27 +734,7 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.socket-factory</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">javax.net.SocketFactory</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.sslproperties</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Properties</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.sslhostname-verifier</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">javax.net.ssl.HostnameVerifier</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.use-subscription-identifiers</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.https-hostname-verification-enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -767,6 +751,26 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.executor-service-timeout</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.socket-factory</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">javax.net.SocketFactory</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.sslproperties</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">java.util.Properties</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.https-hostname-verification-enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.sslhostname-verifier</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">javax.net.ssl.HostnameVerifier</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -1011,7 +1015,105 @@ Arguments are required by default and an exception will be thrown if they cannot
 </div>
 </div>
 
-<h1 id="producer"><a class="anchor" href="#producer"></a>6 MQTT Publishers</h1>
+<h1 id="ssl"><a class="anchor" href="#ssl"></a>6 SSL Connections</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/ssl.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>This library supports connecting to MQTT brokers over SSL. Because that feature requires a third party dependency (Bouncy Castle), the functionality exists in a separate module that you must express a dependency on.</p>
+</div>
+<div class="paragraph">
+<p>        <div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="gradle">implementation(<span class="hljs-string">"io.micronaut.mqtt:micronaut-mqtt-ssl")</span></code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="maven">&lt;dependency&gt;
+    &lt;groupId&gt;io.micronaut.mqtt&lt;/groupId&gt;
+    &lt;artifactId&gt;micronaut-mqtt-ssl&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</p>
+</div>
+<div class="paragraph">
+<p>After adding the dependency, you must configure the client with the appropriate certificate authority, certificate, key, and password.</p>
+</div>
+<a id="io.micronaut.mqtt.ssl.MqttCertificateConfiguration" href="#io.micronaut.mqtt.ssl.MqttCertificateConfiguration">&#128279;</a>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Configuration Properties for <a href="../api/io/micronaut/mqtt/ssl/MqttCertificateConfiguration.html">MqttCertificateConfiguration</a></caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.ssl.certificate-authority</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/core/io/Readable.html">Readable</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The certificate authority location</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.ssl.certificate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/core/io/Readable.html">Readable</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client certificate location</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.ssl.private-key</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/core/io/Readable.html">Readable</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The client private key location</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.ssl.password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The key password</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The files can be configured with the <code>file:</code> prefix to reference absolute paths on the file system or <code>classpath:</code> to reference files on the classpath.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once the configuration is in place the client will connect over SSL.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The server URI must start with <code>ssl:</code>.
+</td>
+</tr>
+</table>
+</div>
+
+<h1 id="producer"><a class="anchor" href="#producer"></a>7 MQTT Publishers</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer.adoc"'>
@@ -1027,7 +1129,7 @@ Arguments are required by default and an exception will be thrown if they cannot
 <p>The implementation that powers <code>@MqttPublisher</code> is, however, very flexible and offers a range of options for defining MQTT producers.</p>
 </div>
 
-<h2 id="producerMethods"><a class="anchor" href="#producerMethods"></a>6.1 Defining Publisher Methods</h2>
+<h2 id="producerMethods"><a class="anchor" href="#producerMethods"></a>7.1 Defining Publisher Methods</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods.adoc"'>
@@ -1062,7 +1164,7 @@ If the topic cannot be found, an exception will be thrown. Unless a reactive typ
 </table>
 </div>
 
-<h2 id="producerParameters"><a class="anchor" href="#producerParameters"></a>6.1.1 Publisher Parameters</h2>
+<h2 id="producerParameters"><a class="anchor" href="#producerParameters"></a>7.1.1 Publisher Parameters</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods/producerParameters.adoc"'>
@@ -1075,7 +1177,7 @@ If the topic cannot be found, an exception will be thrown. Unless a reactive typ
 <p>All options are available to be set for publishing messages, either through static values in annotations on the class or method, or through annotations on the method arguments.</p>
 </div>
 
-<h2 id="producerTopic"><a class="anchor" href="#producerTopic"></a>6.1.1.1 Topic</h2>
+<h2 id="producerTopic"><a class="anchor" href="#producerTopic"></a>7.1.1.1 Topic</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods/producerParameters/producerTopic.adoc"'>
@@ -1145,7 +1247,7 @@ interface ProductClient {
 </table>
 </div>
 
-<h2 id="producerQos"><a class="anchor" href="#producerQos"></a>6.1.1.2 Qos</h2>
+<h2 id="producerQos"><a class="anchor" href="#producerQos"></a>7.1.1.2 Qos</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods/producerParameters/producerQos.adoc"'>
@@ -1222,7 +1324,7 @@ interface ProductClient {
 </table>
 </div>
 
-<h2 id="producerRetained"><a class="anchor" href="#producerRetained"></a>6.1.1.3 Retained</h2>
+<h2 id="producerRetained"><a class="anchor" href="#producerRetained"></a>7.1.1.3 Retained</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods/producerParameters/producerRetained.adoc"'>
@@ -1301,7 +1403,7 @@ interface ProductClient {
 </table>
 </div>
 
-<h2 id="producerPayload"><a class="anchor" href="#producerPayload"></a>6.1.1.4 Payload</h2>
+<h2 id="producerPayload"><a class="anchor" href="#producerPayload"></a>7.1.1.4 Payload</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods/producerParameters/producerPayload.adoc"'>
@@ -1314,7 +1416,7 @@ interface ProductClient {
 <p>Most examples up to this point have been using a <code>byte[]</code> as the body type for simplicity. This library supports most standard Java types and JSON serialization (using Jackson) by default. The functionality is extensible and it is possible to add support for additional types and serialization strategies. See the section on <a href="#serdes">Message Serialization/Deserialization</a> for more information.</p>
 </div>
 
-<h2 id="producerAcknowledge"><a class="anchor" href="#producerAcknowledge"></a>6.1.2 Publisher Acknowledgements</h2>
+<h2 id="producerAcknowledge"><a class="anchor" href="#producerAcknowledge"></a>7.1.2 Publisher Acknowledgements</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/producer/producerMethods/producerAcknowledge.adoc"'>
@@ -1450,7 +1552,7 @@ interface ProductClient {
 </table>
 </div>
 
-<h1 id="consumer"><a class="anchor" href="#consumer"></a>7 MQTT Subscribers</h1>
+<h1 id="consumer"><a class="anchor" href="#consumer"></a>8 MQTT Subscribers</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer.adoc"'>
@@ -1466,7 +1568,7 @@ interface ProductClient {
 <p>The implementation that powers <code>@MqttSubscriber</code> (defined by the <a href="../api/io/micronaut/mqtt/intercept/AbstractMqttSubscriberAdvice.html">AbstractMqttSubscriberAdvice</a> class) is, however, very flexible and offers a range of options for defining MQTT subscribers.</p>
 </div>
 
-<h2 id="consumerMethods"><a class="anchor" href="#consumerMethods"></a>7.1 Defining @MqttSubscriber Methods</h2>
+<h2 id="consumerMethods"><a class="anchor" href="#consumerMethods"></a>8.1 Defining @MqttSubscriber Methods</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerMethods.adoc"'>
@@ -1501,7 +1603,7 @@ In order for all of the functionality to work as designed in this guide your cla
 </table>
 </div>
 
-<h2 id="consumerParameters"><a class="anchor" href="#consumerParameters"></a>7.1.1 Subscriber Parameters</h2>
+<h2 id="consumerParameters"><a class="anchor" href="#consumerParameters"></a>8.1.1 Subscriber Parameters</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerMethods/consumerParameters.adoc"'>
@@ -1514,7 +1616,7 @@ In order for all of the functionality to work as designed in this guide your cla
 <p>In order for the subscriber method to be invoked, all arguments must be satisfied. To allow execution of the method with a null value, the argument <strong>must</strong> be declared as nullable. If the arguments cannot be satisfied, an exception will be thrown. See the section on <a href="#consumerExceptions">consumer exceptions</a> for details on how to handle exceptions thrown during the subscription process.</p>
 </div>
 
-<h2 id="consumerTopic"><a class="anchor" href="#consumerTopic"></a>7.1.1.1 Topic</h2>
+<h2 id="consumerTopic"><a class="anchor" href="#consumerTopic"></a>8.1.1.1 Topic</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerMethods/consumerParameters/consumerTopic.adoc"'>
@@ -1603,7 +1705,7 @@ class ProductListener {
 </table>
 </div>
 
-<h2 id="consumerPayload"><a class="anchor" href="#consumerPayload"></a>7.1.1.2 Payload</h2>
+<h2 id="consumerPayload"><a class="anchor" href="#consumerPayload"></a>8.1.1.2 Payload</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerMethods/consumerParameters/consumerPayload.adoc"'>
@@ -1616,7 +1718,7 @@ class ProductListener {
 <p>Most examples up to this point have been using a <code>byte[]</code> as the body type for simplicity. This library supports most standard Java types and JSON deserialization (using Jackson) by default. The functionality is extensible and it is possible to add support for additional types and deserialization strategies. See the section on <a href="#serdes">Message Serialization/Deserialization</a> for more information.</p>
 </div>
 
-<h2 id="consumerAcknowledge"><a class="anchor" href="#consumerAcknowledge"></a>7.1.2 Acknowledging Messages</h2>
+<h2 id="consumerAcknowledge"><a class="anchor" href="#consumerAcknowledge"></a>8.1.2 Acknowledging Messages</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerMethods/consumerAcknowledge.adoc"'>
@@ -1710,7 +1812,7 @@ class ProductListener {
 </div>
 </div>
 
-<h2 id="consumerExceptions"><a class="anchor" href="#consumerExceptions"></a>7.2 Handling Subscriber Exceptions</h2>
+<h2 id="consumerExceptions"><a class="anchor" href="#consumerExceptions"></a>8.2 Handling Subscriber Exceptions</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerExceptions.adoc"'>
@@ -1745,7 +1847,7 @@ class ProductListener {
 <p>If the subscriber bean does not implement <a href="../api/io/micronaut/mqtt/exception/MqttSubscriberExceptionHandler.html">MqttSubscriberExceptionHandler</a>, then the exceptions will be routed to the primary exception handler bean. To override the default exception handler, replace the <a href="../api/io/micronaut/mqtt/exception/DefaultMqttSubscriberExceptionHandler.html">DefaultMqttSubscriberExceptionHandler</a> with your own implementation that is designated as <code>@Primary</code>.</p>
 </div>
 
-<h2 id="consumerExecutor"><a class="anchor" href="#consumerExecutor"></a>7.3 Subscriber Execution</h2>
+<h2 id="consumerExecutor"><a class="anchor" href="#consumerExecutor"></a>8.3 Subscriber Execution</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/consumer/consumerExecutor.adoc"'>
@@ -1786,7 +1888,7 @@ The executor type <strong>must</strong> be <code>scheduled</code>.
 </table>
 </div>
 
-<h1 id="customBinding"><a class="anchor" href="#customBinding"></a>8 Customizing Parameter Binding</h1>
+<h1 id="customBinding"><a class="anchor" href="#customBinding"></a>9 Customizing Parameter Binding</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/customBinding.adoc"'>
@@ -2405,7 +2507,7 @@ class ProductInfoTypeBinder constructor(private val conversionService: Conversio
 </div>
 </div>
 
-<h1 id="serdes"><a class="anchor" href="#serdes"></a>9 Message Serialization/Deserialization (SerDes)</h1>
+<h1 id="serdes"><a class="anchor" href="#serdes"></a>10 Message Serialization/Deserialization (SerDes)</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/serdes.adoc"'>
@@ -2424,7 +2526,7 @@ class ProductInfoTypeBinder constructor(private val conversionService: Conversio
 <p>By default, standard Java lang types and JSON format (with Jackson) are supported. You can supply your own ser-des by simply registering a bean of type <a href="../api/io/micronaut/mqtt/serdes/MqttPayloadSerDes.html">MqttPayloadSerDes</a>. All ser-des implement the <a href="https://docs.micronaut.io/latest/api/io/micronaut/core/order/Ordered.html">Ordered</a> interface, so custom implementations can come before, after, or in between the default implementations.</p>
 </div>
 
-<h2 id="custom"><a class="anchor" href="#custom"></a>9.1 Custom SerDes</h2>
+<h2 id="custom"><a class="anchor" href="#custom"></a>10.1 Custom SerDes</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/serdes/custom.adoc"'>
@@ -2644,7 +2746,7 @@ Because the <code>getOrder</code> method was not overridden, the default order o
 </table>
 </div>
 
-<h1 id="repository"><a class="anchor" href="#repository"></a>10 Repository</h1>
+<h1 id="repository"><a class="anchor" href="#repository"></a>11 Repository</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/repository.adoc"'>

@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -105,11 +105,16 @@ var activeTableTab = "activeTableTab";
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a></dd>
+</dl>
 <hr>
 <br>
 <pre>@ConfigurationProperties(value="mqtt.client")
 public class <span class="typeNameLabel">MqttClientConfigurationProperties</span>
-extends java.lang.Object</pre>
+extends java.lang.Object
+implements <a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a></pre>
 <div class="block">Configuration for the MQTT client.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
@@ -169,16 +174,48 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#getServerUri--">getServerUri</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
+<td class="colFirst"><code>javax.net.SocketFactory</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#getSocketFactory--">getSocketFactory</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>javax.net.ssl.HostnameVerifier</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#getSSLHostnameVerifier--">getSSLHostnameVerifier</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>java.util.Properties</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#getSSLProperties--">getSSLProperties</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#isHttpsHostnameVerificationEnabled--">isHttpsHostnameVerificationEnabled</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#setClientId-java.lang.String-">setClientId</a></span>(java.lang.String&nbsp;clientId)</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#setConnectionTimeout-java.time.Duration-">setConnectionTimeout</a></span>(java.time.Duration&nbsp;connectionTimeout)</code>&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#setHttpsHostnameVerificationEnabled-boolean-">setHttpsHostnameVerificationEnabled</a></span>(boolean&nbsp;httpsHostnameVerificationEnabled)</code>&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#setServerUri-java.lang.String-">setServerUri</a></span>(java.lang.String&nbsp;serverUri)</code>&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#setSocketFactory-javax.net.SocketFactory-">setSocketFactory</a></span>(javax.net.SocketFactory&nbsp;socketFactory)</code>&nbsp;</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#setSSLHostnameVerifier-javax.net.ssl.HostnameVerifier-">setSSLHostnameVerifier</a></span>(javax.net.ssl.HostnameVerifier&nbsp;hostnameVerifier)</code>&nbsp;</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#setSSLProperties-java.util.Properties-">setSSLProperties</a></span>(java.util.Properties&nbsp;props)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -302,13 +339,117 @@ public&nbsp;@NotNull java.lang.String&nbsp;getClientId()</pre>
 <a name="setConnectionTimeout-java.time.Duration-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setConnectionTimeout</h4>
 <pre>public&nbsp;void&nbsp;setConnectionTimeout(java.time.Duration&nbsp;connectionTimeout)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>connectionTimeout</code> - How long to wait for a connection</dd>
+</dl>
+</li>
+</ul>
+<a name="getSocketFactory--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSocketFactory</h4>
+<pre>public&nbsp;javax.net.SocketFactory&nbsp;getSocketFactory()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html#getSocketFactory--">getSocketFactory</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setSocketFactory-javax.net.SocketFactory-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSocketFactory</h4>
+<pre>public&nbsp;void&nbsp;setSocketFactory(javax.net.SocketFactory&nbsp;socketFactory)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html#setSocketFactory-javax.net.SocketFactory-">setSocketFactory</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getSSLProperties--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSSLProperties</h4>
+<pre>public&nbsp;java.util.Properties&nbsp;getSSLProperties()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html#getSSLProperties--">getSSLProperties</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setSSLProperties-java.util.Properties-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSSLProperties</h4>
+<pre>public&nbsp;void&nbsp;setSSLProperties(java.util.Properties&nbsp;props)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html#setSSLProperties-java.util.Properties-">setSSLProperties</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="isHttpsHostnameVerificationEnabled--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isHttpsHostnameVerificationEnabled</h4>
+<pre>public&nbsp;boolean&nbsp;isHttpsHostnameVerificationEnabled()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html#isHttpsHostnameVerificationEnabled--">isHttpsHostnameVerificationEnabled</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setHttpsHostnameVerificationEnabled-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setHttpsHostnameVerificationEnabled</h4>
+<pre>public&nbsp;void&nbsp;setHttpsHostnameVerificationEnabled(boolean&nbsp;httpsHostnameVerificationEnabled)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html#setHttpsHostnameVerificationEnabled-boolean-">setHttpsHostnameVerificationEnabled</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getSSLHostnameVerifier--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSSLHostnameVerifier</h4>
+<pre>public&nbsp;javax.net.ssl.HostnameVerifier&nbsp;getSSLHostnameVerifier()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html#getSSLHostnameVerifier--">getSSLHostnameVerifier</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="setSSLHostnameVerifier-javax.net.ssl.HostnameVerifier-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setSSLHostnameVerifier</h4>
+<pre>public&nbsp;void&nbsp;setSSLHostnameVerifier(javax.net.ssl.HostnameVerifier&nbsp;hostnameVerifier)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html#setSSLHostnameVerifier-javax.net.ssl.HostnameVerifier-">setSSLHostnameVerifier</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../io/micronaut/mqtt/config/MqttSSLConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a></code></dd>
 </dl>
 </li>
 </ul>

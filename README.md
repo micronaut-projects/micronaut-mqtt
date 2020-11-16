@@ -1,9 +1,9 @@
 # Micronaut MQTT
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.micronaut.mqtt/micronaut-mqtt.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.micronaut.mqtt%22%20AND%20a:%22micronaut-mqtt%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.micronaut.mqtt/micronaut-mqtt-core.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.micronaut.mqtt%22%20AND%20a:%22micronaut-mqtt-core%22)
 [![Build Status](https://github.com/micronaut-projects/micronaut-mqtt/workflows/Java%20CI/badge.svg)](https://github.com/micronaut-projects/micronaut-mqtt/actions)
 
-Micronaut MQTT is...
+Micronaut MQTT integrations Micronaut with the [Eclipse Paho](https://www.eclipse.org/paho/) MQTT messaging client.
 
 ## Documentation
 

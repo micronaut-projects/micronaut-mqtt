@@ -7,13 +7,10 @@ Micronaut MQTT integrations Micronaut with the [Eclipse Paho](https://www.eclips
 
 ## Documentation
 
-See the [Documentation](https://micronaut-projects.github.io/micronaut-mqtt/latest/guide/) for more information. 
+See the [Documentation](https://micronaut-projects.github.io/micronaut-mqtt/1.0.x/guide/) for more information. 
 
 See the [Snapshot Documentation](https://micronaut-projects.github.io/micronaut-mqtt/snapshot/guide/) for the current development docs.
 
-## Examples
-
-Examples can be found in the [examples](https://github.com/micronaut-projects/micronaut-mqtt/tree/master/examples) directory.
 
 ## Snapshots and Releases
 

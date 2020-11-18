@@ -35,4 +35,5 @@ customBinding: Customizing Parameter Binding
 serdes:
   title: Message Serialization/Deserialization (SerDes)
   custom: Custom SerDes
+graalvm: GraalVM support
 repository: Repository

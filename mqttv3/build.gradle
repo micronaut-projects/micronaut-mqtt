@@ -3,7 +3,7 @@ dependencies {
     annotationProcessor "io.micronaut.docs:micronaut-docs-asciidoc-config-props:$micronautDocsVersion"
 
     implementation "com.github.spotbugs:spotbugs-annotations"
-    implementation "org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5"
+    implementation "org.eclipse.paho:org.eclipse.paho.client.mqttv3:$pahov3Version"
     api project(":mqtt-core")
 
     testImplementation("org.spockframework:spock-core:${spockVersion}") {

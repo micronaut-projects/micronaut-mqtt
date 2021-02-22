@@ -6,6 +6,8 @@ dependencies {
     api "org.eclipse.paho:org.eclipse.paho.mqttv5.client:$pahov5Version"
     api project(":mqtt-core")
 
+    implementation "io.micronaut:micronaut-management:$micronautVersion"
+
     testImplementation("org.spockframework:spock-core:${spockVersion}") {
         exclude module:'groovy-all'
     }

@@ -9,10 +9,10 @@ class SimpleV5PubSubSpec extends SimplePubSubSpec {
 
     @Override
     Class<? extends SimplePubSubClient> getClient() {
-        return SimpleV3PubSubClient.class
+        return SimpleV5PubSubClient.class
     }
 
     @Requires(property = "spec.name", value = "SimpleV5PubSubSpec")
     @MqttPublisher
-    static interface SimpleV3PubSubClient extends SimplePubSubClient {}
+    static interface SimpleV5PubSubClient extends SimplePubSubClient {}
 }

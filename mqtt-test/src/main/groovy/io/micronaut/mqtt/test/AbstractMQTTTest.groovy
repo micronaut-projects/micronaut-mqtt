@@ -48,6 +48,7 @@ abstract class AbstractMQTTTest extends Specification {
         ApplicationContext.run(
                 ["mqtt.client.server-uri": "tcp://localhost:${mqttContainer.getMappedPort(1883)}",
                  "mqtt.client.client-id": UUID.randomUUID().toString(),
+                 "endpoints.health.mqtt.client.enabled": true,
                  "spec.name": getClass().simpleName] << additionalConfig, "test")
     }
 }

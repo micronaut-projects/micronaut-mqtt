@@ -11,7 +11,7 @@ micronaut {
     testRuntime "kotest"
 }
 
-mainClassName = "io.micronaut.mqtt.docs.Application.kt"
+mainClassName = "io.micronaut.mqtt.docs.ApplicationKt"
 
 java {
     sourceCompatibility = JavaVersion.toVersion('1.8')

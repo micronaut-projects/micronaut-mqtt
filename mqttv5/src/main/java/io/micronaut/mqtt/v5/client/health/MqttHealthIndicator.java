@@ -31,28 +31,27 @@ import io.reactivex.Flowable;
 
 /**
  * A {@link HealthIndicator} for Mqtt Client.
- *
  */
 @Requires(property = HealthEndpoint.PREFIX + ".mqtt.client.enabled", value = "true")
 @Requires(beans = HealthEndpoint.class)
 @Singleton
 public class MqttHealthIndicator implements HealthIndicator {
-	public static final String NAME = "mqtt-client-health";
-	private MqttAsyncClient client;
+    public static final String NAME = "mqtt-client-health";
+    private MqttAsyncClient client;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param client MqttAsyncClient.
-	 */
-	public MqttHealthIndicator(MqttAsyncClient client) {
-		this.client = client;
-	}
+    /**
+     * Constructor.
+     *
+     * @param client MqttAsyncClient.
+     */
+    public MqttHealthIndicator(MqttAsyncClient client) {
+        this.client = client;
+    }
 
-	@Override
-	public Publisher<HealthResult> getResult() {
-		HealthStatus status = client.isConnected() ? HealthStatus.UP : HealthStatus.DOWN;
-		HealthResult.Builder builder = HealthResult.builder(NAME, status).details(Collections.singletonMap("class", client.getClass().getName()));
-		return Flowable.just(builder.build());
-	}
+    @Override
+    public Publisher<HealthResult> getResult() {
+        HealthStatus status = client.isConnected() ? HealthStatus.UP : HealthStatus.DOWN;
+        HealthResult.Builder builder = HealthResult.builder(NAME, status).details(Collections.singletonMap("class", client.getClass().getName()));
+        return Flowable.just(builder.build());
+    }
 }

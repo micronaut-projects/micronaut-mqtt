@@ -19,6 +19,7 @@ import java.util.Collections;
 
 import javax.inject.Singleton;
 
+import io.micronaut.core.util.StringUtils;
 import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
 import org.reactivestreams.Publisher;
 
@@ -31,8 +32,10 @@ import io.reactivex.Flowable;
 
 /**
  * A {@link HealthIndicator} for Mqtt Client.
+ * @author Charlie Kapopoulos
+ * @since 1.0.0
  */
-@Requires(property = HealthEndpoint.PREFIX + ".mqtt.client.enabled", value = "true")
+@Requires(property = HealthEndpoint.PREFIX + ".mqtt.client.enabled", value = StringUtils.TRUE)
 @Requires(beans = HealthEndpoint.class)
 @Singleton
 public class MqttHealthIndicator implements HealthIndicator {

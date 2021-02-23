@@ -8,6 +8,8 @@ dependencies {
 
     compileOnly "io.micronaut:micronaut-management:$micronautVersion"
 
+    testImplementation "io.micronaut:micronaut-management:$micronautVersion"
+
     testImplementation("org.spockframework:spock-core:${spockVersion}") {
         exclude module:'groovy-all'
     }

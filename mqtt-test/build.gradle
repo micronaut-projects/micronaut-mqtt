@@ -6,5 +6,5 @@ dependencies {
     }
     api "io.micronaut.test:micronaut-test-spock:$micronautTestVersion"
     api project(":mqtt-core")
-    api "org.testcontainers:spock:1.15.2"
+    api "org.testcontainers:spock:1.15.3"
 }

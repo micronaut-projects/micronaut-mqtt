@@ -15,7 +15,9 @@
  */
 package io.micronaut.mqtt.annotation;
 
+import io.micronaut.context.annotation.AliasFor;
 import io.micronaut.core.bind.annotation.Bindable;
+import io.micronaut.messaging.annotation.MessageMapping;
 
 import java.lang.annotation.*;
 
@@ -39,6 +41,10 @@ import java.lang.annotation.*;
 @Bindable
 public @interface Topic {
 
+    /**
+     * @return The topic to subscribe to
+     */
+    @AliasFor(annotation = MessageMapping.class, member = "value")
     String value() default "";
 
     int qos() default 1;

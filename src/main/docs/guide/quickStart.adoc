@@ -35,3 +35,12 @@ snippet::io.micronaut.mqtt.docs.quickstart.ProductListener[tags="imports,clazz"]
 <1> The ann:mqtt.annotation.MqttSubscriber[] is used to designate the bean as a message listener.
 <2> The ann:mqtt.annotation.Topic[] annotation is used to indicate which topic to subscribe to.
 <3> The `receive` method accepts a single parameter which is the payload of the message.
+
+
+== MQTT Health Checks
+
+When either the `mqttv3` or `mqttv5` module is activated an api:io.micronaut.mqtt.v3.client.health.MqttHealthIndicator or api:io.micronaut.mqtt.v5.client.health.MqttHealthIndicator is activated resulting in the `/health` endpoint and api:health.CurrentHealthStatus[] interface resolving the health of the MQTT connection.
+
+The only configuration option supported is to enable or disable the indicator by the `endpoints.health.mqtt.client.enabled` key.
+
+See the section on the https://docs.micronaut.io/latest/guide/index.html#healthEndpoint[Health Endpoint] for more information.

@@ -39,7 +39,7 @@ import io.reactivex.Flowable;
 @Requires(beans = HealthEndpoint.class)
 @Singleton
 public class MqttHealthIndicator implements HealthIndicator {
-    public static final String NAME = "mqtt-client-health";
+    public static final String NAME = "mqtt-client";
     private MqttAsyncClient client;
 
     /**
@@ -54,7 +54,7 @@ public class MqttHealthIndicator implements HealthIndicator {
     @Override
     public Publisher<HealthResult> getResult() {
         HealthStatus status = client.isConnected() ? HealthStatus.UP : HealthStatus.DOWN;
-        HealthResult.Builder builder = HealthResult.builder(NAME, status).details(Collections.singletonMap("class", client.getClass().getName()));
+        HealthResult.Builder builder = HealthResult.builder(NAME, status).details(Collections.singletonMap("clientId", client.getClientId()));
         return Flowable.just(builder.build());
     }
 }

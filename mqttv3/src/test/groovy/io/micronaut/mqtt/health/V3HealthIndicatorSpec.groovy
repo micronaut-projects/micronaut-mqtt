@@ -20,7 +20,7 @@ class V3HealthIndicatorSpec extends AbstractMQTTTest {
 
         then:
         result.status == HealthStatus.UP
-        result.details['class'] == mqttClient.class.name
+        result.details['clientId'] != null
 
         when:
         mqttClient.disconnect()

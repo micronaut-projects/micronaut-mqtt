@@ -51,7 +51,7 @@ import java.util.function.Consumer;
  * @author James Kleeh
  * @since 1.0.0
  */
-public abstract class AbstractMqttSubscriberAdvice<M> implements ExecutableMethodProcessor<MqttSubscriber>, AutoCloseable {
+public abstract class AbstractMqttSubscriberAdvice<M> implements ExecutableMethodProcessor<Topic>, AutoCloseable {
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractMqttSubscriberAdvice.class);
 

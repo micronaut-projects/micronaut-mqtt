@@ -16,6 +16,7 @@
 package io.micronaut.mqtt.annotation;
 
 import io.micronaut.context.annotation.AliasFor;
+import io.micronaut.context.annotation.Executable;
 import io.micronaut.core.bind.annotation.Bindable;
 import io.micronaut.messaging.annotation.MessageMapping;
 
@@ -39,6 +40,7 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD, ElementType.PARAMETER})
 @Repeatable(value = Topics.class)
 @Bindable
+@Executable
 public @interface Topic {
 
     /**

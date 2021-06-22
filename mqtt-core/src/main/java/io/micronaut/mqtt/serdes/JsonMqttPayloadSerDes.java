@@ -22,8 +22,8 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import io.micronaut.core.reflect.ClassUtils;
 import io.micronaut.core.serialize.exceptions.SerializationException;
 import io.micronaut.core.type.Argument;
+import jakarta.inject.Singleton;
 
-import javax.inject.Singleton;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

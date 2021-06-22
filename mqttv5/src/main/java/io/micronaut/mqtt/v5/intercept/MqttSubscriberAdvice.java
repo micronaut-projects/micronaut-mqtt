@@ -22,6 +22,7 @@ import io.micronaut.mqtt.exception.MqttSubscriberException;
 import io.micronaut.mqtt.exception.MqttSubscriberExceptionHandler;
 import io.micronaut.mqtt.intercept.AbstractMqttSubscriberAdvice;
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext;
+import jakarta.inject.Singleton;
 import org.eclipse.paho.mqttv5.client.IMqttToken;
 import org.eclipse.paho.mqttv5.client.MqttAsyncClient;
 import org.eclipse.paho.mqttv5.common.MqttException;
@@ -31,7 +32,6 @@ import org.eclipse.paho.mqttv5.common.packet.MqttProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.inject.Singleton;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.function.Consumer;

@@ -22,8 +22,8 @@ import io.micronaut.mqtt.bind.AnnotatedMqttBinder;
 import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.serdes.MqttPayloadSerDes;
 import io.micronaut.mqtt.serdes.MqttPayloadSerDesRegistry;
+import jakarta.inject.Singleton;
 
-import javax.inject.Singleton;
 import java.util.Optional;
 
 /**

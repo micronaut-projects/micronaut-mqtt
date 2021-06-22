@@ -5,13 +5,12 @@ import io.micronaut.mqtt.serdes.MqttPayloadSerDes
 // tag::imports[]
 import io.micronaut.core.convert.ConversionService
 import io.micronaut.core.type.Argument
+import jakarta.inject.Singleton
 import org.jetbrains.annotations.Nullable
 
-import javax.inject.Singleton
 import java.nio.charset.Charset
 // end::imports[]
 import io.micronaut.context.annotation.Requires
-
 
 @Requires(property = "spec.name", value = "ProductInfoSerDesSpec")
 // tag::clazz[]

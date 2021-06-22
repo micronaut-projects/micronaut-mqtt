@@ -18,9 +18,9 @@ package io.micronaut.mqtt.ssl;
 import io.micronaut.context.event.BeanCreatedEvent;
 import io.micronaut.context.event.BeanCreatedEventListener;
 import io.micronaut.mqtt.config.MqttSSLConfiguration;
+import jakarta.inject.Singleton;
 
 import javax.inject.Provider;
-import javax.inject.Singleton;
 import javax.net.SocketFactory;
 
 @Singleton

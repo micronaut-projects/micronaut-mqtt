@@ -4,8 +4,8 @@ package io.micronaut.mqtt.docs.serdes
 import io.micronaut.core.convert.ConversionService
 import io.micronaut.core.type.Argument
 import io.micronaut.mqtt.serdes.MqttPayloadSerDes
+import jakarta.inject.Singleton
 
-import javax.inject.Singleton
 import java.nio.charset.Charset
 // end::imports[]
 

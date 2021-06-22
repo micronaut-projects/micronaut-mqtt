@@ -22,9 +22,13 @@ import io.micronaut.mqtt.exception.MqttClientException;
 import io.micronaut.mqtt.intercept.AbstractMqttIntroductionAdvice;
 import io.micronaut.mqtt.v3.annotation.MqttPublisher;
 import io.micronaut.mqtt.v3.bind.MqttV3BindingContext;
-import org.eclipse.paho.client.mqttv3.*;
+import jakarta.inject.Singleton;
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
+import org.eclipse.paho.client.mqttv3.IMqttToken;
+import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-import javax.inject.Singleton;
 import java.lang.annotation.Annotation;
 import java.util.function.Consumer;
 

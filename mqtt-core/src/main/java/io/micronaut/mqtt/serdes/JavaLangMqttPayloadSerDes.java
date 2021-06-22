@@ -15,12 +15,12 @@
  */
 package io.micronaut.mqtt.serdes;
 
+import io.micronaut.core.annotation.NonNull;
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.core.serialize.exceptions.SerializationException;
 import io.micronaut.core.type.Argument;
 import jakarta.inject.Singleton;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -108,7 +108,7 @@ public class JavaLangMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
     /**
      * @return The serDes that handles {@link String}
      */
-    @Nonnull
+    @NonNull
     protected MqttPayloadSerDes<String> getStringSerDes() {
         return new StringSerDes();
     }
@@ -116,7 +116,7 @@ public class JavaLangMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
     /**
      * @return The serDes that handles {@link Short}
      */
-    @Nonnull
+    @NonNull
     protected MqttPayloadSerDes<Short> getShortSerDes() {
         return new ShortSerDes();
     }
@@ -124,7 +124,7 @@ public class JavaLangMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
     /**
      * @return The serDes that handles {@link Integer}
      */
-    @Nonnull
+    @NonNull
     protected MqttPayloadSerDes<Integer> getIntegerSerDes() {
         return new IntegerSerDes();
     }
@@ -132,7 +132,7 @@ public class JavaLangMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
     /**
      * @return The serDes that handles {@link Long}
      */
-    @Nonnull
+    @NonNull
     protected MqttPayloadSerDes<Long> getLongSerDes() {
         return new LongSerDes();
     }
@@ -140,7 +140,7 @@ public class JavaLangMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
     /**
      * @return The serDes that handles {@link Float}
      */
-    @Nonnull
+    @NonNull
     protected MqttPayloadSerDes<Float> getFloatSerDes() {
         return new FloatSerDes();
     }
@@ -148,7 +148,7 @@ public class JavaLangMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
     /**
      * @return The serDes that handles {@link Double}
      */
-    @Nonnull
+    @NonNull
     protected MqttPayloadSerDes<Double> getDoubleSerDes() {
         return new DoubleSerDes();
     }
@@ -156,7 +156,7 @@ public class JavaLangMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
     /**
      * @return The serDes that handles byte[]
      */
-    @Nonnull
+    @NonNull
     protected MqttPayloadSerDes<byte[]> getByteArraySerDes() {
         return new ByteArraySerDes();
     }
@@ -164,7 +164,7 @@ public class JavaLangMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
     /**
      * @return The serDes that handles {@link ByteBuffer}
      */
-    @Nonnull
+    @NonNull
     protected MqttPayloadSerDes<ByteBuffer> getByteBufferSerDes() {
         return new ByteBufferSerDes();
     }
@@ -172,7 +172,7 @@ public class JavaLangMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
     /**
      * @return The serDes that handles {@link UUID}
      */
-    @Nonnull
+    @NonNull
     protected MqttPayloadSerDes<UUID> getUUIDSerDes() {
         return new UUIDSerDes();
     }
@@ -180,7 +180,7 @@ public class JavaLangMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
     /**
      * @return The serDes that handles {@link UUID}
      */
-    @Nonnull
+    @NonNull
     protected MqttPayloadSerDes<Boolean> getBooleanSerDes() {
         return new BooleanSerDes();
     }

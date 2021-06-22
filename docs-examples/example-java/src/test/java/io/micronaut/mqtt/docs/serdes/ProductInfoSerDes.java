@@ -1,11 +1,11 @@
 package io.micronaut.mqtt.docs.serdes;
 
 // tag::imports[]
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.core.convert.ConversionService;
 import io.micronaut.core.type.Argument;
 import io.micronaut.mqtt.serdes.MqttPayloadSerDes;
 import jakarta.inject.Singleton;
-import org.jetbrains.annotations.Nullable;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;

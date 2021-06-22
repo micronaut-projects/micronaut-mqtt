@@ -18,6 +18,7 @@ package io.micronaut.mqtt.intercept;
 import io.micronaut.context.BeanContext;
 import io.micronaut.context.processor.ExecutableMethodProcessor;
 import io.micronaut.core.annotation.AnnotationValue;
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.core.bind.BoundExecutable;
 import io.micronaut.core.bind.exceptions.UnsatisfiedArgumentException;
 import io.micronaut.core.convert.ArgumentConversionContext;
@@ -38,7 +39,6 @@ import io.micronaut.mqtt.exception.MqttSubscriberExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nullable;
 import java.util.*;
 import java.util.function.Consumer;
 

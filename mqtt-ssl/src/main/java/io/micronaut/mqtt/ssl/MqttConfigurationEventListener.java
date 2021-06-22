@@ -15,20 +15,20 @@
  */
 package io.micronaut.mqtt.ssl;
 
+import io.micronaut.context.BeanProvider;
 import io.micronaut.context.event.BeanCreatedEvent;
 import io.micronaut.context.event.BeanCreatedEventListener;
 import io.micronaut.mqtt.config.MqttSSLConfiguration;
 import jakarta.inject.Singleton;
 
-import javax.inject.Provider;
 import javax.net.SocketFactory;
 
 @Singleton
 class MqttConfigurationEventListener implements BeanCreatedEventListener<MqttSSLConfiguration> {
 
-    private final Provider<MqttCertificateConfiguration> certificateConfiguration;
+    private final BeanProvider<MqttCertificateConfiguration> certificateConfiguration;
 
-    MqttConfigurationEventListener(Provider<MqttCertificateConfiguration> certificateConfiguration) {
+    MqttConfigurationEventListener(BeanProvider<MqttCertificateConfiguration> certificateConfiguration) {
         this.certificateConfiguration = certificateConfiguration;
     }
 

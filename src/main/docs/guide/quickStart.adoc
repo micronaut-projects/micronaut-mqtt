@@ -4,6 +4,8 @@ dependency:micronaut-mqttv3[groupId="io.micronaut.mqtt"]
 
 dependency:micronaut-mqttv5[groupId="io.micronaut.mqtt"]
 
+IMPORTANT: Make sure to run your program on a machine with *more than one core*. Your MQTT client will run into connection timeouts if it has only one core available.
+
 == Creating an MQTT Publisher with @MqttPublisher
 
 To create an MQTT client that produces messages you can simply define an interface that is annotated with `MqttPublisher`.

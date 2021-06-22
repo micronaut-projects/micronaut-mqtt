@@ -7,7 +7,6 @@ import io.reactivex.CompletableObserver
 import io.reactivex.MaybeObserver
 import io.reactivex.disposables.Disposable
 import kotlinx.coroutines.async
-import kotlinx.coroutines.runBlocking
 import org.opentest4j.AssertionFailedError
 import org.reactivestreams.Subscriber
 import org.reactivestreams.Subscription

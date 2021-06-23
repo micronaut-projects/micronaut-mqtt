@@ -21,8 +21,8 @@ import io.micronaut.messaging.Acknowledgement;
 import io.micronaut.messaging.exceptions.MessageAcknowledgementException;
 import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.bind.TypedMqttBinder;
+import jakarta.inject.Singleton;
 
-import javax.inject.Singleton;
 import java.util.Optional;
 
 /**

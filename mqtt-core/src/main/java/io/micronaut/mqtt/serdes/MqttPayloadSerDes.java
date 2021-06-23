@@ -15,10 +15,9 @@
  */
 package io.micronaut.mqtt.serdes;
 
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.core.order.Ordered;
 import io.micronaut.core.type.Argument;
-
-import javax.annotation.Nullable;
 
 /**
  * Responsible for serializing and deserializing MQTT message payloads.

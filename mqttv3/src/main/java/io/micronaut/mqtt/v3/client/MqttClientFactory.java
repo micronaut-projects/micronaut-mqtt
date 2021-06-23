@@ -20,11 +20,14 @@ import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
 import io.micronaut.mqtt.v3.config.MqttClientConfigurationProperties;
 import io.micronaut.scheduling.TaskExecutors;
-import org.eclipse.paho.client.mqttv3.*;
+import jakarta.inject.Named;
+import jakarta.inject.Singleton;
+import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
+import org.eclipse.paho.client.mqttv3.MqttClientPersistence;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.ScheduledExecutorPingSender;
 import org.eclipse.paho.client.mqttv3.internal.HighResolutionTimer;
 
-import javax.inject.Named;
-import javax.inject.Singleton;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
 

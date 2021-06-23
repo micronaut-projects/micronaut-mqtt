@@ -24,10 +24,10 @@ import io.micronaut.core.convert.ConversionService;
 import io.micronaut.core.type.Argument;
 import io.micronaut.mqtt.bind.AnnotatedMqttBinder;
 import io.micronaut.mqtt.v5.annotation.MqttProperty;
+import jakarta.inject.Singleton;
 import org.eclipse.paho.mqttv5.common.packet.MqttProperties;
 import org.eclipse.paho.mqttv5.common.packet.UserProperty;
 
-import javax.inject.Singleton;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,16 +1,15 @@
 package io.micronaut.mqtt.docs.custom.annotation;
 
 // tag::imports[]
-import io.micronaut.core.type.Argument;
-import io.micronaut.mqtt.bind.AnnotatedMqttBinder;
 import io.micronaut.core.convert.ArgumentConversionContext;
 import io.micronaut.core.convert.ConversionService;
+import io.micronaut.core.type.Argument;
+import io.micronaut.mqtt.bind.AnnotatedMqttBinder;
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext;
+import jakarta.inject.Singleton;
 
-import javax.inject.Singleton;
 import java.util.Optional;
 // end::imports[]
-
 import io.micronaut.context.annotation.Requires;
 
 @Requires(property = "spec.name", value = "CorrelationSpec")

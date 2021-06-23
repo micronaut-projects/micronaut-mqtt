@@ -1,16 +1,16 @@
 package io.micronaut.mqtt.docs.properties;
 
 // tag::imports[]
-import io.micronaut.mqtt.annotation.Topic;
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.mqtt.annotation.MqttSubscriber;
+import io.micronaut.mqtt.annotation.Topic;
 import io.micronaut.mqtt.v5.annotation.MqttProperty;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-// end::imports[]
 
+// end::imports[]
 import io.micronaut.context.annotation.Requires;
 
 @Requires(property = "spec.name", value = "PropertiesSpec")

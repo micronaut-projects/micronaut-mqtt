@@ -7,7 +7,7 @@ import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
 import io.micronaut.core.convert.ArgumentConversionContext
 import io.micronaut.core.convert.ConversionService
 
-import javax.inject.Singleton
+import jakarta.inject.Singleton
 // end::imports[]
 
 import io.micronaut.context.annotation.Requires

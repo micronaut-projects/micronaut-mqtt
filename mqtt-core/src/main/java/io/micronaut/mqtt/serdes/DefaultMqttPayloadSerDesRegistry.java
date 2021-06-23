@@ -16,8 +16,8 @@
 package io.micronaut.mqtt.serdes;
 
 import io.micronaut.core.type.Argument;
+import jakarta.inject.Singleton;
 
-import javax.inject.Singleton;
 import java.util.Arrays;
 import java.util.Optional;
 

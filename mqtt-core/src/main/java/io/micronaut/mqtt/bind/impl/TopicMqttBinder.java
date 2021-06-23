@@ -21,8 +21,8 @@ import io.micronaut.core.type.Argument;
 import io.micronaut.mqtt.annotation.Topic;
 import io.micronaut.mqtt.bind.AnnotatedMqttBinder;
 import io.micronaut.mqtt.bind.MqttBindingContext;
+import jakarta.inject.Singleton;
 
-import javax.inject.Singleton;
 import java.util.Optional;
 
 /**

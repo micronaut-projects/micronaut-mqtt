@@ -6,6 +6,8 @@ dependencies {
     api "io.micronaut:micronaut-aop"
     api "io.micronaut:micronaut-runtime"
     api "io.micronaut:micronaut-messaging"
+    // TODO: Remove when RxJava2 -> Reactor PR is merged into core
+    api "io.micronaut.reactor:micronaut-reactor"
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 
     testImplementation("org.spockframework:spock-core:${spockVersion}") {

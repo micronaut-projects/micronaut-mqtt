@@ -5,8 +5,9 @@ import io.kotest.matchers.collections.shouldExist
 import io.kotest.matchers.shouldBe
 import io.micronaut.mqtt.AbstractMqttKotest
 import org.opentest4j.AssertionFailedError
+import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
-import kotlin.time.seconds
+import kotlin.time.toDuration
 
 @ExperimentalTime
 class ProductInfoSerDesSpec: AbstractMqttKotest({
@@ -27,7 +28,7 @@ class ProductInfoSerDesSpec: AbstractMqttKotest({
 // end::producer[]
 
             then("the message is consumed") {
-                eventually(10.seconds, AssertionFailedError::class) {
+                eventually(10.toDuration(DurationUnit.SECONDS), AssertionFailedError::class) {
                     listener.messages.size shouldBe 3
                     listener.messages shouldExist { p -> p.size == "small" && p.count == 10L && p.sealed }
                     listener.messages shouldExist { p -> p.size == "medium" && p.count == 20L && p.sealed }

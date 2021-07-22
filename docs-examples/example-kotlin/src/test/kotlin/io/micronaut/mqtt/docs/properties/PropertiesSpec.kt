@@ -5,8 +5,9 @@ import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.shouldBe
 import io.micronaut.mqtt.AbstractMqttKotest
 import org.opentest4j.AssertionFailedError
+import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
-import kotlin.time.seconds
+import kotlin.time.toDuration
 
 @ExperimentalTime
 class PropertiesSpec : AbstractMqttKotest({
@@ -27,7 +28,7 @@ class PropertiesSpec : AbstractMqttKotest({
             then("the messages are received") {
                 val productListener = ctx.getBean(ProductListener::class.java)
 
-                eventually(10.seconds, AssertionFailedError::class) {
+                eventually(10.toDuration(DurationUnit.SECONDS), AssertionFailedError::class) {
                     productListener.messageProperties.size shouldBe 3
                     productListener.messageProperties shouldContain "guest|application/json|myApp"
                     productListener.messageProperties shouldContain "guest|text/html|myApp"

@@ -18,7 +18,6 @@ package io.micronaut.mqtt.intercept;
 import io.micronaut.context.BeanContext;
 import io.micronaut.context.processor.ExecutableMethodProcessor;
 import io.micronaut.core.annotation.AnnotationValue;
-import io.micronaut.core.annotation.Nullable;
 import io.micronaut.core.bind.BoundExecutable;
 import io.micronaut.core.bind.exceptions.UnsatisfiedArgumentException;
 import io.micronaut.core.convert.ArgumentConversionContext;

@@ -8,8 +8,9 @@ import org.opentest4j.AssertionFailedError
 import org.reactivestreams.Subscriber
 import org.reactivestreams.Subscription
 import java.util.concurrent.atomic.AtomicInteger
+import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
-import kotlin.time.seconds
+import kotlin.time.toDuration
 
 @ExperimentalTime
 class PublisherAcknowledgeSpec : AbstractMqttKotest({
@@ -65,7 +66,7 @@ class PublisherAcknowledgeSpec : AbstractMqttKotest({
             }
 
             then("The messages are published") {
-                eventually(10.seconds, AssertionFailedError::class) {
+                eventually(10.toDuration(DurationUnit.SECONDS), AssertionFailedError::class) {
                     errorCount.get() shouldBe 0
                     successCount.get() shouldBe 3
                     listener.messageLengths.size shouldBe 3

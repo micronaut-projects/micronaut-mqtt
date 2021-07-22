@@ -21,8 +21,8 @@ import io.micronaut.core.convert.ArgumentConversionContext;
 import io.micronaut.core.type.Argument;
 import io.micronaut.mqtt.bind.FallbackMqttBinder;
 import io.micronaut.mqtt.bind.MqttBindingContext;
+import jakarta.inject.Singleton;
 
-import javax.inject.Singleton;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

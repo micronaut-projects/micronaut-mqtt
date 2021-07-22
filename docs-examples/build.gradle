@@ -1,5 +1,5 @@
 plugins {
-    id 'io.micronaut.application' version "1.3.4" apply false
+    id 'io.micronaut.application' version "1.5.0" apply false
 }
 
 subprojects { Project subproject ->
@@ -15,7 +15,6 @@ subprojects { Project subproject ->
         compileOnly "org.graalvm.nativeimage:svm"
         testImplementation project(":mqtt-test")
         testImplementation project(":mqttv5")
-        testImplementation "io.micronaut.reactor:micronaut-reactor"
     }
 
     nativeImage {

@@ -1,21 +1,19 @@
 plugins {
     id "java"
-}
-
-repositories {
-    jcenter()
+    id "application"
 }
 
 dependencies {
-    testCompile 'org.awaitility:awaitility:4.0.3'
-
+    testImplementation 'org.awaitility:awaitility:4.1.0'
 }
 
 compileJava.options.compilerArgs += '-parameters'
 compileTestJava.options.compilerArgs += '-parameters'
 
+application {
+    mainClass.set("io.micronaut.mqtt.docs.Application")
+}
+
 micronaut {
     testRuntime "junit5"
 }
-
-mainClassName = "io.micronaut.mqtt.docs.Application"

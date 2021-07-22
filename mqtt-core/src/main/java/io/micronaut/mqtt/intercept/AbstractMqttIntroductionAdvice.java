@@ -30,10 +30,10 @@ import io.micronaut.mqtt.bind.MqttBinder;
 import io.micronaut.mqtt.bind.MqttBinderRegistry;
 import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.exception.MqttClientException;
-import io.reactivex.BackpressureStrategy;
-import io.reactivex.Flowable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.FluxSink;
 
 import java.lang.annotation.Annotation;
 import java.util.concurrent.CompletableFuture;
@@ -71,9 +71,9 @@ public abstract class AbstractMqttIntroductionAdvice<L, M> implements MethodInte
 
                 switch (interceptedMethod.resultType()) {
                     case PUBLISHER:
-                        return interceptedMethod.handleResult(Flowable.create(emitter -> {
-                            publish(publisherState, context, createListener(emitter::onComplete, emitter::onError));
-                        }, BackpressureStrategy.ERROR));
+                        return interceptedMethod.handleResult(Flux.create(emitter -> {
+                            publish(publisherState, context, createListener(emitter::complete, emitter::error));
+                        }, FluxSink.OverflowStrategy.ERROR));
                     case COMPLETION_STAGE:
                         CompletableFuture<Void> future = new CompletableFuture<>();
                         publish(publisherState, context, createListener(() -> future.complete(null), future::completeExceptionally));

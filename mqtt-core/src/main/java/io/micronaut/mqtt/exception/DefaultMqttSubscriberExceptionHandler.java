@@ -16,10 +16,9 @@
 package io.micronaut.mqtt.exception;
 
 import io.micronaut.context.annotation.Primary;
+import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.inject.Singleton;
 
 /**
  * The exception handler for subscriber exceptions that is used if the subscriber

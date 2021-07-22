@@ -5,8 +5,9 @@ import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.shouldBe
 import io.micronaut.mqtt.AbstractMqttKotest
 import org.opentest4j.AssertionFailedError
+import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
-import kotlin.time.seconds
+import kotlin.time.toDuration
 
 @ExperimentalTime
 class BindingSpec: AbstractMqttKotest({
@@ -26,7 +27,7 @@ class BindingSpec: AbstractMqttKotest({
             // end::producer[]
 
             then("The messages are received") {
-                eventually(10.seconds, AssertionFailedError::class) {
+                eventually(10.toDuration(DurationUnit.SECONDS), AssertionFailedError::class) {
                     productListener.messageLengths.size shouldBe 2
                     productListener.messageLengths shouldContain 12
                     productListener.messageLengths shouldContain 13

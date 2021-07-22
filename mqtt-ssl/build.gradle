@@ -4,8 +4,8 @@ dependencies {
     annotationProcessor "io.micronaut.docs:micronaut-docs-asciidoc-config-props:$micronautDocsVersion"
     implementation("io.micronaut:micronaut-http")
     api project(":mqtt-core")
-    implementation "org.bouncycastle:bcpkix-jdk15on:1.68"
-    api "org.testcontainers:spock:1.15.1"
+    implementation "org.bouncycastle:bcpkix-jdk15on:1.69"
+    api "org.testcontainers:spock:1.15.3"
     testImplementation("org.spockframework:spock-core:${spockVersion}") {
         exclude module:'groovy-all'
     }

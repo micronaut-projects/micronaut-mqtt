@@ -32,6 +32,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD, ElementType.PARAMETER})
 @Bindable
+@Inherited
 public @interface Qos {
 
     int DEFAULT_VALUE = 1;

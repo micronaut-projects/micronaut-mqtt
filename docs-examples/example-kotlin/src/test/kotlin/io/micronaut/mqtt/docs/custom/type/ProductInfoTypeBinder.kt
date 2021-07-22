@@ -6,10 +6,9 @@ import io.micronaut.core.convert.ConversionService
 import io.micronaut.core.type.Argument
 import io.micronaut.mqtt.bind.*
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
-import org.eclipse.paho.mqttv5.common.MqttMessage
+import jakarta.inject.Singleton
 import org.eclipse.paho.mqttv5.common.packet.UserProperty
 
-import javax.inject.Singleton
 import java.util.Optional
 import java.util.stream.Collectors
 // end::imports[]

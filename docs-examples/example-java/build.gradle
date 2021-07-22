@@ -2,13 +2,8 @@ plugins {
     id "java"
 }
 
-repositories {
-    jcenter()
-}
-
 dependencies {
-    testCompile 'org.awaitility:awaitility:4.1.0'
-
+    testImplementation 'org.awaitility:awaitility:4.1.0'
 }
 
 compileJava.options.compilerArgs += '-parameters'

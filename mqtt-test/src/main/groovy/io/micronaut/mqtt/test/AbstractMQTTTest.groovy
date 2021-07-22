@@ -40,8 +40,6 @@ abstract class AbstractMQTTTest extends Specification {
 
     static {
         mqttContainer.start()
-        //def result = mqttContainer.execInContainer("cat", "/mosquitto/config/mosquitto.conf")
-        //System.out.println(result.getStdout())
     }
 
     protected ApplicationContext startContext(Map additionalConfig = [:]) {

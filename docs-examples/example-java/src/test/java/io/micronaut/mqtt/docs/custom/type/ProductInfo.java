@@ -1,11 +1,9 @@
 package io.micronaut.mqtt.docs.custom.type;
 
 // tag::clazz[]
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.concurrent.Immutable;
+import io.micronaut.core.annotation.NonNull;
+import io.micronaut.core.annotation.Nullable;
 
-@Immutable
 public class ProductInfo {
 
     private String size;
@@ -13,8 +11,8 @@ public class ProductInfo {
     private Boolean sealed;
 
     public ProductInfo(@Nullable String size, // <1>
-                       @Nonnull Long count, // <2>
-                       @Nonnull Boolean sealed) { // <3>
+                       @NonNull Long count, // <2>
+                       @NonNull Boolean sealed) { // <3>
         this.size = size;
         this.count = count;
         this.sealed = sealed;

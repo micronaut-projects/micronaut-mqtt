@@ -14,7 +14,7 @@ subprojects { Project subproject ->
     apply plugin: "io.micronaut.build.internal.common"
     apply plugin: "io.micronaut.build.internal.dependency-updates"
 
-    if (subproject.parent.name == "docs-examples" || subproject.name == "docs-examples" || subproject.name.contains("test")) {
+    if (subproject.parent.name.startsWith("docs-") || subproject.name == "docs-examples" || subproject.name.contains("test")) {
         return
     }
     apply plugin: "io.micronaut.build.internal.publishing"

@@ -17,11 +17,10 @@ package io.micronaut.mqtt.test.bind.retained
 
 import io.micronaut.context.annotation.Requires
 import io.micronaut.core.util.StringUtils
-import io.micronaut.messaging.annotation.Body
+import io.micronaut.messaging.annotation.MessageBody
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.test.AbstractMQTTTest
-import spock.lang.Ignore
 import spock.lang.Stepwise
 import spock.util.concurrent.PollingConditions
 
@@ -122,7 +121,7 @@ abstract class RetainedBindingSpec extends AbstractMQTTTest {
         String payload = null
 
         @Topic("test/retained")
-        void get(@Body String payload) {
+        void get(@MessageBody String payload) {
             this.payload = payload
         }
     }

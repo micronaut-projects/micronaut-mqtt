@@ -8,7 +8,7 @@ import io.micronaut.mqtt.bind.AnnotatedMqttBinder
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
 import java.util.*
 
-import javax.inject.Singleton
+import jakarta.inject.Singleton
 // end::imports[]
 
 import io.micronaut.context.annotation.Requires

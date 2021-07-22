@@ -17,13 +17,13 @@ package io.micronaut.mqtt.bind.impl;
 
 import io.micronaut.core.convert.ArgumentConversionContext;
 import io.micronaut.core.type.Argument;
-import io.micronaut.messaging.annotation.Body;
+import io.micronaut.messaging.annotation.MessageBody;
 import io.micronaut.mqtt.bind.AnnotatedMqttBinder;
 import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.serdes.MqttPayloadSerDes;
 import io.micronaut.mqtt.serdes.MqttPayloadSerDesRegistry;
+import jakarta.inject.Singleton;
 
-import javax.inject.Singleton;
 import java.util.Optional;
 
 /**
@@ -33,7 +33,7 @@ import java.util.Optional;
  * @since 1.0.0
  */
 @Singleton
-public class PayloadMqttBinder implements AnnotatedMqttBinder<MqttBindingContext<?>, Body> {
+public class PayloadMqttBinder implements AnnotatedMqttBinder<MqttBindingContext<?>, MessageBody> {
 
     private final MqttPayloadSerDesRegistry serDesRegistry;
 
@@ -42,8 +42,8 @@ public class PayloadMqttBinder implements AnnotatedMqttBinder<MqttBindingContext
     }
 
     @Override
-    public Class<Body> getAnnotationType() {
-        return Body.class;
+    public Class<MessageBody> getAnnotationType() {
+        return MessageBody.class;
     }
 
     @Override

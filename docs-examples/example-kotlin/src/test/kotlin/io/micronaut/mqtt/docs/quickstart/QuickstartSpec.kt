@@ -4,8 +4,9 @@ import io.kotest.assertions.timing.eventually
 import io.kotest.matchers.shouldBe
 import io.micronaut.mqtt.AbstractMqttKotest
 import org.opentest4j.AssertionFailedError
+import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
-import kotlin.time.seconds
+import kotlin.time.toDuration
 
 @ExperimentalTime
 class QuickstartSpec: AbstractMqttKotest({
@@ -24,7 +25,7 @@ productClient.send("quickstart".toByteArray())
 // end::producer[]
 
             then("the message is consumed") {
-                eventually(10.seconds, AssertionFailedError::class) {
+                eventually(10.toDuration(DurationUnit.SECONDS), AssertionFailedError::class) {
                     productListener.messageLengths.size shouldBe 1
                     productListener.messageLengths[0] shouldBe "quickstart"
                 }

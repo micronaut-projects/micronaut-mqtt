@@ -6,6 +6,7 @@ dependencies {
     api "io.micronaut:micronaut-aop"
     api "io.micronaut:micronaut-runtime"
     api "io.micronaut:micronaut-messaging"
+    implementation "io.projectreactor:reactor-core"
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 
     testImplementation("org.spockframework:spock-core:${spockVersion}") {

@@ -15,7 +15,6 @@ subprojects { Project subproject ->
         compileOnly "org.graalvm.nativeimage:svm"
         testImplementation project(":mqtt-test")
         testImplementation project(":mqttv5")
-        testImplementation "io.micronaut.reactor:micronaut-reactor"
     }
 
     nativeImage {

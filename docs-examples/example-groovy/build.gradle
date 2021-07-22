@@ -10,7 +10,9 @@ micronaut {
     testRuntime "spock"
 }
 
-mainClassName = "io.micronaut.mqtt.docs.Application"
+application {
+    mainClass.set("io.micronaut.mqtt.docs.Application")
+}
 
 project.afterEvaluate {
     nativeImage.enabled = false

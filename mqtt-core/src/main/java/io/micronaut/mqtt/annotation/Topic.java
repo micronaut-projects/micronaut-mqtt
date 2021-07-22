@@ -41,6 +41,7 @@ import java.lang.annotation.*;
 @Repeatable(value = Topics.class)
 @Bindable
 @Executable
+@Inherited
 public @interface Topic {
 
     /**

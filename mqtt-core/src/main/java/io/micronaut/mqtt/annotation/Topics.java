@@ -15,6 +15,8 @@
  */
 package io.micronaut.mqtt.annotation;
 
+import io.micronaut.context.annotation.Executable;
+
 import java.lang.annotation.*;
 
 /**
@@ -28,6 +30,8 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
+@Executable
+@Inherited
 public @interface Topics {
 
     Topic[] value() default {};

@@ -15,11 +15,9 @@
  */
 package io.micronaut.mqtt.v5.client.health;
 
-import java.util.Collections;
-
-import javax.inject.Singleton;
-
+import io.micronaut.core.async.publisher.Publishers;
 import io.micronaut.core.util.StringUtils;
+import jakarta.inject.Singleton;
 import org.eclipse.paho.mqttv5.client.MqttAsyncClient;
 import org.reactivestreams.Publisher;
 
@@ -28,7 +26,8 @@ import io.micronaut.health.HealthStatus;
 import io.micronaut.management.endpoint.health.HealthEndpoint;
 import io.micronaut.management.health.indicator.HealthIndicator;
 import io.micronaut.management.health.indicator.HealthResult;
-import io.reactivex.Flowable;
+
+import java.util.Collections;
 
 /**
  * A {@link HealthIndicator} for Mqtt Client.
@@ -55,6 +54,6 @@ public class MqttHealthIndicator implements HealthIndicator {
     public Publisher<HealthResult> getResult() {
         HealthStatus status = client.isConnected() ? HealthStatus.UP : HealthStatus.DOWN;
         HealthResult.Builder builder = HealthResult.builder(NAME, status).details(Collections.singletonMap("clientId", client.getClientId()));
-        return Flowable.just(builder.build());
+        return Publishers.just(builder.build());
     }
 }

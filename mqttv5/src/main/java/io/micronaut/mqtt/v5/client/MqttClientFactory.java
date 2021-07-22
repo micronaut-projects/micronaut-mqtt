@@ -15,9 +15,9 @@
  */
 package io.micronaut.mqtt.v5.client;
 
-import edu.umd.cs.findbugs.annotations.Nullable;
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.mqtt.v5.config.MqttClientConfigurationProperties;
 import io.micronaut.scheduling.TaskExecutors;
 import jakarta.inject.Named;

@@ -70,46 +70,48 @@ public abstract class AbstractMqttSubscriberAdvice<M> implements ExecutableMetho
 
     @Override
     public void process(BeanDefinition<?> beanDefinition, ExecutableMethod<?, ?> method) {
-        List<AnnotationValue<Topic>> topicAnnotations = method.getAnnotationValuesByType(Topic.class);
-        if (!topicAnnotations.isEmpty()) {
+        if (method.hasAnnotation(MqttSubscriber.class)) {
+            List<AnnotationValue<Topic>> topicAnnotations = method.getAnnotationValuesByType(Topic.class);
+            if (!topicAnnotations.isEmpty()) {
 
-            Object bean = beanContext.getBean(beanDefinition);
+                Object bean = beanContext.getBean(beanDefinition);
 
-            try {
-                Argument[] arguments = method.getArguments();
-                MqttBinder<MqttBindingContext<?>, Object>[] binders = new MqttBinder[arguments.length];
-                for (int i = 0; i < arguments.length; i++) {
-                    binders[i] = (MqttBinder<MqttBindingContext<?>, Object>) binderRegistry.findArgumentBinder(arguments[i]);
-                }
-
-                String[] topicValues = new String[topicAnnotations.size()];
-                int[] qosValues = new int[topicAnnotations.size()];
-
-                for (int i = 0; i < topicAnnotations.size(); i++) {
-                    AnnotationValue<Topic> topicAnn = topicAnnotations.get(i);
-                    topicValues[i] = topicAnn.getRequiredValue(String.class); //the value is required
-                    qosValues[i] = topicAnn.getRequiredValue("qos", int.class);
-                }
-
-                topics.addAll(Arrays.asList(topicValues));
-                if (LOG.isTraceEnabled()) {
-                    for (int i = 0; i < topicValues.length; i++) {
-                        LOG.trace("Subscribing to {} with Qos {}", topicValues[i], qosValues[i]);
+                try {
+                    Argument[] arguments = method.getArguments();
+                    MqttBinder<MqttBindingContext<?>, Object>[] binders = new MqttBinder[arguments.length];
+                    for (int i = 0; i < arguments.length; i++) {
+                        binders[i] = (MqttBinder<MqttBindingContext<?>, Object>) binderRegistry.findArgumentBinder(arguments[i]);
                     }
-                }
-                subscribe(topicValues, qosValues, (context) -> {
+
+                    String[] topicValues = new String[topicAnnotations.size()];
+                    int[] qosValues = new int[topicAnnotations.size()];
+
+                    for (int i = 0; i < topicAnnotations.size(); i++) {
+                        AnnotationValue<Topic> topicAnn = topicAnnotations.get(i);
+                        topicValues[i] = topicAnn.getRequiredValue(String.class); //the value is required
+                        qosValues[i] = topicAnn.getRequiredValue("qos", int.class);
+                    }
+
+                    topics.addAll(Arrays.asList(topicValues));
                     if (LOG.isTraceEnabled()) {
-                        LOG.trace("Received the following message from {}", context.getTopic());
-                        LOG.trace("Qos = {}, MessageId = {}, Payload = {}", context.getQos(), context.getId(), new String(context.getPayload()));
+                        for (int i = 0; i < topicValues.length; i++) {
+                            LOG.trace("Subscribing to {} with Qos {}", topicValues[i], qosValues[i]);
+                        }
                     }
-                    try {
-                        Object result = bind((Executable<Object, Object>) method, arguments, binders, context).invoke(bean);
-                    } catch (Exception e) {
-                        handleException(e, bean, method);
-                    }
-                });
-            } catch (Exception e) {
-                handleException(e, bean, method);
+                    subscribe(topicValues, qosValues, (context) -> {
+                        if (LOG.isTraceEnabled()) {
+                            LOG.trace("Received the following message from {}", context.getTopic());
+                            LOG.trace("Qos = {}, MessageId = {}, Payload = {}", context.getQos(), context.getId(), new String(context.getPayload()));
+                        }
+                        try {
+                            Object result = bind((Executable<Object, Object>) method, arguments, binders, context).invoke(bean);
+                        } catch (Exception e) {
+                            handleException(e, bean, method);
+                        }
+                    });
+                } catch (Exception e) {
+                    handleException(e, bean, method);
+                }
             }
         }
     }
@@ -149,7 +151,7 @@ public abstract class AbstractMqttSubscriberAdvice<M> implements ExecutableMetho
                     conversionContext
             );
             if (!result.isPresent()) {
-                if (argument.getAnnotationMetadata().hasAnnotation(Nullable.class)) {
+                if (argument.isNullable()) {
                     boundArguments[i] = null;
                 } else {
                     final Optional<ConversionError> lastError = conversionContext.getLastError();

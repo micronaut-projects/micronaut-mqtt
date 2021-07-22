@@ -932,14 +932,15 @@ If the annotation or argument name cannot be matched to a property name in the <
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.core.annotation.Nullable;
 import io.micronaut.mqtt.annotation.MqttSubscriber;
+import io.micronaut.mqtt.annotation.Topic;
 import io.micronaut.mqtt.v5.annotation.MqttProperty;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 
 @MqttSubscriber
 public class ProductListener {
@@ -958,11 +959,11 @@ public class ProductListener {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.MqttSubscriber
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.core.annotation.Nullable
+
+import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.v5.annotation.MqttProperty
-
-import javax.annotation.Nullable
 
 @MqttSubscriber
 class ProductListener {
@@ -1448,37 +1449,22 @@ interface ProductClient {
 <p>Since the publisher is cold, the message will not actually be published until the stream is subscribed to.</p>
 </div>
 <div class="paragraph">
-<p>Micronaut comes with RxJava2 by default, and the <a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Completable.html">Completable</a> type is the reactive type that best fits the publisher acknowledgement use case. No value of any type is returned, the message is either acknowledged (completed) or not (error).</p>
-</div>
-<div class="paragraph">
 <p>For example:</p>
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
 import io.micronaut.mqtt.v5.annotation.MqttPublisher;
-import io.reactivex.Completable;
-import io.reactivex.Maybe;
 import org.reactivestreams.Publisher;
-import reactor.core.publisher.Mono;
 
 @MqttPublisher
 public interface ProductClient {
 
     @Topic("product")
-    Completable send(byte[] data); <b class="conum">(1)</b>
+    Publisher&lt;Void&gt; sendPublisher(byte[] data); <b class="conum">(1)</b>
 
     @Topic("product")
-    Maybe&lt;Void&gt; sendMaybe(byte[] data); <b class="conum">(2)</b>
-
-    @Topic("product")
-    Mono&lt;Void&gt; sendMono(byte[] data); <b class="conum">(3)</b>
-
-    @Topic("product")
-    Publisher&lt;Void&gt; sendPublisher(byte[] data); <b class="conum">(4)</b>
-
-    @Topic("product")
-    CompletableFuture&lt;Void&gt; sendFuture(byte[] data); <b class="conum">(5)</b>
+    CompletableFuture&lt;Void&gt; sendFuture(byte[] data); <b class="conum">(2)</b>
 }</code></pre>
 </div>
 </div>
@@ -1486,28 +1472,16 @@ public interface ProductClient {
 <div class="content">
 <pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.v5.annotation.MqttPublisher
-import io.reactivex.Completable
-import io.reactivex.Maybe
 import org.reactivestreams.Publisher
-import reactor.core.publisher.Mono
 
 @MqttPublisher
 interface ProductClient {
 
     @Topic("product")
-    Completable send(byte[] data) <b class="conum">(1)</b>
+    Publisher&lt;Void&gt; sendPublisher(byte[] data) <b class="conum">(1)</b>
 
     @Topic("product")
-    Maybe&lt;Void&gt; sendMaybe(byte[] data) <b class="conum">(2)</b>
-
-    @Topic("product")
-    Mono&lt;Void&gt; sendMono(byte[] data) <b class="conum">(3)</b>
-
-    @Topic("product")
-    Publisher&lt;Void&gt; sendPublisher(byte[] data) <b class="conum">(4)</b>
-
-    @Topic("product")
-    CompletableFuture&lt;Void&gt; sendFuture(byte[] data) <b class="conum">(5)</b>
+    CompletableFuture&lt;Void&gt; sendFuture(byte[] data) <b class="conum">(2)</b>
 }</code></pre>
 </div>
 </div>
@@ -1515,28 +1489,16 @@ interface ProductClient {
 <div class="content">
 <pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.mqtt.v5.annotation.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
-import io.reactivex.Completable
-import io.reactivex.Maybe
 import org.reactivestreams.Publisher
-import reactor.core.publisher.Mono
 
 @MqttPublisher
 interface ProductClient {
 
     @Topic("product")
-    fun send(data: ByteArray): Completable  <b class="conum">(1)</b>
+    fun sendPublisher(data: ByteArray): Publisher&lt;Void&gt;  <b class="conum">(1)</b>
 
     @Topic("product")
-    fun sendMaybe(data: ByteArray): Maybe&lt;Void&gt;  <b class="conum">(2)</b>
-
-    @Topic("product")
-    fun sendMono(data: ByteArray): Mono&lt;Void&gt;  <b class="conum">(3)</b>
-
-    @Topic("product")
-    fun sendPublisher(data: ByteArray): Publisher&lt;Void&gt;  <b class="conum">(4)</b>
-
-    @Topic("product")
-    fun sendFuture(data: ByteArray): CompletableFuture&lt;Void&gt;  <b class="conum">(5)</b>
+    fun sendFuture(data: ByteArray): CompletableFuture&lt;Void&gt;  <b class="conum">(2)</b>
 
     @Topic("product")
     suspend fun sendSuspend(data: ByteArray): Unit //suspend methods work too!
@@ -1547,23 +1509,11 @@ interface ProductClient {
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The recommended approach of using a <code>Completable</code> as the return type for those using <a href="https://github.com/ReactiveX/RxJava">RxJava 2</a>.</td>
+<td>A <code>Publisher</code> can be returned to be able to know when the message was acknowledged. Any other reactive type can be used given the appropriate dependencies are in place.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>A <code>Maybe</code> also closely matches the use case of publisher acknowledgement.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>For those that prefer <a href="https://projectreactor.io/">Project Reactor</a>, a <code>Mono</code> can be used. Note that Micronaut does not ship with Reactor.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>For those who prefer not to use any reactive library in their code, a <code>Publisher</code> can be returned.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Futures are also supported</td>
+<td>Java futures can also be used</td>
 </tr>
 </table>
 </div>
@@ -2001,13 +1951,13 @@ annotation class Correlation</code></pre>
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.core.type.Argument;
-import io.micronaut.mqtt.bind.AnnotatedMqttBinder;
-import io.micronaut.core.convert.ArgumentConversionContext;
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.core.convert.ArgumentConversionContext;
 import io.micronaut.core.convert.ConversionService;
+import io.micronaut.core.type.Argument;
+import io.micronaut.mqtt.bind.AnnotatedMqttBinder;
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext;
+import jakarta.inject.Singleton;
 
-import javax.inject.Singleton;
 import java.util.Optional;
 
 @Singleton <b class="conum">(1)</b>
@@ -2044,7 +1994,7 @@ import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
 import io.micronaut.core.convert.ArgumentConversionContext
 import io.micronaut.core.convert.ConversionService
 
-import javax.inject.Singleton
+import jakarta.inject.Singleton
 
 @Singleton <b class="conum">(1)</b>
 class CorrelationAnnotationBinder implements AnnotatedMqttBinder&lt;MqttV5BindingContext, Correlation&gt; { <b class="conum">(2)</b>
@@ -2081,7 +2031,7 @@ import io.micronaut.mqtt.bind.AnnotatedMqttBinder
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
 import java.util.*
 
-import javax.inject.Singleton
+import jakarta.inject.Singleton
 
 @Singleton <b class="conum">(1)</b>
 class CorrelationAnnotationBinder(private val conversionService: ConversionService&lt;*&gt;)<b class="conum">(3)</b>
@@ -2235,11 +2185,9 @@ interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.concurrent.Immutable;
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.core.annotation.NonNull;
+import io.micronaut.core.annotation.Nullable;
 
-@Immutable
 public class ProductInfo {
 
     private String size;
@@ -2247,8 +2195,8 @@ public class ProductInfo {
     private Boolean sealed;
 
     public ProductInfo(@Nullable String size, <b class="conum">(1)</b>
-                       @Nonnull Long count, <b class="conum">(2)</b>
-                       @Nonnull Boolean sealed) { <b class="conum">(3)</b>
+                       @NonNull Long count, <b class="conum">(2)</b>
+                       @NonNull Boolean sealed) { <b class="conum">(3)</b>
         this.size = size;
         this.count = count;
         this.sealed = sealed;
@@ -2270,11 +2218,9 @@ public class ProductInfo {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlight"><code class="language-groovy" data-lang="groovy">import javax.annotation.Nonnull
-import javax.annotation.Nullable
-import javax.annotation.concurrent.Immutable
+<pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.core.annotation.NonNull
+import io.micronaut.core.annotation.Nullable
 
-@Immutable
 class ProductInfo {
 
     private String size
@@ -2282,8 +2228,8 @@ class ProductInfo {
     private Boolean sealed
 
     ProductInfo(@Nullable String size, <b class="conum">(1)</b>
-                @Nonnull Long count, <b class="conum">(2)</b>
-                @Nonnull Boolean sealed) { <b class="conum">(3)</b>
+                @NonNull Long count, <b class="conum">(2)</b>
+                @NonNull Boolean sealed) { <b class="conum">(3)</b>
         this.size = size
         this.count = count
         this.sealed = sealed
@@ -2305,10 +2251,7 @@ class ProductInfo {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import javax.annotation.concurrent.Immutable
-
-@Immutable
-class ProductInfo(val size: String?, <b class="conum">(1)</b>
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">class ProductInfo(val size: String?, <b class="conum">(1)</b>
                   val count: Long, <b class="conum">(2)</b>
                   val sealed: Boolean)<b class="conum">(3)</b></code></pre>
 </div>
@@ -2339,10 +2282,12 @@ import io.micronaut.core.convert.ConversionService;
 import io.micronaut.core.type.Argument;
 import io.micronaut.mqtt.bind.TypedMqttBinder;
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext;
+import jakarta.inject.Singleton;
 import org.eclipse.paho.mqttv5.common.packet.UserProperty;
 
-import javax.inject.Singleton;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Singleton <b class="conum">(1)</b>
@@ -2396,9 +2341,9 @@ import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
 import io.micronaut.core.convert.ArgumentConversionContext
 import io.micronaut.core.convert.ConversionService
 import io.micronaut.core.type.Argument
+import jakarta.inject.Singleton
 import org.eclipse.paho.mqttv5.common.packet.UserProperty
 
-import javax.inject.Singleton
 import java.util.stream.Collectors
 
 @Singleton <b class="conum">(1)</b>
@@ -2452,10 +2397,9 @@ import io.micronaut.core.convert.ConversionService
 import io.micronaut.core.type.Argument
 import io.micronaut.mqtt.bind.*
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
-import org.eclipse.paho.mqttv5.common.MqttMessage
+import jakarta.inject.Singleton
 import org.eclipse.paho.mqttv5.common.packet.UserProperty
 
-import javax.inject.Singleton
 import java.util.Optional
 import java.util.stream.Collectors
 
@@ -2559,15 +2503,16 @@ class ProductInfoTypeBinder constructor(private val conversionService: Conversio
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.mqtt.serdes.MqttPayloadSerDes;
+<pre class="highlight"><code class="language-java" data-lang="java">import io.micronaut.core.annotation.Nullable;
 import io.micronaut.core.convert.ConversionService;
 import io.micronaut.core.type.Argument;
-import org.jetbrains.annotations.Nullable;
+import io.micronaut.mqtt.serdes.MqttPayloadSerDes;
+import jakarta.inject.Singleton;
 
-import javax.inject.Singleton;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
+
 
 @Singleton <b class="conum">(1)</b>
 public class ProductInfoSerDes implements MqttPayloadSerDes&lt;ProductInfo&gt; { <b class="conum">(2)</b>
@@ -2621,9 +2566,8 @@ public class ProductInfoSerDes implements MqttPayloadSerDes&lt;ProductInfo&gt; {
 <div class="content">
 <pre class="highlight"><code class="language-groovy" data-lang="groovy">import io.micronaut.core.convert.ConversionService
 import io.micronaut.core.type.Argument
-import org.jetbrains.annotations.Nullable
+import jakarta.inject.Singleton
 
-import javax.inject.Singleton
 import java.nio.charset.Charset
 
 @Singleton <b class="conum">(1)</b>
@@ -2679,8 +2623,8 @@ class ProductInfoSerDes implements MqttPayloadSerDes&lt;ProductInfo&gt; { <b cla
 <pre class="highlight"><code class="language-kotlin" data-lang="kotlin">import io.micronaut.core.convert.ConversionService
 import io.micronaut.core.type.Argument
 import io.micronaut.mqtt.serdes.MqttPayloadSerDes
+import jakarta.inject.Singleton
 
-import javax.inject.Singleton
 import java.nio.charset.Charset
 
 @Singleton <b class="conum">(1)</b>

@@ -164,7 +164,7 @@
         <h1>Micronaut MQTT</h1>
         <p></p>
         <p>Integration between Micronaut and MQTT</p>
-        <p><strong>Version:</strong> <select style='max-width: 200px' onChange='window.document.location.href=this.options[this.selectedIndex].value;'><option selected='selected' value='https://micronaut-projects.github.io/micronaut-mqtt/snapshot/guide/index.html'>SNAPSHOT</option><option value='https://micronaut-projects.github.io/micronaut-mqtt/1.0.0/guide/index.html'>1.0.0</option><option value='https://micronaut-projects.github.io/micronaut-mqtt/1.0.0.RC1/guide/index.html'>1.0.0.RC1</option></select></p>
+        <p><strong>Version:</strong> <select style='max-width: 200px' onChange='window.document.location.href=this.options[this.selectedIndex].value;'><option selected='selected' value='https://micronaut-projects.github.io/micronaut-mqtt/snapshot/guide/index.html'>SNAPSHOT</option><option value='https://micronaut-projects.github.io/micronaut-mqtt/2.0.0-RC1/guide/index.html'>2.0.0-RC1</option><option value='https://micronaut-projects.github.io/micronaut-mqtt/1.0.0/guide/index.html'>1.0.0</option><option value='https://micronaut-projects.github.io/micronaut-mqtt/1.0.0.RC1/guide/index.html'>1.0.0.RC1</option></select></p>
     </div>
     
 <h1 id="introduction"><a class="anchor" href="#introduction"></a>1 Introduction</h1>
@@ -440,6 +440,20 @@ class ProductListener {
 <td>The <code>receive</code> method accepts a single parameter which is the payload of the message.</td>
 </tr>
 </table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mqtt_health_checks">MQTT Health Checks</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When either the <code>mqttv3</code> or <code>mqttv5</code> module is activated an api:io.micronaut.mqtt.v3.client.health.MqttHealthIndicator or api:io.micronaut.mqtt.v5.client.health.MqttHealthIndicator is activated resulting in the <code>/health</code> endpoint and <a href="../api/io/micronaut/health/CurrentHealthStatus.html">CurrentHealthStatus</a> interface resolving the health of the MQTT connection.</p>
+</div>
+<div class="paragraph">
+<p>The only configuration option supported is to enable or disable the indicator by the <code>endpoints.health.mqtt.client.enabled</code> key.</p>
+</div>
+<div class="paragraph">
+<p>See the section on the <a href="https://docs.micronaut.io/latest/guide/index.html#healthEndpoint">Health Endpoint</a> for more information.</p>
 </div>
 </div>
 </div>

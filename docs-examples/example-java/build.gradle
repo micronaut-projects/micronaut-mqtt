@@ -3,10 +3,6 @@ plugins {
     id "application"
 }
 
-repositories {
-    jcenter()
-}
-
 dependencies {
     testImplementation 'org.awaitility:awaitility:4.1.0'
 }

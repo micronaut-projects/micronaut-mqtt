@@ -56,6 +56,7 @@ public class JsonMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
      * Default constructor.
      *
      * @param jsonMapper The json mapper
+     * @since 2.1.0
      */
     @Inject
     public JsonMqttPayloadSerDes(JsonMapper jsonMapper) {

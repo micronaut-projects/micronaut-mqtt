@@ -48,6 +48,7 @@ public class JsonMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
      * @param objectMapper The jackson object mapper
      * @deprecated Use {@link #JsonMqttPayloadSerDes(JsonMapper)} instead
      */
+    @Deprecated
     public JsonMqttPayloadSerDes(ObjectMapper objectMapper) {
         this(new JacksonDatabindMapper(objectMapper));
     }

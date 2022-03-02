@@ -7,5 +7,5 @@ dependencies {
     compileOnly "io.micronaut:micronaut-management"
     testImplementation "io.micronaut:micronaut-management"
     testImplementation "io.projectreactor:reactor-core"
-    testImplementation project(":mqtt-test")
+    testImplementation(project(":test-suite-utils"))
 }

@@ -1,6 +1,6 @@
 A ann:mqtt.annotation.Topic[] annotation is required for a method to be a subscriber of messages from MQTT. Simply apply the annotation to the method and supply the name of the topic you would like to listen to. Multiple topics can be subscribed to by supplying multiple annotations. Each topic can have its own qos value set in the annotation.
 
-snippet::io.micronaut.mqtt.docs.parameters.ProductListener[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.parameters.ProductListener[tags="imports,clazz"]
 
 <1> The topic annotation is set per method. Multiple methods may be defined with different topics in the same class.
 <2> Multiple topics are subscribed to and the topic received is an argument to the method. The value will change depending on which topic the message was sent to.

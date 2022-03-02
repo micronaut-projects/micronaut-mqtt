@@ -1,0 +1,28 @@
+plugins {
+    id 'groovy'
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    testCompileOnly("io.micronaut:micronaut-inject-groovy:$micronautVersion")
+
+    testImplementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    testImplementation("io.micronaut:micronaut-validation")
+    testImplementation("org.spockframework:spock-core:${spockVersion}") {
+        exclude module: 'groovy-all'
+    }
+    testImplementation project(":test-suite-utils")
+    testImplementation project(":mqttv5")
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("1.8")
+    targetCompatibility = JavaVersion.toVersion("1.8")
+}
+
+

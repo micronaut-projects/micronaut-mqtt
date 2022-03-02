@@ -2,7 +2,7 @@
 
 It is also supported to supply properties when publishing messages. Any of the `org.eclipse.paho.mqttv5.common.packet.MqttProperties` can be set dynamically per execution or statically for all executions. Properties can be set using the ann:mqtt.v5.annotation.MqttProperty[] annotation.
 
-snippet::io.micronaut.mqtt.docs.properties.ProductClient[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.properties.ProductClient[tags="imports,clazz"]
 
 <1> Properties can be defined at the class level and will apply to all methods. If a property is defined on the method with the same name as one on the class, both values will be added.
 <2> Multiple annotations can be used to set multiple properties on the method or class level.
@@ -16,7 +16,7 @@ IMPORTANT: If the annotation or argument name cannot be matched to a property na
 
 Any properties found in messages received can be bound to subscriber arguments through the ann:mqtt.v5.annotation.MqttProperty[] annotation.
 
-snippet::io.micronaut.mqtt.docs.properties.ProductListener[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.properties.ProductListener[tags="imports,clazz"]
 
 <1> The property will be bound from the user property `userId`.
 <2> The property will be bound from the content type property and does not require the property to be present.

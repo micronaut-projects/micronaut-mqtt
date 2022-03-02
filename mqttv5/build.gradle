@@ -1,17 +1,11 @@
+plugins {
+    id("io.micronaut.build.internal.module")
+}
 dependencies {
-    annotationProcessor "io.micronaut:micronaut-inject-java"
-    annotationProcessor "io.micronaut.docs:micronaut-docs-asciidoc-config-props:$micronautDocsVersion"
-
     api "org.eclipse.paho:org.eclipse.paho.mqttv5.client:$pahov5Version"
     api project(":mqtt-core")
-
-    compileOnly "io.micronaut:micronaut-management:$micronautVersion"
-
-    testImplementation "io.micronaut:micronaut-management:$micronautVersion"
+    compileOnly "io.micronaut:micronaut-management"
+    testImplementation "io.micronaut:micronaut-management"
     testImplementation "io.projectreactor:reactor-core"
-    testImplementation("org.spockframework:spock-core:${spockVersion}") {
-        exclude module:'groovy-all'
-    }
-    testImplementation "io.micronaut.test:micronaut-test-spock:$micronautTestVersion"
     testImplementation project(":mqtt-test")
 }

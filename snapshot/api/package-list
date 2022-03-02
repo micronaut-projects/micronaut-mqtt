@@ -2,7 +2,6 @@ io.micronaut.mqtt.annotation
 io.micronaut.mqtt.bind
 io.micronaut.mqtt.bind.impl
 io.micronaut.mqtt.config
-io.micronaut.mqtt.docs
 io.micronaut.mqtt.exception
 io.micronaut.mqtt.executor
 io.micronaut.mqtt.intercept

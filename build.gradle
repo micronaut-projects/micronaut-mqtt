@@ -1,5 +1,5 @@
 subprojects { Project subproject ->
-    group "io.micronaut.mqtt"
+
 
     apply plugin: "io.micronaut.build.internal.common"
     apply plugin: "io.micronaut.build.internal.dependency-updates"

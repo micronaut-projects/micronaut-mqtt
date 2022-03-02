@@ -18,9 +18,9 @@ class ProductListener {
 
     @Topic("product")
     void receive(byte[] data,
-                 @MqttProperty("userId") String user,  // <2>
-                 @Nullable @MqttProperty String contentType,  // <3>
-                 @MqttProperty String appId) {  // <4>
+                 @MqttProperty("userId") String user,  // <1>
+                 @Nullable @MqttProperty String contentType,  // <2>
+                 @MqttProperty String appId) {  // <3>
         messageProperties.add(user + "|" + contentType + "|" + appId)
     }
 }

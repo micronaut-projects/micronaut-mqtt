@@ -1,0 +1,25 @@
+plugins {
+    id 'java-library'
+    id 'groovy'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    compileOnly "io.micronaut:micronaut-inject-groovy"
+    api("io.micronaut:micronaut-runtime")
+    api("org.spockframework:spock-core:${spockVersion}") {
+        exclude module:'groovy-all'
+    }
+    api "io.micronaut.test:micronaut-test-spock:$micronautTestVersion"
+    api project(":mqtt-core")
+    api "org.testcontainers:spock:1.16.3"
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("1.8")
+    targetCompatibility = JavaVersion.toVersion("1.8")
+}

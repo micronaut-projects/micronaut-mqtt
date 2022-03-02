@@ -13,19 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.test;
+package io.micronaut.mqtt.test
 
 import io.micronaut.context.ApplicationContext
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import org.testcontainers.containers.BindMode
 import org.testcontainers.containers.GenericContainer
-import org.testcontainers.containers.output.Slf4jLogConsumer
 import org.testcontainers.containers.wait.strategy.LogMessageWaitStrategy
-import org.testcontainers.utility.DockerImageName;
-import spock.lang.Specification;
-
-import java.util.Map;
+import org.testcontainers.utility.DockerImageName
+import spock.lang.Specification
 
 abstract class AbstractMQTTTest extends Specification {
 

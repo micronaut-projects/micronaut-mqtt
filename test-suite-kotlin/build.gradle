@@ -1,0 +1,45 @@
+plugins {
+    id "groovy"
+    id "org.jetbrains.kotlin.jvm" version "1.6.10"
+    id("org.jetbrains.kotlin.kapt") version "1.6.10"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+    runtimeOnly("ch.qos.logback:logback-classic")
+    implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    api "io.micronaut:micronaut-inject"
+    testAnnotationProcessor(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    testAnnotationProcessor "io.micronaut:micronaut-inject-java"
+    testCompileOnly("io.micronaut:micronaut-inject-groovy:$micronautVersion")
+    testImplementation("org.spockframework:spock-core:${spockVersion}") {
+        exclude module:'groovy-all'
+    }
+    testImplementation "io.micronaut.test:micronaut-test-kotest:$micronautTestVersion"
+
+    kaptTest "io.micronaut:micronaut-inject-java:$micronautVersion"
+
+    testImplementation project(":test-suite-utils")
+    testImplementation project(":mqttv5")
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = '1.8'
+        javaParameters = true
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("1.8")
+    targetCompatibility = JavaVersion.toVersion("1.8")
+}

@@ -20,11 +20,11 @@ To inject your own argument binding behavior, it is as simple as registering a b
 
 A custom annotation can be created to bind subscriber arguments. A custom binder can then be created to use that annotation. In this example an annotation is used to bind to the correlation data (only available in v5).
 
-snippet::io.micronaut.mqtt.docs.custom.annotation.Correlation[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.custom.annotation.Correlation[tags="imports,clazz"]
 
 <1> The link:{apimicronaut}core/bind/annotation/Bindable.html[@Bindable] annotation is required for the annotation to be considered for binding.
 
-snippet::io.micronaut.mqtt.docs.custom.annotation.CorrelationAnnotationBinder[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.custom.annotation.CorrelationAnnotationBinder[tags="imports,clazz"]
 
 <1> The class is made a bean by annotating with `@Singleton`.
 <2> The custom annotation is used as the generic type for the interface.
@@ -34,17 +34,17 @@ snippet::io.micronaut.mqtt.docs.custom.annotation.CorrelationAnnotationBinder[ta
 
 The annotation can now be used on the argument in a subscriber method.
 
-snippet::io.micronaut.mqtt.docs.custom.annotation.ProductListener[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.custom.annotation.ProductListener[tags="imports,clazz"]
 
 And in a publisher method.
 
-snippet::io.micronaut.mqtt.docs.custom.annotation.ProductClient[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.custom.annotation.ProductClient[tags="imports,clazz"]
 
 ==== Type Binding
 
 A custom binder can be created to support any argument type. For example the following class could be created to bind values from user properties (V5 only). This functionality could allow the work of retrieving and converting the properties to occur in a single place instead of multiple times in your code.
 
-snippet::io.micronaut.mqtt.docs.custom.type.ProductInfo[tags="clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.custom.type.ProductInfo[tags="clazz"]
 
 <1> The `size` argument is not required
 <2> The `count` argument is required
@@ -52,7 +52,7 @@ snippet::io.micronaut.mqtt.docs.custom.type.ProductInfo[tags="clazz", project-ba
 
 A type argument binder can then be created to create the `ProductInfo` instance to bind to and from method arguments.
 
-snippet::io.micronaut.mqtt.docs.custom.type.ProductInfoTypeBinder[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.custom.type.ProductInfoTypeBinder[tags="imports,clazz"]
 
 <1> The class is made a bean by annotating with `@Singleton`.
 <2> The custom type is used as the generic type for the interface.

@@ -1,6 +1,6 @@
 Quality of service can be set for publishing messages either through the ann:mqtt.annotation.Topic[] or ann:mqtt.annotation.Qos[] annotations. The ann:mqtt.annotation.Qos[] annotation can be applied to a method argument to set the Qos per execution.
 
-snippet::io.micronaut.mqtt.docs.publisher.qos.ProductClient[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.publisher.qos.ProductClient[tags="imports,clazz"]
 
 <1> Qos is set via the topic annotation. It can be set through `@Qos` instead if that is preferred.
 <2> The Qos must be set per execution

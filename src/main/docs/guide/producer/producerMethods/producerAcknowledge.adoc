@@ -4,7 +4,7 @@ Since the publisher is cold, the message will not actually be published until th
 
 For example:
 
-snippet::io.micronaut.mqtt.docs.publisher.acknowledge.ProductClient[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.publisher.acknowledge.ProductClient[tags="imports,clazz"]
 
 <1> A `Publisher` can be returned to be able to know when the message was acknowledged. Any other reactive type can be used given the appropriate dependencies are in place.
 <2> Java futures can also be used

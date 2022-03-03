@@ -1,6 +1,6 @@
 The retained flagg can be set for publishing messages through the ann:mqtt.annotation.Retained[] annotation. The annotation can also be applied to a method argument to set the retained flag per execution.
 
-snippet::io.micronaut.mqtt.docs.publisher.retained.ProductClient[tags="imports,clazz", project-base="docs-examples/example]
+snippet::io.micronaut.mqtt.docs.publisher.retained.ProductClient[tags="imports,clazz"]
 
 <1> The retained flag is set via the `Retained` annotation.
 <2> The retained flag must be set per execution

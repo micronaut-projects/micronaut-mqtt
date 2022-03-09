@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/**
- * MQTT V5 implementation.
- */
-@Configuration
-@Requires(property = MqttConfigurationProperties.PREFIX + ".enabled", notEquals = StringUtils.FALSE)
-package io.micronaut.mqtt.v5;
+package io.micronaut.mqtt.config;
 
-import io.micronaut.context.annotation.Configuration;
-import io.micronaut.context.annotation.Requires;
-import io.micronaut.core.util.StringUtils;
-import io.micronaut.mqtt.config.MqttConfigurationProperties;
+import io.micronaut.core.util.Toggleable;
+
+/**
+ * MQTT related configuration.
+ * @author Sergio del Amo
+ * @since 2.2.0
+ */
+public interface MqttConfiguration extends Toggleable  {
+}

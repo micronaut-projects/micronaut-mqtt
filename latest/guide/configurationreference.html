@@ -46,14 +46,41 @@
         <div class="docs-content">
             <div class="project">
                 <h1>Configuration Reference</h1>
-                <p><strong>Version:</strong>2.1.0</p>
+                <p><strong>Version:</strong>2.1.1</p>
                 <p></p>
             </div>
+<div class="sect2">
+<h3 id="_mqtt_core_config_properties">Mqtt Core Config Properties</h3>
+<a id="io.micronaut.mqtt.config.MqttConfigurationProperties" href="#io.micronaut.mqtt.config.MqttConfigurationProperties">&#128279;</a>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Configuration Properties for <a href="../api/io/micronaut/mqtt/config/MqttConfigurationProperties.html">MqttConfigurationProperties</a></caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.enabled</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables Micronaut MQTT integration. Default value true</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
 <div class="sect2">
 <h3 id="_mqtt_ssl_config_properties">Mqtt Ssl Config Properties</h3>
 <a id="io.micronaut.mqtt.ssl.MqttCertificateConfiguration" href="#io.micronaut.mqtt.ssl.MqttCertificateConfiguration">&#128279;</a>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Configuration Properties for <a href="../api/io/micronaut/mqtt/ssl/MqttCertificateConfiguration.html">MqttCertificateConfiguration</a></caption>
+<caption class="title">Table 2. Configuration Properties for <a href="../api/io/micronaut/mqtt/ssl/MqttCertificateConfiguration.html">MqttCertificateConfiguration</a></caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -95,7 +122,7 @@
 <h3 id="_mqttv3_config_properties">Mqttv3 Config Properties</h3>
 <a id="io.micronaut.mqtt.v3.config.MqttClientConfigurationProperties" href="#io.micronaut.mqtt.v3.config.MqttClientConfigurationProperties">&#128279;</a>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Configuration Properties for <a href="../api/io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.html">MqttClientConfigurationProperties</a></caption>
+<caption class="title">Table 3. Configuration Properties for <a href="../api/io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.html">MqttClientConfigurationProperties</a></caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -209,7 +236,7 @@
 <div style="page-break-after: always;"></div>
 <a id="io.micronaut.mqtt.v3.config.MqttClientConfigurationProperties.WillMessage" href="#io.micronaut.mqtt.v3.config.MqttClientConfigurationProperties.WillMessage">&#128279;</a>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Configuration Properties for <a href="../api/io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.WillMessage.html">WillMessage</a></caption>
+<caption class="title">Table 4. Configuration Properties for <a href="../api/io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.WillMessage.html">WillMessage</a></caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -251,7 +278,7 @@
 <h3 id="_mqttv5_config_properties">Mqttv5 Config Properties</h3>
 <a id="io.micronaut.mqtt.v5.config.MqttClientConfigurationProperties" href="#io.micronaut.mqtt.v5.config.MqttClientConfigurationProperties">&#128279;</a>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Configuration Properties for <a href="../api/io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html">MqttClientConfigurationProperties</a></caption>
+<caption class="title">Table 5. Configuration Properties for <a href="../api/io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html">MqttClientConfigurationProperties</a></caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -405,7 +432,7 @@
 <div style="page-break-after: always;"></div>
 <a id="io.micronaut.mqtt.v5.config.MqttClientConfigurationProperties.WillMessage" href="#io.micronaut.mqtt.v5.config.MqttClientConfigurationProperties.WillMessage">&#128279;</a>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Configuration Properties for <a href="../api/io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.WillMessage.html">WillMessage</a></caption>
+<caption class="title">Table 6. Configuration Properties for <a href="../api/io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.WillMessage.html">WillMessage</a></caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -419,11 +446,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.will-message-properties</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.paho.mqttv5.common.packet.MqttProperties</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.will-message.topic</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">java.lang.String</p></td>
@@ -593,6 +615,11 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.will-message.properties</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.paho.mqttv5.common.packet.MqttProperties</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The message properties</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mqtt.client.will-message-properties</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.eclipse.paho.mqttv5.common.packet.MqttProperties</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>

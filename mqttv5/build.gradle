@@ -2,10 +2,10 @@ plugins {
     id("io.micronaut.build.internal.module")
 }
 dependencies {
-    api "org.eclipse.paho:org.eclipse.paho.mqttv5.client:$pahov5Version"
+    api(libs.org.eclipse.paho.mqttv5.client)
     api project(":mqtt-core")
-    compileOnly "io.micronaut:micronaut-management"
-    testImplementation "io.micronaut:micronaut-management"
-    testImplementation "io.projectreactor:reactor-core"
+    compileOnly(libs.micronaut.management)
+    testImplementation(libs.micronaut.management)
+    testImplementation(libs.reactor.core)
     testImplementation(project(":test-suite-utils"))
 }

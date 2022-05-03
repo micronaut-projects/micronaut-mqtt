@@ -3,8 +3,8 @@ plugins {
 }
 dependencies {
     constraints {
-        api("org.eclipse.paho:org.eclipse.paho.client.mqttv3:$pahov3Version")
-        api("org.eclipse.paho:org.eclipse.paho.mqttv5.client:$pahov5Version")
+        api(libs.org.eclipse.paho.client.mqttv3)
+        api(libs.org.eclipse.paho.mqttv5.client)
 
     }
 }

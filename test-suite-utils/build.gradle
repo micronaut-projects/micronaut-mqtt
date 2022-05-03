@@ -9,12 +9,12 @@ repositories {
 
 dependencies {
     implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
-    compileOnly "io.micronaut:micronaut-inject-groovy"
-    api("io.micronaut:micronaut-runtime")
+    compileOnly(libs.micronaut.inject.groovy)
+    api(libs.micronaut.runtime)
     api("org.spockframework:spock-core:${spockVersion}") {
         exclude module:'groovy-all'
     }
-    api "io.micronaut.test:micronaut-test-spock:$micronautTestVersion"
+    api(libs.micronaut.test.spock)
     api project(":mqtt-core")
     api "org.testcontainers:spock:1.17.1"
 }

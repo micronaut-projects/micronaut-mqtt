@@ -10,19 +10,20 @@ repositories {
 
 dependencies {
     annotationProcessor(platform("io.micronaut:micronaut-bom:$micronautVersion"))
-    annotationProcessor "io.micronaut:micronaut-inject-java"
+    annotationProcessor(libs.micronaut.inject.java)
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
-    api "io.micronaut:micronaut-inject"
+    api(libs.micronaut.inject)
     testAnnotationProcessor(platform("io.micronaut:micronaut-bom:$micronautVersion"))
-    testAnnotationProcessor "io.micronaut:micronaut-inject-java"
-    testCompileOnly("io.micronaut:micronaut-inject-groovy:$micronautVersion")
+    testAnnotationProcessor(libs.micronaut.inject.java)
+    testCompileOnly(libs.micronaut.inject.groovy)
     testImplementation("org.spockframework:spock-core:${spockVersion}") {
         exclude module:'groovy-all'
     }
-    testImplementation "io.micronaut.test:micronaut-test-kotest:$micronautTestVersion"
+    testImplementation(libs.micronaut.test.kotest)
 
-    kaptTest "io.micronaut:micronaut-inject-java:$micronautVersion"
+    kaptTest(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    kaptTest(libs.micronaut.inject.java)
 
     testImplementation project(":test-suite-utils")
     testImplementation project(":mqttv5")

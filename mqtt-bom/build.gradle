@@ -1,10 +1,9 @@
 plugins {
     id "io.micronaut.build.internal.bom"
 }
-dependencies {
-    constraints {
-        api(libs.org.eclipse.paho.client.mqttv3)
-        api(libs.org.eclipse.paho.mqttv5.client)
 
-    }
+micronautBom {
+    excludeProject.set({ p ->
+        p.name.contains('test-')
+    } as Spec<Project>)
 }

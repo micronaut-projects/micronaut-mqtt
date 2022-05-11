@@ -2,7 +2,7 @@ plugins {
     id("io.micronaut.build.internal.module")
 }
 dependencies {
-    api(libs.org.eclipse.paho.client.mqttv3)
+    api(libs.managed.paho.mqttv3.client)
     api project(":mqtt-core")
     compileOnly(libs.micronaut.management)
     testImplementation(libs.micronaut.management)

@@ -5,6 +5,6 @@ dependencies {
     implementation(libs.micronaut.http)
     api project(":mqtt-core")
     implementation(libs.bcpkix.jdk15on)
-    testImplementation "org.testcontainers:spock:1.17.1"
+    testImplementation(libs.testcontainers.spock)
     testImplementation project(":mqttv5")
 }

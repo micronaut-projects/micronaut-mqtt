@@ -9,20 +9,20 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    annotationProcessor(platform(libs.boms.micronaut))
     annotationProcessor(libs.micronaut.inject.java)
     runtimeOnly("ch.qos.logback:logback-classic")
-    implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    implementation(platform(libs.boms.micronaut))
     api(libs.micronaut.inject)
-    testAnnotationProcessor(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    testAnnotationProcessor(platform(libs.boms.micronaut))
     testAnnotationProcessor(libs.micronaut.inject.java)
     testCompileOnly(libs.micronaut.inject.groovy)
-    testImplementation("org.spockframework:spock-core:${spockVersion}") {
+    testImplementation(libs.spock.core) {
         exclude module:'groovy-all'
     }
     testImplementation(libs.micronaut.test.kotest)
 
-    kaptTest(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    kaptTest(platform(libs.boms.micronaut))
     kaptTest(libs.micronaut.inject.java)
 
     testImplementation project(":test-suite-utils")

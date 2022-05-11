@@ -7,9 +7,9 @@ repositories {
 dependencies {
     testCompileOnly(libs.micronaut.inject.groovy)
 
-    testImplementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    testImplementation(platform(libs.boms.micronaut))
     testImplementation(libs.micronaut.validation)
-    testImplementation("org.spockframework:spock-core:${spockVersion}") {
+    testImplementation(libs.spock.core) {
         exclude module: 'groovy-all'
     }
     testImplementation project(":test-suite-utils")

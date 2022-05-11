@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    implementation(platform(libs.boms.micronaut))
+    implementation(platform(libs.micronaut.bom))
     compileOnly(libs.micronaut.inject.groovy)
     api(libs.micronaut.runtime)
     api(libs.spock.core) {

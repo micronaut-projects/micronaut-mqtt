@@ -17,10 +17,8 @@ micronaut-test = "3.1.1"
 managed-paho-mqttv3-client = { module = "org.eclipse.paho:org.eclipse.paho.client.mqttv3", version.ref = "managed-mqttv3" }
 managed-paho-mqttv5-client = { module = "org.eclipse.paho:org.eclipse.paho.mqttv5.client", version.ref = "managed-mqttv5" }
 
-# BOMs
-boms-micronaut = { module = "io.micronaut:micronaut-bom", version.ref = "micronaut" }
-
 # Micronaut
+micronaut-bom = { module = "io.micronaut:micronaut-bom", version.ref = "micronaut" }
 micronaut-aop = { module = "io.micronaut:micronaut-aop" }
 micronaut-http = { module = "io.micronaut:micronaut-http" }
 micronaut-inject = { module = "io.micronaut:micronaut-inject" }

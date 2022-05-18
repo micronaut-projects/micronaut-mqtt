@@ -4,7 +4,7 @@ dependency:micronaut-mqttv3[groupId="io.micronaut.mqtt"]
 
 dependency:micronaut-mqttv5[groupId="io.micronaut.mqtt"]
 
-IMPORTANT: Make sure to run your program on a machine with *more than one core*. Your MQTT client will run into connection timeouts if it has only one core available.
+IMPORTANT: If you are running into the exception `org.eclipse.paho.client.mqttv3.MqttException: Timed out waiting for a response from the server`, please make sure to run your program on a machine with *more than one core*. Your MQTT client will run into connection timeouts if it has only one core available.
 
 == Creating an MQTT Publisher with @MqttPublisher
 

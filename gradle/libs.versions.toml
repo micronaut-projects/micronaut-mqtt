@@ -8,29 +8,9 @@ kotlin = "1.6.10"
 testcontainers = "1.17.1"
 spock = "2.0-groovy-3.0"
 
-# Micronaut
-micronaut = "3.4.3"
-micronaut-test = "3.1.1"
-
-
 [libraries]
 managed-paho-mqttv3-client = { module = "org.eclipse.paho:org.eclipse.paho.client.mqttv3", version.ref = "managed-mqttv3" }
 managed-paho-mqttv5-client = { module = "org.eclipse.paho:org.eclipse.paho.mqttv5.client", version.ref = "managed-mqttv5" }
-
-# Micronaut
-micronaut-bom = { module = "io.micronaut:micronaut-bom", version.ref = "micronaut" }
-micronaut-aop = { module = "io.micronaut:micronaut-aop" }
-micronaut-http = { module = "io.micronaut:micronaut-http" }
-micronaut-inject = { module = "io.micronaut:micronaut-inject" }
-micronaut-inject-groovy = { module = "io.micronaut:micronaut-inject-groovy" }
-micronaut-inject-java = { module = "io.micronaut:micronaut-inject-java" }
-micronaut-management = { module = "io.micronaut:micronaut-management" }
-micronaut-messaging = { module = "io.micronaut:micronaut-messaging" }
-micronaut-runtime = { module = "io.micronaut:micronaut-runtime" }
-micronaut-test-junit5 = { module = "io.micronaut.test:micronaut-test-junit5" }
-micronaut-test-kotest = { module = "io.micronaut.test:micronaut-test-kotest", version.ref = "micronaut-test" }
-micronaut-test-spock = { module = "io.micronaut.test:micronaut-test-spock", version.ref = "micronaut-test" }
-micronaut-validation = { module = "io.micronaut:micronaut-validation" }
 
 awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
 bcpkix-jdk15on = { module = "org.bouncycastle:bcpkix-jdk15on", version.ref = "bcpkix-jdk15on" }

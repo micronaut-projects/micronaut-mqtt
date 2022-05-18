@@ -5,15 +5,13 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    testAnnotationProcessor(platform(libs.micronaut.bom))
-    testAnnotationProcessor(libs.micronaut.inject.java)
-    testAnnotationProcessor(libs.micronaut.validation)
+    testAnnotationProcessor(mn.micronaut.inject.java)
+    testAnnotationProcessor(mn.micronaut.validation)
 
-    testImplementation(platform(libs.micronaut.bom))
-    testImplementation(libs.micronaut.validation)
+    testImplementation(mn.micronaut.validation)
 
     testImplementation(libs.junit.jupiter.api)
-    testImplementation(libs.micronaut.test.junit5)
+    testImplementation(mn.micronaut.test.junit5)
     testRuntimeOnly(libs.junit.jupiter.engine)
     testImplementation(libs.awaitility)
 

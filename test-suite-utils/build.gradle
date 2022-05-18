@@ -8,13 +8,9 @@ repositories {
 }
 
 dependencies {
-    implementation(platform(libs.micronaut.bom))
-    compileOnly(libs.micronaut.inject.groovy)
-    api(libs.micronaut.runtime)
-    api(libs.spock.core) {
-        exclude module:'groovy-all'
-    }
-    api(libs.micronaut.test.spock)
+    compileOnly(mn.micronaut.inject.groovy)
+    api(mn.micronaut.runtime)
+    api(mn.micronaut.test.spock)
     api project(":mqtt-core")
     api(libs.testcontainers.spock)
 }

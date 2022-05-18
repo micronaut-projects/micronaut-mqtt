@@ -1,11 +1,12 @@
 plugins {
     id("io.micronaut.build.internal.module")
 }
+
 dependencies {
-    api(libs.micronaut.inject)
-    api(libs.micronaut.aop)
-    api(libs.micronaut.runtime)
-    api(libs.micronaut.messaging)
+    api(mn.micronaut.inject)
+    api(mn.micronaut.aop)
+    api(mn.micronaut.runtime)
+    api(mn.micronaut.messaging)
     implementation(libs.reactor.core)
     compileOnly(libs.kotlin.stdlib.jdk8)
 }

@@ -1,8 +1,9 @@
 plugins {
     id("io.micronaut.build.internal.module")
 }
+
 dependencies {
-    implementation(libs.micronaut.http)
+    implementation(mn.micronaut.http)
     api project(":mqtt-core")
     implementation(libs.bcpkix.jdk15on)
     testImplementation(libs.testcontainers.spock)

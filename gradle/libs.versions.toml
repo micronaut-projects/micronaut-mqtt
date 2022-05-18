@@ -6,7 +6,6 @@ awaitility = "4.2.0"
 bcpkix-jdk15on = "1.70"
 kotlin = "1.6.21"
 testcontainers = "1.17.1"
-spock = "2.0-groovy-3.0"
 
 [libraries]
 managed-paho-mqttv3-client = { module = "org.eclipse.paho:org.eclipse.paho.client.mqttv3", version.ref = "managed-mqttv3" }
@@ -19,4 +18,3 @@ junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
 reactor-core = { module = "io.projectreactor:reactor-core" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 testcontainers-spock = { module = "org.testcontainers:spock", version.ref = "testcontainers" }
-spock-core = { module = "org.spockframework:spock-core", version.ref = "spock" }

@@ -5,7 +5,7 @@ managed-mqttv5 = "1.2.5"
 awaitility = "4.2.0"
 bcpkix-jdk15on = "1.70"
 kotlin = "1.7.10"
-testcontainers = "1.17.1"
+testcontainers = "1.17.3"
 
 [libraries]
 managed-paho-mqttv3-client = { module = "org.eclipse.paho:org.eclipse.paho.client.mqttv3", version.ref = "managed-mqttv3" }

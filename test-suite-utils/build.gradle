@@ -1,11 +1,7 @@
 plugins {
     id 'java-library'
     id 'groovy'
-}
-
-repositories {
-    mavenCentral()
-    maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+    id("io.micronaut.build.internal.mqtt-tests")
 }
 
 dependencies {

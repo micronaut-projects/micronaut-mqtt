@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 /**
- * MQTT V3 implementation.
+ * MQTT related classes.
  */
-package io.micronaut.mqtt.v3;
+@Configuration
+@Requires(property = MqttConfigurationProperties.PREFIX + ".enabled", notEquals = StringUtils.FALSE)
+package io.micronaut.mqtt;
+
+import io.micronaut.context.annotation.Configuration;
+import io.micronaut.context.annotation.Requires;
+import io.micronaut.core.util.StringUtils;
+import io.micronaut.mqtt.config.MqttConfigurationProperties;

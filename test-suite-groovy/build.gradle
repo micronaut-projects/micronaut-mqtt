@@ -1,9 +1,8 @@
 plugins {
     id 'groovy'
+    id("io.micronaut.build.internal.mqtt-tests")
 }
-repositories {
-    mavenCentral()
-}
+
 dependencies {
     testCompileOnly(mn.micronaut.inject.groovy)
     testImplementation(mn.micronaut.validation)

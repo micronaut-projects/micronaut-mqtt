@@ -1,22 +1,15 @@
 plugins {
     id 'java-library'
     id 'groovy'
-}
-
-repositories {
-    mavenCentral()
+    id("io.micronaut.build.internal.mqtt-tests")
 }
 
 dependencies {
-    implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
-    compileOnly "io.micronaut:micronaut-inject-groovy"
-    api("io.micronaut:micronaut-runtime")
-    api("org.spockframework:spock-core:${spockVersion}") {
-        exclude module:'groovy-all'
-    }
-    api "io.micronaut.test:micronaut-test-spock:$micronautTestVersion"
+    compileOnly(mn.micronaut.inject.groovy)
+    api(mn.micronaut.runtime)
+    api(mn.micronaut.test.spock)
     api project(":mqtt-core")
-    api "org.testcontainers:spock:1.16.3"
+    api(libs.testcontainers.spock)
 }
 
 java {

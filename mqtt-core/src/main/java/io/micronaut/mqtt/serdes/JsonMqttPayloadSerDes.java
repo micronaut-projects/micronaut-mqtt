@@ -15,13 +15,10 @@
  */
 package io.micronaut.mqtt.serdes;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.core.reflect.ClassUtils;
 import io.micronaut.core.serialize.exceptions.SerializationException;
 import io.micronaut.core.type.Argument;
-import io.micronaut.jackson.databind.JacksonDatabindMapper;
 import io.micronaut.json.JsonMapper;
-import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
 import java.io.IOException;
@@ -43,23 +40,11 @@ public class JsonMqttPayloadSerDes implements MqttPayloadSerDes<Object> {
     private final JsonMapper jsonMapper;
 
     /**
-     * Legacy jackson constructor.
-     *
-     * @param objectMapper The jackson object mapper
-     * @deprecated Use {@link #JsonMqttPayloadSerDes(JsonMapper)} instead
-     */
-    @Deprecated
-    public JsonMqttPayloadSerDes(ObjectMapper objectMapper) {
-        this(new JacksonDatabindMapper(objectMapper));
-    }
-
-    /**
      * Default constructor.
      *
      * @param jsonMapper The json mapper
      * @since 2.1.0
      */
-    @Inject
     public JsonMqttPayloadSerDes(JsonMapper jsonMapper) {
         this.jsonMapper = jsonMapper;
     }

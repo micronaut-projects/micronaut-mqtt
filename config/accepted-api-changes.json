@@ -1,0 +1,7 @@
+[
+  {
+    "type": "io.micronaut.mqtt.serdes.JsonMqttPayloadSerDes",
+    "member": "Constructor io.micronaut.mqtt.serdes.JsonMqttPayloadSerDes(com.fasterxml.jackson.databind.ObjectMapper)",
+    "reason": "Removed deprecated constructor for Micronaut 4.0.x"
+  }
+]

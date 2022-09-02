@@ -16,4 +16,11 @@
 /**
  * MQTT V5 implementation.
  */
+@Configuration
+@Requires(property = MqttConfigurationProperties.PREFIX + ".enabled", notEquals = StringUtils.FALSE)
 package io.micronaut.mqtt.v5;
+
+import io.micronaut.context.annotation.Configuration;
+import io.micronaut.context.annotation.Requires;
+import io.micronaut.core.util.StringUtils;
+import io.micronaut.mqtt.config.MqttConfigurationProperties;

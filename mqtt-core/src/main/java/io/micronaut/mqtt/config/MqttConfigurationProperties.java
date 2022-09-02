@@ -29,7 +29,6 @@ public class MqttConfigurationProperties implements MqttConfiguration {
     /**
      * The default enable value.
      */
-    @SuppressWarnings("WeakerAccess")
     private static final boolean DEFAULT_ENABLED = true;
 
     private boolean enabled = DEFAULT_ENABLED;

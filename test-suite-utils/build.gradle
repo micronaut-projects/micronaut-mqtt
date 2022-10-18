@@ -6,13 +6,10 @@ plugins {
 
 dependencies {
     compileOnly(mn.micronaut.inject.groovy)
+    implementation mn.spock
+
     api(mn.micronaut.runtime)
     api(mn.micronaut.test.spock)
-    api project(":mqtt-core")
+    api projects.mqttCore
     api(libs.testcontainers.spock)
-}
-
-java {
-    sourceCompatibility = JavaVersion.toVersion("1.8")
-    targetCompatibility = JavaVersion.toVersion("1.8")
 }

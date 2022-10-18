@@ -2,3 +2,12 @@ repositories {
     mavenCentral()
     maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
 }
+
+configurations.all {
+    resolutionStrategy.dependencySubstitution {
+//        substitute(module('org.spockframework:spock-core:2.1-groovy-3.0'))
+//                .using(module('org.spockframework:spock-core:2.3-groovy-4.0'))
+        substitute(module("org.codehaus.groovy:groovy"))
+                .using(module("org.apache.groovy:groovy:4.0.6"))
+    }
+}

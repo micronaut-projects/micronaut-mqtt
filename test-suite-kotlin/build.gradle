@@ -1,17 +1,11 @@
 plugins {
-    id "groovy"
-    id "org.jetbrains.kotlin.jvm" version "1.6.21"
-    id("org.jetbrains.kotlin.kapt") version "1.6.21"
+    alias libs.plugins.kotlin.jvm
+    alias libs.plugins.kotlin.kapt
     id("io.micronaut.build.internal.mqtt-tests")
 }
 
-//repositories {
-//    mavenCentral()
-//    maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
-//}
-
 dependencies {
-    runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly mn.logback
     api(mn.micronaut.inject)
     testAnnotationProcessor(mn.micronaut.inject.java)
     testImplementation(mn.micronaut.test.kotest)
@@ -19,8 +13,8 @@ dependencies {
     kaptTest(mn.micronaut.inject.java)
 
 
-    testImplementation project(":test-suite-utils")
-    testImplementation project(":mqttv5")
+    testImplementation projects.testSuiteUtils
+    testImplementation projects.mqttv5
 }
 
 tasks.named('test') {
@@ -29,12 +23,7 @@ tasks.named('test') {
 
 compileTestKotlin {
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
         javaParameters = true
     }
-}
-
-java {
-    sourceCompatibility = JavaVersion.toVersion("1.8")
-    targetCompatibility = JavaVersion.toVersion("1.8")
 }

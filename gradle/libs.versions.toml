@@ -4,7 +4,8 @@ managed-mqttv5 = "1.2.5"
 
 awaitility = "4.2.0"
 bcpkix-jdk15on = "1.70"
-kotlin = "1.7.10"
+caffeine =  '3.1.1'
+kotlin = "1.7.20"
 testcontainers = "1.17.3"
 
 [libraries]
@@ -13,8 +14,13 @@ managed-paho-mqttv5-client = { module = "org.eclipse.paho:org.eclipse.paho.mqttv
 
 awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
 bcpkix-jdk15on = { module = "org.bouncycastle:bcpkix-jdk15on", version.ref = "bcpkix-jdk15on" }
+caffeine = { module = 'com.github.ben-manes.caffeine:caffeine', version.ref = 'caffeine' }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
 reactor-core = { module = "io.projectreactor:reactor-core" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 testcontainers-spock = { module = "org.testcontainers:spock", version.ref = "testcontainers" }
+
+[plugins]
+kotlin-jvm = { id = 'org.jetbrains.kotlin.jvm', version.ref = 'kotlin' }
+kotlin-kapt = { id = 'org.jetbrains.kotlin.kapt', version.ref = 'kotlin' }

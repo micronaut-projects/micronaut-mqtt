@@ -9,6 +9,8 @@ plugins {
     id("io.micronaut.build.shared.settings") version "6.0.1"
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = 'mqtt-parent'
 
 include 'mqtt-core'

@@ -6,8 +6,9 @@ plugins {
 dependencies {
     testCompileOnly(mn.micronaut.inject.groovy)
     testImplementation(mn.micronaut.validation)
-    testImplementation project(":test-suite-utils")
-    testImplementation project(":mqttv5")
+    testImplementation projects.testSuiteUtils
+    testImplementation projects.mqttv5
+    testImplementation mn.spock
 }
 
 tasks.named('test') {
@@ -18,5 +19,3 @@ java {
     sourceCompatibility = JavaVersion.toVersion("17")
     targetCompatibility = JavaVersion.toVersion("17")
 }
-
-

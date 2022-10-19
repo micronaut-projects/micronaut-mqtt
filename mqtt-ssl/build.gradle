@@ -4,8 +4,8 @@ plugins {
 
 dependencies {
     implementation(mn.micronaut.http)
-    api project(":mqtt-core")
+    api projects.mqttCore
     implementation(libs.bcpkix.jdk15on)
     testImplementation(libs.testcontainers.spock)
-    testImplementation project(":mqttv5")
+    testImplementation projects.mqttv5
 }

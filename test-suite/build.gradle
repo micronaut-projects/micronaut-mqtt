@@ -1,9 +1,12 @@
 plugins {
     id 'java-library'
+    id 'groovy'
     id("io.micronaut.build.internal.mqtt-tests")
 }
 
 dependencies {
+    implementation mn.spock
+
     testAnnotationProcessor(mn.micronaut.inject.java)
     testAnnotationProcessor(mn.micronaut.validation)
 
@@ -14,8 +17,8 @@ dependencies {
     testRuntimeOnly(libs.junit.jupiter.engine)
     testImplementation(libs.awaitility)
 
-    testImplementation project(":test-suite-utils")
-    testImplementation project(":mqttv5")
+    testImplementation projects.testSuiteUtils
+    testImplementation projects.mqttv5
 }
 
 tasks.named('test') {
@@ -26,5 +29,3 @@ java {
     sourceCompatibility = JavaVersion.toVersion("17")
     targetCompatibility = JavaVersion.toVersion("17")
 }
-
-

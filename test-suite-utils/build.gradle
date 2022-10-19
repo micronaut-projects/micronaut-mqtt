@@ -13,3 +13,8 @@ dependencies {
     api projects.mqttCore
     api(libs.testcontainers.spock)
 }
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
+}

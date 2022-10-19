@@ -28,8 +28,5 @@ class V5HealthIndicatorSpec extends AbstractMQTTTest {
 
         then:
         result.status == HealthStatus.DOWN
-
-        cleanup:
-        ctx.close()
     }
 }

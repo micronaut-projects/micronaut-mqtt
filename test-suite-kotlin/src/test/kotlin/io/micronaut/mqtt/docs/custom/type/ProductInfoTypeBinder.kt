@@ -18,7 +18,7 @@ import io.micronaut.context.annotation.Requires
 @Requires(property = "spec.name", value = "ProductInfoSpec")
 // tag::clazz[]
 @Singleton // <1>
-class ProductInfoTypeBinder constructor(private val conversionService: ConversionService<*>) //<3>
+class ProductInfoTypeBinder constructor(private val conversionService: ConversionService) //<3>
     : TypedMqttBinder<MqttV5BindingContext, ProductInfo> { // <2>
 
     override fun bindTo(context: MqttV5BindingContext, value: ProductInfo, argument: Argument<ProductInfo>) {

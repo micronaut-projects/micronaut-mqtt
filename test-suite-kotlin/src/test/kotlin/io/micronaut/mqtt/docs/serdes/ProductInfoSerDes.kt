@@ -14,7 +14,7 @@ import io.micronaut.context.annotation.Requires
 @Requires(property = "spec.name", value = "ProductInfoSerDesSpec")
 // tag::clazz[]
 @Singleton // <1>
-class ProductInfoSerDes(private val conversionService: ConversionService<*>)// <3>
+class ProductInfoSerDes(private val conversionService: ConversionService)// <3>
     : MqttPayloadSerDes<ProductInfo> { // <2>
 
     override fun deserialize(payload: ByteArray, argument: Argument<ProductInfo>): ProductInfo? {

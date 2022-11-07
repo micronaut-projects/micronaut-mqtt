@@ -16,7 +16,7 @@ import io.micronaut.context.annotation.Requires
 @Requires(property = "spec.name", value = "CorrelationSpec")
 // tag::clazz[]
 @Singleton // <1>
-class CorrelationAnnotationBinder(private val conversionService: ConversionService<*>)// <3>
+class CorrelationAnnotationBinder(private val conversionService: ConversionService)// <3>
     : AnnotatedMqttBinder<MqttV5BindingContext, Correlation> { // <2>
 
     override fun getAnnotationType(): Class<Correlation> {

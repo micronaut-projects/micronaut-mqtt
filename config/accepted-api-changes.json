@@ -3,5 +3,135 @@
     "type": "io.micronaut.mqtt.serdes.JsonMqttPayloadSerDes",
     "member": "Constructor io.micronaut.mqtt.serdes.JsonMqttPayloadSerDes(com.fasterxml.jackson.databind.ObjectMapper)",
     "reason": "Removed deprecated constructor for Micronaut 4.0.x"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.$BeanConfiguration",
+    "member": "Field $ANNOTATION_METADATA",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.$BeanConfiguration",
+    "member": "Constructor io.micronaut.mqtt.v3.$BeanConfiguration()",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.$BeanConfiguration",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationSource",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.$BeanConfiguration",
+    "member": "Implemented interface io.micronaut.inject.BeanContextConditional",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.$BeanConfiguration",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadataProvider",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.$BeanConfiguration",
+    "member": "Implemented interface io.micronaut.inject.BeanConfiguration",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Field $ANNOTATION_METADATA",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Constructor io.micronaut.mqtt.v3.intercept.$MqttIntroductionAdvice$Definition$Reference()",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationSource",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanContextConditional",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadataProvider",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanType",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanDefinitionReference",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.$BeanConfiguration",
+    "member": "Field $ANNOTATION_METADATA",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.$BeanConfiguration",
+    "member": "Constructor io.micronaut.mqtt.v5.$BeanConfiguration()",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.$BeanConfiguration",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationSource",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.$BeanConfiguration",
+    "member": "Implemented interface io.micronaut.inject.BeanContextConditional",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.$BeanConfiguration",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadataProvider",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.$BeanConfiguration",
+    "member": "Implemented interface io.micronaut.inject.BeanConfiguration",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Field $ANNOTATION_METADATA",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Constructor io.micronaut.mqtt.v5.intercept.$MqttIntroductionAdvice$Definition$Reference()",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationSource",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanContextConditional",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Implemented interface io.micronaut.core.annotation.AnnotationMetadataProvider",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanType",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.intercept.$MqttIntroductionAdvice$Definition$Reference",
+    "member": "Implemented interface io.micronaut.inject.BeanDefinitionReference",
+    "reason": "Micronaut 4.0.0 Bean Definition changes"
   }
 ]

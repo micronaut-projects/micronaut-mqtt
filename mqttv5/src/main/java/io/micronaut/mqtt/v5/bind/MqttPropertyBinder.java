@@ -41,13 +41,13 @@ import java.util.Optional;
 @Singleton
 public class MqttPropertyBinder implements AnnotatedMqttBinder<MqttV5BindingContext, MqttProperty> {
 
-    private final ConversionService<?> conversionService;
+    private final ConversionService conversionService;
     private final BeanIntrospection<MqttProperties> introspection;
 
     /**
      * @param conversionService The conversion service
      */
-    public MqttPropertyBinder(ConversionService<?> conversionService) {
+    public MqttPropertyBinder(ConversionService conversionService) {
         this.conversionService = conversionService;
         this.introspection = BeanIntrospection.getIntrospection(MqttProperties.class);
     }

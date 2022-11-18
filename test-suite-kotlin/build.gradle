@@ -12,7 +12,6 @@ dependencies {
 
     kaptTest(mn.micronaut.inject.java)
 
-
     testImplementation projects.testSuiteUtils
     testImplementation projects.mqttv5
 }

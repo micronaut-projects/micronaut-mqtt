@@ -8,7 +8,7 @@ dependencies {
     runtimeOnly mn.logback
     api(mn.micronaut.inject)
     testAnnotationProcessor(mn.micronaut.inject.java)
-    testImplementation(mn.micronaut.test.kotest)
+    testImplementation(mn.micronaut.test.kotest5)
 
     kaptTest(mn.micronaut.inject.java)
 

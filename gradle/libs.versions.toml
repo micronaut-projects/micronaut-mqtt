@@ -4,7 +4,7 @@ managed-mqttv5 = "1.2.5"
 
 awaitility = "4.2.0"
 bcpkix-jdk15on = "1.70"
-kotlin = "1.7.10"
+kotlin = "1.7.21"
 testcontainers = "1.17.6"
 
 [libraries]

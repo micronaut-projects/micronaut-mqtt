@@ -1,7 +1,7 @@
 plugins {
     id "groovy"
-    id "org.jetbrains.kotlin.jvm" version "1.6.21"
-    id("org.jetbrains.kotlin.kapt") version "1.6.21"
+    alias libs.plugins.kotlin.jvm
+    alias libs.plugins.kotlin.kapt
 }
 
 repositories {
@@ -9,15 +9,13 @@ repositories {
 }
 
 dependencies {
-    runtimeOnly("ch.qos.logback:logback-classic")
-    api(mn.micronaut.inject)
-    testAnnotationProcessor(mn.micronaut.inject.java)
-    testImplementation(mn.micronaut.test.kotest)
-
     kaptTest(mn.micronaut.inject.java)
 
+    testImplementation libs.kotest
     testImplementation project(":test-suite-utils")
     testImplementation project(":mqttv5")
+
+    runtimeOnly("ch.qos.logback:logback-classic")
 }
 
 tasks.named('test') {

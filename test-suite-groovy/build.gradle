@@ -8,7 +8,6 @@ dependencies {
     testImplementation(mn.micronaut.validation)
     testImplementation projects.testSuiteUtils
     testImplementation projects.mqttv5
-    testImplementation mn.spock
 }
 
 tasks.named('test') {

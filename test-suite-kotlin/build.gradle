@@ -5,10 +5,10 @@ plugins {
 }
 
 dependencies {
-    runtimeOnly mn.logback
+    runtimeOnly mn.logback.classic
     api(mn.micronaut.inject)
     testAnnotationProcessor(mn.micronaut.inject.java)
-    testImplementation(mn.micronaut.test.kotest5)
+    testImplementation(mnTest.micronaut.test.kotest5)
 
     kaptTest(mn.micronaut.inject.java)
 

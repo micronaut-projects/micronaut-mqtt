@@ -18,8 +18,6 @@ package io.micronaut.mqtt.intercept;
 import io.micronaut.aop.InterceptedMethod;
 import io.micronaut.aop.MethodInterceptor;
 import io.micronaut.aop.MethodInvocationContext;
-import com.github.benmanes.caffeine.cache.Cache;
-import com.github.benmanes.caffeine.cache.Caffeine;
 import io.micronaut.core.annotation.AnnotationValue;
 import io.micronaut.core.type.Argument;
 import io.micronaut.inject.ExecutableMethod;
@@ -37,6 +35,8 @@ import reactor.core.publisher.FluxSink;
 
 import java.lang.annotation.Annotation;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
@@ -53,7 +53,7 @@ public abstract class AbstractMqttIntroductionAdvice<L, M> implements MethodInte
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractMqttIntroductionAdvice.class);
 
-    private final Cache<ExecutableMethod<?, ?>, MqttPublisherState> publisherCache = Caffeine.newBuilder().build();
+    private final ConcurrentMap<ExecutableMethod<?, ?>, MqttPublisherState> publisherCache = new ConcurrentHashMap<>();
     private final MqttBinderRegistry binderRegistry;
 
     public AbstractMqttIntroductionAdvice(MqttBinderRegistry binderRegistry) {
@@ -71,9 +71,9 @@ public abstract class AbstractMqttIntroductionAdvice<L, M> implements MethodInte
 
                 switch (interceptedMethod.resultType()) {
                     case PUBLISHER:
-                        return interceptedMethod.handleResult(Flux.create(emitter -> {
-                            publish(publisherState, context, createListener(emitter::complete, emitter::error));
-                        }, FluxSink.OverflowStrategy.ERROR));
+                        return interceptedMethod.handleResult(Flux.create(emitter ->
+                            publish(publisherState, context, createListener(emitter::complete, emitter::error)), FluxSink.OverflowStrategy.ERROR)
+                        );
                     case COMPLETION_STAGE:
                         CompletableFuture<Void> future = new CompletableFuture<>();
                         publish(publisherState, context, createListener(() -> future.complete(null), future::completeExceptionally));
@@ -81,7 +81,7 @@ public abstract class AbstractMqttIntroductionAdvice<L, M> implements MethodInte
                     case SYNCHRONOUS:
                         CountDownLatch countDownLatch = new CountDownLatch(1);
                         AtomicReference<Throwable> error = new AtomicReference<>();
-                        Object token = publish(publisherState, context, createListener(countDownLatch::countDown, (t) -> {
+                        Object token = publish(publisherState, context, createListener(countDownLatch::countDown, t -> {
                             error.set(t);
                             countDownLatch.countDown();
                         }));
@@ -137,7 +137,7 @@ public abstract class AbstractMqttIntroductionAdvice<L, M> implements MethodInte
     public abstract Class<? extends Annotation> getRequiredAnnotation();
 
     private MqttPublisherState getPublisherState(MethodInvocationContext<Object, Object> context) {
-        return publisherCache.get(context.getExecutableMethod(), (method) -> {
+        return publisherCache.computeIfAbsent(context.getExecutableMethod(), method -> {
             MqttPublisherState state = new MqttPublisherState();
 
             method.findAnnotation(Topic.class)
@@ -146,7 +146,7 @@ public abstract class AbstractMqttIntroductionAdvice<L, M> implements MethodInte
                         topicAnn.intValue("qos").ifPresent(state::setQos);
                     });
             method.findAnnotation(Qos.class)
-                    .ifPresent((av) -> av.intValue().ifPresent(state::setQos));
+                    .ifPresent(av -> av.intValue().ifPresent(state::setQos));
             method.findAnnotation(Retained.class)
                     .flatMap(AnnotationValue::booleanValue)
                     .ifPresent(state::setRetained);

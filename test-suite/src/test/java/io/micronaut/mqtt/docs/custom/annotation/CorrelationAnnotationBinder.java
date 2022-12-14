@@ -17,9 +17,9 @@ import io.micronaut.context.annotation.Requires;
 @Singleton // <1>
 public class CorrelationAnnotationBinder implements AnnotatedMqttBinder<MqttV5BindingContext, Correlation> { // <2>
 
-    private final ConversionService<?> conversionService;
+    private final ConversionService conversionService;
 
-    public CorrelationAnnotationBinder(ConversionService<?> conversionService) { // <3>
+    public CorrelationAnnotationBinder(ConversionService conversionService) { // <3>
         this.conversionService = conversionService;
     }
 

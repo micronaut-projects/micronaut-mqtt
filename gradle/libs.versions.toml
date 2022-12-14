@@ -4,17 +4,21 @@ managed-mqttv5 = "1.2.5"
 
 awaitility = "4.2.0"
 bcpkix-jdk15on = "1.70"
-caffeine =  '3.1.2'
 kotlin = "1.7.21"
 testcontainers = "1.17.6"
+
+micronaut-serde = "2.0.0-SNAPSHOT"
+micronaut-test = "4.0.0-SNAPSHOT"
 
 [libraries]
 managed-paho-mqttv3-client = { module = "org.eclipse.paho:org.eclipse.paho.client.mqttv3", version.ref = "managed-mqttv3" }
 managed-paho-mqttv5-client = { module = "org.eclipse.paho:org.eclipse.paho.mqttv5.client", version.ref = "managed-mqttv5" }
 
+micronaut-serde = { module = "io.micronaut.serde:micronaut-serde-bom", version.ref = "micronaut-serde" }
+micronaut-test = { module = "io.micronaut.test:micronaut-test-bom", version.ref = "micronaut-test" }
+
 awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
 bcpkix-jdk15on = { module = "org.bouncycastle:bcpkix-jdk15on", version.ref = "bcpkix-jdk15on" }
-caffeine = { module = 'com.github.ben-manes.caffeine:caffeine', version.ref = 'caffeine' }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
 reactor-core = { module = "io.projectreactor:reactor-core" }

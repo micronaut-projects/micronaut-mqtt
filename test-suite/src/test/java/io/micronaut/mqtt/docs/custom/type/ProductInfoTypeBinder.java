@@ -22,9 +22,9 @@ import io.micronaut.context.annotation.Requires;
 @Singleton // <1>
 public class ProductInfoTypeBinder implements TypedMqttBinder<MqttV5BindingContext, ProductInfo> { //<2>
 
-    private final ConversionService<?> conversionService;
+    private final ConversionService conversionService;
 
-    ProductInfoTypeBinder(ConversionService<?> conversionService) { //<3>
+    ProductInfoTypeBinder(ConversionService conversionService) { //<3>
         this.conversionService = conversionService;
     }
 

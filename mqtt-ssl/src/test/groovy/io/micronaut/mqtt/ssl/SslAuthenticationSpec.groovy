@@ -1,19 +1,17 @@
 package io.micronaut.mqtt.ssl
 
 import io.micronaut.context.ApplicationContext
-import spock.lang.PendingFeature
 import spock.util.concurrent.PollingConditions
 
 class SslAuthenticationSpec extends AbstractMQTTTest {
 
-    @PendingFeature
     void "test product client and listener"() {
         ApplicationContext applicationContext = startContext()
         PollingConditions conditions = new PollingConditions(timeout: 5)
 
         when:
         def productClient = applicationContext.getBean(ProductClient)
-        productClient.send("quickstart".getBytes())
+        productClient.send("quickstart".bytes)
 
         ProductListener productListener = applicationContext.getBean(ProductListener)
 

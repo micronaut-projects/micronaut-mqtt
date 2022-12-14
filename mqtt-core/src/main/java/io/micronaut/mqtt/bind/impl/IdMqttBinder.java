@@ -35,9 +35,9 @@ import java.util.Optional;
 @Singleton
 public class IdMqttBinder implements AnnotatedMqttBinder<MqttBindingContext<?>, Id> {
 
-    private final ConversionService<?> conversionService;
+    private final ConversionService conversionService;
 
-    public IdMqttBinder(ConversionService<?> conversionService) {
+    public IdMqttBinder(ConversionService conversionService) {
         this.conversionService = conversionService;
     }
 

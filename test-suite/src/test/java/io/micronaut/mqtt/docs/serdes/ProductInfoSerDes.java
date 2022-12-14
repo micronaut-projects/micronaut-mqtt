@@ -21,9 +21,9 @@ public class ProductInfoSerDes implements MqttPayloadSerDes<ProductInfo> { // <2
 
     private static final Charset CHARSET = StandardCharsets.UTF_8;
 
-    private final ConversionService<?> conversionService;
+    private final ConversionService conversionService;
 
-    public ProductInfoSerDes(ConversionService<?> conversionService) { // <3>
+    public ProductInfoSerDes(ConversionService conversionService) { // <3>
         this.conversionService = conversionService;
     }
 

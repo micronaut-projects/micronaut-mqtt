@@ -54,15 +54,13 @@ public class DefaultMqttBinderRegistry implements MqttBinderRegistry {
                                      MqttBinder<?, ?>... binders) {
         this.fallbackMqttBinder = fallbackMqttBinder;
         if (ArrayUtils.isNotEmpty(binders)) {
-            for (MqttBinder binder : binders) {
-                if (binder instanceof AnnotatedMqttBinder) {
-                    AnnotatedMqttBinder<?, ?> annotatedBinder = (AnnotatedMqttBinder<?, ?>) binder;
+            for (MqttBinder<?, ?> binder : binders) {
+                if (binder instanceof AnnotatedMqttBinder<?, ?> annotatedBinder) {
                     byAnnotation.put(
                             annotatedBinder.getAnnotationType(),
                             binder
                     );
-                } else if (binder instanceof TypedMqttBinder) {
-                    TypedMqttBinder<?, ?> typedBinder = (TypedMqttBinder<?, ?>) binder;
+                } else if (binder instanceof TypedMqttBinder<?, ?> typedBinder) {
                     byType.put(
                             typedBinder.getArgumentType().typeHashCode(),
                             typedBinder

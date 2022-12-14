@@ -7,7 +7,7 @@ dependencies {
     api(mn.micronaut.aop)
     api(mn.micronaut.runtime)
     api(mn.micronaut.messaging)
-    implementation(libs.caffeine)
+    implementation(mnSerde.micronaut.serde.jackson)
     implementation(libs.reactor.core)
     compileOnly(libs.kotlin.stdlib.jdk8)
 }

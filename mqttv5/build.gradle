@@ -7,6 +7,6 @@ dependencies {
     api projects.mqttCore
     compileOnly(mn.micronaut.management)
     testImplementation(mn.micronaut.management)
-    testImplementation(libs.reactor.core)
+    testImplementation(mn.reactor)
     testImplementation(projects.testSuiteUtils)
 }

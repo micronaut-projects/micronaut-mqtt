@@ -4,9 +4,9 @@ plugins {
 
 dependencies {
     api(libs.managed.paho.mqttv3.client)
-    api project(":mqtt-core")
+    api projects.mqttCore
     compileOnly(mn.micronaut.management)
     testImplementation(mn.micronaut.management)
-    testImplementation(libs.reactor.core)
-    testImplementation(project(":test-suite-utils"))
+    testImplementation(mn.reactor)
+    testImplementation(projects.testSuiteUtils)
 }

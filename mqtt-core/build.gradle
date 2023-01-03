@@ -8,6 +8,6 @@ dependencies {
     api(mn.micronaut.runtime)
     api(mn.micronaut.messaging)
     implementation(mnSerde.micronaut.serde.jackson)
-    implementation(libs.reactor.core)
+    implementation(mn.reactor)
     compileOnly(libs.kotlin.stdlib.jdk8)
 }

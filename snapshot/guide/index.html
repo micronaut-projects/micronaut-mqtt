@@ -2237,14 +2237,14 @@ class ProductInfo {
 
     private String size
     private Long count
-    private Boolean sealed
+    private Boolean seal
 
     ProductInfo(@Nullable String size, // <b class="conum">(1)</b>
                 @NonNull Long count, // <b class="conum">(2)</b>
-                @NonNull Boolean sealed) { // <b class="conum">(3)</b>
+                @NonNull Boolean seal) { // <b class="conum">(3)</b>
         this.size = size
         this.count = count
-        this.sealed = sealed
+        this.seal = seal
     }
 
     String getSize() {
@@ -2256,7 +2256,7 @@ class ProductInfo {
     }
 
     Boolean getSealed() {
-        sealed
+        seal
     }
 }</code></pre>
 </div>

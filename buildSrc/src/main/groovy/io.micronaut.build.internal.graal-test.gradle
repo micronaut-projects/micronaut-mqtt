@@ -37,3 +37,7 @@ tasks.named("check") {
         it.dependsOn("nativeTest")
     }
 }
+
+graalvmNative {
+    toolchainDetection.set(false)
+}

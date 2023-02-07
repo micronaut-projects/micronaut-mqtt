@@ -22,6 +22,7 @@ include 'test-suite-groovy'
 include 'test-suite'
 include 'test-suite-kotlin'
 include 'test-suite-mqttv3-graal'
+include 'test-suite-mqttv5-graal'
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 

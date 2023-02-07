@@ -1,4 +1,4 @@
-package io.micronaut.mqtt3.graal;
+package io.micronaut.mqtt5.graal;
 
 import io.micronaut.context.annotation.Property;
 import io.micronaut.core.annotation.Introspected;

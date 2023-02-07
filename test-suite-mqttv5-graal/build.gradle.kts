@@ -7,5 +7,5 @@ repositories {
 }
 
 dependencies {
-    testImplementation(projects.mqttv3)
+    testImplementation(projects.mqttv5)
 }

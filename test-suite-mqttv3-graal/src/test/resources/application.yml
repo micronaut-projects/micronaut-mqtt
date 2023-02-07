@@ -1,1 +1,0 @@
-mqtt.client.client-id: ${random.uuid}

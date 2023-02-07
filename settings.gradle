@@ -17,9 +17,13 @@ include 'mqttv5'
 include 'test-suite-utils'
 include 'mqtt-ssl'
 include 'mqtt-bom'
+
 include 'test-suite-groovy'
 include 'test-suite'
 include 'test-suite-kotlin'
+include 'test-suite-mqttv3-graal'
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 micronautBuild {
     importMicronautCatalog()

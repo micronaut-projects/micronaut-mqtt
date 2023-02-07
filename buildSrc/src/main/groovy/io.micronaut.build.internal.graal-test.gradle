@@ -38,6 +38,19 @@ tasks.named("check") {
     }
 }
 
+def openGraalModules = [
+        "org.graalvm.nativeimage.builder/com.oracle.svm.core.jdk",
+        "org.graalvm.nativeimage.builder/com.oracle.svm.core.configure",
+        "org.graalvm.sdk/org.graalvm.nativeimage.impl"
+]
+
 graalvmNative {
     toolchainDetection.set(false)
+    binaries {
+        all {
+            openGraalModules.each { module ->
+                jvmArgs.add("--add-exports=" + module + "=ALL-UNNAMED")
+            }
+        }
+    }
 }

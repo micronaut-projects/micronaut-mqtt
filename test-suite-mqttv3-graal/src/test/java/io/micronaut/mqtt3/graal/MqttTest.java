@@ -19,8 +19,6 @@ import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @MicronautTest
-@Property(name = "spec.name", value = "mqtt")
-@Property(name = "mqtt.client.client-id", value = "micronaut")
 class MqttTest {
 
     @Inject

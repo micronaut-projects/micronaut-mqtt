@@ -1,0 +1,45 @@
+plugins {
+    id("org.graalvm.buildtools.native")
+    id("io.micronaut.library")
+    id("io.micronaut.test-resources")
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testAnnotationProcessor(mn.micronaut.inject.java)
+    testImplementation(mn.micronaut.http)
+    testImplementation(mn.micronaut.json.core)
+    testImplementation(mn.micronaut.http.client)
+    testImplementation(mn.micronaut.http.server.netty)
+    testImplementation(mn.micronaut.test.junit5)
+    testImplementation(libs.awaitility)
+
+    testRuntimeOnly(mn.logback)
+}
+
+micronaut {
+    testResources {
+        additionalModules.add("hivemq")
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+def isGraalVMJdk = ["jvmci.Compiler", "java.vendor.version", "java.vendor"].any {
+    System.getProperty(it)?.toLowerCase(Locale.ENGLISH)?.contains("graal")
+}
+
+tasks.named("check") {
+    if (isGraalVMJdk) {
+        it.dependsOn("nativeTest")
+    }
+}
+
+graalvmNative {
+    toolchainDetection.set(false)
+}

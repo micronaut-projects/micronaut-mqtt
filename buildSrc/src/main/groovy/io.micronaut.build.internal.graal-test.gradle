@@ -30,10 +30,12 @@ test {
     useJUnitPlatform()
 }
 
+def isGraalVMJdk = ["jvmci.Compiler", "java.vendor.version", "java.vendor"].any {
+    System.getProperty(it)?.toLowerCase(Locale.ENGLISH)?.contains("graal")
+}
+
 tasks.named("check") {
-    if (["jvmci.Compiler", "java.vendor.version", "java.vendor"].any {
-        System.getProperty(it)?.toLowerCase(Locale.ENGLISH)?.contains("graal")
-    }) {
+    if (isGraalVMJdk) {
         it.dependsOn("nativeTest")
     }
 }

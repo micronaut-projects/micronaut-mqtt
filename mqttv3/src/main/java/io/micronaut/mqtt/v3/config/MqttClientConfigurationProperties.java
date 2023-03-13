@@ -23,7 +23,7 @@ import org.eclipse.paho.client.mqttv3.*;
 
 import javax.net.SocketFactory;
 import javax.net.ssl.HostnameVerifier;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 import java.util.Optional;
 import java.util.Properties;

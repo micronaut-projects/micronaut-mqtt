@@ -3,8 +3,10 @@ plugins {
 }
 
 dependencies {
+    annotationProcessor(mnValidation.micronaut.validation.processor)
+    implementation(mnValidation.micronaut.validation)
     api(libs.managed.paho.mqttv5.client)
-    api projects.mqttCore
+    api projects.micronautMqttCore
     compileOnly(mn.micronaut.management)
     testImplementation(mn.micronaut.management)
     testImplementation(mn.reactor)

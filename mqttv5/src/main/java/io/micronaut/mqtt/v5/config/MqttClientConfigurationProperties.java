@@ -24,7 +24,7 @@ import org.eclipse.paho.mqttv5.common.packet.MqttProperties;
 
 import javax.net.SocketFactory;
 import javax.net.ssl.HostnameVerifier;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 import java.util.Properties;
 

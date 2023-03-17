@@ -11,7 +11,6 @@ dependencies {
     testAnnotationProcessor(mnValidation.micronaut.validation.processor)
     testImplementation(mnValidation.micronaut.validation)
     testImplementation(mnTest.micronaut.test.kotest5)
-
     kaptTest(mn.micronaut.inject.java)
 
     testImplementation projects.testSuiteUtils
@@ -20,11 +19,4 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
-}
-
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = '17'
-        javaParameters = true
-    }
 }

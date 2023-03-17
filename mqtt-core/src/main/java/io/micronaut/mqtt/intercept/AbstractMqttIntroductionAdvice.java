@@ -19,6 +19,7 @@ import io.micronaut.aop.InterceptedMethod;
 import io.micronaut.aop.MethodInterceptor;
 import io.micronaut.aop.MethodInvocationContext;
 import io.micronaut.core.annotation.AnnotationValue;
+import io.micronaut.core.convert.DefaultMutableConversionService;
 import io.micronaut.core.type.Argument;
 import io.micronaut.inject.ExecutableMethod;
 import io.micronaut.mqtt.annotation.Qos;
@@ -64,7 +65,7 @@ public abstract class AbstractMqttIntroductionAdvice<L, M> implements MethodInte
     public Object intercept(MethodInvocationContext<Object, Object> context) {
         if (context.hasAnnotation(getRequiredAnnotation())) {
 
-            InterceptedMethod interceptedMethod = InterceptedMethod.of(context);
+            InterceptedMethod interceptedMethod = InterceptedMethod.of(context, new DefaultMutableConversionService());
 
             try {
                 MqttPublisherState publisherState = getPublisherState(context);

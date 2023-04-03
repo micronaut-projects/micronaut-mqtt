@@ -4,6 +4,7 @@ import io.kotest.core.spec.style.BehaviorSpec
 import io.micronaut.context.ApplicationContext
 import org.testcontainers.containers.BindMode
 import org.testcontainers.containers.wait.strategy.LogMessageWaitStrategy
+import java.util.*
 
 abstract class AbstractMqttKotest(body: BehaviorSpec.() -> Unit = {}): BehaviorSpec(body) {
 
@@ -30,9 +31,9 @@ abstract class AbstractMqttKotest(body: BehaviorSpec.() -> Unit = {}): BehaviorS
         fun getDefaultConfig(specName: String): MutableMap<String, Any> {
             return mutableMapOf(
                     "mqtt.client.server-uri" to "tcp://localhost:${mqttContainer.getMappedPort(1883)}",
+                    "mqtt.client.client-id" to UUID.randomUUID().toString(),
                     "spec.name" to specName)
         }
-
     }
 
 }

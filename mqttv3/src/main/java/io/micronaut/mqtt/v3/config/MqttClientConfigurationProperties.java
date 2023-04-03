@@ -17,13 +17,12 @@ package io.micronaut.mqtt.v3.config;
 
 import io.micronaut.context.annotation.ConfigurationBuilder;
 import io.micronaut.context.annotation.ConfigurationProperties;
-import io.micronaut.context.annotation.Context;
 import io.micronaut.mqtt.config.MqttSSLConfiguration;
-import org.eclipse.paho.client.mqttv3.*;
+import jakarta.validation.constraints.NotNull;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 
 import javax.net.SocketFactory;
 import javax.net.ssl.HostnameVerifier;
-import javax.validation.constraints.NotNull;
 import java.time.Duration;
 import java.util.Optional;
 import java.util.Properties;
@@ -35,7 +34,6 @@ import java.util.Properties;
  * @since 1.0.0
  */
 @ConfigurationProperties("mqtt.client")
-@Context
 public class MqttClientConfigurationProperties implements MqttSSLConfiguration {
 
     private String serverUri;

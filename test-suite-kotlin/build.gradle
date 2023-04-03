@@ -8,21 +8,15 @@ dependencies {
     runtimeOnly mn.logback.classic
     api(mn.micronaut.inject)
     testAnnotationProcessor(mn.micronaut.inject.java)
+    testAnnotationProcessor(mnValidation.micronaut.validation.processor)
+    testImplementation(mnValidation.micronaut.validation)
     testImplementation(mnTest.micronaut.test.kotest5)
-
     kaptTest(mn.micronaut.inject.java)
 
     testImplementation projects.testSuiteUtils
-    testImplementation projects.mqttv5
+    testImplementation projects.micronautMqttv5
 }
 
 tasks.named('test') {
     useJUnitPlatform()
-}
-
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = '17'
-        javaParameters = true
-    }
 }

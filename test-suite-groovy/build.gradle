@@ -5,9 +5,10 @@ plugins {
 
 dependencies {
     testCompileOnly(mn.micronaut.inject.groovy)
-    testImplementation(mn.micronaut.validation)
+    testCompileOnly(mnValidation.micronaut.validation.processor)
+    testCompileOnly(mnValidation.micronaut.validation)
     testImplementation projects.testSuiteUtils
-    testImplementation projects.mqttv5
+    testImplementation projects.micronautMqttv5
 }
 
 tasks.named('test') {

@@ -25,6 +25,8 @@ include 'test-suite-kotlin'
 
 micronautBuild {
     addSnapshotRepository()
+    useStandardizedProjectNames = true
     importMicronautCatalog()
     importMicronautCatalog("micronaut-serde")
+    importMicronautCatalog("micronaut-validation")
 }

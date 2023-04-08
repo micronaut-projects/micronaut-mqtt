@@ -13,7 +13,7 @@ bcpkix-jdk15on = "1.70"
 kotlin = "1.8.20"
 testcontainers = "1.17.6"
 
-micronaut-serde = "2.0.0-M1"
+micronaut-serde = "2.0.0-SNAPSHOT"
 micronaut-test = "4.0.0-M1"
 micronaut-validation = "4.0.0-M2"
 

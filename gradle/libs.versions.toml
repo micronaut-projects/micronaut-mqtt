@@ -11,7 +11,7 @@ managed-mqttv5 = "1.2.5"
 awaitility = "4.2.0"
 bcpkix-jdk15on = "1.70"
 kotlin = "1.8.20"
-testcontainers = "1.17.6"
+testcontainers = "1.18.0"
 
 micronaut-serde = "2.0.0-M1"
 micronaut-test = "4.0.0-M1"

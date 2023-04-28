@@ -1,12 +1,12 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 
 plugins {
-    id("io.micronaut.build.shared.settings") version "6.4.1"
+    id("io.micronaut.build.shared.settings") version "6.4.2"
 }
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
@@ -19,13 +19,19 @@ include 'mqttv5'
 include 'test-suite-utils'
 include 'mqtt-ssl'
 include 'mqtt-bom'
+
 include 'test-suite-groovy'
 include 'test-suite'
 include 'test-suite-kotlin'
+include 'test-suite-mqttv3-graal'
+include 'test-suite-mqttv5-graal'
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 micronautBuild {
     addSnapshotRepository()
     useStandardizedProjectNames = true
+
     importMicronautCatalog()
     importMicronautCatalog("micronaut-serde")
     importMicronautCatalog("micronaut-validation")

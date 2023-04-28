@@ -3,7 +3,7 @@ package io.micronaut.mqtt.docs.properties
 // tag::imports[]
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.MqttSubscriber
-import io.micronaut.mqtt.v5.annotation.MqttProperty
+import io.micronaut.mqtt.annotation.v5.MqttProperty
 import java.util.*
 // end::imports[]
 

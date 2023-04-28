@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2022 original authors
+ * Copyright 2017-2023 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.v5.annotation;
+package io.micronaut.mqtt.annotation.v5;
 
 import io.micronaut.aop.Introduction;
-import io.micronaut.context.annotation.Type;
-import io.micronaut.mqtt.v5.intercept.MqttIntroductionAdvice;
+import io.micronaut.mqtt.intercept.AbstractMqttIntroductionAdvice;
 import io.micronaut.retry.annotation.Recoverable;
 import jakarta.inject.Scope;
 import jakarta.inject.Singleton;
@@ -34,14 +33,13 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  *
  * @author James Kleeh
  * @since 1.0.0
- * @see MqttIntroductionAdvice
+ * @see AbstractMqttIntroductionAdvice
  */
 @Documented
 @Retention(RUNTIME)
 @Target({ElementType.TYPE})
 @Scope
 @Introduction
-@Type(MqttIntroductionAdvice.class)
 @Recoverable
 @Singleton
 public @interface MqttPublisher {

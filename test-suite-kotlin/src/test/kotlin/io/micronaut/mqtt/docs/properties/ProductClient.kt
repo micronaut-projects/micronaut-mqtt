@@ -1,10 +1,10 @@
 package io.micronaut.mqtt.docs.properties
 
 // tag::imports[]
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttProperties
-import io.micronaut.mqtt.v5.annotation.MqttProperty
+import io.micronaut.mqtt.annotation.v5.MqttProperties
+import io.micronaut.mqtt.annotation.v5.MqttProperty
 // end::imports[]
 
 import io.micronaut.context.annotation.Requires

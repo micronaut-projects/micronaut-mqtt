@@ -23,7 +23,7 @@ import io.micronaut.core.convert.ArgumentConversionContext;
 import io.micronaut.core.convert.ConversionService;
 import io.micronaut.core.type.Argument;
 import io.micronaut.mqtt.bind.AnnotatedMqttBinder;
-import io.micronaut.mqtt.v5.annotation.MqttProperty;
+import io.micronaut.mqtt.annotation.v5.MqttProperty;
 import jakarta.inject.Singleton;
 import org.eclipse.paho.mqttv5.common.packet.MqttProperties;
 import org.eclipse.paho.mqttv5.common.packet.UserProperty;
@@ -33,9 +33,11 @@ import java.util.Optional;
 
 /**
  * Binds arguments to and from {@link MqttProperties}.
+ * If the name is not one of the supported property names, the name and value will be populated via a {@link org.eclipse.paho.mqttv5.common.packet.UserProperty}
  *
  * @author James Kleeh
  * @since 1.0.0
+ * @see org.eclipse.paho.mqttv5.common.packet.MqttProperties for a list of names
  */
 @Introspected(classes = MqttProperties.class)
 @Singleton

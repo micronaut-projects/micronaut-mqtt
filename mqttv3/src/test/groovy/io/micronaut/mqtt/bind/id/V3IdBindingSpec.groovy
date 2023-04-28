@@ -3,7 +3,7 @@ package io.micronaut.mqtt.bind.id
 import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.test.bind.id.IdBindingClient
 import io.micronaut.mqtt.test.bind.id.IdBindingSpec
-import io.micronaut.mqtt.v3.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v3.MqttPublisher
 
 class V3IdBindingSpec extends IdBindingSpec {
 

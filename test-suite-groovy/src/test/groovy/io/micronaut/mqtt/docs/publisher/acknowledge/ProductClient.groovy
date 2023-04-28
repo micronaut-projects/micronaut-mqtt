@@ -4,7 +4,7 @@ package io.micronaut.mqtt.docs.publisher.acknowledge
 
 // tag::imports[]
 import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import org.reactivestreams.Publisher
 // end::imports[]
 

@@ -3,7 +3,7 @@ package io.micronaut.mqtt.intercept
 import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.test.intercept.MultipleTopicsClient
 import io.micronaut.mqtt.test.intercept.MultipleTopicsSpec
-import io.micronaut.mqtt.v3.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v3.MqttPublisher
 
 class V3MultipleTopicsSpec extends MultipleTopicsSpec {
 

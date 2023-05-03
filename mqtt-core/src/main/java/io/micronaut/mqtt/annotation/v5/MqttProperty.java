@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2022 original authors
+ * Copyright 2017-2023 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,16 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.v5.annotation;
+package io.micronaut.mqtt.annotation.v5;
 
 import io.micronaut.core.bind.annotation.Bindable;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Repeatable;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * Used for binding arguments to {@link org.eclipse.paho.mqttv5.common.packet.MqttProperties}.
+ * Used for binding arguments to mqtt properties.
  *
  * @author James Kleeh
  * @since 1.0.0
@@ -44,10 +48,8 @@ public @interface MqttProperty {
 
     /**
      * Never used if applied to a parameter. Supplies the property name if used on
-     * a class or method. If the name is not one of the supported property names, the
-     * name and value will be populated via a {@link org.eclipse.paho.mqttv5.common.packet.UserProperty}.
+     * a class or method.
      *
-     * @see org.eclipse.paho.mqttv5.common.packet.MqttProperties for a list of names
      * @return The name of property
      */
     String name() default "";

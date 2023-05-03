@@ -1,7 +1,7 @@
 package io.micronaut.mqtt.docs.serdes
 
 // tag::imports[]
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.messaging.annotation.MessageBody
 import io.micronaut.mqtt.annotation.Topic
 // end::imports[]

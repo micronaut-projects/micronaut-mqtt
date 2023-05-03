@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2022 original authors
+ * Copyright 2017-2023 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,13 @@
  */
 package io.micronaut.mqtt.v3.intercept;
 
+import io.micronaut.aop.InterceptorBean;
 import io.micronaut.aop.MethodInvocationContext;
 import io.micronaut.mqtt.bind.MqttBinderRegistry;
 import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.exception.MqttClientException;
 import io.micronaut.mqtt.intercept.AbstractMqttIntroductionAdvice;
-import io.micronaut.mqtt.v3.annotation.MqttPublisher;
+import io.micronaut.mqtt.annotation.v3.MqttPublisher;
 import io.micronaut.mqtt.v3.bind.MqttV3BindingContext;
 import jakarta.inject.Singleton;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -39,6 +40,7 @@ import java.util.function.Consumer;
  * @since 1.0.0
  */
 @Singleton
+@InterceptorBean(MqttPublisher.class)
 public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<IMqttActionListener, MqttMessage> {
 
     private final MqttAsyncClient mqttAsyncClient;

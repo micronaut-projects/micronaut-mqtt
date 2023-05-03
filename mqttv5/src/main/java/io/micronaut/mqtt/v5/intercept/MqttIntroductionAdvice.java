@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2022 original authors
+ * Copyright 2017-2023 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package io.micronaut.mqtt.v5.intercept;
 
+import io.micronaut.aop.InterceptorBean;
 import io.micronaut.aop.MethodInvocationContext;
 import io.micronaut.core.annotation.AnnotationValue;
 import io.micronaut.core.beans.BeanIntrospection;
@@ -24,8 +25,8 @@ import io.micronaut.mqtt.bind.MqttBinderRegistry;
 import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.exception.MqttClientException;
 import io.micronaut.mqtt.intercept.AbstractMqttIntroductionAdvice;
-import io.micronaut.mqtt.v5.annotation.MqttProperty;
-import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+import io.micronaut.mqtt.annotation.v5.MqttProperty;
+import io.micronaut.mqtt.annotation.v5.MqttPublisher;
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext;
 import jakarta.inject.Singleton;
 import org.eclipse.paho.mqttv5.client.IMqttToken;
@@ -48,6 +49,7 @@ import java.util.function.Consumer;
  * @since 1.0.0
  */
 @Singleton
+@InterceptorBean(MqttPublisher.class)
 public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<MqttActionListener, MqttMessage> {
 
     private final MqttAsyncClient mqttAsyncClient;
@@ -108,5 +110,4 @@ public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<MqttA
     public Class<? extends Annotation> getRequiredAnnotation() {
         return MqttPublisher.class;
     }
-
 }

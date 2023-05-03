@@ -6,8 +6,8 @@ import io.micronaut.core.annotation.Nullable
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.test.AbstractMQTTTest
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
-import io.micronaut.mqtt.v5.annotation.MqttProperty
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttProperty
 import spock.util.concurrent.PollingConditions
 
 class V5PropertyBindingSpec extends AbstractMQTTTest {

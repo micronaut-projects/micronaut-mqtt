@@ -3,7 +3,7 @@ package io.micronaut.mqtt.bind.qos
 import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.test.bind.qos.QosBindingClient
 import io.micronaut.mqtt.test.bind.qos.QosBindingSpec
-import io.micronaut.mqtt.v3.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v3.MqttPublisher
 
 class V3QosBindingSpec extends QosBindingSpec {
 

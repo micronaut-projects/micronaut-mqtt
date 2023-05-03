@@ -3,7 +3,7 @@ package io.micronaut.mqtt.intercept
 import io.micronaut.context.annotation.Requires
 import io.micronaut.mqtt.test.intercept.SimplePubSubClient
 import io.micronaut.mqtt.test.intercept.SimplePubSubSpec
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 
 class SimpleV5PubSubSpec extends SimplePubSubSpec {
 

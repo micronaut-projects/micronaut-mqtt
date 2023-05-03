@@ -133,5 +133,25 @@
     "type": "io.micronaut.mqtt.v5.intercept.$MqttIntroductionAdvice$Definition$Reference",
     "member": "Implemented interface io.micronaut.inject.BeanDefinitionReference",
     "reason": "Micronaut 4.0.0 Bean Definition changes"
+  },
+  {
+    "type": "io.micronaut.mqtt.v3.annotation.MqttPublisher",
+    "member": "Implemented interface java.lang.annotation.Annotation",
+    "reason": "Moved to core for Micronaut 4.0.0"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.annotation.MqttProperties",
+    "member": "Implemented interface java.lang.annotation.Annotation",
+    "reason": "Moved to core for Micronaut 4.0.0"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.annotation.MqttProperty",
+    "member": "Implemented interface java.lang.annotation.Annotation",
+    "reason": "Moved to core for Micronaut 4.0.0"
+  },
+  {
+    "type": "io.micronaut.mqtt.v5.annotation.MqttPublisher",
+    "member": "Implemented interface java.lang.annotation.Annotation",
+    "reason": "Moved to core for Micronaut 4.0.0"
   }
 ]

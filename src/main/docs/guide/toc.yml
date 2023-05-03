@@ -36,4 +36,5 @@ serdes:
   title: Message Serialization/Deserialization (SerDes)
   custom: Custom SerDes
 graalvm: GraalVM support
+breaks: Breaking Changes
 repository: Repository

@@ -1,0 +1,21 @@
+This section documents breaking changes for Mqtt:
+
+== 3.0.0
+
+The annotations for Mqtt have moved into the core module, and therefore have changed package names.
+The new package names are:
+
+=== Mqtt3
+|===
+| *Old package name* | *New package name*
+| `io.micronaut.mqtt.v3.annotation.MqttPublisher` | `io.micronaut.mqtt.annotation.v3.MqttPublisher`
+|===
+
+=== Mqtt5
+|===
+| *Old package name* | *New package name*
+| `io.micronaut.mqtt.v5.annotation.MqttPublisher`  | `io.micronaut.mqtt.annotation.v5.MqttPublisher`
+| `io.micronaut.mqtt.v5.annotation.MqttProperty`   | `io.micronaut.mqtt.annotation.v5.MqttProperty`
+| `io.micronaut.mqtt.v5.annotation.MqttProperties` | `io.micronaut.mqtt.annotation.v5.MqttProperties`
+|===
+

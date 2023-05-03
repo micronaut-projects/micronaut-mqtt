@@ -1,3 +1,3 @@
-For this project, you can find a list of releases (with release notes) here:
+## 3.0.x
 
-https://github.com/{githubSlug}/releases[https://github.com/{githubSlug}/releases]
+Since Micronaut MQTT 3.0.0, you can use an <<hiveMq, implementation based on the HiveMQ MQTT Client>>

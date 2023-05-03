@@ -1,10 +1,13 @@
 introduction: Introduction
 whatsNew:  Release History
+releaseNotes: Release Notes
 quickStart:
   title: MQTT Quick Start
   mqttPublisher: Creating an MQTT Publisher with MqttPublisher annotation
   mqttSubscriber: Creating an MQTT Subscriber with MqttSubscriber annotation
   mqttHealthChecks: MQTT Health Checks
+hiveMq:
+  title: MQTT HiveMQ
 v3:
   title: MQTT V3 Eclipse Paho
   v3dependency: MQTT v3 Dependency with Eclipse Paho

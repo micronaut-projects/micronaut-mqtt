@@ -1,0 +1,3 @@
+The following dependency uses the https://github.com/hivemq/hivemq-mqtt-client[HiveMQ MQTT client] under the hood.
+
+dependency:micronaut-mqttv-hivemq[groupId="io.micronaut.mqtt"]

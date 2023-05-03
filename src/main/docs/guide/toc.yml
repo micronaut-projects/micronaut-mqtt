@@ -1,11 +1,17 @@
 introduction: Introduction
 whatsNew:  Release History
-quickStart: MQTT Quick Start
+quickStart:
+  title: MQTT Quick Start
+  mqttPublisher: Creating an MQTT Publisher with MqttPublisher annotation
+  mqttSubscriber: Creating an MQTT Subscriber with MqttSubscriber annotation
+  mqttHealthChecks: MQTT Health Checks
 v3:
-  title: MQTT V3
+  title: MQTT V3 Eclipse Paho
+  v3dependency: MQTT v3 Dependency with Eclipse Paho
   v3config: Configuration
 v5:
-  title: MQTT V5
+  title: MQTT V5 Eclipse Paho
+  v5dependency: MQTT v5 Dependency with Eclipse Paho
   v5config: Configuration
   properties: Properties
 ssl: SSL Connections

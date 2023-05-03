@@ -8,6 +8,6 @@ dependencies {
 
 micronautBuild {
     binaryCompatibility {
-        enabled = false
+        enabled.set(false)
     }
 }

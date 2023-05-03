@@ -1,0 +1,5 @@
+The following dependency uses the https://www.hivemq.com/blog/mqtt-client-library-encyclopedia-eclipse-paho-java/[Eclipse Paho client] under the hood.
+
+For MQTT v3:
+
+dependency:micronaut-mqttv3[groupId="io.micronaut.mqtt"]

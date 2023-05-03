@@ -1,0 +1,5 @@
+When either the `mqttv3` or `mqttv5` module is activated an api:io.micronaut.mqtt.v3.client.health.MqttHealthIndicator[] or api:io.micronaut.mqtt.v5.client.health.MqttHealthIndicator[] is activated resulting in the `/health` endpoint and api:health.CurrentHealthStatus[] interface resolving the health of the MQTT connection.
+
+The only configuration option supported is to enable or disable the indicator by the `endpoints.health.mqtt.client.enabled` key.
+
+See the section on the https://docs.micronaut.io/latest/guide/index.html#healthEndpoint[Health Endpoint] for more information.

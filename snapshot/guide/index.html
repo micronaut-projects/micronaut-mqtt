@@ -66,7 +66,9 @@
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#graalvm"><strong>11</strong><span>GraalVM support</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#repository"><strong>12</strong><span>Repository</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#breaks"><strong>12</strong><span>Breaking Changes</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#repository"><strong>13</strong><span>Repository</span></a></div>
                                 
                             </div>
                         </div>
@@ -155,7 +157,9 @@
         
         <div class="toc-item" style="margin-left:0px" id="toc-item-graalvm"><a href="#graalvm"><strong>11</strong><span>GraalVM support</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-repository"><a href="#repository"><strong>12</strong><span>Repository</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-breaks"><a href="#breaks"><strong>12</strong><span>Breaking Changes</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-repository"><a href="#repository"><strong>13</strong><span>Repository</span></a></div>
         
         </div>
     </div>
@@ -268,7 +272,7 @@ If you are running into the exception <code>org.eclipse.paho.client.mqttv3.MqttE
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
-import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+import io.micronaut.mqtt.annotation.v5.MqttPublisher;
 
 @MqttPublisher // <b class="conum">(1)</b>
 public interface ProductClient {
@@ -281,7 +285,7 @@ public interface ProductClient {
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 
 @MqttPublisher // <b class="conum">(1)</b>
 interface ProductClient {
@@ -293,7 +297,7 @@ interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.v5.annotation.MqttPublisher
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
 
 @MqttPublisher // <b class="conum">(1)</b>
@@ -846,8 +850,8 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
-import io.micronaut.mqtt.v5.annotation.MqttProperty;
-import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+import io.micronaut.mqtt.annotation.v5.MqttProperty;
+import io.micronaut.mqtt.annotation.v5.MqttPublisher;
 
 @MqttPublisher
 @MqttProperty(name = "appId", value = "myApp") // <b class="conum">(1)</b>
@@ -866,8 +870,8 @@ public interface ProductClient {
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttProperty
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttProperty
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 
 @MqttPublisher
 @MqttProperty(name = "appId", value = "myApp") // <b class="conum">(1)</b>
@@ -885,10 +889,10 @@ interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.v5.annotation.MqttPublisher
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttProperties
-import io.micronaut.mqtt.v5.annotation.MqttProperty
+import io.micronaut.mqtt.annotation.v5.MqttProperties
+import io.micronaut.mqtt.annotation.v5.MqttProperty
 
 @MqttPublisher
 @MqttProperty(name = "appId", value = "myApp") // <b class="conum">(1)</b>
@@ -941,14 +945,14 @@ If the annotation or argument name cannot be matched to a property name in the <
 <div class="sect2">
 <h3 id="_subscribers">Subscribers</h3>
 <div class="paragraph">
-<p>Any properties found in messages received can be bound to subscriber arguments through the <a href="../api/io/micronaut/mqtt/v5/annotation/MqttProperty.html">@MqttProperty</a> annotation.</p>
+<p>Any properties found in messages received can be bound to subscriber arguments through the <a href="../api/io/micronaut/mqtt/annotation/v5,MqttProperty/.html">@v5,MqttProperty</a> annotation.</p>
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.core.annotation.Nullable;
 import io.micronaut.mqtt.annotation.MqttSubscriber;
 import io.micronaut.mqtt.annotation.Topic;
-import io.micronaut.mqtt.v5.annotation.MqttProperty;
+import io.micronaut.mqtt.annotation.v5.MqttProperty;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -976,7 +980,7 @@ public class ProductListener {
 
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttProperty
+import io.micronaut.mqtt.annotation.v5.MqttProperty
 
 @MqttSubscriber
 class ProductListener {
@@ -997,7 +1001,7 @@ class ProductListener {
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.MqttSubscriber
-import io.micronaut.mqtt.v5.annotation.MqttProperty
+import io.micronaut.mqtt.annotation.v5.MqttProperty
 import java.util.*
 
 @MqttSubscriber
@@ -1221,7 +1225,7 @@ If the topic cannot be found, an exception will be thrown. Unless a reactive typ
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
-import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+import io.micronaut.mqtt.annotation.v5.MqttPublisher;
 
 @MqttPublisher
 public interface ProductClient {
@@ -1236,7 +1240,7 @@ public interface ProductClient {
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 
 @MqttPublisher
 interface ProductClient {
@@ -1250,7 +1254,7 @@ interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.v5.annotation.MqttPublisher
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
 
 @MqttPublisher
@@ -1292,7 +1296,7 @@ interface ProductClient {
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.mqtt.annotation.Qos;
 import io.micronaut.mqtt.annotation.Topic;
-import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+import io.micronaut.mqtt.annotation.v5.MqttPublisher;
 
 @MqttPublisher
 public interface ProductClient {
@@ -1309,7 +1313,7 @@ public interface ProductClient {
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Qos
 import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 
 @MqttPublisher
 interface ProductClient {
@@ -1326,7 +1330,7 @@ interface ProductClient {
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.Qos
 import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 
 @MqttPublisher
 interface ProductClient {
@@ -1369,7 +1373,7 @@ interface ProductClient {
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.mqtt.annotation.Retained;
 import io.micronaut.mqtt.annotation.Topic;
-import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+import io.micronaut.mqtt.annotation.v5.MqttPublisher;
 
 @MqttPublisher
 public interface ProductClient {
@@ -1387,7 +1391,7 @@ public interface ProductClient {
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Retained
 import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 
 @MqttPublisher
 interface ProductClient {
@@ -1405,7 +1409,7 @@ interface ProductClient {
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.Retained
 import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 
 @MqttPublisher
 interface ProductClient {
@@ -1466,7 +1470,7 @@ interface ProductClient {
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
-import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+import io.micronaut.mqtt.annotation.v5.MqttPublisher;
 import org.reactivestreams.Publisher;
 
 @MqttPublisher
@@ -1483,7 +1487,7 @@ public interface ProductClient {
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import org.reactivestreams.Publisher
 
 @MqttPublisher
@@ -1499,7 +1503,7 @@ interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.v5.annotation.MqttPublisher
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
 import org.reactivestreams.Publisher
 
@@ -2212,7 +2216,7 @@ class ProductListener {
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
-import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+import io.micronaut.mqtt.annotation.v5.MqttPublisher;
 
 @MqttPublisher
 public interface ProductClient {
@@ -2225,7 +2229,7 @@ public interface ProductClient {
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.v5.annotation.MqttPublisher
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
 
 @MqttPublisher
 interface ProductClient {
@@ -2237,7 +2241,7 @@ interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.v5.annotation.MqttPublisher
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
 
 @MqttPublisher
@@ -2808,7 +2812,75 @@ information.
 </table>
 </div>
 
-<h1 id="repository"><a class="anchor" href="#repository"></a>12 Repository</h1>
+<h1 id="breaks"><a class="anchor" href="#breaks"></a>12 Breaking Changes</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/breaks.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>This section documents breaking changes for Mqtt:</p>
+</div>
+<div class="sect1">
+<h2 id="_3_0_0">3.0.0</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The annotations for Mqtt have moved into the core module, and therefore have changed package names.
+The new package names are:</p>
+</div>
+<div class="sect2">
+<h3 id="_mqtt3">Mqtt3</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Old package name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>New package name</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>io.micronaut.mqtt.v3.annotation.MqttPublisher</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>io.micronaut.mqtt.annotation.v3.MqttPublisher</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_mqtt5">Mqtt5</h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Old package name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>New package name</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>io.micronaut.mqtt.v5.annotation.MqttPublisher</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>io.micronaut.mqtt.annotation.v5.MqttPublisher</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>io.micronaut.mqtt.v5.annotation.MqttProperty</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>io.micronaut.mqtt.annotation.v5.MqttProperty</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>io.micronaut.mqtt.v5.annotation.MqttProperties</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>io.micronaut.mqtt.annotation.v5.MqttProperties</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<h1 id="repository"><a class="anchor" href="#repository"></a>13 Repository</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/repository.adoc"'>

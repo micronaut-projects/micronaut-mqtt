@@ -76,20 +76,27 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../../bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;<a href="MqttV5BindingContext.html" title="class in io.micronaut.mqtt.v5.bind">MqttV5BindingContext</a>,<wbr><a href="../annotation/MqttProperty.html" title="annotation interface in io.micronaut.mqtt.v5.annotation">MqttProperty</a>&gt;</code>, <code><a href="../../bind/MqttBinder.html" title="interface in io.micronaut.mqtt.bind">MqttBinder</a>&lt;<a href="MqttV5BindingContext.html" title="class in io.micronaut.mqtt.v5.bind">MqttV5BindingContext</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&gt;</code></dd>
+<dd><code><a href="../../bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;<a href="MqttV5BindingContext.html" title="class in io.micronaut.mqtt.v5.bind">MqttV5BindingContext</a>,<wbr><a href="../../annotation/v5/MqttProperty.html" title="annotation interface in io.micronaut.mqtt.annotation.v5">MqttProperty</a>&gt;</code>, <code><a href="../../bind/MqttBinder.html" title="interface in io.micronaut.mqtt.bind">MqttBinder</a>&lt;<a href="MqttV5BindingContext.html" title="class in io.micronaut.mqtt.v5.bind">MqttV5BindingContext</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&gt;</code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="annotations">@Introspected(classes=org.eclipse.paho.mqttv5.common.packet.MqttProperties.class)
 @Singleton
 </span><span class="modifiers">public class </span><span class="element-name type-name-label">MqttPropertyBinder</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="../../bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;<a href="MqttV5BindingContext.html" title="class in io.micronaut.mqtt.v5.bind">MqttV5BindingContext</a>,<wbr><a href="../annotation/MqttProperty.html" title="annotation interface in io.micronaut.mqtt.v5.annotation">MqttProperty</a>&gt;</span></div>
-<div class="block">Binds arguments to and from <code>MqttProperties</code>.</div>
+implements <a href="../../bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;<a href="MqttV5BindingContext.html" title="class in io.micronaut.mqtt.v5.bind">MqttV5BindingContext</a>,<wbr><a href="../../annotation/v5/MqttProperty.html" title="annotation interface in io.micronaut.mqtt.annotation.v5">MqttProperty</a>&gt;</span></div>
+<div class="block">Binds arguments to and from <code>MqttProperties</code>.
+ If the name is not one of the supported property names, the name and value will be populated via a <code>UserProperty</code></div>
 <dl class="notes">
 <dt>Since:</dt>
 <dd>1.0.0</dd>
 <dt>Author:</dt>
 <dd>James Kleeh</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><code>for a list of names</code></li>
+</ul>
+</dd>
 </dl>
 </section>
 <section class="summary">
@@ -131,7 +138,7 @@ implements <a href="../../bind/AnnotatedMqttBinder.html" title="interface in io.
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Binds the given value to the given context.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="../annotation/MqttProperty.html" title="annotation interface in io.micronaut.mqtt.v5.annotation">MqttProperty</a>&gt;</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="../../annotation/v5/MqttProperty.html" title="annotation interface in io.micronaut.mqtt.annotation.v5">MqttProperty</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAnnotationType()" class="member-name-link">getAnnotationType</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 </div>
@@ -172,10 +179,10 @@ implements <a href="../../bind/AnnotatedMqttBinder.html" title="interface in io.
 <li>
 <section class="detail" id="getAnnotationType()">
 <h3>getAnnotationType</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="../annotation/MqttProperty.html" title="annotation interface in io.micronaut.mqtt.v5.annotation">MqttProperty</a>&gt;</span>&nbsp;<span class="element-name">getAnnotationType</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="../../annotation/v5/MqttProperty.html" title="annotation interface in io.micronaut.mqtt.annotation.v5">MqttProperty</a>&gt;</span>&nbsp;<span class="element-name">getAnnotationType</span>()</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../../bind/AnnotatedMqttBinder.html#getAnnotationType()">getAnnotationType</a></code>&nbsp;in interface&nbsp;<code><a href="../../bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;<a href="MqttV5BindingContext.html" title="class in io.micronaut.mqtt.v5.bind">MqttV5BindingContext</a>,<wbr><a href="../annotation/MqttProperty.html" title="annotation interface in io.micronaut.mqtt.v5.annotation">MqttProperty</a>&gt;</code></dd>
+<dd><code><a href="../../bind/AnnotatedMqttBinder.html#getAnnotationType()">getAnnotationType</a></code>&nbsp;in interface&nbsp;<code><a href="../../bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;<a href="MqttV5BindingContext.html" title="class in io.micronaut.mqtt.v5.bind">MqttV5BindingContext</a>,<wbr><a href="../../annotation/v5/MqttProperty.html" title="annotation interface in io.micronaut.mqtt.annotation.v5">MqttProperty</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>The annotation type</dd>
 </dl>

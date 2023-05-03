@@ -1,4 +1,6 @@
 io.micronaut.mqtt.annotation
+io.micronaut.mqtt.annotation.v3
+io.micronaut.mqtt.annotation.v5
 io.micronaut.mqtt.bind
 io.micronaut.mqtt.bind.impl
 io.micronaut.mqtt.config
@@ -7,13 +9,11 @@ io.micronaut.mqtt.executor
 io.micronaut.mqtt.intercept
 io.micronaut.mqtt.serdes
 io.micronaut.mqtt.ssl
-io.micronaut.mqtt.v3.annotation
 io.micronaut.mqtt.v3.bind
 io.micronaut.mqtt.v3.client
 io.micronaut.mqtt.v3.client.health
 io.micronaut.mqtt.v3.config
 io.micronaut.mqtt.v3.intercept
-io.micronaut.mqtt.v5.annotation
 io.micronaut.mqtt.v5.bind
 io.micronaut.mqtt.v5.client
 io.micronaut.mqtt.v5.client.health

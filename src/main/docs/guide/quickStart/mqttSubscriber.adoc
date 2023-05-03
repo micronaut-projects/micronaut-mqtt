@@ -1,0 +1,9 @@
+To listen to MQTT messages you can use the ann:mqtt.annotation.MqttSubscriber[] annotation to define a message listener.
+
+The following example will listen for messages published by the `ProductClient` in the previous section:
+
+snippet::io.micronaut.mqtt.docs.quickstart.ProductListener[tags="imports,clazz"]
+
+<1> The ann:mqtt.annotation.MqttSubscriber[] is used to designate the bean as a message listener.
+<2> The ann:mqtt.annotation.Topic[] annotation is used to indicate which topic to subscribe to.
+<3> The `receive` method accepts a single parameter which is the payload of the message.

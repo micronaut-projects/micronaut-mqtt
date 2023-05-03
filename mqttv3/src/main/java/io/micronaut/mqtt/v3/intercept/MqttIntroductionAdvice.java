@@ -40,7 +40,7 @@ import java.util.function.Consumer;
  * @since 1.0.0
  */
 @Singleton
-@InterceptorBean(MqttPublisher.class) // (1)
+@InterceptorBean(MqttPublisher.class)
 public class MqttIntroductionAdvice extends AbstractMqttIntroductionAdvice<IMqttActionListener, MqttMessage> {
 
     private final MqttAsyncClient mqttAsyncClient;

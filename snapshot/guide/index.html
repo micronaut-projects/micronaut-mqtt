@@ -50,9 +50,9 @@
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#quickStart"><strong>3</strong><span>MQTT Quick Start</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#v3"><strong>4</strong><span>MQTT V3</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#v3"><strong>4</strong><span>MQTT V3 Eclipse Paho</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#v5"><strong>5</strong><span>MQTT V5</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#v5"><strong>5</strong><span>MQTT V5 Eclipse Paho</span></a></div>
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#ssl"><strong>6</strong><span>SSL Connections</span></a></div>
                                 
@@ -105,15 +105,25 @@
         
         <div class="toc-item" style="margin-left:0px" id="toc-item-quickStart"><a href="#quickStart"><strong>3</strong><span>MQTT Quick Start</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-v3"><a href="#v3"><strong>4</strong><span>MQTT V3</span></a></div>
+        <div class="toc-item" style="margin-left:10px" id="toc-item-mqttPublisher"><a href="#mqttPublisher"><strong>3.1</strong><span>Creating an MQTT Publisher with MqttPublisher annotation</span></a></div>
         
-        <div class="toc-item" style="margin-left:10px" id="toc-item-v3config"><a href="#v3config"><strong>4.1</strong><span>Configuration</span></a></div>
+        <div class="toc-item" style="margin-left:10px" id="toc-item-mqttSubscriber"><a href="#mqttSubscriber"><strong>3.2</strong><span>Creating an MQTT Subscriber with MqttSubscriber annotation</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-v5"><a href="#v5"><strong>5</strong><span>MQTT V5</span></a></div>
+        <div class="toc-item" style="margin-left:10px" id="toc-item-mqttHealthChecks"><a href="#mqttHealthChecks"><strong>3.3</strong><span>MQTT Health Checks</span></a></div>
         
-        <div class="toc-item" style="margin-left:10px" id="toc-item-v5config"><a href="#v5config"><strong>5.1</strong><span>Configuration</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-v3"><a href="#v3"><strong>4</strong><span>MQTT V3 Eclipse Paho</span></a></div>
         
-        <div class="toc-item" style="margin-left:10px" id="toc-item-properties"><a href="#properties"><strong>5.2</strong><span>Properties</span></a></div>
+        <div class="toc-item" style="margin-left:10px" id="toc-item-v3dependency"><a href="#v3dependency"><strong>4.1</strong><span>MQTT v3 Dependency with Eclipse Paho</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-v3config"><a href="#v3config"><strong>4.2</strong><span>Configuration</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-v5"><a href="#v5"><strong>5</strong><span>MQTT V5 Eclipse Paho</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-v5dependency"><a href="#v5dependency"><strong>5.1</strong><span>MQTT v5 Dependency with Eclipse Paho</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-v5config"><a href="#v5config"><strong>5.2</strong><span>Configuration</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-properties"><a href="#properties"><strong>5.3</strong><span>Properties</span></a></div>
         
         <div class="toc-item" style="margin-left:0px" id="toc-item-ssl"><a href="#ssl"><strong>6</strong><span>SSL Connections</span></a></div>
         
@@ -214,39 +224,7 @@
 
 
 <div class="paragraph">
-<p>To add support for MQTT to an existing project, you must first add a dependency to your build depending on the version of MQTT you require:</p>
-</div>
-<div class="paragraph">
-<p>        <div class="listingblock multi-language-sample">
-<div class="title"></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="gradle">implementation(<span class="hljs-string">"io.micronaut.mqtt:micronaut-mqttv3")</span></code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="maven">&lt;dependency&gt;
-    &lt;groupId&gt;io.micronaut.mqtt&lt;/groupId&gt;
-    &lt;artifactId&gt;micronaut-mqttv3&lt;/artifactId&gt;
-&lt;/dependency&gt;</code></pre>
-</div>
-</div></p>
-</div>
-<div class="paragraph">
-<p>        <div class="listingblock multi-language-sample">
-<div class="title"></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="gradle">implementation(<span class="hljs-string">"io.micronaut.mqtt:micronaut-mqttv5")</span></code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="maven">&lt;dependency&gt;
-    &lt;groupId&gt;io.micronaut.mqtt&lt;/groupId&gt;
-    &lt;artifactId&gt;micronaut-mqttv5&lt;/artifactId&gt;
-&lt;/dependency&gt;</code></pre>
-</div>
-</div></p>
+<p>To add support for MQTT to an existing project, you must first add a <a href="#v3dependency">dependency</a> to your build depending on the version of MQTT <a href="#v3dependency">v3</a> or <a href="#v5dependency">v5</a> you require.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -255,14 +233,21 @@
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-If you are running into the exception <code>org.eclipse.paho.client.mqttv3.MqttException: Timed out waiting for a response from the server</code>, please make sure to run your program on a machine with <strong>more than one core</strong>. Your MQTT client will run into connection timeouts if it has only one core available.
+If you are running into the exception <code>org.eclipse.paho.client.mqttv3.MqttException: Timed out waiting for a response from the server</code>, please make sure to run your program on a machine with <strong>more than one core</strong>. The Eclipse Paho MQTT client will run into connection timeouts if it has only one core available.
 </td>
 </tr>
 </table>
 </div>
-<div class="sect1">
-<h2 id="_creating_an_mqtt_publisher_with_mqttpublisher">Creating an MQTT Publisher with @MqttPublisher</h2>
-<div class="sectionbody">
+
+<h2 id="mqttPublisher"><a class="anchor" href="#mqttPublisher"></a>3.1 Creating an MQTT Publisher with MqttPublisher annotation</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/quickStart/mqttPublisher.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
 <div class="paragraph">
 <p>To create an MQTT client that produces messages you can simply define an interface that is annotated with <code>MqttPublisher</code>.</p>
 </div>
@@ -357,11 +342,16 @@ Because the <code>send</code> method returns <code>void</code> this means the me
 </tr>
 </table>
 </div>
+
+<h2 id="mqttSubscriber"><a class="anchor" href="#mqttSubscriber"></a>3.2 Creating an MQTT Subscriber with MqttSubscriber annotation</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/quickStart/mqttSubscriber.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_creating_an_mqtt_subscriber_with_mqttsubscriber">Creating an MQTT Subscriber with @MqttSubscriber</h2>
-<div class="sectionbody">
+
+
 <div class="paragraph">
 <p>To listen to MQTT messages you can use the <a href="../api/io/micronaut/mqtt/annotation/MqttSubscriber.html">@MqttSubscriber</a> annotation to define a message listener.</p>
 </div>
@@ -444,13 +434,18 @@ class ProductListener {
 </tr>
 </table>
 </div>
+
+<h2 id="mqttHealthChecks"><a class="anchor" href="#mqttHealthChecks"></a>3.3 MQTT Health Checks</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/quickStart/mqttHealthChecks.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_mqtt_health_checks">MQTT Health Checks</h2>
-<div class="sectionbody">
+
+
 <div class="paragraph">
-<p>When either the <code>mqttv3</code> or <code>mqttv5</code> module is activated an api:io.micronaut.mqtt.v3.client.health.MqttHealthIndicator or api:io.micronaut.mqtt.v5.client.health.MqttHealthIndicator is activated resulting in the <code>/health</code> endpoint and <a href="../api/io/micronaut/health/CurrentHealthStatus.html">CurrentHealthStatus</a> interface resolving the health of the MQTT connection.</p>
+<p>When either the <code>mqttv3</code> or <code>mqttv5</code> module is activated an <a href="../api/io/micronaut/mqtt/v3/client/health/MqttHealthIndicator.html">MqttHealthIndicator</a> or <a href="../api/io/micronaut/mqtt/v5/client/health/MqttHealthIndicator.html">MqttHealthIndicator</a> is activated resulting in the <code>/health</code> endpoint and <a href="../api/io/micronaut/health/CurrentHealthStatus.html">CurrentHealthStatus</a> interface resolving the health of the MQTT connection.</p>
 </div>
 <div class="paragraph">
 <p>The only configuration option supported is to enable or disable the indicator by the <code>endpoints.health.mqtt.client.enabled</code> key.</p>
@@ -458,10 +453,8 @@ class ProductListener {
 <div class="paragraph">
 <p>See the section on the <a href="https://docs.micronaut.io/latest/guide/index.html#healthEndpoint">Health Endpoint</a> for more information.</p>
 </div>
-</div>
-</div>
 
-<h1 id="v3"><a class="anchor" href="#v3"></a>4 MQTT V3</h1>
+<h1 id="v3"><a class="anchor" href="#v3"></a>4 MQTT V3 Eclipse Paho</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/v3.adoc"'>
@@ -474,7 +467,39 @@ class ProductListener {
 <p>This section outlines details specific to the V3 implementation.</p>
 </div>
 
-<h2 id="v3config"><a class="anchor" href="#v3config"></a>4.1 Configuration</h2>
+<h2 id="v3dependency"><a class="anchor" href="#v3dependency"></a>4.1 MQTT v3 Dependency with Eclipse Paho</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/v3/v3dependency.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The following dependency uses the <a href="https://www.hivemq.com/blog/mqtt-client-library-encyclopedia-eclipse-paho-java/">Eclipse Paho client</a> under the hood.</p>
+</div>
+<div class="paragraph">
+<p>For MQTT v3:</p>
+</div>
+<div class="paragraph">
+<p>        <div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="gradle">implementation(<span class="hljs-string">"io.micronaut.mqtt:micronaut-mqttv3")</span></code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="maven">&lt;dependency&gt;
+    &lt;groupId&gt;io.micronaut.mqtt&lt;/groupId&gt;
+    &lt;artifactId&gt;micronaut-mqttv3&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div></p>
+</div>
+
+<h2 id="v3config"><a class="anchor" href="#v3config"></a>4.2 Configuration</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/v3/v3config.adoc"'>
@@ -627,7 +652,7 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 </table>
 </div>
 
-<h1 id="v5"><a class="anchor" href="#v5"></a>5 MQTT V5</h1>
+<h1 id="v5"><a class="anchor" href="#v5"></a>5 MQTT V5 Eclipse Paho</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/v5.adoc"'>
@@ -640,7 +665,39 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 <p>This section outlines details specific to the V5 implementation.</p>
 </div>
 
-<h2 id="v5config"><a class="anchor" href="#v5config"></a>5.1 Configuration</h2>
+<h2 id="v5dependency"><a class="anchor" href="#v5dependency"></a>5.1 MQTT v5 Dependency with Eclipse Paho</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/v5/v5dependency.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The following dependency uses the <a href="https://www.hivemq.com/blog/mqtt-client-library-encyclopedia-eclipse-paho-java/">Eclipse Paho client</a> under the hood.</p>
+</div>
+<div class="paragraph">
+<p>For MQTT v5:</p>
+</div>
+<div class="paragraph">
+<p>        <div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="gradle">implementation(<span class="hljs-string">"io.micronaut.mqtt:micronaut-mqttv5")</span></code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="maven">&lt;dependency&gt;
+    &lt;groupId&gt;io.micronaut.mqtt&lt;/groupId&gt;
+    &lt;artifactId&gt;micronaut-mqttv5&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div></p>
+</div>
+
+<h2 id="v5config"><a class="anchor" href="#v5config"></a>5.2 Configuration</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/v5/v5config.adoc"'>
@@ -833,7 +890,7 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 </table>
 </div>
 
-<h2 id="properties"><a class="anchor" href="#properties"></a>5.2 Properties</h2>
+<h2 id="properties"><a class="anchor" href="#properties"></a>5.3 Properties</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/master/src/main/docs/guide/v5/properties.adoc"'>

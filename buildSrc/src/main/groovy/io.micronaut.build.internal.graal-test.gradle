@@ -38,16 +38,6 @@ test {
     useJUnitPlatform()
 }
 
-def isGraalVMJdk = ["jvmci.Compiler", "java.vendor.version", "java.vendor"].any {
-    System.getProperty(it)?.toLowerCase(Locale.ENGLISH)?.contains("graal")
-}
-
-tasks.named("check") {
-    if (isGraalVMJdk) {
-        it.dependsOn("nativeTest")
-    }
-}
-
 graalvmNative {
     toolchainDetection.set(false)
 }

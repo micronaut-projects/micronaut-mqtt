@@ -29,10 +29,10 @@ include 'test-suite-mqttv5-graal'
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 micronautBuild {
-    addSnapshotRepository()
     useStandardizedProjectNames = true
-
     importMicronautCatalog()
+    importMicronautCatalog("micronaut-logging")
     importMicronautCatalog("micronaut-serde")
+    importMicronautCatalog("micronaut-reactor")
     importMicronautCatalog("micronaut-validation")
 }

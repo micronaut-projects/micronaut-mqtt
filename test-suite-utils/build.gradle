@@ -7,8 +7,8 @@ plugins {
 dependencies {
     compileOnly(mn.micronaut.inject.groovy)
 
-    api(mn.micronaut.runtime)
     api(mnTest.micronaut.test.spock)
     api projects.micronautMqttCore
     api(libs.testcontainers.spock)
+    api(mnReactor.micronaut.reactor)
 }

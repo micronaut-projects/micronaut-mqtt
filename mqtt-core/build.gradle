@@ -5,8 +5,8 @@ plugins {
 dependencies {
     api(mn.micronaut.inject)
     api(mn.micronaut.aop)
-    api(mn.micronaut.runtime)
     api(mn.micronaut.messaging)
+    implementation(mn.micronaut.retry)
     implementation(mnSerde.micronaut.serde.jackson)
     implementation(mn.reactor)
     compileOnly(libs.kotlin.stdlib.jdk8)

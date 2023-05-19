@@ -5,7 +5,7 @@ plugins {
 }
 
 dependencies {
-    runtimeOnly mn.logback.classic
+    runtimeOnly mnLogging.logback.classic
     api(mn.micronaut.inject)
     testAnnotationProcessor(mn.micronaut.inject.java)
     testAnnotationProcessor(mnValidation.micronaut.validation.processor)

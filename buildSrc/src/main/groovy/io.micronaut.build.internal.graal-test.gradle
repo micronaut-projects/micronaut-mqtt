@@ -23,7 +23,7 @@ dependencies {
     testImplementation(mnTest.micronaut.test.junit5)
     testImplementation(libs.awaitility)
     testImplementation(mnSerde.micronaut.serde.jackson)
-    testRuntimeOnly(mn.logback.classic)
+    testRuntimeOnly(mnLogging.logback.classic)
 }
 
 micronaut {

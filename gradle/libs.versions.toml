@@ -1,6 +1,6 @@
 [versions]
 micronaut-docs = "2.0.0"
-micronaut = "4.0.0-M2"
+micronaut = "4.0.0-M4"
 
 groovy = "4.0.11"
 spock = "2.3-groovy-4.0"
@@ -13,9 +13,9 @@ bcpkix-jdk15on = "1.70"
 kotlin = "1.8.21"
 testcontainers = "1.18.1"
 
-micronaut-serde = "2.0.0-M3"
-micronaut-test = "4.0.0-M2"
-micronaut-validation = "4.0.0-M4"
+micronaut-serde = "2.0.0-M7"
+micronaut-test = "4.0.0-M3"
+micronaut-validation = "4.0.0-M7"
 
 micronaut-logging = "1.0.0-M2"
 [libraries]

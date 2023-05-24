@@ -20,6 +20,9 @@ micronaut-validation = "4.0.0-M7"
 micronaut-logging = "1.0.0-M2"
 
 [libraries]
+# Core
+micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
+
 micronaut-reactor = { module = "io.micronaut.reactor:micronaut-reactor-bom", version.ref = "micronaut-reactor" }
 micronaut-logging = { module = "io.micronaut.logging:micronaut-logging-bom", version.ref = "micronaut-logging" }
 managed-paho-mqttv3-client = { module = "org.eclipse.paho:org.eclipse.paho.client.mqttv3", version.ref = "managed-mqttv3" }

@@ -1,7 +1,7 @@
 package io.micronaut.mqtt5.graal;
 
 import io.micronaut.mqtt.annotation.Topic;
-import io.micronaut.mqtt.v5.annotation.MqttPublisher;
+import io.micronaut.mqtt.annotation.v5.MqttPublisher;
 
 @MqttPublisher
 public interface MessageConverterMqttClient {

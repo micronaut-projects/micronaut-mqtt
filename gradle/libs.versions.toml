@@ -10,7 +10,7 @@ managed-mqttv5 = "1.2.5"
 
 awaitility = "4.2.0"
 bcpkix-jdk15on = "1.70"
-kotlin = "1.8.21"
+kotlin = "1.8.22"
 testcontainers = "1.18.3"
 
 micronaut-reactor = "3.0.0-M6"

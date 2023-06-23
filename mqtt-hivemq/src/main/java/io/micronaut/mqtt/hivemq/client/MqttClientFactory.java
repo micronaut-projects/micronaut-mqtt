@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.client;
+package io.micronaut.mqtt.hivemq.client;
 
 import io.micronaut.context.annotation.Factory;
 

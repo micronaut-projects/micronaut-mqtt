@@ -1,8 +1,8 @@
 [versions]
 micronaut-docs = "2.0.0"
-micronaut = "4.0.0-M2"
+micronaut = "4.0.0-RC1"
 
-groovy = "4.0.11"
+groovy = "4.0.12"
 spock = "2.3-groovy-4.0"
 
 managed-mqttv3 = "1.2.5"
@@ -11,14 +11,21 @@ managed-hivemq-client = "1.3.1"
 
 awaitility = "4.2.0"
 bcpkix-jdk15on = "1.70"
-kotlin = "1.8.21"
-testcontainers = "1.18.0"
+kotlin = "1.8.22"
+testcontainers = "1.18.3"
 
-micronaut-serde = "2.0.0-M3"
-micronaut-test = "4.0.0-M2"
-micronaut-validation = "4.0.0-M4"
+micronaut-reactor = "3.0.0-M6"
+micronaut-serde = "2.0.0-M10"
+micronaut-test = "4.0.0-M7"
+micronaut-validation = "4.0.0-M10"
+micronaut-logging = "1.0.0-M5"
 
 [libraries]
+# Core
+micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
+
+micronaut-reactor = { module = "io.micronaut.reactor:micronaut-reactor-bom", version.ref = "micronaut-reactor" }
+micronaut-logging = { module = "io.micronaut.logging:micronaut-logging-bom", version.ref = "micronaut-logging" }
 managed-paho-mqttv3-client = { module = "org.eclipse.paho:org.eclipse.paho.client.mqttv3", version.ref = "managed-mqttv3" }
 managed-paho-mqttv5-client = { module = "org.eclipse.paho:org.eclipse.paho.mqttv5.client", version.ref = "managed-mqttv5" }
 managed-hivemq-client = { module = "com.hivemq:hivemq-mqtt-client", version.ref = "managed-hivemq-client" }

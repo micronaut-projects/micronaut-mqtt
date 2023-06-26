@@ -15,8 +15,58 @@
  */
 package io.micronaut.mqtt.hivemq.client;
 
-import io.micronaut.context.annotation.Factory;
+import io.micronaut.mqtt.hivemq.ssl.CertificateReader;
+import io.micronaut.mqtt.hivemq.ssl.KeyManagerFactoryCreationException;
+import io.micronaut.mqtt.hivemq.ssl.PrivateKeyReader;
+import io.micronaut.mqtt.hivemq.ssl.TrustManagerFactoryCreationException;
+import io.micronaut.mqtt.ssl.MqttCertificateConfiguration;
 
-@Factory
-public class MqttClientFactory {
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.TrustManagerFactory;
+import java.io.IOException;
+import java.security.*;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
+
+public interface MqttClientFactory {
+
+    default KeyManagerFactory getKeyManagerFactory(final MqttCertificateConfiguration certConfiguration) throws KeyManagerFactoryCreationException {
+        try {
+            final KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
+            final KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+
+            final Certificate certificate = CertificateReader.readCertificate(certConfiguration.getCertificate());
+
+            final PrivateKey key = PrivateKeyReader.getPrivateKey(certConfiguration.getPrivateKey(), certConfiguration.getPassword());
+
+            keyStore.load(null, null);
+            keyStore.setCertificateEntry("certificate", certificate);
+            keyStore.setKeyEntry("private-key", key, certConfiguration.getPassword(), new Certificate[]{certificate});
+
+            kmf.init(keyStore, certConfiguration.getPassword());
+
+            return kmf;
+        } catch (NoSuchAlgorithmException | KeyStoreException | IOException | CertificateException |
+                 UnrecoverableKeyException e) {
+            throw new KeyManagerFactoryCreationException(e.getMessage(), e);
+        }
+    }
+
+    default TrustManagerFactory getTrustManagerFactory(final MqttCertificateConfiguration certConfiguration) throws TrustManagerFactoryCreationException {
+        try {
+            final TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            final KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+
+            final Certificate certificate = CertificateReader.readCertificate(certConfiguration.getCertificateAuthority());
+
+            keyStore.load(null);
+            keyStore.setCertificateEntry("ca-certificate", certificate);
+
+            tmf.init(keyStore);
+
+            return tmf;
+        } catch (NoSuchAlgorithmException | KeyStoreException | IOException | CertificateException e) {
+            throw new TrustManagerFactoryCreationException(e.getMessage(), e);
+        }
+    }
 }

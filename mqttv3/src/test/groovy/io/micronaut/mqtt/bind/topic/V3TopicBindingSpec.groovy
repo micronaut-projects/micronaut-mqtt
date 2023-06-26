@@ -1,11 +1,12 @@
 package io.micronaut.mqtt.bind.topic
 
 import io.micronaut.context.annotation.Requires
+import io.micronaut.mqtt.test.MQTT3Test
 import io.micronaut.mqtt.test.bind.topic.TopicBindingClient
 import io.micronaut.mqtt.test.bind.topic.TopicBindingSpec
 import io.micronaut.mqtt.annotation.v3.MqttPublisher
 
-class V3TopicBindingSpec extends TopicBindingSpec {
+class V3TopicBindingSpec extends TopicBindingSpec implements MQTT3Test {
 
     @Override
     Class<? extends TopicBindingClient> getClient() {

@@ -1,11 +1,12 @@
 package io.micronaut.mqtt.bind.qos
 
 import io.micronaut.context.annotation.Requires
+import io.micronaut.mqtt.test.MQTT3Test
 import io.micronaut.mqtt.test.bind.qos.QosBindingClient
 import io.micronaut.mqtt.test.bind.qos.QosBindingSpec
 import io.micronaut.mqtt.annotation.v3.MqttPublisher
 
-class V3QosBindingSpec extends QosBindingSpec {
+class V3QosBindingSpec extends QosBindingSpec implements MQTT3Test {
 
     @Override
     Class<? extends QosBindingClient> getClient() {

@@ -15,6 +15,7 @@
  */
 package io.micronaut.mqtt.hivemq.ssl;
 
+import io.micronaut.core.annotation.Internal;
 import io.micronaut.core.io.Readable;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
@@ -24,6 +25,13 @@ import org.bouncycastle.openssl.PEMParser;
 import java.security.Security;
 import java.security.cert.Certificate;
 
+/**
+ * Reader for X.509 certificates.
+ *
+ * @author Sven Kobow
+ * @since 3.0.0
+ */
+@Internal
 public final class CertificateReader {
     public static Certificate readCertificate(final Readable crtFile) {
         try {

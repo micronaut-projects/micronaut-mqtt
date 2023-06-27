@@ -21,8 +21,6 @@ import io.micronaut.core.annotation.Nullable;
 import io.micronaut.mqtt.hivemq.config.MqttClientConfigurationProperties;
 import io.micronaut.mqtt.ssl.MqttCertificateConfiguration;
 
-import java.net.URI;
-
 /**
  * Configuration for the MQTT v3 client.
  *
@@ -34,7 +32,8 @@ public class Mqtt3ClientConfigurationProperties extends MqttClientConfigurationP
     private boolean cleanSession = Mqtt3Connect.DEFAULT_CLEAN_SESSION;
 
     /**
-     * @param willMessage An optional last will message
+     * @param willMessage an optional last will message
+     * @param certificateConfiguration certificate configuration for using SSL encrypted connections and mTLS
      */
     public Mqtt3ClientConfigurationProperties(
         @Nullable final WillMessage willMessage, @Nullable final MqttCertificateConfiguration certificateConfiguration) {

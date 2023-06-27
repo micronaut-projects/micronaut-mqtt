@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 /**
- * MQTT HiveMQ implementation
+ * MQTT HiveMQ implementation.
  */
 package io.micronaut.mqtt.hivemq;

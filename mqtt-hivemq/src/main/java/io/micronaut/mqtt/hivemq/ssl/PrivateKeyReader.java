@@ -15,6 +15,7 @@
  */
 package io.micronaut.mqtt.hivemq.ssl;
 
+import io.micronaut.core.annotation.Internal;
 import io.micronaut.core.io.Readable;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openssl.PEMDecryptorProvider;
@@ -28,8 +29,13 @@ import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.Security;
 
-import static org.bouncycastle.cms.RecipientId.password;
-
+/**
+ * Reader for reading PKCS #1 and PKCS #8 private keys from PEM files.
+ *
+ * @author Sven Kobow
+ * @since 3.0.0
+ */
+@Internal
 public final class PrivateKeyReader {
     public static PrivateKey getPrivateKey(final Readable keyFile, final char[] password) {
         try {

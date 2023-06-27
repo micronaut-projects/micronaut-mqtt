@@ -36,6 +36,12 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
+/**
+ * The MQTT v3 implementation of {@link AbstractMqttIntroductionAdvice}.
+ *
+ * @author Sven Kobow
+ * @since 3.0.0
+ */
 @Singleton
 @InterceptorBean(MqttPublisher.class)
 @Requires(property = "mqtt.client.mqtt-version", value = "3")

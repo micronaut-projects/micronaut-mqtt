@@ -95,7 +95,7 @@ abstract class RetainedBindingSpec extends AbstractMQTTTest {
         def client = ctx.getBean(getClient())
         //publish a message before there is a subscriber
         client.argument(true, "argumentTrue")
-        ctx.close()
+        //ctx.close()
 
         when:
         def ctx2 = startContext("retainedbindingspec": true)
@@ -108,6 +108,7 @@ abstract class RetainedBindingSpec extends AbstractMQTTTest {
         }
 
         cleanup:
+        client.argument(true, "") // clean up retained message for subsequent tests
         ctx.close()
         ctx2.close()
     }

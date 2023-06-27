@@ -1,3 +1,5 @@
+package io.micronaut.mqtt.hivemq.v5.bind.property
+
 /*
  * Copyright 2017-2023 original authors
  *
@@ -13,16 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.hivemq.ssl;
 
-/**
- * Thrown when an a {@link javax.net.ssl.KeyManagerFactory} can not be created.
- *
- * @author Sven Kobow
- * @since 3.0.0
- */
-public class KeyManagerFactoryCreationException extends Throwable {
-    public KeyManagerFactoryCreationException(final String message, final Throwable cause) {
-        super(message, cause);
-    }
+interface PropertyBindingClient {
+
 }

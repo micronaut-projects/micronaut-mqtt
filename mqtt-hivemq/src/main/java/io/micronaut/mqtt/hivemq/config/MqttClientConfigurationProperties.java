@@ -49,6 +49,10 @@ public abstract class MqttClientConfigurationProperties {
     private WillMessage willMessage = null;
     private final MqttCertificateConfiguration certificateConfiguration;
 
+    /**
+     * @param willMessage an optional last will message.
+     * @param certificateConfiguration certification configuration for using SSL encrypted connections and mTLS.
+     */
     protected MqttClientConfigurationProperties(final WillMessage willMessage, final MqttCertificateConfiguration certificateConfiguration) {
         if (willMessage.getTopic() != null) {
             this.willMessage = willMessage;
@@ -56,188 +60,205 @@ public abstract class MqttClientConfigurationProperties {
         this.certificateConfiguration = certificateConfiguration;
     }
 
-    @Nullable
+    /**
+     * @return the uri of server to connect to as [schema]://[serverHost]:[serverPort].
+     */
     public URI getServerUri() {
         return this.serverUri;
     }
 
+    /**
+     * @param serverUri the uri of server to connect to as [schema]://[serverHost]:[serverPort].
+     */
     public void setServerUri(@Nullable final URI serverUri) {
         this.serverUri = serverUri;
     }
 
+    /**
+     * @return the server host of the configured {@link #serverUri}.
+     */
     public String getServerHost() {
         return serverUri != null ? serverUri.getHost() : null;
     }
 
+    /**
+     * @return the server port of the configured {@link #serverUri}.
+     */
     public Integer getServerPort() {
         return serverUri != null ? serverUri.getPort() : null;
     }
 
+    /**
+     * @return true if the schema of the configured {@link #serverUri} is ssl.
+     */
     public boolean isSSL() {
         return serverUri != null && "SSL".equalsIgnoreCase(serverUri.getScheme());
     }
 
     /**
-     * @return The client identifier.
+     * @return the client identifier.
      */
     public String getClientId() {
         return clientId;
     }
 
     /**
-     * @param clientId The client identifier.
+     * @param clientId the client identifier.
      */
     public void setClientId(final String clientId) {
         this.clientId = clientId;
     }
 
     /**
-     * @return The connection timeout
+     * @return the connection timeout.
      */
     public Duration getConnectionTimeout() {
         return connectionTimeout;
     }
 
     /**
-     * @param connectionTimeout How long to wait for a connection
+     * @param connectionTimeout how long to wait for a connection.
      */
     public void setConnectionTimeout(final Duration connectionTimeout) {
         this.connectionTimeout = connectionTimeout;
     }
 
     /**
-     * @return An optional boolean to set the client in manual acknowledge mode
+     * @return an optional boolean to set the client in manual acknowledge mode.
      */
     public boolean getManualAcks() {
         return this.manualAcks;
     }
 
     /**
-     * @param manualAcks Set to true if you wish to manually acknowledge messages
+     * @param manualAcks set to true if you wish to manually acknowledge messages.
      */
     public void setManualAcks(final boolean manualAcks) {
         this.manualAcks = manualAcks;
     }
 
     /**
-     * @return The password to use for MQTT connections.
+     * @return the password to use for MQTT connections.
      */
     public byte[] getPassword() {
         return password;
     }
 
     /**
-     * @param password The password to use for MQTT connections.
+     * @param password the password to use for MQTT connections.
      */
     public void setPassword(@Nullable final byte[] password) {
         this.password = password;
     }
 
     /**
-     * @return The username to use for MQTT connections.
+     * @return the username to use for MQTT connections.
      */
     public String getUserName() {
         return userName;
     }
 
     /**
-     * @param userName The username to use for MQTT connections.
+     * @param userName the username to use for MQTT connections.
      */
     public void setUserName(@Nullable final String userName) {
         this.userName = userName;
     }
 
     /**
-     * @return The maximal delay for reconnecting.
+     * @return the maximal delay for reconnecting.
      */
     public Long getMaxReconnectDelay() {
         return maxReconnectDelay;
     }
 
     /**
-     * @param maxReconnectDelay The maximum delay for reconnecting.
+     * @param maxReconnectDelay the maximum delay for reconnecting.
      */
     public void setMaxReconnectDelay(final long maxReconnectDelay) {
         this.maxReconnectDelay = maxReconnectDelay;
     }
 
     /**
-     * @return The keep alive interval.
+     * @return the keep alive interval.
      */
     public Integer getKeepAliveInterval() {
         return keepAliveInterval;
     }
 
     /**
-     * @param keepAliveInterval The keep alive interval.
+     * @param keepAliveInterval the keep alive interval.
      */
     public void setKeepAliveInterval(final int keepAliveInterval) {
         this.keepAliveInterval = keepAliveInterval;
     }
 
     /**
-     * @return True is automatic reconnect should be performed.
+     * @return true is automatic reconnect should be performed.
      */
     public boolean isAutomaticReconnect() {
         return automaticReconnect;
     }
 
     /**
-     * @param automaticReconnect If an automatic reconnect should be performed.
+     * @param automaticReconnect if an automatic reconnect should be performed.
      */
     public void setAutomaticReconnect(final boolean automaticReconnect) {
         this.automaticReconnect = automaticReconnect;
     }
 
     /**
-     * @return The custom headers that should be sent with web socket connections.
+     * @return the custom headers that should be sent with web socket connections.
      */
     public Map<String, String> getCustomWebSocketHeaders() {
         return customWebSocketHeaders;
     }
 
     /**
-     * @param customWebSocketHeaders The custom headers that should be sent with web socket connections.
+     * @param customWebSocketHeaders the custom headers that should be sent with web socket connections.
      */
     public void setCustomWebSocketHeaders(@Nullable final Map<String, String> customWebSocketHeaders) {
         this.customWebSocketHeaders = customWebSocketHeaders;
     }
 
     /**
-     * @return True if hostname verification should be used.
+     * @return true if hostname verification should be used.
      */
     public boolean isHttpsHostnameVerificationEnabled() {
         return this.isHttpsHostnameVerificationEnabled;
     }
 
     /**
-     * @param httpsHostnameVerificationEnabled True if hostname verification should be used.
+     * @param httpsHostnameVerificationEnabled true if hostname verification should be used.
      */
     public void setHttpsHostnameVerificationEnabled(boolean httpsHostnameVerificationEnabled) {
         this.isHttpsHostnameVerificationEnabled = httpsHostnameVerificationEnabled;
     }
 
     /**
-     * @return The hostname verifier to use for hostname verification.
+     * @return the hostname verifier to use for hostname verification.
      */
     public HostnameVerifier getSSLHostnameVerifier() {
         return sslHostnameVerifier;
     }
 
     /**
-     * @param hostnameVerifier The hostname verifier to use for hostname verification.
+     * @param hostnameVerifier the hostname verifier to use for hostname verification.
      */
     public void setSSLHostnameVerifier(@Nullable final HostnameVerifier hostnameVerifier) {
         this.sslHostnameVerifier = hostnameVerifier;
     }
 
     /**
-     * @return The last will message that should be sent on ungraceful disconnects.
+     * @return the last will message that should be sent on ungraceful disconnects.
      */
     public WillMessage getWillMessage() {
         return willMessage;
     }
 
+    /**
+     * @return the certificate configuration to use for SSL and mTLS.
+     */
     public MqttCertificateConfiguration getCertificateConfiguration() {
         return certificateConfiguration;
     }

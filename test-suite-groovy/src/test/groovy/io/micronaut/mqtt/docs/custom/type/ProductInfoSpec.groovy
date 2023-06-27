@@ -3,9 +3,10 @@ package io.micronaut.mqtt.docs.custom.type
 
 import io.micronaut.context.ApplicationContext
 import io.micronaut.mqtt.test.AbstractMQTTTest
+import io.micronaut.mqtt.test.MQTT5Test
 import spock.util.concurrent.PollingConditions
 
-class ProductInfoSpec extends AbstractMQTTTest {
+class ProductInfoSpec extends AbstractMQTTTest implements MQTT5Test {
 
     void "test using a custom type binder"() {
         ApplicationContext applicationContext = startContext()

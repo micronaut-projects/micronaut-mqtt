@@ -37,9 +37,15 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
+/**
+ * Adapter class for MQTT 3 HiveMQ async client.
+ *
+ * @author Sven Kobow
+ * @since 3.0.0
+ * @see MqttClientAdapter
+ * @see Mqtt3AsyncClient
+ */
 @Singleton
 @Requires(property = "mqtt.client.mqtt-version", value = "3")
 public final class Mqtt3ClientAdapter implements MqttClientAdapter {
@@ -53,11 +59,11 @@ public final class Mqtt3ClientAdapter implements MqttClientAdapter {
         this.client = client;
         this.configurationProperties = configurationProperties;
     }
+
     @Override
     public void subscribe(final String[] topics, final int[] qos, final Consumer<MqttBindingContext<MqttMessage>> callback) {
 
-        final Map<String, Integer> topicMap = IntStream.range(0, topics.length).boxed()
-            .collect(Collectors.toMap(i -> topics[i], i -> qos[i]));
+        final Map<String, Integer> topicMap = getTopicMap(topics, qos);
 
         final Mqtt3Subscribe mqttSubscribe = Mqtt3Subscribe.builder()
             .addSubscriptions(

@@ -22,6 +22,7 @@ import java.util.List;
  * for message delivery.
  *
  * @author Sven Kobow
+ * @since 3.0.0
  */
 public class MqttMessage {
 
@@ -44,7 +45,7 @@ public class MqttMessage {
 
     /**
      * Returns whether the message is mutable.
-     * @return mutable
+     * @return mutable.
      */
     public boolean getMutable() {
         return mutable;
@@ -52,7 +53,7 @@ public class MqttMessage {
 
     /**
      * Sets whether the message is mutable.
-     * @param mutable boolean value
+     * @param mutable boolean value.
      */
     public void setMutable(final boolean mutable) {
         this.mutable = mutable;
@@ -60,7 +61,7 @@ public class MqttMessage {
 
     /**
      * Returns the payload as byte array.
-     * @return payload The payload byte array
+     * @return payload The payload byte array.
      */
     public byte[] getPayload() {
         return payload;
@@ -68,7 +69,7 @@ public class MqttMessage {
 
     /**
      * Sets the payload of the message.
-     * @param payload The payload as byte array
+     * @param payload The payload as byte array.
      */
     public void setPayload(final byte[] payload) {
         this.payload = payload;
@@ -76,7 +77,7 @@ public class MqttMessage {
 
     /**
      * Returns the quality of service level for the message.
-     * @return MQTT quality of service level
+     * @return MQTT quality of service level.
      */
     public int getQos() {
         return qos;
@@ -84,7 +85,7 @@ public class MqttMessage {
 
     /**
      * Sets the quality of service level for the message.
-     * @param qos MQTT quality of service level
+     * @param qos MQTT quality of service level.
      */
     public void setQos(final int qos) {
         this.qos = qos;
@@ -92,7 +93,7 @@ public class MqttMessage {
 
     /**
      * Returns whether the message is a retained message.
-     * @return boolean value
+     * @return boolean value.
      */
     public boolean isRetained() {
         return retained;
@@ -100,7 +101,7 @@ public class MqttMessage {
 
     /**
      * Sets whether the message is retained.
-     * @param retained boolean value
+     * @param retained boolean value.
      */
     public void setRetained(final boolean retained) {
         this.retained = retained;
@@ -108,7 +109,7 @@ public class MqttMessage {
 
     /**
      * Returns whether the message is flagged as duplicate.
-     * @return boolean value
+     * @return boolean value.
      */
     public boolean getDup() {
         return dup;
@@ -116,7 +117,7 @@ public class MqttMessage {
 
     /**
      * Flags the message as duplicate.
-     * @param dup boolean value
+     * @param dup boolean value.
      */
     public void setDup(final boolean dup) {
         this.dup = dup;
@@ -124,7 +125,7 @@ public class MqttMessage {
 
     /**
      * Returns the message id.
-     * @return message id
+     * @return message id.
      */
     public int getId() {
         return messageId;
@@ -132,7 +133,7 @@ public class MqttMessage {
 
     /**
      * Sets the message id.
-     * @param messageId message id
+     * @param messageId message id.
      */
     public void setId(final int messageId) {
         this.messageId = messageId;
@@ -140,7 +141,7 @@ public class MqttMessage {
 
     /**
      * Sets the MQTT user properties.
-     * @param userProperties MQTT user properties
+     * @param userProperties MQTT user properties.
      */
     public void setUserProperties(final List<UserProperty> userProperties) {
         this.userProperties = userProperties;
@@ -148,9 +149,25 @@ public class MqttMessage {
 
     /**
      * Returns the MQTT user properties.
-     * @return MQTT user properties
+     * @return MQTT user properties.
      */
     public List<UserProperty> getUserProperties() {
         return this.userProperties;
+    }
+
+    /**
+     * Returns the correlation data for the message.
+     * @return the correlation data.
+     */
+    public byte[] getCorrelationData() {
+        return correlationData;
+    }
+
+    /**
+     * Sets the correlation data for the message.
+     * @param correlationData the correlation data.
+     */
+    public void setCorrelationData(byte[] correlationData) {
+        this.correlationData = correlationData;
     }
 }

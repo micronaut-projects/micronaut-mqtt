@@ -1,3 +1,11 @@
+package io.micronaut.mqtt.hivemq.v5.bind.id
+
+import io.micronaut.context.annotation.Requires
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
+import io.micronaut.mqtt.test.MQTT5Test
+import io.micronaut.mqtt.test.bind.id.IdBindingClient
+import io.micronaut.mqtt.test.bind.id.IdBindingSpec
+
 /*
  * Copyright 2017-2023 original authors
  *
@@ -13,16 +21,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.hivemq.ssl;
 
-/**
- * Thrown when an a {@link javax.net.ssl.KeyManagerFactory} can not be created.
- *
- * @author Sven Kobow
- * @since 3.0.0
- */
-public class KeyManagerFactoryCreationException extends Throwable {
-    public KeyManagerFactoryCreationException(final String message, final Throwable cause) {
-        super(message, cause);
+class V5IdBindingSpec extends IdBindingSpec implements MQTT5Test{
+
+    @Override
+    Class<? extends IdBindingClient> getClient() {
+        return MyClient
+    }
+
+    @Requires(property = "spec.name", value = "V5IdBindingSpec")
+    @MqttPublisher
+    static interface MyClient extends IdBindingClient {
+
     }
 }

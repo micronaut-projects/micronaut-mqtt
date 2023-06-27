@@ -28,6 +28,12 @@ import org.reactivestreams.Publisher;
 
 import java.util.Collections;
 
+/**
+ * A {@link HealthIndicator} for HiveMQ MQTT Client.
+ *
+ * @author Sven Kobow
+ * @since 3.0.0
+ */
 @Requires(property = HealthEndpoint.PREFIX + ".mqtt.client.enabled", value = StringUtils.TRUE)
 @Requires(beans = HealthEndpoint.class)
 @Singleton

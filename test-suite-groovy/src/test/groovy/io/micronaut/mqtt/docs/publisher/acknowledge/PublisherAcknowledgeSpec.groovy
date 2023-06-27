@@ -2,6 +2,7 @@ package io.micronaut.mqtt.docs.publisher.acknowledge
 
 import io.micronaut.context.ApplicationContext
 import io.micronaut.mqtt.test.AbstractMQTTTest
+import io.micronaut.mqtt.test.MQTT5Test
 import org.reactivestreams.Publisher
 import org.reactivestreams.Subscriber
 import org.reactivestreams.Subscription
@@ -10,7 +11,7 @@ import spock.util.concurrent.PollingConditions
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.atomic.AtomicInteger
 
-class PublisherAcknowledgeSpec extends AbstractMQTTTest {
+class PublisherAcknowledgeSpec extends AbstractMQTTTest implements MQTT5Test {
 
     void "test publisher acknowledgement"() {
         given:

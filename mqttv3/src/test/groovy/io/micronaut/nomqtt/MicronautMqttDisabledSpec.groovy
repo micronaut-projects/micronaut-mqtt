@@ -8,7 +8,7 @@ import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import jakarta.inject.Inject
 import spock.lang.Specification
 
-@Property(name = "mqtt.enabled", value = StringUtils.TRUE)
+@Property(name = "mqtt.enabled", value = StringUtils.FALSE)
 @MicronautTest(startApplication = false)
 class MicronautMqttDisabledSpec extends Specification {
 

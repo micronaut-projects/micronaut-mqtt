@@ -28,6 +28,14 @@ import java.security.*;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 
+/**
+ * Common interface for MQTT client factories.
+ *
+ * @author Sven Kobow
+ * @since 3.0.3
+ * @see io.micronaut.mqtt.hivemq.v3.client.Mqtt3ClientFactory
+ * @see io.micronaut.mqtt.hivemq.v5.client.Mqtt5ClientFactory
+ */
 public interface MqttClientFactory {
 
     default KeyManagerFactory getKeyManagerFactory(final MqttCertificateConfiguration certConfiguration) throws KeyManagerFactoryCreationException {

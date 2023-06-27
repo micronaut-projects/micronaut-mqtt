@@ -18,11 +18,26 @@ package io.micronaut.mqtt.hivemq.client;
 import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.hivemq.bind.MqttMessage;
 
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
+/**
+ * Common interface for HiveMQ MQTT clients.
+ *
+ * @author Sven Kobow
+ * @since 3.0.0
+ */
 public interface MqttClientAdapter {
+
     void subscribe(String[] topics, int[] qos, Consumer<MqttBindingContext<MqttMessage>> callback);
+
+    default Map<String, Integer> getTopicMap(String[] topics, int[] qos) {
+        return IntStream.range(0, topics.length).boxed()
+            .collect(Collectors.toMap(i -> topics[i], i -> qos[i]));
+    }
 
     void unsubscribe(Set<String> topics);
 

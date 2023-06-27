@@ -13,33 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.hivemq.v3.bind;
+package io.micronaut.mqtt.hivemq.v5.bind;
 
-import com.hivemq.client.mqtt.mqtt3.Mqtt3AsyncClient;
-import com.hivemq.client.mqtt.mqtt3.message.publish.Mqtt3Publish;
+import com.hivemq.client.mqtt.mqtt5.Mqtt5AsyncClient;
+import com.hivemq.client.mqtt.mqtt5.message.publish.Mqtt5Publish;
 import io.micronaut.core.annotation.Internal;
 import io.micronaut.mqtt.bind.MqttBindingContext;
 import io.micronaut.mqtt.hivemq.bind.MqttMessage;
 
 /**
- * A binding context for MQTT v3 messages.
+ * A binding context for MQTT v5 messages.
  *
  * @author Sven Kobow
  * @since 3.0.0
  */
 @Internal
-public class MqttV3BindingContext implements MqttBindingContext<MqttMessage> {
-    private final Mqtt3AsyncClient client;
+public final class MqttV5BindingContext implements MqttBindingContext<MqttMessage> {
+
+    private final Mqtt5AsyncClient client;
     private final MqttMessage message;
     private String topic;
     private boolean manualAcks = false;
-    private Mqtt3Publish mqtt3Publish;
+    private Mqtt5Publish mqtt5Publish;
 
     /**
      * @param client The client
      * @param message The message
      */
-    public MqttV3BindingContext(final Mqtt3AsyncClient client, MqttMessage message) {
+    public MqttV5BindingContext(Mqtt5AsyncClient client, MqttMessage message) {
         this.client = client;
         this.message = message;
     }
@@ -91,8 +92,8 @@ public class MqttV3BindingContext implements MqttBindingContext<MqttMessage> {
 
     @Override
     public void acknowlege() {
-        if (mqtt3Publish != null && manualAcks) {
-            mqtt3Publish.acknowledge();
+        if (mqtt5Publish != null && manualAcks) {
+            mqtt5Publish.acknowledge();
         }
     }
 
@@ -109,9 +110,9 @@ public class MqttV3BindingContext implements MqttBindingContext<MqttMessage> {
     }
 
     /**
-     * @param mqtt3Publish The raw MQTT v3 publish paket
+     * @param mqtt5Publish The raw MQTT v5 publish paket
      */
-    public void setMqtt3Publish(final Mqtt3Publish mqtt3Publish) {
-        this.mqtt3Publish = mqtt3Publish;
+    public void setMqtt5Publish(final Mqtt5Publish mqtt5Publish) {
+        this.mqtt5Publish = mqtt5Publish;
     }
 }

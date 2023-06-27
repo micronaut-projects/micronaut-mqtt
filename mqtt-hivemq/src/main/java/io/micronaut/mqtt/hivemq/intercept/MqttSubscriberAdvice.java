@@ -15,7 +15,6 @@
  */
 package io.micronaut.mqtt.hivemq.intercept;
 
-import com.hivemq.client.mqtt.MqttClient;
 import io.micronaut.context.BeanContext;
 import io.micronaut.mqtt.bind.MqttBinderRegistry;
 import io.micronaut.mqtt.bind.MqttBindingContext;

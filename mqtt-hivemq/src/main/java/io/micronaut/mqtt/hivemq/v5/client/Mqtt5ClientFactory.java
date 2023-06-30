@@ -50,7 +50,7 @@ import java.util.concurrent.TimeUnit;
  * @since 3.0.0
  */
 @Factory
-@Requires(property = "mqtt.client.mqtt-version", value = "5")
+@Requires(property = "mqtt.client.mqtt-version", value = "5", defaultValue = "5")
 public final class Mqtt5ClientFactory implements MqttClientFactory {
 
     private static final Logger LOG = LoggerFactory.getLogger(Mqtt5ClientFactory.class);

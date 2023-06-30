@@ -49,7 +49,7 @@ import java.util.function.Consumer;
  * @see Mqtt5AsyncClient
  */
 @Singleton
-@Requires(property = "mqtt.client.mqtt-version", value = "5")
+@Requires(property = "mqtt.client.mqtt-version", value = "5", defaultValue = "5")
 public class Mqtt5ClientAdapter implements MqttClientAdapter {
 
     private static final Logger LOG = LoggerFactory.getLogger(Mqtt5ClientAdapter.class);

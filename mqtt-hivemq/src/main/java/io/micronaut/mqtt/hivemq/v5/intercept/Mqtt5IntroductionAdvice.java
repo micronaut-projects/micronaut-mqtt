@@ -52,7 +52,7 @@ import java.util.function.Consumer;
  */
 @Singleton
 @InterceptorBean(MqttPublisher.class)
-@Requires(property = "mqtt.client.mqtt-version", value = "5")
+@Requires(property = "mqtt.client.mqtt-version", value = "5", defaultValue = "5")
 public class Mqtt5IntroductionAdvice extends AbstractMqttIntroductionAdvice<BiConsumer<Mqtt5PublishResult, Throwable>, MqttMessage> {
 
     private final Mqtt5AsyncClient mqtt5AsyncClient;

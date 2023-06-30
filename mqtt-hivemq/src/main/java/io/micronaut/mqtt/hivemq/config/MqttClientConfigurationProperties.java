@@ -32,10 +32,12 @@ import java.util.Map;
  * Abstract base class for MQTT client configuration.
  *
  * @author Sven Kobow
+ * @since 3.0.0
  */
 public abstract class MqttClientConfigurationProperties {
     private URI serverUri = URI.create(String.format("tcp:/%s:%s", MqttClient.DEFAULT_SERVER_HOST, MqttClient.DEFAULT_SERVER_PORT));
     private String clientId = null;
+    private int mqttVersion = 5;
     private Duration connectionTimeout = Duration.ofSeconds(MqttClientTransportConfig.DEFAULT_MQTT_CONNECT_TIMEOUT_MS);
     private Boolean manualAcks = false;
     private byte[] password = null;
@@ -53,7 +55,7 @@ public abstract class MqttClientConfigurationProperties {
      * @param willMessage an optional last will message.
      * @param certificateConfiguration certification configuration for using SSL encrypted connections and mTLS.
      */
-    protected MqttClientConfigurationProperties(final WillMessage willMessage, final MqttCertificateConfiguration certificateConfiguration) {
+    protected MqttClientConfigurationProperties(@Nullable final WillMessage willMessage, @Nullable final MqttCertificateConfiguration certificateConfiguration) {
         if (willMessage.getTopic() != null) {
             this.willMessage = willMessage;
         }
@@ -107,6 +109,20 @@ public abstract class MqttClientConfigurationProperties {
      */
     public void setClientId(final String clientId) {
         this.clientId = clientId;
+    }
+
+    /**
+     * @return the MQTT version to use.
+     */
+    public int getMqttVersion() {
+        return mqttVersion;
+    }
+
+    /**
+     * @param mqttVersion the MQTT version to use. Use 3 for MQTT version 3.1.1 or 5 for MQTT version 5. Default is MQTT version 5.
+     */
+    public void setMqttVersion(int mqttVersion) {
+        this.mqttVersion = mqttVersion;
     }
 
     /**

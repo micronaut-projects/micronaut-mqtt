@@ -1,7 +1,6 @@
 package io.micronaut.mqtt5.graal;
 
 import io.micronaut.context.annotation.Property;
-import io.micronaut.core.annotation.Introspected;
 import io.micronaut.core.type.Argument;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
@@ -11,7 +10,6 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 

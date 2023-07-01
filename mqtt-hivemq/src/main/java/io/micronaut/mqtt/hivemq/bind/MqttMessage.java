@@ -28,12 +28,11 @@ import java.util.List;
  */
 public class MqttMessage {
 
+    private int messageId;
     private byte[] payload;
     private int payloadFormatIndicator = 0;
     private int qos = 1;
     private boolean retained = false;
-    private boolean dup = false;
-    private int messageId;
     private byte[] correlationData;
     private String contentType;
     private List<UserProperty> userProperties;

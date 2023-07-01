@@ -20,6 +20,7 @@ import com.hivemq.client.mqtt.datatypes.MqttQos;
 import com.hivemq.client.mqtt.lifecycle.MqttClientAutoReconnect;
 import com.hivemq.client.mqtt.mqtt5.Mqtt5AsyncClient;
 import com.hivemq.client.mqtt.mqtt5.Mqtt5ClientBuilder;
+import com.hivemq.client.mqtt.mqtt5.auth.Mqtt5EnhancedAuthMechanism;
 import com.hivemq.client.mqtt.mqtt5.datatypes.Mqtt5UserProperties;
 import com.hivemq.client.mqtt.mqtt5.datatypes.Mqtt5UserPropertiesBuilder;
 import com.hivemq.client.mqtt.mqtt5.message.connect.Mqtt5Connect;
@@ -29,6 +30,7 @@ import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.context.exceptions.BeanInstantiationException;
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.mqtt.exception.MqttClientException;
 import io.micronaut.mqtt.hivemq.client.MqttClientFactory;
@@ -55,9 +57,15 @@ public final class Mqtt5ClientFactory implements MqttClientFactory {
 
     private static final Logger LOG = LoggerFactory.getLogger(Mqtt5ClientFactory.class);
 
+    /**
+     * Creates a new instance of a {@link Mqtt5AsyncClient} with the given configuration.
+     * @param configuration The configuration to apply.
+     * @param enhancedAuthMechanism An optional implementation of {@link Mqtt5EnhancedAuthMechanism} to add enhanced authentication.
+     * @return A new instance of {@link Mqtt5AsyncClient}
+     */
     @Singleton
     @Bean(preDestroy = "disconnect")
-    Mqtt5AsyncClient mqttClient(final Mqtt5ClientConfigurationProperties configuration) {
+    Mqtt5AsyncClient mqttClient(final Mqtt5ClientConfigurationProperties configuration, @Nullable final Mqtt5EnhancedAuthMechanism enhancedAuthMechanism) {
 
         final Mqtt5ClientBuilder clientBuilder = MqttClient.builder()
             .useMqttVersion5()
@@ -87,7 +95,9 @@ public final class Mqtt5ClientFactory implements MqttClientFactory {
             connectBuilder.userProperties(buildUserProperties(configuration));
         }
 
-        // enhanced authentication
+        if (enhancedAuthMechanism != null) {
+            connectBuilder.enhancedAuth(enhancedAuthMechanism);
+        }
 
         if (StringUtils.isNotEmpty(configuration.getUserName())) {
             connectBuilder.simpleAuth()

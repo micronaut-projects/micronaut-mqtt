@@ -78,7 +78,6 @@ public class Mqtt5ClientAdapter implements MqttClientAdapter {
         client.subscribe(mqttSubscribe, mqtt5Publish -> {
                 LOG.trace("Received message: {}", new String(mqtt5Publish.getPayloadAsBytes()));
 
-                // TODO: populate MqttMessage properly
                 final MqttMessage mqttMessage = new MqttMessage(mqtt5Publish.getPayloadAsBytes());
                 mqttMessage.setQos(mqtt5Publish.getQos().getCode());
 
@@ -98,6 +97,12 @@ public class Mqtt5ClientAdapter implements MqttClientAdapter {
                     byteBuffer.get(correlationData);
                     mqttMessage.setCorrelationData(correlationData);
                 });
+
+                mqtt5Publish.getContentType().ifPresent(mqttUtf8String -> mqttMessage.setContentType(mqttUtf8String.toString()));
+                mqtt5Publish.getPayloadFormatIndicator().ifPresent(mqtt5PayloadFormatIndicator ->
+                    mqttMessage.setPayloadFormatIndicator(mqtt5PayloadFormatIndicator.getCode()));
+                mqtt5Publish.getMessageExpiryInterval().ifPresent(mqttMessage::setMessageExpiryInterval);
+                mqtt5Publish.getResponseTopic().ifPresent(mqttTopic -> mqttMessage.setResponseTopic(mqttTopic.toString()));
 
                 final MqttV5BindingContext context = new MqttV5BindingContext(client, mqttMessage);
                 context.setTopic(mqtt5Publish.getTopic().toString());

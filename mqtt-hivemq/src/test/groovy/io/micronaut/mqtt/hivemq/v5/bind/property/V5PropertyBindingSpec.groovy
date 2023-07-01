@@ -50,7 +50,16 @@ class V5PropertyBindingSpec extends AbstractMQTTTest implements MQTT5Test {
         then:
         polling.eventually {
             assert sub.contentType == "application/xml"
+            assert sub.payloadFormatIndicator == 0
             assert sub.nullable == null
+        }
+
+        when:
+        client.sendPayloadIndicator(1)
+
+        then:
+        polling.eventually {
+            assert sub.payloadFormatIndicator == 1
         }
 
         when:
@@ -75,6 +84,9 @@ class V5PropertyBindingSpec extends AbstractMQTTTest implements MQTT5Test {
 
         void sendArg(@MqttProperty(name = "contentType") String contentType)
 
+        @Topic("test/property/indicator")
+        void sendPayloadIndicator(@MqttProperty(name = "payloadFormatIndicator") int payloadFormatIndicator)
+
         @Topic("test/property/custom")
         void sendCustom(@MqttProperty String customUserProperty)
     }
@@ -83,14 +95,20 @@ class V5PropertyBindingSpec extends AbstractMQTTTest implements MQTT5Test {
     @MqttSubscriber
     static class MySubscriber {
 
+        int payloadFormatIndicator
         String contentType
         String nullable
         String customProp
 
         @Topic("test/property")
-        void get(@MqttProperty String contentType, @Nullable @MqttProperty String nullable) {
+        void get(@MqttProperty String contentType, @MqttProperty int payloadFormatIndicator, @Nullable @MqttProperty String nullable) {
             this.contentType = contentType
             this.nullable = nullable
+        }
+
+        @Topic("test/property/indicator")
+        void getPayloadFormatIndicator(@MqttProperty int payloadFormatIndicator) {
+            this.payloadFormatIndicator = payloadFormatIndicator
         }
 
         @Topic("test/property/custom")

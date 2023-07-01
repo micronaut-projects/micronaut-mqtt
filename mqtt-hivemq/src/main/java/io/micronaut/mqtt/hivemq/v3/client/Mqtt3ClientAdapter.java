@@ -76,7 +76,6 @@ public final class Mqtt3ClientAdapter implements MqttClientAdapter {
         client.subscribe(mqttSubscribe, mqtt3Publish -> {
                 LOG.trace("Received message: {}", new String(mqtt3Publish.getPayloadAsBytes()));
 
-                // TODO: populate MqttMessage properly
                 final MqttMessage mqttMessage = new MqttMessage(mqtt3Publish.getPayloadAsBytes());
                 mqttMessage.setQos(mqtt3Publish.getQos().getCode());
 

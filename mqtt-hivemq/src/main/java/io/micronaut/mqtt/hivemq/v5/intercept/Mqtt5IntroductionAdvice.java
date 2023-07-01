@@ -15,15 +15,20 @@
  */
 package io.micronaut.mqtt.hivemq.v5.intercept;
 
+import com.hivemq.client.internal.mqtt.message.publish.MqttPublish;
 import com.hivemq.client.mqtt.datatypes.MqttQos;
 import com.hivemq.client.mqtt.mqtt5.Mqtt5AsyncClient;
 import com.hivemq.client.mqtt.mqtt5.datatypes.Mqtt5UserProperties;
 import com.hivemq.client.mqtt.mqtt5.datatypes.Mqtt5UserPropertiesBuilder;
+import com.hivemq.client.mqtt.mqtt5.message.publish.Mqtt5PayloadFormatIndicator;
+import com.hivemq.client.mqtt.mqtt5.message.publish.Mqtt5Publish;
 import com.hivemq.client.mqtt.mqtt5.message.publish.Mqtt5PublishResult;
 import io.micronaut.aop.InterceptorBean;
 import io.micronaut.aop.MethodInvocationContext;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.AnnotationValue;
+import io.micronaut.core.beans.BeanIntrospection;
+import io.micronaut.core.beans.BeanProperty;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.mqtt.annotation.v5.MqttProperty;
 import io.micronaut.mqtt.annotation.v5.MqttPublisher;
@@ -40,7 +45,7 @@ import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
@@ -69,16 +74,22 @@ public class Mqtt5IntroductionAdvice extends AbstractMqttIntroductionAdvice<BiCo
         final Mqtt5UserPropertiesBuilder userPropertiesBuilder = Mqtt5UserProperties.builder();
         message.getUserProperties().forEach((prop) -> userPropertiesBuilder.add(prop.getKey(), prop.getValue()));
 
-        final CompletableFuture<Mqtt5PublishResult> publishFuture = mqtt5AsyncClient.publishWith()
+        final var publishBuilder = Mqtt5Publish.builder()
             .topic(topic)
             .payload(message.getPayload())
             .qos(Objects.requireNonNull(MqttQos.fromCode(message.getQos())))
             .retain(message.isRetained())
+            .contentType(message.getContentType())
+            .payloadFormatIndicator(Mqtt5PayloadFormatIndicator.fromCode(message.getPayloadFormatIndicator()))
             .userProperties(userPropertiesBuilder.build())
             .correlationData(message.getCorrelationData())
-            .send();
+            .responseTopic(message.getResponseTopic());
 
-        publishFuture
+        if (message.getMessageExpiryInterval() != MqttPublish.NO_MESSAGE_EXPIRY) {
+            publishBuilder.messageExpiryInterval(message.getMessageExpiryInterval());
+        }
+
+        mqtt5AsyncClient.publish(publishBuilder.build())
             .exceptionally(throwable -> {
                 throw new MqttClientException("Failed to publish the message", throwable);
             })
@@ -95,15 +106,14 @@ public class Mqtt5IntroductionAdvice extends AbstractMqttIntroductionAdvice<BiCo
         propertyAnnotations.forEach((prop) -> {
             final String name = prop.get("name", String.class).orElse(null);
             final String value = prop.getValue(String.class).orElse(null);
-            //final BeanIntrospection<MqttProperties> introspection = BeanIntrospection.getIntrospection(MqttProperties.class);
+            final BeanIntrospection<MqttMessage> introspection = BeanIntrospection.getIntrospection(MqttMessage.class);
             if (StringUtils.isNotEmpty(name) && StringUtils.isNotEmpty(value)) {
-                properties.add(new UserProperty(name, value));
-//                final Optional<BeanProperty<MqttProperties, Object>> property = introspection.getProperty(name);
-//                if (property.isPresent()) {
-//                    property.get().convertAndSet(properties, value);
-//                } else {
-//                    properties.getUserProperties().add(new UserProperty(name, value));
-//                }
+                final Optional<BeanProperty<MqttMessage, Object>> property = introspection.getProperty(name);
+                if (property.isPresent()) {
+                    property.get().convertAndSet(message, value);
+                } else {
+                    properties.add(new UserProperty(name, value));
+                }
             }
         });
         message.setUserProperties(properties);

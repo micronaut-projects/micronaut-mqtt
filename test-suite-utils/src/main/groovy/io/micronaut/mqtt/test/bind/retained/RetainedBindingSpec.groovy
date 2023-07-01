@@ -16,6 +16,7 @@
 package io.micronaut.mqtt.test.bind.retained
 
 import io.micronaut.context.annotation.Requires
+import io.micronaut.core.annotation.Nullable
 import io.micronaut.core.util.StringUtils
 import io.micronaut.messaging.annotation.MessageBody
 import io.micronaut.mqtt.annotation.MqttSubscriber
@@ -122,7 +123,7 @@ abstract class RetainedBindingSpec extends AbstractMQTTTest {
         String payload = null
 
         @Topic("test/retained")
-        void get(@MessageBody String payload) {
+        void get(@Nullable @MessageBody String payload) {
             this.payload = payload
         }
     }

@@ -9,9 +9,7 @@ repositories {
 }
 
 configurations.all {
-    resolutionStrategy {
-        force 'io.micronaut.platform:micronaut-platform:4.0.0-M4'
-    }
+    resolutionStrategy.preferProjectModules()
 }
 
 dependencies {
@@ -27,10 +25,10 @@ dependencies {
 }
 
 micronaut {
-    version = libs.versions.micronaut.asProvider().get()
+    importMicronautPlatform = false
     testResources {
         enabled = true
-        additionalModules.add("hivemq")
+        version = libs.versions.micronaut.testresources.get()
     }
 }
 

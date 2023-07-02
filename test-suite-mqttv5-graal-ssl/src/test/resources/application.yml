@@ -1,7 +1,12 @@
 mqtt:
   client:
-    server-uri: tcp://${mqtt.host}:${mqtt.port}
+    server-uri: ssl://${mqtt.host}:${mqtt.port}
     client-id: ${random.uuid}
+    ssl:
+      certificate-authority: classpath:certs/ca-cert.pem
+      certificate: classpath:certs/client-cert.pem
+      private-key: classpath:certs/client-key.pem
+      password: test
 test-resources:
   containers:
     mosquitto:
@@ -9,7 +14,7 @@ test-resources:
       hostnames:
         - mqtt.host
       exposed-ports:
-        - mqtt.port: 1883
+        - mqtt.port: 8883
       ro-fs-bind:
         - "mosquitto/mosquitto.conf": /mosquitto/config/mosquitto.conf
         - "mosquitto/certs/": /mosquitto/config/certs/

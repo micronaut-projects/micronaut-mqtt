@@ -14,7 +14,7 @@ bcpkix-jdk15on = "1.70"
 kotlin = "1.8.22"
 testcontainers = "1.18.3"
 
-micronaut-reactor = "3.0.0-M6"
+micronaut-reactor = "3.0.0-M9"
 micronaut-serde = "2.0.0-M12"
 micronaut-test = "4.0.0-M7"
 micronaut-validation = "4.0.0-M11"

@@ -1,6 +1,6 @@
 [versions]
 micronaut-docs = "2.0.0"
-micronaut = "4.0.0-RC1"
+micronaut = "4.0.0-RC5"
 micronaut-testresources = "2.0.0-M12"
 
 groovy = "4.0.12"

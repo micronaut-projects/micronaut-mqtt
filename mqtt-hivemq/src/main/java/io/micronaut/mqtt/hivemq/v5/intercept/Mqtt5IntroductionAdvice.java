@@ -72,7 +72,7 @@ public class Mqtt5IntroductionAdvice extends AbstractMqttIntroductionAdvice<BiCo
     public Object publish(String topic, MqttMessage message, BiConsumer<Mqtt5PublishResult, Throwable> listener) {
 
         final Mqtt5UserPropertiesBuilder userPropertiesBuilder = Mqtt5UserProperties.builder();
-        message.getUserProperties().forEach((prop) -> userPropertiesBuilder.add(prop.getKey(), prop.getValue()));
+        message.getUserProperties().forEach(prop -> userPropertiesBuilder.add(prop.getKey(), prop.getValue()));
 
         final var publishBuilder = Mqtt5Publish.builder()
             .topic(topic)

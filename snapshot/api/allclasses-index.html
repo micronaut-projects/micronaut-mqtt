@@ -78,45 +78,85 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">An <a href="io/micronaut/mqtt/bind/MqttBinder.html" title="interface in io.micronaut.mqtt.bind"><code>MqttBinder</code></a> that binds based on the presence of an annotation on the argument.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/bind/impl/DefaultMqttBinder.html" title="class in io.micronaut.mqtt.bind.impl">DefaultMqttBinder</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/ssl/CertificateReader.html" title="class in io.micronaut.mqtt.hivemq.ssl">CertificateReader</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Reader for X.509 certificates.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/bind/impl/DefaultMqttBinder.html" title="class in io.micronaut.mqtt.bind.impl">DefaultMqttBinder</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The <a href="io/micronaut/mqtt/bind/FallbackMqttBinder.html" title="interface in io.micronaut.mqtt.bind"><code>FallbackMqttBinder</code></a> to bind arguments that don't match any
  annotated or typed based binder.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/bind/DefaultMqttBinderRegistry.html" title="class in io.micronaut.mqtt.bind">DefaultMqttBinderRegistry</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/bind/DefaultMqttBinderRegistry.html" title="class in io.micronaut.mqtt.bind">DefaultMqttBinderRegistry</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A default implementation of <a href="io/micronaut/mqtt/bind/MqttBinderRegistry.html" title="interface in io.micronaut.mqtt.bind"><code>MqttBinderRegistry</code></a> that searches
  for binders based on argument annotations, then based on the argument
  type.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/serdes/DefaultMqttPayloadSerDesRegistry.html" title="class in io.micronaut.mqtt.serdes">DefaultMqttPayloadSerDesRegistry</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/serdes/DefaultMqttPayloadSerDesRegistry.html" title="class in io.micronaut.mqtt.serdes">DefaultMqttPayloadSerDesRegistry</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Default implementation of <a href="io/micronaut/mqtt/serdes/MqttPayloadSerDesRegistry.html" title="interface in io.micronaut.mqtt.serdes"><code>MqttPayloadSerDesRegistry</code></a>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/exception/DefaultMqttSubscriberExceptionHandler.html" title="class in io.micronaut.mqtt.exception">DefaultMqttSubscriberExceptionHandler</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/exception/DefaultMqttSubscriberExceptionHandler.html" title="class in io.micronaut.mqtt.exception">DefaultMqttSubscriberExceptionHandler</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The exception handler for subscriber exceptions that is used if the subscriber
  does not implement <a href="io/micronaut/mqtt/exception/MqttSubscriberExceptionHandler.html" title="interface in io.micronaut.mqtt.exception"><code>MqttSubscriberExceptionHandler</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/bind/FallbackMqttBinder.html" title="interface in io.micronaut.mqtt.bind">FallbackMqttBinder</a>&lt;<a href="io/micronaut/mqtt/bind/FallbackMqttBinder.html" title="type parameter in FallbackMqttBinder">M</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/bind/FallbackMqttBinder.html" title="interface in io.micronaut.mqtt.bind">FallbackMqttBinder</a>&lt;<a href="io/micronaut/mqtt/bind/FallbackMqttBinder.html" title="type parameter in FallbackMqttBinder">M</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">A binder to use when no other binders match the argument.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab7"><a href="io/micronaut/mqtt/annotation/Id.html" title="annotation interface in io.micronaut.mqtt.annotation">Id</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab7">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab7"><a href="io/micronaut/mqtt/annotation/Id.html" title="annotation interface in io.micronaut.mqtt.annotation">Id</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab7">
 <div class="block">Used to bind the message ID to a parameter.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/bind/impl/IdMqttBinder.html" title="class in io.micronaut.mqtt.bind.impl">IdMqttBinder</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/bind/impl/IdMqttBinder.html" title="class in io.micronaut.mqtt.bind.impl">IdMqttBinder</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An annotated argument binder for <a href="io/micronaut/mqtt/annotation/Id.html" title="annotation interface in io.micronaut.mqtt.annotation"><code>Id</code></a>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/serdes/JavaLangMqttPayloadSerDes.html" title="class in io.micronaut.mqtt.serdes">JavaLangMqttPayloadSerDes</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/serdes/JavaLangMqttPayloadSerDes.html" title="class in io.micronaut.mqtt.serdes">JavaLangMqttPayloadSerDes</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Serializes and deserializes standard Java types.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/serdes/JsonMqttPayloadSerDes.html" title="class in io.micronaut.mqtt.serdes">JsonMqttPayloadSerDes</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/serdes/JsonMqttPayloadSerDes.html" title="class in io.micronaut.mqtt.serdes">JsonMqttPayloadSerDes</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Serializes and deserializes objects as JSON using Jackson.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab5"><a href="io/micronaut/mqtt/hivemq/ssl/KeyManagerFactoryCreationException.html" title="class in io.micronaut.mqtt.hivemq.ssl">KeyManagerFactoryCreationException</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab5">
+<div class="block">Thrown when an a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/javax/net/ssl/KeyManagerFactory.html" title="class or interface in javax.net.ssl" class="external-link"><code>KeyManagerFactory</code></a> can not be created.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/v3/client/Mqtt3ClientAdapter.html" title="class in io.micronaut.mqtt.hivemq.v3.client">Mqtt3ClientAdapter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Adapter class for MQTT 3 HiveMQ async client.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/hivemq/v3/config/Mqtt3ClientConfiguration.html" title="interface in io.micronaut.mqtt.hivemq.v3.config">Mqtt3ClientConfiguration</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">MQTT v3 Client Configuration.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/v3/client/Mqtt3ClientFactory.html" title="class in io.micronaut.mqtt.hivemq.v3.client">Mqtt3ClientFactory</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">A factory to create an MQTT v3 client.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/v3/intercept/Mqtt3IntroductionAdvice.html" title="class in io.micronaut.mqtt.hivemq.v3.intercept">Mqtt3IntroductionAdvice</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The MQTT v3 implementation of <a href="io/micronaut/mqtt/intercept/AbstractMqttIntroductionAdvice.html" title="class in io.micronaut.mqtt.intercept"><code>AbstractMqttIntroductionAdvice</code></a>.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/v5/client/Mqtt5ClientAdapter.html" title="class in io.micronaut.mqtt.hivemq.v5.client">Mqtt5ClientAdapter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Adapter class for MQTT 3 HiveMQ async client.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/hivemq/v5/config/Mqtt5ClientConfiguration.html" title="interface in io.micronaut.mqtt.hivemq.v5.config">Mqtt5ClientConfiguration</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">MQTT v5 Client Configuration.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/v5/client/Mqtt5ClientFactory.html" title="class in io.micronaut.mqtt.hivemq.v5.client">Mqtt5ClientFactory</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">A factory to create an MQTT v3 client.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/v5/intercept/Mqtt5IntroductionAdvice.html" title="class in io.micronaut.mqtt.hivemq.v5.intercept">Mqtt5IntroductionAdvice</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The MQTT v5 implementation of <a href="io/micronaut/mqtt/intercept/AbstractMqttIntroductionAdvice.html" title="class in io.micronaut.mqtt.intercept"><code>AbstractMqttIntroductionAdvice</code></a>.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/bind/MqttBinder.html" title="interface in io.micronaut.mqtt.bind">MqttBinder</a>&lt;<a href="io/micronaut/mqtt/bind/MqttBinder.html" title="type parameter in MqttBinder">M</a>,<wbr><a href="io/micronaut/mqtt/bind/MqttBinder.html" title="type parameter in MqttBinder">T</a>&gt;</div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
@@ -135,6 +175,14 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">MQTT client SSL configuration.</div>
 </div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/hivemq/client/MqttClientAdapter.html" title="interface in io.micronaut.mqtt.hivemq.client">MqttClientAdapter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Common interface for HiveMQ MQTT clients.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/hivemq/config/MqttClientConfiguration.html" title="interface in io.micronaut.mqtt.hivemq.config">MqttClientConfiguration</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">MQTT Client Configuration.</div>
+</div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.html" title="class in io.micronaut.mqtt.v3.config">MqttClientConfigurationProperties</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Configuration for the MQTT client.</div>
@@ -147,25 +195,33 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab5">
 <div class="block">An exception thrown while publishing to MQTT topics.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v3/client/MqttClientFactory.html" title="class in io.micronaut.mqtt.v3.client">MqttClientFactory</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">A factory to create an MQTT client.</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/hivemq/client/MqttClientFactory.html" title="interface in io.micronaut.mqtt.hivemq.client">MqttClientFactory</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Common interface for MQTT client factories.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v5/client/MqttClientFactory.html" title="class in io.micronaut.mqtt.v5.client">MqttClientFactory</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v3/client/MqttClientFactory.html" title="class in io.micronaut.mqtt.v3.client">MqttClientFactory</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A factory to create an MQTT client.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/config/MqttConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttConfiguration</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v5/client/MqttClientFactory.html" title="class in io.micronaut.mqtt.v5.client">MqttClientFactory</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">A factory to create an MQTT client.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/config/MqttConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttConfiguration</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">MQTT related configuration.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/config/MqttConfigurationProperties.html" title="class in io.micronaut.mqtt.config">MqttConfigurationProperties</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/config/MqttConfigurationProperties.html" title="class in io.micronaut.mqtt.config">MqttConfigurationProperties</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block"><code>ConfigurationProperties</code> implementation for <a href="io/micronaut/mqtt/config/MqttConfiguration.html" title="interface in io.micronaut.mqtt.config"><code>MqttConfiguration</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/executor/MqttExecutorFactory.html" title="class in io.micronaut.mqtt.executor">MqttExecutorFactory</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/executor/MqttExecutorFactory.html" title="class in io.micronaut.mqtt.executor">MqttExecutorFactory</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Configures a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/ScheduledExecutorService.html" title="class or interface in java.util.concurrent" class="external-link"><code>ScheduledExecutorService</code></a> for running  instances.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/client/health/MqttHealthIndicator.html" title="class in io.micronaut.mqtt.hivemq.client.health">MqttHealthIndicator</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">A <code>HealthIndicator</code> for HiveMQ MQTT Client.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v3/client/health/MqttHealthIndicator.html" title="class in io.micronaut.mqtt.v3.client.health">MqttHealthIndicator</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
@@ -183,21 +239,30 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The MQTT v5 implementation of <a href="io/micronaut/mqtt/intercept/AbstractMqttIntroductionAdvice.html" title="class in io.micronaut.mqtt.intercept"><code>AbstractMqttIntroductionAdvice</code></a>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/serdes/MqttPayloadSerDes.html" title="interface in io.micronaut.mqtt.serdes">MqttPayloadSerDes</a>&lt;<a href="io/micronaut/mqtt/serdes/MqttPayloadSerDes.html" title="type parameter in MqttPayloadSerDes">T</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/bind/MqttMessage.html" title="class in io.micronaut.mqtt.hivemq.bind">MqttMessage</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">A MQTT message holds the payload and options
+ for message delivery.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/serdes/MqttPayloadSerDes.html" title="interface in io.micronaut.mqtt.serdes">MqttPayloadSerDes</a>&lt;<a href="io/micronaut/mqtt/serdes/MqttPayloadSerDes.html" title="type parameter in MqttPayloadSerDes">T</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block">Responsible for serializing and deserializing MQTT message payloads.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/serdes/MqttPayloadSerDesRegistry.html" title="interface in io.micronaut.mqtt.serdes">MqttPayloadSerDesRegistry</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/serdes/MqttPayloadSerDesRegistry.html" title="interface in io.micronaut.mqtt.serdes">MqttPayloadSerDesRegistry</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">A registry of <a href="io/micronaut/mqtt/serdes/MqttPayloadSerDes.html" title="interface in io.micronaut.mqtt.serdes"><code>MqttPayloadSerDes</code></a> instances.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab7"><a href="io/micronaut/mqtt/annotation/v5/MqttProperties.html" title="annotation interface in io.micronaut.mqtt.annotation.v5">MqttProperties</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab7"><a href="io/micronaut/mqtt/annotation/v5/MqttProperties.html" title="annotation interface in io.micronaut.mqtt.annotation.v5">MqttProperties</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab7">
+<div class="block">Used for binding arguments to mqtt properties.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab7"><a href="io/micronaut/mqtt/annotation/v5/MqttProperty.html" title="annotation interface in io.micronaut.mqtt.annotation.v5">MqttProperty</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab7">
 <div class="block">Used for binding arguments to mqtt properties.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab7"><a href="io/micronaut/mqtt/annotation/v5/MqttProperty.html" title="annotation interface in io.micronaut.mqtt.annotation.v5">MqttProperty</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab7">
-<div class="block">Used for binding arguments to mqtt properties.</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/v5/bind/MqttPropertyBinder.html" title="class in io.micronaut.mqtt.hivemq.v5.bind">MqttPropertyBinder</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Binds arguments to and from <a href="io/micronaut/mqtt/hivemq/bind/MqttMessage.html" title="class in io.micronaut.mqtt.hivemq.bind"><code>MqttMessage</code></a>.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v5/bind/MqttPropertyBinder.html" title="class in io.micronaut.mqtt.v5.bind">MqttPropertyBinder</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
@@ -221,33 +286,49 @@ loadScripts(document, 'script');</script>
 <div class="block">Class level annotation to indicate that a bean will be consumers of messages
  from Mqtt.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v3/intercept/MqttSubscriberAdvice.html" title="class in io.micronaut.mqtt.v3.intercept">MqttSubscriberAdvice</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/intercept/MqttSubscriberAdvice.html" title="class in io.micronaut.mqtt.hivemq.intercept">MqttSubscriberAdvice</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The HiveMQ implementation of <a href="io/micronaut/mqtt/intercept/AbstractMqttSubscriberAdvice.html" title="class in io.micronaut.mqtt.intercept"><code>AbstractMqttSubscriberAdvice</code></a>.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v3/intercept/MqttSubscriberAdvice.html" title="class in io.micronaut.mqtt.v3.intercept">MqttSubscriberAdvice</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The MQTT v3 implementation of <a href="io/micronaut/mqtt/intercept/AbstractMqttSubscriberAdvice.html" title="class in io.micronaut.mqtt.intercept"><code>AbstractMqttSubscriberAdvice</code></a>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v5/intercept/MqttSubscriberAdvice.html" title="class in io.micronaut.mqtt.v5.intercept">MqttSubscriberAdvice</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v5/intercept/MqttSubscriberAdvice.html" title="class in io.micronaut.mqtt.v5.intercept">MqttSubscriberAdvice</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The MQTT v5 implementation of <a href="io/micronaut/mqtt/intercept/AbstractMqttSubscriberAdvice.html" title="class in io.micronaut.mqtt.intercept"><code>AbstractMqttSubscriberAdvice</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab5"><a href="io/micronaut/mqtt/exception/MqttSubscriberException.html" title="class in io.micronaut.mqtt.exception">MqttSubscriberException</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab5">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab5"><a href="io/micronaut/mqtt/exception/MqttSubscriberException.html" title="class in io.micronaut.mqtt.exception">MqttSubscriberException</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab5">
 <div class="block">An exception thrown while subscribing to MQTT topics.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/exception/MqttSubscriberExceptionHandler.html" title="interface in io.micronaut.mqtt.exception">MqttSubscriberExceptionHandler</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/exception/MqttSubscriberExceptionHandler.html" title="interface in io.micronaut.mqtt.exception">MqttSubscriberExceptionHandler</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block">Responsible for handling exceptions thrown during the subscription process.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/v3/bind/MqttV3BindingContext.html" title="class in io.micronaut.mqtt.hivemq.v3.bind">MqttV3BindingContext</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">A binding context for MQTT v3 messages.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v3/bind/MqttV3BindingContext.html" title="class in io.micronaut.mqtt.v3.bind">MqttV3BindingContext</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A binding context for MQTT v3 messages.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v5/bind/MqttV5BindingContext.html" title="class in io.micronaut.mqtt.v5.bind">MqttV5BindingContext</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/v5/bind/MqttV5BindingContext.html" title="class in io.micronaut.mqtt.hivemq.v5.bind">MqttV5BindingContext</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A binding context for MQTT v5 messages.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/bind/impl/PayloadMqttBinder.html" title="class in io.micronaut.mqtt.bind.impl">PayloadMqttBinder</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/v5/bind/MqttV5BindingContext.html" title="class in io.micronaut.mqtt.v5.bind">MqttV5BindingContext</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">A binding context for MQTT v5 messages.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/bind/impl/PayloadMqttBinder.html" title="class in io.micronaut.mqtt.bind.impl">PayloadMqttBinder</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A binder responsible for binding to the payload of the message.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/ssl/PrivateKeyReader.html" title="class in io.micronaut.mqtt.hivemq.ssl">PrivateKeyReader</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Reader for reading PKCS #1 and PKCS #8 private keys from PEM files.</div>
 </div>
 <div class="col-first odd-row-color all-classes-table all-classes-table-tab7"><a href="io/micronaut/mqtt/annotation/Qos.html" title="annotation interface in io.micronaut.mqtt.annotation">Qos</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab7">
@@ -277,9 +358,17 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab7">
 <div class="block">Used to supply multiple topics on subscriber methods.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/bind/TypedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">TypedMqttBinder</a>&lt;<a href="io/micronaut/mqtt/bind/TypedMqttBinder.html" title="type parameter in TypedMqttBinder">M</a>,<wbr><a href="io/micronaut/mqtt/bind/TypedMqttBinder.html" title="type parameter in TypedMqttBinder">T</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab5"><a href="io/micronaut/mqtt/hivemq/ssl/TrustManagerFactoryCreationException.html" title="class in io.micronaut.mqtt.hivemq.ssl">TrustManagerFactoryCreationException</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab5">
+<div class="block">Thrown when a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/javax/net/ssl/TrustManagerFactory.html" title="class or interface in javax.net.ssl" class="external-link"><code>TrustManagerFactory</code></a> can not be created.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="io/micronaut/mqtt/bind/TypedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">TypedMqttBinder</a>&lt;<a href="io/micronaut/mqtt/bind/TypedMqttBinder.html" title="type parameter in TypedMqttBinder">M</a>,<wbr><a href="io/micronaut/mqtt/bind/TypedMqttBinder.html" title="type parameter in TypedMqttBinder">T</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">Argument binder based on the type of the argument.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/mqtt/hivemq/bind/UserProperty.html" title="class in io.micronaut.mqtt.hivemq.bind">UserProperty</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Represents a MQTT v5 property.</div>
 </div>
 </div>
 </div>

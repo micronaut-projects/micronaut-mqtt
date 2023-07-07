@@ -58,6 +58,20 @@ loadScripts(document, 'script');</script>
 <li><a href="io/micronaut/mqtt/config/package-tree.html">io.micronaut.mqtt.config</a>, </li>
 <li><a href="io/micronaut/mqtt/exception/package-tree.html">io.micronaut.mqtt.exception</a>, </li>
 <li><a href="io/micronaut/mqtt/executor/package-tree.html">io.micronaut.mqtt.executor</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/bind/package-tree.html">io.micronaut.mqtt.hivemq.bind</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/client/package-tree.html">io.micronaut.mqtt.hivemq.client</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/client/health/package-tree.html">io.micronaut.mqtt.hivemq.client.health</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/config/package-tree.html">io.micronaut.mqtt.hivemq.config</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/intercept/package-tree.html">io.micronaut.mqtt.hivemq.intercept</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/ssl/package-tree.html">io.micronaut.mqtt.hivemq.ssl</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/v3/bind/package-tree.html">io.micronaut.mqtt.hivemq.v3.bind</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/v3/client/package-tree.html">io.micronaut.mqtt.hivemq.v3.client</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/v3/config/package-tree.html">io.micronaut.mqtt.hivemq.v3.config</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/v3/intercept/package-tree.html">io.micronaut.mqtt.hivemq.v3.intercept</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/v5/bind/package-tree.html">io.micronaut.mqtt.hivemq.v5.bind</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/v5/client/package-tree.html">io.micronaut.mqtt.hivemq.v5.client</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/v5/config/package-tree.html">io.micronaut.mqtt.hivemq.v5.config</a>, </li>
+<li><a href="io/micronaut/mqtt/hivemq/v5/intercept/package-tree.html">io.micronaut.mqtt.hivemq.v5.intercept</a>, </li>
 <li><a href="io/micronaut/mqtt/intercept/package-tree.html">io.micronaut.mqtt.intercept</a>, </li>
 <li><a href="io/micronaut/mqtt/serdes/package-tree.html">io.micronaut.mqtt.serdes</a>, </li>
 <li><a href="io/micronaut/mqtt/ssl/package-tree.html">io.micronaut.mqtt.ssl</a>, </li>
@@ -80,17 +94,21 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">io.micronaut.mqtt.intercept.<a href="io/micronaut/mqtt/intercept/AbstractMqttIntroductionAdvice.html" class="type-name-link" title="class in io.micronaut.mqtt.intercept">AbstractMqttIntroductionAdvice</a>&lt;L,<wbr>M&gt; (implements io.micronaut.aop.MethodInterceptor&lt;T,<wbr>R&gt;)
 <ul>
+<li class="circle">io.micronaut.mqtt.hivemq.v3.intercept.<a href="io/micronaut/mqtt/hivemq/v3/intercept/Mqtt3IntroductionAdvice.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.v3.intercept">Mqtt3IntroductionAdvice</a></li>
+<li class="circle">io.micronaut.mqtt.hivemq.v5.intercept.<a href="io/micronaut/mqtt/hivemq/v5/intercept/Mqtt5IntroductionAdvice.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.v5.intercept">Mqtt5IntroductionAdvice</a></li>
 <li class="circle">io.micronaut.mqtt.v3.intercept.<a href="io/micronaut/mqtt/v3/intercept/MqttIntroductionAdvice.html" class="type-name-link" title="class in io.micronaut.mqtt.v3.intercept">MqttIntroductionAdvice</a></li>
 <li class="circle">io.micronaut.mqtt.v5.intercept.<a href="io/micronaut/mqtt/v5/intercept/MqttIntroductionAdvice.html" class="type-name-link" title="class in io.micronaut.mqtt.v5.intercept">MqttIntroductionAdvice</a></li>
 </ul>
 </li>
 <li class="circle">io.micronaut.mqtt.intercept.<a href="io/micronaut/mqtt/intercept/AbstractMqttSubscriberAdvice.html" class="type-name-link" title="class in io.micronaut.mqtt.intercept">AbstractMqttSubscriberAdvice</a>&lt;M&gt; (implements java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a>, io.micronaut.context.processor.ExecutableMethodProcessor&lt;A&gt;)
 <ul>
+<li class="circle">io.micronaut.mqtt.hivemq.intercept.<a href="io/micronaut/mqtt/hivemq/intercept/MqttSubscriberAdvice.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.intercept">MqttSubscriberAdvice</a></li>
 <li class="circle">io.micronaut.mqtt.v3.intercept.<a href="io/micronaut/mqtt/v3/intercept/MqttSubscriberAdvice.html" class="type-name-link" title="class in io.micronaut.mqtt.v3.intercept">MqttSubscriberAdvice</a></li>
 <li class="circle">io.micronaut.mqtt.v5.intercept.<a href="io/micronaut/mqtt/v5/intercept/MqttSubscriberAdvice.html" class="type-name-link" title="class in io.micronaut.mqtt.v5.intercept">MqttSubscriberAdvice</a></li>
 </ul>
 </li>
 <li class="circle">io.micronaut.mqtt.bind.impl.<a href="io/micronaut/mqtt/bind/impl/AcknowledgeMqttBinder.html" class="type-name-link" title="class in io.micronaut.mqtt.bind.impl">AcknowledgeMqttBinder</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/TypedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">TypedMqttBinder</a>&lt;M,<wbr>T&gt;)</li>
+<li class="circle">io.micronaut.mqtt.hivemq.ssl.<a href="io/micronaut/mqtt/hivemq/ssl/CertificateReader.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.ssl">CertificateReader</a></li>
 <li class="circle">io.micronaut.mqtt.bind.impl.<a href="io/micronaut/mqtt/bind/impl/DefaultMqttBinder.html" class="type-name-link" title="class in io.micronaut.mqtt.bind.impl">DefaultMqttBinder</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/FallbackMqttBinder.html" title="interface in io.micronaut.mqtt.bind">FallbackMqttBinder</a>&lt;M&gt;)</li>
 <li class="circle">io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/DefaultMqttBinderRegistry.html" class="type-name-link" title="class in io.micronaut.mqtt.bind">DefaultMqttBinderRegistry</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/MqttBinderRegistry.html" title="interface in io.micronaut.mqtt.bind">MqttBinderRegistry</a>)</li>
 <li class="circle">io.micronaut.mqtt.serdes.<a href="io/micronaut/mqtt/serdes/DefaultMqttPayloadSerDesRegistry.html" class="type-name-link" title="class in io.micronaut.mqtt.serdes">DefaultMqttPayloadSerDesRegistry</a> (implements io.micronaut.mqtt.serdes.<a href="io/micronaut/mqtt/serdes/MqttPayloadSerDesRegistry.html" title="interface in io.micronaut.mqtt.serdes">MqttPayloadSerDesRegistry</a>)</li>
@@ -98,6 +116,10 @@ loadScripts(document, 'script');</script>
 <li class="circle">io.micronaut.mqtt.bind.impl.<a href="io/micronaut/mqtt/bind/impl/IdMqttBinder.html" class="type-name-link" title="class in io.micronaut.mqtt.bind.impl">IdMqttBinder</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;M,<wbr>T&gt;)</li>
 <li class="circle">io.micronaut.mqtt.serdes.<a href="io/micronaut/mqtt/serdes/JavaLangMqttPayloadSerDes.html" class="type-name-link" title="class in io.micronaut.mqtt.serdes">JavaLangMqttPayloadSerDes</a> (implements io.micronaut.mqtt.serdes.<a href="io/micronaut/mqtt/serdes/MqttPayloadSerDes.html" title="interface in io.micronaut.mqtt.serdes">MqttPayloadSerDes</a>&lt;T&gt;)</li>
 <li class="circle">io.micronaut.mqtt.serdes.<a href="io/micronaut/mqtt/serdes/JsonMqttPayloadSerDes.html" class="type-name-link" title="class in io.micronaut.mqtt.serdes">JsonMqttPayloadSerDes</a> (implements io.micronaut.mqtt.serdes.<a href="io/micronaut/mqtt/serdes/MqttPayloadSerDes.html" title="interface in io.micronaut.mqtt.serdes">MqttPayloadSerDes</a>&lt;T&gt;)</li>
+<li class="circle">io.micronaut.mqtt.hivemq.v3.client.<a href="io/micronaut/mqtt/hivemq/v3/client/Mqtt3ClientAdapter.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.v3.client">Mqtt3ClientAdapter</a> (implements io.micronaut.mqtt.hivemq.client.<a href="io/micronaut/mqtt/hivemq/client/MqttClientAdapter.html" title="interface in io.micronaut.mqtt.hivemq.client">MqttClientAdapter</a>)</li>
+<li class="circle">io.micronaut.mqtt.hivemq.v3.client.<a href="io/micronaut/mqtt/hivemq/v3/client/Mqtt3ClientFactory.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.v3.client">Mqtt3ClientFactory</a> (implements io.micronaut.mqtt.hivemq.client.<a href="io/micronaut/mqtt/hivemq/client/MqttClientFactory.html" title="interface in io.micronaut.mqtt.hivemq.client">MqttClientFactory</a>)</li>
+<li class="circle">io.micronaut.mqtt.hivemq.v5.client.<a href="io/micronaut/mqtt/hivemq/v5/client/Mqtt5ClientAdapter.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.v5.client">Mqtt5ClientAdapter</a> (implements io.micronaut.mqtt.hivemq.client.<a href="io/micronaut/mqtt/hivemq/client/MqttClientAdapter.html" title="interface in io.micronaut.mqtt.hivemq.client">MqttClientAdapter</a>)</li>
+<li class="circle">io.micronaut.mqtt.hivemq.v5.client.<a href="io/micronaut/mqtt/hivemq/v5/client/Mqtt5ClientFactory.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.v5.client">Mqtt5ClientFactory</a> (implements io.micronaut.mqtt.hivemq.client.<a href="io/micronaut/mqtt/hivemq/client/MqttClientFactory.html" title="interface in io.micronaut.mqtt.hivemq.client">MqttClientFactory</a>)</li>
 <li class="circle">io.micronaut.mqtt.ssl.<a href="io/micronaut/mqtt/ssl/MqttCertificateConfiguration.html" class="type-name-link" title="class in io.micronaut.mqtt.ssl">MqttCertificateConfiguration</a></li>
 <li class="circle">io.micronaut.mqtt.v3.config.<a href="io/micronaut/mqtt/v3/config/MqttClientConfigurationProperties.html" class="type-name-link" title="class in io.micronaut.mqtt.v3.config">MqttClientConfigurationProperties</a> (implements io.micronaut.mqtt.config.<a href="io/micronaut/mqtt/config/MqttSSLConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a>)</li>
 <li class="circle">io.micronaut.mqtt.v5.config.<a href="io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html" class="type-name-link" title="class in io.micronaut.mqtt.v5.config">MqttClientConfigurationProperties</a> (implements io.micronaut.mqtt.config.<a href="io/micronaut/mqtt/config/MqttSSLConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a>)</li>
@@ -105,12 +127,18 @@ loadScripts(document, 'script');</script>
 <li class="circle">io.micronaut.mqtt.v5.client.<a href="io/micronaut/mqtt/v5/client/MqttClientFactory.html" class="type-name-link" title="class in io.micronaut.mqtt.v5.client">MqttClientFactory</a></li>
 <li class="circle">io.micronaut.mqtt.config.<a href="io/micronaut/mqtt/config/MqttConfigurationProperties.html" class="type-name-link" title="class in io.micronaut.mqtt.config">MqttConfigurationProperties</a> (implements io.micronaut.mqtt.config.<a href="io/micronaut/mqtt/config/MqttConfiguration.html" title="interface in io.micronaut.mqtt.config">MqttConfiguration</a>)</li>
 <li class="circle">io.micronaut.mqtt.executor.<a href="io/micronaut/mqtt/executor/MqttExecutorFactory.html" class="type-name-link" title="class in io.micronaut.mqtt.executor">MqttExecutorFactory</a></li>
+<li class="circle">io.micronaut.mqtt.hivemq.client.health.<a href="io/micronaut/mqtt/hivemq/client/health/MqttHealthIndicator.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.client.health">MqttHealthIndicator</a> (implements io.micronaut.management.health.indicator.HealthIndicator)</li>
 <li class="circle">io.micronaut.mqtt.v3.client.health.<a href="io/micronaut/mqtt/v3/client/health/MqttHealthIndicator.html" class="type-name-link" title="class in io.micronaut.mqtt.v3.client.health">MqttHealthIndicator</a> (implements io.micronaut.management.health.indicator.HealthIndicator)</li>
 <li class="circle">io.micronaut.mqtt.v5.client.health.<a href="io/micronaut/mqtt/v5/client/health/MqttHealthIndicator.html" class="type-name-link" title="class in io.micronaut.mqtt.v5.client.health">MqttHealthIndicator</a> (implements io.micronaut.management.health.indicator.HealthIndicator)</li>
+<li class="circle">io.micronaut.mqtt.hivemq.bind.<a href="io/micronaut/mqtt/hivemq/bind/MqttMessage.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.bind">MqttMessage</a></li>
+<li class="circle">io.micronaut.mqtt.hivemq.v5.bind.<a href="io/micronaut/mqtt/hivemq/v5/bind/MqttPropertyBinder.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.v5.bind">MqttPropertyBinder</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;M,<wbr>T&gt;)</li>
 <li class="circle">io.micronaut.mqtt.v5.bind.<a href="io/micronaut/mqtt/v5/bind/MqttPropertyBinder.html" class="type-name-link" title="class in io.micronaut.mqtt.v5.bind">MqttPropertyBinder</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;M,<wbr>T&gt;)</li>
+<li class="circle">io.micronaut.mqtt.hivemq.v3.bind.<a href="io/micronaut/mqtt/hivemq/v3/bind/MqttV3BindingContext.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.v3.bind">MqttV3BindingContext</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/MqttBindingContext.html" title="interface in io.micronaut.mqtt.bind">MqttBindingContext</a>&lt;T&gt;)</li>
 <li class="circle">io.micronaut.mqtt.v3.bind.<a href="io/micronaut/mqtt/v3/bind/MqttV3BindingContext.html" class="type-name-link" title="class in io.micronaut.mqtt.v3.bind">MqttV3BindingContext</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/MqttBindingContext.html" title="interface in io.micronaut.mqtt.bind">MqttBindingContext</a>&lt;T&gt;)</li>
+<li class="circle">io.micronaut.mqtt.hivemq.v5.bind.<a href="io/micronaut/mqtt/hivemq/v5/bind/MqttV5BindingContext.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.v5.bind">MqttV5BindingContext</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/MqttBindingContext.html" title="interface in io.micronaut.mqtt.bind">MqttBindingContext</a>&lt;T&gt;)</li>
 <li class="circle">io.micronaut.mqtt.v5.bind.<a href="io/micronaut/mqtt/v5/bind/MqttV5BindingContext.html" class="type-name-link" title="class in io.micronaut.mqtt.v5.bind">MqttV5BindingContext</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/MqttBindingContext.html" title="interface in io.micronaut.mqtt.bind">MqttBindingContext</a>&lt;T&gt;)</li>
 <li class="circle">io.micronaut.mqtt.bind.impl.<a href="io/micronaut/mqtt/bind/impl/PayloadMqttBinder.html" class="type-name-link" title="class in io.micronaut.mqtt.bind.impl">PayloadMqttBinder</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;M,<wbr>T&gt;)</li>
+<li class="circle">io.micronaut.mqtt.hivemq.ssl.<a href="io/micronaut/mqtt/hivemq/ssl/PrivateKeyReader.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.ssl">PrivateKeyReader</a></li>
 <li class="circle">io.micronaut.mqtt.bind.impl.<a href="io/micronaut/mqtt/bind/impl/QosMqttBinder.html" class="type-name-link" title="class in io.micronaut.mqtt.bind.impl">QosMqttBinder</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;M,<wbr>T&gt;)</li>
 <li class="circle">io.micronaut.mqtt.bind.impl.<a href="io/micronaut/mqtt/bind/impl/RetainedMqttBinder.html" class="type-name-link" title="class in io.micronaut.mqtt.bind.impl">RetainedMqttBinder</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;M,<wbr>T&gt;)</li>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Throwable.html" class="type-name-link external-link" title="class or interface in java.lang">Throwable</a> (implements java.io.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a>)
@@ -119,6 +147,7 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/RuntimeException.html" class="type-name-link external-link" title="class or interface in java.lang">RuntimeException</a>
 <ul>
+<li class="circle">io.micronaut.mqtt.hivemq.ssl.<a href="io/micronaut/mqtt/hivemq/ssl/KeyManagerFactoryCreationException.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.ssl">KeyManagerFactoryCreationException</a></li>
 <li class="circle">io.micronaut.messaging.exceptions.MessagingException
 <ul>
 <li class="circle">io.micronaut.messaging.exceptions.MessageListenerException
@@ -133,6 +162,7 @@ loadScripts(document, 'script');</script>
 </li>
 </ul>
 </li>
+<li class="circle">io.micronaut.mqtt.hivemq.ssl.<a href="io/micronaut/mqtt/hivemq/ssl/TrustManagerFactoryCreationException.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.ssl">TrustManagerFactoryCreationException</a></li>
 </ul>
 </li>
 </ul>
@@ -140,6 +170,7 @@ loadScripts(document, 'script');</script>
 </ul>
 </li>
 <li class="circle">io.micronaut.mqtt.bind.impl.<a href="io/micronaut/mqtt/bind/impl/TopicMqttBinder.html" class="type-name-link" title="class in io.micronaut.mqtt.bind.impl">TopicMqttBinder</a> (implements io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/AnnotatedMqttBinder.html" title="interface in io.micronaut.mqtt.bind">AnnotatedMqttBinder</a>&lt;M,<wbr>T&gt;)</li>
+<li class="circle">io.micronaut.mqtt.hivemq.bind.<a href="io/micronaut/mqtt/hivemq/bind/UserProperty.html" class="type-name-link" title="class in io.micronaut.mqtt.hivemq.bind">UserProperty</a></li>
 </ul>
 </li>
 </ul>
@@ -161,6 +192,14 @@ loadScripts(document, 'script');</script>
 </li>
 <li class="circle">io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/MqttBinderRegistry.html" class="type-name-link" title="interface in io.micronaut.mqtt.bind">MqttBinderRegistry</a></li>
 <li class="circle">io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/MqttBindingContext.html" class="type-name-link" title="interface in io.micronaut.mqtt.bind">MqttBindingContext</a>&lt;T&gt;</li>
+<li class="circle">io.micronaut.mqtt.hivemq.client.<a href="io/micronaut/mqtt/hivemq/client/MqttClientAdapter.html" class="type-name-link" title="interface in io.micronaut.mqtt.hivemq.client">MqttClientAdapter</a></li>
+<li class="circle">io.micronaut.mqtt.hivemq.config.<a href="io/micronaut/mqtt/hivemq/config/MqttClientConfiguration.html" class="type-name-link" title="interface in io.micronaut.mqtt.hivemq.config">MqttClientConfiguration</a>
+<ul>
+<li class="circle">io.micronaut.mqtt.hivemq.v3.config.<a href="io/micronaut/mqtt/hivemq/v3/config/Mqtt3ClientConfiguration.html" class="type-name-link" title="interface in io.micronaut.mqtt.hivemq.v3.config">Mqtt3ClientConfiguration</a></li>
+<li class="circle">io.micronaut.mqtt.hivemq.v5.config.<a href="io/micronaut/mqtt/hivemq/v5/config/Mqtt5ClientConfiguration.html" class="type-name-link" title="interface in io.micronaut.mqtt.hivemq.v5.config">Mqtt5ClientConfiguration</a></li>
+</ul>
+</li>
+<li class="circle">io.micronaut.mqtt.hivemq.client.<a href="io/micronaut/mqtt/hivemq/client/MqttClientFactory.html" class="type-name-link" title="interface in io.micronaut.mqtt.hivemq.client">MqttClientFactory</a></li>
 <li class="circle">io.micronaut.mqtt.serdes.<a href="io/micronaut/mqtt/serdes/MqttPayloadSerDesRegistry.html" class="type-name-link" title="interface in io.micronaut.mqtt.serdes">MqttPayloadSerDesRegistry</a></li>
 <li class="circle">io.micronaut.mqtt.config.<a href="io/micronaut/mqtt/config/MqttSSLConfiguration.html" class="type-name-link" title="interface in io.micronaut.mqtt.config">MqttSSLConfiguration</a></li>
 <li class="circle">io.micronaut.core.order.Ordered

@@ -18,7 +18,7 @@ package io.micronaut.mqtt.v3.client;
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
 import io.micronaut.core.annotation.Nullable;
-import io.micronaut.mqtt.v3.config.MqttClientConfigurationProperties;
+import io.micronaut.mqtt.v3.config.MqttClientConfiguration;
 import io.micronaut.scheduling.TaskExecutors;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
@@ -42,7 +42,7 @@ public final class MqttClientFactory {
 
     @Singleton
     @Bean(preDestroy = "disconnect")
-    MqttAsyncClient mqttClient(MqttClientConfigurationProperties configuration,
+    MqttAsyncClient mqttClient(MqttClientConfiguration configuration,
                                @Nullable MqttClientPersistence clientPersistence,
                                @Nullable HighResolutionTimer highResolutionTimer,
                                @Named(TaskExecutors.MESSAGE_CONSUMER) ExecutorService executorService) throws MqttException {

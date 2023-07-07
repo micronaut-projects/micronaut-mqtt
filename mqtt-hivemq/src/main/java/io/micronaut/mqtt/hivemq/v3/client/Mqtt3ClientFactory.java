@@ -31,7 +31,7 @@ import io.micronaut.mqtt.exception.MqttClientException;
 import io.micronaut.mqtt.hivemq.client.MqttClientFactory;
 import io.micronaut.mqtt.hivemq.ssl.KeyManagerFactoryCreationException;
 import io.micronaut.mqtt.hivemq.ssl.TrustManagerFactoryCreationException;
-import io.micronaut.mqtt.hivemq.v3.config.Mqtt3ClientConfigurationProperties;
+import io.micronaut.mqtt.hivemq.v3.config.Mqtt3ClientConfiguration;
 import io.micronaut.mqtt.ssl.MqttCertificateConfiguration;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
@@ -54,7 +54,7 @@ public final class Mqtt3ClientFactory implements MqttClientFactory {
 
     @Singleton
     @Bean(preDestroy = "disconnect")
-    Mqtt3AsyncClient mqttClient(final Mqtt3ClientConfigurationProperties configuration) {
+    Mqtt3AsyncClient mqttClient(final Mqtt3ClientConfiguration configuration) {
 
         final Mqtt3ClientBuilder clientBuilder = MqttClient.builder()
             .useMqttVersion3()
@@ -106,7 +106,7 @@ public final class Mqtt3ClientFactory implements MqttClientFactory {
         return client;
     }
 
-    private MqttClientTransportConfig buildTransportConfig(final Mqtt3ClientConfigurationProperties configuration) {
+    private MqttClientTransportConfig buildTransportConfig(final Mqtt3ClientConfiguration configuration) {
 
         final MqttClientTransportConfigBuilder transportConfigBuilder = MqttClientTransportConfig.builder()
             .serverHost(configuration.getServerHost())

@@ -27,7 +27,7 @@ import io.micronaut.mqtt.exception.MqttSubscriberException;
 import io.micronaut.mqtt.hivemq.bind.MqttMessage;
 import io.micronaut.mqtt.hivemq.client.MqttClientAdapter;
 import io.micronaut.mqtt.hivemq.v3.bind.MqttV3BindingContext;
-import io.micronaut.mqtt.hivemq.v3.config.Mqtt3ClientConfigurationProperties;
+import io.micronaut.mqtt.hivemq.v3.config.Mqtt3ClientConfiguration;
 import jakarta.inject.Singleton;
 import jakarta.validation.constraints.NotNull;
 import org.slf4j.Logger;
@@ -53,9 +53,9 @@ public final class Mqtt3ClientAdapter implements MqttClientAdapter {
     private static final Logger LOG = LoggerFactory.getLogger(Mqtt3ClientAdapter.class);
 
     private final Mqtt3AsyncClient client;
-    private final Mqtt3ClientConfigurationProperties configurationProperties;
+    private final Mqtt3ClientConfiguration configurationProperties;
 
-    public Mqtt3ClientAdapter(@NotNull final Mqtt3AsyncClient client, @NotNull final Mqtt3ClientConfigurationProperties configurationProperties) {
+    public Mqtt3ClientAdapter(@NotNull final Mqtt3AsyncClient client, @NotNull final Mqtt3ClientConfiguration configurationProperties) {
         this.client = client;
         this.configurationProperties = configurationProperties;
     }

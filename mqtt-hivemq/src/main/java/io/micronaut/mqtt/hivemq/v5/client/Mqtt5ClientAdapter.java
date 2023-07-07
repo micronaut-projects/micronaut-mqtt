@@ -28,7 +28,7 @@ import io.micronaut.mqtt.hivemq.bind.MqttMessage;
 import io.micronaut.mqtt.hivemq.bind.UserProperty;
 import io.micronaut.mqtt.hivemq.client.MqttClientAdapter;
 import io.micronaut.mqtt.hivemq.v5.bind.MqttV5BindingContext;
-import io.micronaut.mqtt.hivemq.v5.config.Mqtt5ClientConfigurationProperties;
+import io.micronaut.mqtt.hivemq.v5.config.Mqtt5ClientConfiguration;
 import jakarta.inject.Singleton;
 import jakarta.validation.constraints.NotNull;
 import org.slf4j.Logger;
@@ -55,9 +55,9 @@ public class Mqtt5ClientAdapter implements MqttClientAdapter {
     private static final Logger LOG = LoggerFactory.getLogger(Mqtt5ClientAdapter.class);
 
     private final Mqtt5AsyncClient client;
-    private final Mqtt5ClientConfigurationProperties configurationProperties;
+    private final Mqtt5ClientConfiguration configurationProperties;
 
-    public Mqtt5ClientAdapter(@NotNull final Mqtt5AsyncClient client, @NotNull final Mqtt5ClientConfigurationProperties configurationProperties) {
+    public Mqtt5ClientAdapter(@NotNull final Mqtt5AsyncClient client, @NotNull final Mqtt5ClientConfiguration configurationProperties) {
         this.client = client;
         this.configurationProperties = configurationProperties;
     }

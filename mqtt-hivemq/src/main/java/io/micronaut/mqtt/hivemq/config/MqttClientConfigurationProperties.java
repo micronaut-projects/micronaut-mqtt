@@ -18,9 +18,13 @@ package io.micronaut.mqtt.hivemq.config;
 import com.hivemq.client.mqtt.MqttClient;
 import com.hivemq.client.mqtt.MqttClientTransportConfig;
 import com.hivemq.client.mqtt.lifecycle.MqttClientAutoReconnect;
+import com.hivemq.client.mqtt.mqtt3.message.connect.Mqtt3Connect;
 import com.hivemq.client.mqtt.mqtt5.message.connect.Mqtt5Connect;
+import com.hivemq.client.mqtt.mqtt5.message.connect.Mqtt5ConnectRestrictions;
 import io.micronaut.context.annotation.ConfigurationProperties;
 import io.micronaut.core.annotation.Nullable;
+import io.micronaut.mqtt.hivemq.v3.config.Mqtt3ClientConfiguration;
+import io.micronaut.mqtt.hivemq.v5.config.Mqtt5ClientConfiguration;
 import io.micronaut.mqtt.ssl.MqttCertificateConfiguration;
 
 import javax.net.ssl.HostnameVerifier;
@@ -34,7 +38,8 @@ import java.util.Map;
  * @author Sven Kobow
  * @since 3.0.0
  */
-public abstract class MqttClientConfigurationProperties {
+@ConfigurationProperties("mqtt.client")
+class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqtt3ClientConfiguration {
     private URI serverUri = URI.create(String.format("tcp:/%s:%s", MqttClient.DEFAULT_SERVER_HOST, MqttClient.DEFAULT_SERVER_PORT));
     private String clientId = null;
     private int mqttVersion = 5;
@@ -51,11 +56,22 @@ public abstract class MqttClientConfigurationProperties {
     private WillMessage willMessage = null;
     private final MqttCertificateConfiguration certificateConfiguration;
 
+    private boolean cleanSession = Mqtt3Connect.DEFAULT_CLEAN_SESSION;
+    private boolean cleanStart = Mqtt5Connect.DEFAULT_CLEAN_START;
+    private Long sessionExpiryInterval = Mqtt5Connect.DEFAULT_SESSION_EXPIRY_INTERVAL;
+    private Integer receiveMaximum = Mqtt5ConnectRestrictions.DEFAULT_RECEIVE_MAXIMUM;
+    private Integer maximumPacketSize = Mqtt5ConnectRestrictions.DEFAULT_MAXIMUM_PACKET_SIZE;
+    private Integer topicAliasMaximum = Mqtt5ConnectRestrictions.DEFAULT_TOPIC_ALIAS_MAXIMUM;
+    private boolean requestResponseInfo = Mqtt5ConnectRestrictions.DEFAULT_REQUEST_RESPONSE_INFORMATION;
+    private boolean requestProblemInfo = Mqtt5ConnectRestrictions.DEFAULT_REQUEST_PROBLEM_INFORMATION;
+    private Map<String, String> userProperties;
+
     /**
-     * @param willMessage an optional last will message.
-     * @param certificateConfiguration certification configuration for using SSL encrypted connections and mTLS.
+     * @param willMessage an optional last will message
+     * @param certificateConfiguration certificate configuration for using SSL encrypted connections and mTLS
      */
-    protected MqttClientConfigurationProperties(@Nullable final WillMessage willMessage, @Nullable final MqttCertificateConfiguration certificateConfiguration) {
+    public MqttClientConfigurationProperties(
+        @Nullable final WillMessage willMessage, @Nullable final MqttCertificateConfiguration certificateConfiguration) {
         if (willMessage.getTopic() != null) {
             this.willMessage = willMessage;
         }
@@ -63,8 +79,144 @@ public abstract class MqttClientConfigurationProperties {
     }
 
     /**
+     * @return true if a new sessions should be started for connection.
+     */
+    @Override
+    public boolean isCleanStart() {
+        return cleanStart;
+    }
+
+    /**
+     * @param cleanStart if connection should start a new session.
+     */
+    public void setCleanStart(boolean cleanStart) {
+        this.cleanStart = cleanStart;
+    }
+
+    /**
+     * @return the session expiry interval in seconds.
+     */
+    @Override
+    public Long getSessionExpiryInterval() {
+        return sessionExpiryInterval;
+    }
+
+    /**
+     * @param sessionExpiryInterval the session expiry interval in seconds.
+     */
+    public void setSessionExpiryInterval(Long sessionExpiryInterval) {
+        this.sessionExpiryInterval = sessionExpiryInterval;
+    }
+
+    /**
+     * @return the maximum amount of not acknowledged publishes with QoS 1 or 2 the client accepts from the server concurrently.
+     */
+    @Override
+    public Integer getReceiveMaximum() {
+        return receiveMaximum;
+    }
+
+    /**
+     * @param receiveMaximum the maximum amount of not acknowledged publishes with QoS 1 or 2 the client accepts from the server concurrently.
+     */
+    public void setReceiveMaximum(Integer receiveMaximum) {
+        this.receiveMaximum = receiveMaximum;
+    }
+
+    /**
+     * @return the maximum packet size the client sends to the server.
+     */
+    @Override
+    public Integer getMaximumPacketSize() {
+        return maximumPacketSize;
+    }
+
+    /**
+     * @param maximumPacketSize the maximum packet size the client sends to the server.
+     */
+    public void setMaximumPacketSize(Integer maximumPacketSize) {
+        this.maximumPacketSize = maximumPacketSize;
+    }
+
+    /**
+     * @return the maximum amount of topic aliases the client accepts from the server.
+     */
+    @Override
+    public Integer getTopicAliasMaximum() {
+        return topicAliasMaximum;
+    }
+
+    /**
+     * @param topicAliasMaximum the maximum amount of topic aliases the client accepts from the server.
+     */
+    public void setTopicAliasMaximum(Integer topicAliasMaximum) {
+        this.topicAliasMaximum = topicAliasMaximum;
+    }
+
+    /**
+     * @return whether the client requests response information from the server.
+     */
+    @Override
+    public boolean isRequestResponseInfo() {
+        return requestResponseInfo;
+    }
+
+    /**
+     * @param requestResponseInfo whether the client requests response information from the server.
+     */
+    public void setRequestResponseInfo(boolean requestResponseInfo) {
+        this.requestResponseInfo = requestResponseInfo;
+    }
+
+    /**
+     * @return whether the client requests problem information from the server.
+     */
+    @Override
+    public boolean isRequestProblemInfo() {
+        return requestProblemInfo;
+    }
+
+    /**
+     * @param requestProblemInfo whether the client requests problem information from the server.
+     */
+    public void setRequestProblemInfo(boolean requestProblemInfo) {
+        this.requestProblemInfo = requestProblemInfo;
+    }
+
+    /**
+     * @return the user defined properties tha should be sent for every message.
+     */
+    @Override
+    public Map<String, String> getUserProperties() {
+        return userProperties;
+    }
+
+    /**
+     * @param userProperties the user defined properties tha should be sent for every message.
+     */
+    public void setUserProperties(Map<String, String> userProperties) {
+        this.userProperties = userProperties;
+    }
+
+    /**
+     * @param cleanSession True if a new session should be started for connection.
+     */
+    public void setCleanSession(final boolean cleanSession) {
+        this.cleanSession = cleanSession;
+    }
+
+    /**
+     * @return If connection should start a new session.
+     */
+    @Override
+    public boolean isCleanSession() {
+        return this.cleanSession;
+    }
+
+    /**
      * @return the uri of server to connect to as [schema]://[serverHost]:[serverPort].
      */
+    @Override
     public URI getServerUri() {
         return this.serverUri;
     }
@@ -79,6 +231,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the server host of the configured {@link #serverUri}.
      */
+    @Override
     public String getServerHost() {
         return serverUri != null ? serverUri.getHost() : null;
     }
@@ -86,6 +239,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the server port of the configured {@link #serverUri}.
      */
+    @Override
     public Integer getServerPort() {
         return serverUri != null ? serverUri.getPort() : null;
     }
@@ -93,6 +247,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return true if the schema of the configured {@link #serverUri} is ssl.
      */
+    @Override
     public boolean isSSL() {
         return serverUri != null && "SSL".equalsIgnoreCase(serverUri.getScheme());
     }
@@ -100,6 +255,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the client identifier.
      */
+    @Override
     public String getClientId() {
         return clientId;
     }
@@ -114,6 +270,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the MQTT version to use.
      */
+    @Override
     public int getMqttVersion() {
         return mqttVersion;
     }
@@ -128,6 +285,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the connection timeout.
      */
+    @Override
     public Duration getConnectionTimeout() {
         return connectionTimeout;
     }
@@ -142,6 +300,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return an optional boolean to set the client in manual acknowledge mode.
      */
+    @Override
     public boolean getManualAcks() {
         return this.manualAcks;
     }
@@ -156,6 +315,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the password to use for MQTT connections.
      */
+    @Override
     public byte[] getPassword() {
         return password;
     }
@@ -170,6 +330,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the username to use for MQTT connections.
      */
+    @Override
     public String getUserName() {
         return userName;
     }
@@ -184,6 +345,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the maximal delay for reconnecting.
      */
+    @Override
     public Long getMaxReconnectDelay() {
         return maxReconnectDelay;
     }
@@ -198,6 +360,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the keep alive interval.
      */
+    @Override
     public Integer getKeepAliveInterval() {
         return keepAliveInterval;
     }
@@ -212,6 +375,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return true is automatic reconnect should be performed.
      */
+    @Override
     public boolean isAutomaticReconnect() {
         return automaticReconnect;
     }
@@ -226,6 +390,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the custom headers that should be sent with web socket connections.
      */
+    @Override
     public Map<String, String> getCustomWebSocketHeaders() {
         return customWebSocketHeaders;
     }
@@ -240,6 +405,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return true if hostname verification should be used.
      */
+    @Override
     public boolean isHttpsHostnameVerificationEnabled() {
         return this.isHttpsHostnameVerificationEnabled;
     }
@@ -254,6 +420,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the hostname verifier to use for hostname verification.
      */
+    @Override
     public HostnameVerifier getSSLHostnameVerifier() {
         return sslHostnameVerifier;
     }
@@ -268,6 +435,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the last will message that should be sent on ungraceful disconnects.
      */
+    @Override
     public WillMessage getWillMessage() {
         return willMessage;
     }
@@ -275,6 +443,7 @@ public abstract class MqttClientConfigurationProperties {
     /**
      * @return the certificate configuration to use for SSL and mTLS.
      */
+    @Override
     public MqttCertificateConfiguration getCertificateConfiguration() {
         return certificateConfiguration;
     }

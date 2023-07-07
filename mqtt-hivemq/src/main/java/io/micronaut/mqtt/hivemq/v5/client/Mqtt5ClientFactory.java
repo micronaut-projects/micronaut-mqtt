@@ -36,7 +36,7 @@ import io.micronaut.mqtt.exception.MqttClientException;
 import io.micronaut.mqtt.hivemq.client.MqttClientFactory;
 import io.micronaut.mqtt.hivemq.ssl.KeyManagerFactoryCreationException;
 import io.micronaut.mqtt.hivemq.ssl.TrustManagerFactoryCreationException;
-import io.micronaut.mqtt.hivemq.v5.config.Mqtt5ClientConfigurationProperties;
+import io.micronaut.mqtt.hivemq.v5.config.Mqtt5ClientConfiguration;
 import io.micronaut.mqtt.ssl.MqttCertificateConfiguration;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
@@ -65,7 +65,7 @@ public final class Mqtt5ClientFactory implements MqttClientFactory {
      */
     @Singleton
     @Bean(preDestroy = "disconnect")
-    Mqtt5AsyncClient mqttClient(final Mqtt5ClientConfigurationProperties configuration, @Nullable final Mqtt5EnhancedAuthMechanism enhancedAuthMechanism) {
+    Mqtt5AsyncClient mqttClient(final Mqtt5ClientConfiguration configuration, @Nullable final Mqtt5EnhancedAuthMechanism enhancedAuthMechanism) {
 
         final Mqtt5ClientBuilder clientBuilder = MqttClient.builder()
             .useMqttVersion5()
@@ -132,14 +132,14 @@ public final class Mqtt5ClientFactory implements MqttClientFactory {
         return client;
     }
 
-    private Mqtt5UserProperties buildUserProperties(final Mqtt5ClientConfigurationProperties configuration) {
+    private Mqtt5UserProperties buildUserProperties(final Mqtt5ClientConfiguration configuration) {
         final Mqtt5UserPropertiesBuilder propertiesBuilder = Mqtt5UserProperties.builder();
         configuration.getUserProperties().forEach(propertiesBuilder::add);
 
         return propertiesBuilder.build();
     }
 
-    private MqttClientTransportConfig buildTransportConfig(final Mqtt5ClientConfigurationProperties configuration) {
+    private MqttClientTransportConfig buildTransportConfig(final Mqtt5ClientConfiguration configuration) {
 
         final MqttClientTransportConfigBuilder transportConfigBuilder = MqttClientTransportConfig.builder()
             .serverHost(configuration.getServerHost())

@@ -42,7 +42,6 @@ public interface MqttClientFactory {
         try {
             final KeyManagerFactory kmf = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
             final KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-
             final Certificate certificate = CertificateReader.readCertificate(certConfiguration.getCertificate());
 
             final PrivateKey key = PrivateKeyReader.getPrivateKey(certConfiguration.getPrivateKey(), certConfiguration.getPassword());

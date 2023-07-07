@@ -4,11 +4,12 @@ import io.micronaut.context.ApplicationContext
 import io.micronaut.health.HealthStatus
 import io.micronaut.management.health.indicator.HealthResult
 import io.micronaut.mqtt.test.AbstractMQTTTest
+import io.micronaut.mqtt.test.MQTT5Test
 import io.micronaut.mqtt.v5.client.health.MqttHealthIndicator
 import org.eclipse.paho.mqttv5.client.MqttAsyncClient
 import reactor.core.publisher.Flux
 
-class V5HealthIndicatorSpec extends AbstractMQTTTest {
+class V5HealthIndicatorSpec extends AbstractMQTTTest implements MQTT5Test {
 
     void "mqtt v5 client health indicator"() {
         ApplicationContext ctx = startContext()

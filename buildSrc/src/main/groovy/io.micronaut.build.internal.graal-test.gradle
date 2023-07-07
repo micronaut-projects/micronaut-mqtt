@@ -10,7 +10,7 @@ repositories {
 
 configurations.all {
     resolutionStrategy {
-        force 'io.micronaut.platform:micronaut-platform:4.0.0-M1'
+        force 'io.micronaut.platform:micronaut-platform:4.0.0-M4'
     }
 }
 
@@ -23,7 +23,7 @@ dependencies {
     testImplementation(mnTest.micronaut.test.junit5)
     testImplementation(libs.awaitility)
     testImplementation(mnSerde.micronaut.serde.jackson)
-    testRuntimeOnly(mn.logback.classic)
+    testRuntimeOnly(mnLogging.logback.classic)
 }
 
 micronaut {
@@ -36,16 +36,6 @@ micronaut {
 
 test {
     useJUnitPlatform()
-}
-
-def isGraalVMJdk = ["jvmci.Compiler", "java.vendor.version", "java.vendor"].any {
-    System.getProperty(it)?.toLowerCase(Locale.ENGLISH)?.contains("graal")
-}
-
-tasks.named("check") {
-    if (isGraalVMJdk) {
-        it.dependsOn("nativeTest")
-    }
 }
 
 graalvmNative {

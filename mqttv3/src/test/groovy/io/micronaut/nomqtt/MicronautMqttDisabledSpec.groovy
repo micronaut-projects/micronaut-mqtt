@@ -1,4 +1,4 @@
-package io.micronaut.notmqtt
+package io.micronaut.nomqtt
 
 import io.micronaut.context.BeanContext
 import io.micronaut.context.annotation.Property

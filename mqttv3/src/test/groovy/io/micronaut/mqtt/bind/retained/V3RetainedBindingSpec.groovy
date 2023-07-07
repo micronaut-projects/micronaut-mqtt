@@ -1,11 +1,12 @@
 package io.micronaut.mqtt.bind.retained
 
 import io.micronaut.context.annotation.Requires
+import io.micronaut.mqtt.test.MQTT3Test
 import io.micronaut.mqtt.test.bind.retained.RetainedBindingClient
 import io.micronaut.mqtt.test.bind.retained.RetainedBindingSpec
 import io.micronaut.mqtt.annotation.v3.MqttPublisher
 
-class V3RetainedBindingSpec extends RetainedBindingSpec {
+class V3RetainedBindingSpec extends RetainedBindingSpec implements MQTT3Test {
 
     @Override
     Class<? extends RetainedBindingClient> getClient() {

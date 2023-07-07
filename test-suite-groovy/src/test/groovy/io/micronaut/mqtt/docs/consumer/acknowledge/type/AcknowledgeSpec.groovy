@@ -3,9 +3,10 @@ package io.micronaut.mqtt.docs.consumer.acknowledge.type
 
 import io.micronaut.context.ApplicationContext
 import io.micronaut.mqtt.test.AbstractMQTTTest
+import io.micronaut.mqtt.test.MQTT5Test
 import spock.util.concurrent.PollingConditions
 
-class AcknowledgeSpec extends AbstractMQTTTest {
+class AcknowledgeSpec extends AbstractMQTTTest implements MQTT5Test {
 
     void "test acking with an acknowledgement argument"() {
         ApplicationContext applicationContext = startContext()

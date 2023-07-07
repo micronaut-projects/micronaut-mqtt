@@ -1,8 +1,8 @@
 [versions]
 micronaut-docs = "2.0.0"
-micronaut = "4.0.0-RC1"
-
-groovy = "4.0.12"
+micronaut = "4.0.0-RC5"
+micronaut-testresources = "2.0.0-M12"
+groovy = "4.0.13"
 spock = "2.3-groovy-4.0"
 
 managed-mqttv3 = "1.2.5"
@@ -14,10 +14,10 @@ bcpkix-jdk15on = "1.70"
 kotlin = "1.8.22"
 testcontainers = "1.18.3"
 
-micronaut-reactor = "3.0.0-M6"
-micronaut-serde = "2.0.0-M10"
-micronaut-test = "4.0.0-M7"
-micronaut-validation = "4.0.0-M10"
+micronaut-reactor = "3.0.0-M9"
+micronaut-serde = "2.0.0-M12"
+micronaut-test = "4.0.0-M8"
+micronaut-validation = "4.0.0-M11"
 micronaut-logging = "1.0.0-M5"
 
 [libraries]

@@ -21,7 +21,8 @@ package io.micronaut.mqtt.hivemq.ssl;
  * @author Sven Kobow
  * @since 3.0.0
  */
-public class KeyManagerFactoryCreationException extends Throwable {
+public class KeyManagerFactoryCreationException extends RuntimeException {
+
     public KeyManagerFactoryCreationException(final String message, final Throwable cause) {
         super(message, cause);
     }

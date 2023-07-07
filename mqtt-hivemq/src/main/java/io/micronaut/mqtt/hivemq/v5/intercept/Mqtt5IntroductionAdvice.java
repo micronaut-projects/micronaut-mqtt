@@ -103,7 +103,7 @@ public class Mqtt5IntroductionAdvice extends AbstractMqttIntroductionAdvice<BiCo
         final MqttMessage message = new MqttMessage();
         final List<AnnotationValue<MqttProperty>> propertyAnnotations = context.getAnnotationValuesByType(MqttProperty.class);
         final List<UserProperty> properties = new ArrayList<>();
-        propertyAnnotations.forEach((prop) -> {
+        propertyAnnotations.forEach(prop -> {
             final String name = prop.get("name", String.class).orElse(null);
             final String value = prop.getValue(String.class).orElse(null);
             final BeanIntrospection<MqttMessage> introspection = BeanIntrospection.getIntrospection(MqttMessage.class);

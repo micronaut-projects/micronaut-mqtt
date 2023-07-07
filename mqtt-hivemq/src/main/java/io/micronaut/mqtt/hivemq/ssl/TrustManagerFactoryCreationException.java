@@ -18,7 +18,8 @@ package io.micronaut.mqtt.hivemq.ssl;
 /**
  * Thrown when a {@link javax.net.ssl.TrustManagerFactory} can not be created.
  */
-public class TrustManagerFactoryCreationException extends Throwable {
+public class TrustManagerFactoryCreationException extends RuntimeException {
+
     public TrustManagerFactoryCreationException(final String message, final Exception e) {
         super(message, e);
     }

@@ -21,6 +21,8 @@ import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openssl.PEMParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.security.Security;
 import java.security.cert.Certificate;
@@ -33,6 +35,12 @@ import java.security.cert.Certificate;
  */
 @Internal
 public final class CertificateReader {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CertificateReader.class);
+
+    private CertificateReader() {
+    }
+
     public static Certificate readCertificate(final Readable crtFile) {
         try {
             Security.addProvider(new BouncyCastleProvider());
@@ -44,9 +52,8 @@ public final class CertificateReader {
 
                 return certificateConverter.getCertificate(certHolder);
             }
-
         } catch (Exception e) {
-            e.printStackTrace();
+            LOG.error("Error reading certificate", e);
         }
 
         return null;

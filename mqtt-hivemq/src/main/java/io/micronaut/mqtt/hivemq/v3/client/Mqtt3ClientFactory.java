@@ -128,8 +128,7 @@ public final class Mqtt3ClientFactory implements MqttClientFactory {
                 }
 
             } catch (KeyManagerFactoryCreationException | TrustManagerFactoryCreationException e) {
-                LOG.error(e.getMessage(), e);
-                throw new BeanInstantiationException(e.getMessage(), e);
+                throw new BeanInstantiationException("Error creating SSL configuration", e);
             }
 
             if (configuration.isHttpsHostnameVerificationEnabled()) {

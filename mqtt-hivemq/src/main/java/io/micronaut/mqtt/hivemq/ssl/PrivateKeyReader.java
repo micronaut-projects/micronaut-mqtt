@@ -24,6 +24,8 @@ import org.bouncycastle.openssl.PEMKeyPair;
 import org.bouncycastle.openssl.PEMParser;
 import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
 import org.bouncycastle.openssl.jcajce.JcePEMDecryptorProviderBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.security.KeyPair;
 import java.security.PrivateKey;
@@ -37,6 +39,12 @@ import java.security.Security;
  */
 @Internal
 public final class PrivateKeyReader {
+
+    private static final Logger LOG = LoggerFactory.getLogger(PrivateKeyReader.class);
+
+    private PrivateKeyReader() {
+    }
+
     public static PrivateKey getPrivateKey(final Readable keyFile, final char[] password) {
         try {
             PrivateKey key;
@@ -46,9 +54,9 @@ public final class PrivateKeyReader {
                 final JcaPEMKeyConverter converter = new JcaPEMKeyConverter().setProvider("BC");
                 final Object keyObject = parser.readObject();
                 KeyPair keyPair;
-                if (keyObject instanceof PEMEncryptedKeyPair) {
+                if (keyObject instanceof PEMEncryptedKeyPair encryptedKeyPair) {
                     PEMDecryptorProvider provider = new JcePEMDecryptorProviderBuilder().build(password);
-                    keyPair = converter.getKeyPair(((PEMEncryptedKeyPair) keyObject).decryptKeyPair(provider));
+                    keyPair = converter.getKeyPair(encryptedKeyPair.decryptKeyPair(provider));
                 } else {
                     keyPair = converter.getKeyPair((PEMKeyPair) keyObject);
                 }
@@ -58,7 +66,7 @@ public final class PrivateKeyReader {
 
             return key;
         } catch (Exception e) {
-            e.printStackTrace();
+            LOG.error("Error reading private key", e);
         }
 
         return null;

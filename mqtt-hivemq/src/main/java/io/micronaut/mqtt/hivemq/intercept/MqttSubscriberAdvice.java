@@ -38,8 +38,6 @@ import java.util.function.Consumer;
 @Singleton
 public class MqttSubscriberAdvice extends AbstractMqttSubscriberAdvice<MqttMessage> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(MqttSubscriberAdvice.class);
-
     private final MqttClientAdapter mqttClientAdapter;
 
     public MqttSubscriberAdvice(BeanContext beanContext,

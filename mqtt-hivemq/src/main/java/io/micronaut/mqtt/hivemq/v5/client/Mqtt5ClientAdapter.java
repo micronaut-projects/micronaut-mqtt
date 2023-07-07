@@ -84,7 +84,7 @@ public class Mqtt5ClientAdapter implements MqttClientAdapter {
                 final List<UserProperty> userProperties = mqtt5Publish.getUserProperties()
                     .asList()
                     .stream()
-                    .map((prop) -> new UserProperty(prop.getName().toString(), prop.getValue().toString()))
+                    .map(prop -> new UserProperty(prop.getName().toString(), prop.getValue().toString()))
                     .toList();
                 mqttMessage.setUserProperties(userProperties);
 

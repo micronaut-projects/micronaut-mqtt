@@ -78,120 +78,104 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
         this.certificateConfiguration = certificateConfiguration;
     }
 
-    /**
-     * @return true if a new sessions should be started for connection.
-     */
     @Override
     public boolean isCleanStart() {
         return cleanStart;
     }
 
     /**
+     * Set true if a new sessions should be started for connection (v5 only).
      * @param cleanStart if connection should start a new session.
      */
     public void setCleanStart(boolean cleanStart) {
         this.cleanStart = cleanStart;
     }
 
-    /**
-     * @return the session expiry interval in seconds.
-     */
     @Override
     public Long getSessionExpiryInterval() {
         return sessionExpiryInterval;
     }
 
     /**
+     * The session expiry interval in seconds (v5 only).
      * @param sessionExpiryInterval the session expiry interval in seconds.
      */
     public void setSessionExpiryInterval(Long sessionExpiryInterval) {
         this.sessionExpiryInterval = sessionExpiryInterval;
     }
 
-    /**
-     * @return the maximum amount of not acknowledged publishes with QoS 1 or 2 the client accepts from the server concurrently.
-     */
     @Override
     public Integer getReceiveMaximum() {
         return receiveMaximum;
     }
 
     /**
+     * The maximum amount of not acknowledged publishes with QoS 1 or 2 the client accepts from the server concurrently (v5 only).
      * @param receiveMaximum the maximum amount of not acknowledged publishes with QoS 1 or 2 the client accepts from the server concurrently.
      */
     public void setReceiveMaximum(Integer receiveMaximum) {
         this.receiveMaximum = receiveMaximum;
     }
 
-    /**
-     * @return the maximum packet size the client sends to the server.
-     */
     @Override
     public Integer getMaximumPacketSize() {
         return maximumPacketSize;
     }
 
     /**
+     * The maximum packet size the client sends to the server (v5 only).
      * @param maximumPacketSize the maximum packet size the client sends to the server.
      */
     public void setMaximumPacketSize(Integer maximumPacketSize) {
         this.maximumPacketSize = maximumPacketSize;
     }
 
-    /**
-     * @return the maximum amount of topic aliases the client accepts from the server.
-     */
     @Override
     public Integer getTopicAliasMaximum() {
         return topicAliasMaximum;
     }
 
     /**
+     * The maximum amount of topic aliases the client accepts from the server (v5 only).
      * @param topicAliasMaximum the maximum amount of topic aliases the client accepts from the server.
      */
     public void setTopicAliasMaximum(Integer topicAliasMaximum) {
         this.topicAliasMaximum = topicAliasMaximum;
     }
 
-    /**
-     * @return whether the client requests response information from the server.
-     */
     @Override
     public boolean isRequestResponseInfo() {
         return requestResponseInfo;
     }
 
     /**
+     * Whether the client requests response information from the server (v5 only).
      * @param requestResponseInfo whether the client requests response information from the server.
      */
     public void setRequestResponseInfo(boolean requestResponseInfo) {
         this.requestResponseInfo = requestResponseInfo;
     }
 
-    /**
-     * @return whether the client requests problem information from the server.
-     */
     @Override
     public boolean isRequestProblemInfo() {
         return requestProblemInfo;
     }
 
     /**
+     * Whether the client requests problem information from the server (v5 only).
      * @param requestProblemInfo whether the client requests problem information from the server.
      */
     public void setRequestProblemInfo(boolean requestProblemInfo) {
         this.requestProblemInfo = requestProblemInfo;
     }
 
-    /**
-     * @return the user defined properties tha should be sent for every message.
-     */
     @Override
     public Map<String, String> getUserProperties() {
         return userProperties;
     }
 
     /**
+     * The user defined properties that should be sent for every message (v5 only).
      * @param userProperties the user defined properties tha should be sent for every message.
      */
     public void setUserProperties(Map<String, String> userProperties) {
@@ -199,21 +183,20 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * Set true if a new session should be started for connection (v3 only).
      * @param cleanSession True if a new session should be started for connection.
      */
     public void setCleanSession(final boolean cleanSession) {
         this.cleanSession = cleanSession;
     }
 
-    /**
-     * @return If connection should start a new session.
-     */
     @Override
     public boolean isCleanSession() {
         return this.cleanSession;
     }
 
     /**
+     * The URI of server to connect to as [schema]://[serverHost]:[serverPort].
      * @return the uri of server to connect to as [schema]://[serverHost]:[serverPort].
      */
     @Override
@@ -253,6 +236,7 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * The client identifier to use.
      * @return the client identifier.
      */
     @Override
@@ -268,6 +252,7 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * The version of the MQTT protocol to use (one of 3 or 5).
      * @return the MQTT version to use.
      */
     @Override
@@ -283,6 +268,7 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * How long to wait for a connection to be established.
      * @return the connection timeout.
      */
     @Override
@@ -298,6 +284,7 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * True if you wish to manually acknowledge messages.
      * @return an optional boolean to set the client in manual acknowledge mode.
      */
     @Override
@@ -313,6 +300,7 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * The password to use for MQTT connections.
      * @return the password to use for MQTT connections.
      */
     @Override
@@ -328,6 +316,7 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * The username to use for MQTT connections.
      * @return the username to use for MQTT connections.
      */
     @Override
@@ -343,6 +332,7 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * The maximum delay for reconnecting in seconds.
      * @return the maximal delay for reconnecting.
      */
     @Override
@@ -358,6 +348,7 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * The keep alive interval in seconds.
      * @return the keep alive interval.
      */
     @Override
@@ -373,6 +364,7 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * True if the client should attempt to reconnect to the server if the connection is lost.
      * @return true is automatic reconnect should be performed.
      */
     @Override
@@ -388,6 +380,7 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * Custom headers that should be sent with web socket connections.
      * @return the custom headers that should be sent with web socket connections.
      */
     @Override
@@ -403,6 +396,7 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * True if hostname verification should be used for https connections.
      * @return true if hostname verification should be used.
      */
     @Override
@@ -418,6 +412,7 @@ class MqttClientConfigurationProperties implements Mqtt5ClientConfiguration, Mqt
     }
 
     /**
+     * The hostname verifier to use for hostname verification.
      * @return the hostname verifier to use for hostname verification.
      */
     @Override

@@ -23,5 +23,9 @@ import io.micronaut.mqtt.hivemq.config.MqttClientConfiguration;
  * @since 3.0.0
  */
 public interface Mqtt3ClientConfiguration extends MqttClientConfiguration {
+
+    /**
+     * @return If connection should start a new session.
+     */
     boolean isCleanSession();
 }

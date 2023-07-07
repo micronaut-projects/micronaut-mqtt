@@ -25,6 +25,7 @@ import java.util.Map;
  * @since 3.0.0
  */
 public interface Mqtt5ClientConfiguration extends MqttClientConfiguration {
+
     /**
      * @return true if a new sessions should be started for connection.
      */

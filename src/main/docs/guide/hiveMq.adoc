@@ -1,0 +1,1 @@
+This section outlines details specific to the HiveMQ client implementation.

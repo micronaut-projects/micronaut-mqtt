@@ -16,6 +16,7 @@ rootProject.name = 'mqtt-parent'
 include 'mqtt-core'
 include 'mqttv3'
 include 'mqttv5'
+include 'mqtt-hivemq'
 include 'test-suite-utils'
 include 'mqtt-ssl'
 include 'mqtt-bom'
@@ -25,14 +26,14 @@ include 'test-suite'
 include 'test-suite-kotlin'
 include 'test-suite-mqttv3-graal'
 include 'test-suite-mqttv5-graal'
+include 'test-suite-hivemq-mqttv3-graal'
+include 'test-suite-hivemq-mqttv5-graal'
 include 'test-suite-mqttv5-graal-ssl'
-
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 micronautBuild {
     useStandardizedProjectNames = true
     importMicronautCatalog()
-    importMicronautCatalog("micronaut-logging")
     importMicronautCatalog("micronaut-serde")
     importMicronautCatalog("micronaut-reactor")
     importMicronautCatalog("micronaut-validation")

@@ -2,9 +2,10 @@ package io.micronaut.mqtt.docs.serdes
 
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.context.ApplicationContext
+import io.micronaut.mqtt.test.MQTT5Test
 import spock.util.concurrent.PollingConditions
 
-class ProductInfoSerDesSpec extends AbstractMQTTTest {
+class ProductInfoSerDesSpec extends AbstractMQTTTest implements MQTT5Test {
 
     void "test using a custom serdes"() {
         ApplicationContext applicationContext = startContext()

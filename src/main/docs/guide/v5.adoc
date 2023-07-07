@@ -1,1 +1,1 @@
-This section outlines details specific to the V5 implementation.
+This section outlines details specific to the v5 Eclipse Paho implementation.

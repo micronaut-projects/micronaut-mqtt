@@ -16,6 +16,7 @@
 package io.micronaut.mqtt.test.bind.retained
 
 import io.micronaut.context.annotation.Requires
+import io.micronaut.core.annotation.Nullable
 import io.micronaut.core.util.StringUtils
 import io.micronaut.messaging.annotation.MessageBody
 import io.micronaut.mqtt.annotation.MqttSubscriber
@@ -95,7 +96,7 @@ abstract class RetainedBindingSpec extends AbstractMQTTTest {
         def client = ctx.getBean(getClient())
         //publish a message before there is a subscriber
         client.argument(true, "argumentTrue")
-        ctx.close()
+        //ctx.close()
 
         when:
         def ctx2 = startContext("retainedbindingspec": true)
@@ -108,6 +109,7 @@ abstract class RetainedBindingSpec extends AbstractMQTTTest {
         }
 
         cleanup:
+        client.argument(true, "") // clean up retained message for subsequent tests
         ctx.close()
         ctx2.close()
     }
@@ -121,7 +123,7 @@ abstract class RetainedBindingSpec extends AbstractMQTTTest {
         String payload = null
 
         @Topic("test/retained")
-        void get(@MessageBody String payload) {
+        void get(@Nullable @MessageBody String payload) {
             this.payload = payload
         }
     }

@@ -28,7 +28,6 @@ micronaut {
     importMicronautPlatform = false
     testResources {
         enabled = true
-        version = libs.versions.micronaut.testresources.get()
     }
 }
 

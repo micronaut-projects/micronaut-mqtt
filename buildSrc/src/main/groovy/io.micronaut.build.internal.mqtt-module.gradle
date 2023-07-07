@@ -2,3 +2,16 @@ plugins {
     id "io.micronaut.build.internal.mqtt-base"
     id "io.micronaut.build.internal.module"
 }
+
+dependencies {
+    annotationProcessor(mnValidation.micronaut.validation.processor)
+    implementation(mnValidation.micronaut.validation)
+
+    api projects.micronautMqttCore
+
+    compileOnly(mn.micronaut.management)
+
+    testImplementation(mn.micronaut.management)
+    testImplementation(mn.reactor)
+    testImplementation(projects.testSuiteUtils)
+}

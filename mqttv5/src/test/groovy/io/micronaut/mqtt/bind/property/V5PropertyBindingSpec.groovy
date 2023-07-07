@@ -8,9 +8,10 @@ import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.v5.MqttProperty
+import io.micronaut.mqtt.test.MQTT5Test
 import spock.util.concurrent.PollingConditions
 
-class V5PropertyBindingSpec extends AbstractMQTTTest {
+class V5PropertyBindingSpec extends AbstractMQTTTest implements MQTT5Test {
 
     void "test property binding"() {
         ApplicationContext ctx = startContext()

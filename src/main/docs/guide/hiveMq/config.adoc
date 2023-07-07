@@ -1,0 +1,5 @@
+Both v3 and v5 clients are configured via the same object with `mqtt.client.mqtt-version` set to either `3` or `5`. (default is `5`)
+
+include::{includedir}configurationProperties/io.micronaut.mqtt.hivemq.config.MqttClientConfigurationProperties.adoc[]
+
+TIP: It is also possible to disable the integration entirely with `mqtt.enabled: false`

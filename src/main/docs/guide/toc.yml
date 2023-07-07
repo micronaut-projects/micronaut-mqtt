@@ -8,6 +8,8 @@ quickStart:
   mqttHealthChecks: MQTT Health Checks
 hiveMq:
   title: MQTT HiveMQ
+  dependency: MQTT Dependency with HiveMQ
+  config: Configuration
 v3:
   title: MQTT V3 Eclipse Paho
   v3dependency: MQTT v3 Dependency with Eclipse Paho

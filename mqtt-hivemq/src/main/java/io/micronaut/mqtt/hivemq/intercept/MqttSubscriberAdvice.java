@@ -23,8 +23,6 @@ import io.micronaut.mqtt.hivemq.bind.MqttMessage;
 import io.micronaut.mqtt.hivemq.client.MqttClientAdapter;
 import io.micronaut.mqtt.intercept.AbstractMqttSubscriberAdvice;
 import jakarta.inject.Singleton;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Set;
 import java.util.function.Consumer;

@@ -16,6 +16,7 @@
 package io.micronaut.mqtt.hivemq.bind;
 
 import com.hivemq.client.internal.mqtt.message.publish.MqttPublish;
+import io.micronaut.core.util.ArrayUtils;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class MqttMessage {
     private String responseTopic = null;
 
     public MqttMessage() {
-        setPayload(new byte[]{});
+        setPayload(ArrayUtils.EMPTY_BYTE_ARRAY);
     }
 
     public MqttMessage(final byte[] payload) {

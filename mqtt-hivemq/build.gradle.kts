@@ -8,9 +8,3 @@ dependencies {
     implementation(libs.bcpkix.jdk15on)
     api(libs.managed.hivemq.client)
 }
-
-micronautBuild {
-    binaryCompatibility {
-        enabled.set(false)
-    }
-}

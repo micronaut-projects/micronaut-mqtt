@@ -2,6 +2,7 @@ plugins {
     id 'java-library'
     id 'groovy'
     id("io.micronaut.build.internal.mqtt-tests")
+    id("io.micronaut.build.internal.common")
 }
 
 dependencies {
@@ -11,4 +12,14 @@ dependencies {
     api projects.micronautMqttCore
     api(libs.testcontainers.spock)
     api(mnReactor.micronaut.reactor)
+}
+
+spotless {
+    groovy {
+        targetExclude("**/test/**")
+    }
+}
+
+tasks.withType(Checkstyle) {
+    enabled = false
 }

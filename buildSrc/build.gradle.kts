@@ -8,6 +8,8 @@ repositories {
 
 dependencies {
     implementation("org.graalvm.buildtools.native:org.graalvm.buildtools.native.gradle.plugin:0.9.25")
-    implementation("io.micronaut.gradle:micronaut-gradle-plugin:4.0.3")
-    implementation("io.micronaut.gradle:micronaut-test-resources-plugin:4.0.0-M8")
+    implementation (libs.gradle.kotlin)
+    implementation (libs.gradle.kotlin.allopen)
+    implementation (libs.gradle.kotlin.noarg)
+    implementation (libs.micronaut.gradle.plugin)
 }

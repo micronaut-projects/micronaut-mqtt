@@ -1,7 +1,7 @@
 [versions]
 micronaut-docs = "2.0.0"
 micronaut = "4.1.10"
-
+micronaut-gradle-plugin = "4.1.2"
 groovy = "4.0.15"
 spock = "2.3-groovy-4.0"
 
@@ -18,19 +18,18 @@ micronaut-reactor = "3.1.0"
 micronaut-serde = "2.2.6"
 micronaut-test = "4.0.0"
 micronaut-validation = "4.0.3"
-micronaut-logging = "1.0.0"
+micronaut-logging = "1.1.2"
 
 [libraries]
 # Core
 micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
-
 micronaut-reactor = { module = "io.micronaut.reactor:micronaut-reactor-bom", version.ref = "micronaut-reactor" }
+micronaut-serde = { module = "io.micronaut.serde:micronaut-serde-bom", version.ref = "micronaut-serde" }
+micronaut-validation = { module = "io.micronaut.validation:micronaut-validation-bom", version.ref = "micronaut-validation" }
+
 managed-paho-mqttv3-client = { module = "org.eclipse.paho:org.eclipse.paho.client.mqttv3", version.ref = "managed-mqttv3" }
 managed-paho-mqttv5-client = { module = "org.eclipse.paho:org.eclipse.paho.mqttv5.client", version.ref = "managed-mqttv5" }
 managed-hivemq-client = { module = "com.hivemq:hivemq-mqtt-client", version.ref = "managed-hivemq-client" }
-
-micronaut-serde = { module = "io.micronaut.serde:micronaut-serde-bom", version.ref = "micronaut-serde" }
-micronaut-validation = { module = "io.micronaut.validation:micronaut-validation-bom", version.ref = "micronaut-validation" }
 
 awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
 bcpkix-jdk15on = { module = "org.bouncycastle:bcpkix-jdk15on", version.ref = "bcpkix-jdk15on" }
@@ -39,6 +38,9 @@ junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 testcontainers-spock = { module = "org.testcontainers:spock", version.ref = "testcontainers" }
 
-[plugins]
-kotlin-jvm = { id = 'org.jetbrains.kotlin.jvm', version.ref = 'kotlin' }
-kotlin-kapt = { id = 'org.jetbrains.kotlin.kapt', version.ref = 'kotlin' }
+gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradle-kotlin-allopen = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin" }
+gradle-kotlin-noarg = { module = "org.jetbrains.kotlin:kotlin-noarg", version.ref = "kotlin" }
+
+micronaut-gradle-plugin = { module = "io.micronaut.gradle:micronaut-gradle-plugin", version.ref="micronaut-gradle-plugin" }
+

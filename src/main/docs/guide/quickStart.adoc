@@ -1,3 +1,6 @@
 To add support for MQTT to an existing project, you must first add either the <<hiveMq, Micronaut MQTT HiveMQ dependency>> or the Micronaut MQTT Eclipse Paho <<v3dependency, v3>> or <<v5dependency, v5>> (depending on the version of MQTT  you require) to your build.
 
 IMPORTANT: If you are running into the exception `org.eclipse.paho.client.mqttv3.MqttException: Timed out waiting for a response from the server`, please make sure to run your program on a machine with *more than one core*. The Eclipse Paho MQTT client will run into connection timeouts if it has only one core available.
+
+
+TIP: See the guide for https://guides.micronaut.io/latest/tag-mqtt.html[Publishing and Subscribing to MQTT Topics from a Micronaut Application] to learn more.

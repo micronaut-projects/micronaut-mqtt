@@ -1,0 +1,29 @@
+plugins {
+    id("io.micronaut.library")
+    id("io.micronaut.test-resources")
+}
+
+version = "0.1"
+group = "example.micronaut"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(projects.micronautMqttv5)
+    implementation(mn.micronaut.jackson.databind)
+    runtimeOnly(mn.snakeyaml)
+    runtimeOnly(mnLogging.logback.classic)
+
+    testImplementation(libs.awaitility)
+}
+
+micronaut {
+    version.set(libs.versions.micronaut.platform)
+    testRuntime("junit5")
+    processing {
+        incremental(true)
+        annotations("example.micronaut.*")
+    }
+}

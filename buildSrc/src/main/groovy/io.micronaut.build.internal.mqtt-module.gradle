@@ -14,4 +14,5 @@ dependencies {
     testImplementation(mn.micronaut.management)
     testImplementation(mn.reactor)
     testImplementation(projects.testSuiteUtils)
+    testImplementation(mnSerde.micronaut.serde.jackson)
 }

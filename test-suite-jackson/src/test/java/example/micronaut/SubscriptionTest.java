@@ -1,9 +1,8 @@
 package example.micronaut;
 
+import io.micronaut.context.ApplicationContext;
 import io.micronaut.mqtt.annotation.Topic;
 import io.micronaut.mqtt.annotation.v5.MqttPublisher;
-import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
-import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -11,22 +10,20 @@ import java.util.concurrent.TimeUnit;
 import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@MicronautTest
-class SubscriptionTest {
-
-    @Inject
-    SmellClient client;
-
-    @Inject
-    SmellListener listener;
+class SubscriptionTest extends AbstractMQTTTest {
 
     @Test
     void checkSubscriptionsAreReceived() {
-        client.publishLivingroomSmell(new Odour("cheesy"));
+        try(ApplicationContext applicationContext = startContext()) {
+            SmellClient client = applicationContext.getBean(SmellClient.class);
+            SmellListener listener = applicationContext.getBean(SmellListener.class);
 
-        await()
-            .atMost(5, TimeUnit.SECONDS)
-            .untilAsserted(() -> assertEquals("cheesy", listener.getSmell()));
+            client.publishLivingroomSmell(new Odour("cheesy"));
+
+            await()
+                .atMost(5, TimeUnit.SECONDS)
+                .untilAsserted(() -> assertEquals("cheesy", listener.getSmell()));
+        }
     }
 
     @MqttPublisher

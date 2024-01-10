@@ -1,0 +1,33 @@
+plugins {
+    id 'java-library'
+    id 'groovy'
+    id("io.micronaut.build.internal.mqtt-tests")
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor(mn.micronaut.inject.java)
+
+    implementation(projects.micronautMqttv5)
+    implementation(mn.micronaut.inject)
+    implementation(mn.micronaut.jackson.databind)
+
+    runtimeOnly(mnLogging.logback.classic)
+
+    testAnnotationProcessor(mn.micronaut.inject.java)
+
+    testImplementation(projects.testSuiteUtils)
+
+    testImplementation(libs.awaitility)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(mnTest.micronaut.test.junit5)
+
+    testRuntimeOnly(libs.junit.jupiter.engine)
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

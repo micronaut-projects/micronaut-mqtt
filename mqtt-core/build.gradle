@@ -7,8 +7,9 @@ dependencies {
     api(mn.micronaut.inject)
     api(mn.micronaut.aop)
     api(mn.micronaut.messaging)
+    api(mnSerde.micronaut.serde.api)
+    api(mn.jackson.annotations)
     implementation(mn.micronaut.retry)
-    implementation(mnSerde.micronaut.serde.jackson)
     implementation(mn.reactor)
     compileOnly(libs.kotlin.stdlib.jdk8)
 }

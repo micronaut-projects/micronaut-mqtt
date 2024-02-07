@@ -6,6 +6,6 @@ dependencies {
     implementation(mn.micronaut.http)
     api projects.micronautMqttCore
     implementation(libs.bcpkix.jdk15on)
-    testImplementation(libs.testcontainers.spock)
+    testImplementation(mnTestResources.testcontainers.core)
     testImplementation projects.micronautMqttv5
 }

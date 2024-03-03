@@ -46,7 +46,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
- * A factory to create an MQTT v3 client.
+ * A factory to create an MQTT v5 client.
  *
  * @author Sven Kobow
  * @since 3.0.0

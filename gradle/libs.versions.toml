@@ -1,7 +1,7 @@
 [versions]
 micronaut-docs = "2.0.0"
 micronaut = "4.3.9"
-micronaut-gradle-plugin = "4.3.3"
+micronaut-gradle-plugin = "4.3.4"
 groovy = "4.0.15"
 spock = "2.3-groovy-4.0"
 

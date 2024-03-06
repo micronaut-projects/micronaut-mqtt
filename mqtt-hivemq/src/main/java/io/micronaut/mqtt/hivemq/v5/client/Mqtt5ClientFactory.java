@@ -46,7 +46,7 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 /**
- * A factory to create an MQTT v3 client.
+ * A factory to create an MQTT v5 client.
  *
  * @author Sven Kobow
  * @since 3.0.0
@@ -146,27 +146,31 @@ public final class Mqtt5ClientFactory implements MqttClientFactory {
             .serverPort(configuration.getServerPort())
             .mqttConnectTimeout(configuration.getConnectionTimeout().toMillis(), TimeUnit.MILLISECONDS);
 
-        if (configuration.isSSL() && configuration.getCertificateConfiguration() != null) {
-            final MqttCertificateConfiguration certConfiguration = configuration.getCertificateConfiguration();
-            final MqttClientSslConfigBuilder sslConfigBuilder = MqttClientSslConfig.builder();
-            if (configuration.isHttpsHostnameVerificationEnabled()) {
-                sslConfigBuilder.hostnameVerifier(configuration.getSSLHostnameVerifier());
+        if (configuration.isSSL()) {
+            if (configuration.getCertificateConfiguration() != null) {
+                final MqttCertificateConfiguration certConfiguration = configuration.getCertificateConfiguration();
+                final MqttClientSslConfigBuilder sslConfigBuilder = MqttClientSslConfig.builder();
+                if (configuration.isHttpsHostnameVerificationEnabled()) {
+                    sslConfigBuilder.hostnameVerifier(configuration.getSSLHostnameVerifier());
+                }
+
+                try {
+                    sslConfigBuilder
+                        .keyManagerFactory(getKeyManagerFactory(certConfiguration))
+                        .trustManagerFactory(getTrustManagerFactory(certConfiguration));
+
+                } catch (KeyManagerFactoryCreationException | TrustManagerFactoryCreationException e) {
+                    throw new BeanInstantiationException("Error creating SSL configuration", e);
+                }
+
+                if (configuration.isHttpsHostnameVerificationEnabled()) {
+                    sslConfigBuilder.hostnameVerifier(configuration.getSSLHostnameVerifier());
+                }
+
+                transportConfigBuilder.sslConfig(sslConfigBuilder.build());
+            } else {
+                transportConfigBuilder.sslWithDefaultConfig();
             }
-
-            try {
-                sslConfigBuilder
-                    .keyManagerFactory(getKeyManagerFactory(certConfiguration))
-                    .trustManagerFactory(getTrustManagerFactory(certConfiguration));
-
-            } catch (KeyManagerFactoryCreationException | TrustManagerFactoryCreationException e) {
-                throw new BeanInstantiationException("Error creating SSL configuration", e);
-            }
-
-            if (configuration.isHttpsHostnameVerificationEnabled()) {
-                sslConfigBuilder.hostnameVerifier(configuration.getSSLHostnameVerifier());
-            }
-
-            transportConfigBuilder.sslConfig(sslConfigBuilder.build());
         }
 
         return transportConfigBuilder.build();

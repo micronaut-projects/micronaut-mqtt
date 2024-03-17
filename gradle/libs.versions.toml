@@ -9,7 +9,7 @@ managed-mqttv3 = "1.2.5"
 managed-mqttv5 = "1.2.5"
 managed-hivemq-client = "1.3.3"
 
-awaitility = "4.2.0"
+awaitility = "4.2.1"
 bcpkix-jdk15on = "1.70"
 kotlin = "1.9.22"
 

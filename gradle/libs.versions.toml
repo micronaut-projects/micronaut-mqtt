@@ -1,7 +1,7 @@
 [versions]
 micronaut-docs = "2.0.0"
-micronaut = "4.3.9"
-micronaut-gradle-plugin = "4.3.4"
+micronaut = "4.4.0"
+micronaut-gradle-plugin = "4.3.5"
 groovy = "4.0.15"
 spock = "2.3-groovy-4.0"
 
@@ -9,16 +9,16 @@ managed-mqttv3 = "1.2.5"
 managed-mqttv5 = "1.2.5"
 managed-hivemq-client = "1.3.3"
 
-awaitility = "4.2.0"
+awaitility = "4.2.1"
 bcpkix-jdk15on = "1.70"
-kotlin = "1.9.22"
+kotlin = "1.9.23"
 
 micronaut-logging = "1.1.2"
 micronaut-reactor = "3.2.1"
-micronaut-serde = "2.8.1"
+micronaut-serde = "2.8.2"
 micronaut-test = "4.0.0"
-micronaut-test-resources="2.3.3"
-micronaut-validation = "4.4.3"
+micronaut-test-resources="2.4.0"
+micronaut-validation = "4.4.4"
 
 [libraries]
 # Core

@@ -1,0 +1,15 @@
+mqtt:
+  client:
+    server-uri: ssl://${mqtt.host}:${mqtt.port}
+    client-id: ${random.uuid}
+test-resources:
+  containers:
+    mosquitto:
+      image-name: eclipse-mosquitto:1.6.12
+      hostnames:
+        - mqtt.host
+      exposed-ports:
+        - mqtt.port: 8883
+      ro-fs-bind:
+        - "mosquitto/mosquitto.conf": /mosquitto/config/mosquitto.conf
+        - "mosquitto/certs/": /mosquitto/config/certs/

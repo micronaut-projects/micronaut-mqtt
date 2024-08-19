@@ -11,7 +11,7 @@ managed-hivemq-client = "1.3.3"
 
 awaitility = "4.2.2"
 bcpkix-jdk15on = "1.70"
-kotlin = "1.9.24"
+kotlin = "1.9.25"
 
 micronaut-logging = "1.1.2"
 micronaut-reactor = "3.3.0"

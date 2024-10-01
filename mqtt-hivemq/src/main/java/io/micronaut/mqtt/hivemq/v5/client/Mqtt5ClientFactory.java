@@ -113,7 +113,8 @@ public final class Mqtt5ClientFactory implements MqttClientFactory {
                 .topic(willMessage.getTopic())
                 .payload(willMessage.getPayload())
                 .qos(Objects.requireNonNull(MqttQos.fromCode(willMessage.getQos())))
-                .retain(willMessage.isRetained());
+                .retain(willMessage.isRetained())
+                .applyWillPublish();
         }
 
         final var client = clientBuilder.buildAsync();

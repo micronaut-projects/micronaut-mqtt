@@ -7,9 +7,10 @@ repositories {
 }
 
 dependencies {
-    implementation("org.graalvm.buildtools.native:org.graalvm.buildtools.native.gradle.plugin:0.10.3")
+    implementation("org.graalvm.buildtools.native:org.graalvm.buildtools.native.gradle.plugin:0.10.4")
     implementation (libs.gradle.kotlin)
     implementation (libs.gradle.kotlin.allopen)
     implementation (libs.gradle.kotlin.noarg)
     implementation (libs.micronaut.gradle.plugin)
+    implementation(libs.sonatype.scan)
 }

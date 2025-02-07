@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.graalvm.buildtools.native:org.graalvm.buildtools.native.gradle.plugin:0.10.4")
+    implementation("org.graalvm.buildtools.native:org.graalvm.buildtools.native.gradle.plugin:0.10.5")
     implementation (libs.gradle.kotlin)
     implementation (libs.gradle.kotlin.allopen)
     implementation (libs.gradle.kotlin.noarg)

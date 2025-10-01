@@ -11,7 +11,8 @@ if (sonatypePluginConfigured) {
         username = ossIndexUsername
         password = ossIndexPassword
         excludeCoordinates = [
-                "org.bouncycastle:bcprov-jdk15on:1.70" // no version patched https://ossindex.sonatype.org/component/pkg:maven/org.bouncycastle/bcprov-jdk15on
+                "org.bouncycastle:bcprov-jdk15on:1.70", // no version patched https://ossindex.sonatype.org/component/pkg:maven/org.bouncycastle/bcprov-jdk15on
+                "org.bouncycastle:bcpkix-jdk15on:1.70" // no version patched https://ossindex.sonatype.org/component/pkg:maven/org.bouncycastle/bcpkix-jdk15on
         ]
     }
 }

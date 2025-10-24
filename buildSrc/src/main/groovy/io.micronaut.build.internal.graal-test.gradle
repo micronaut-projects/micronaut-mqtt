@@ -2,6 +2,7 @@ plugins {
     id("org.graalvm.buildtools.native")
     id("io.micronaut.library")
     id("io.micronaut.test-resources")
+    id "java-library"
 }
 
 repositories {
@@ -22,6 +23,7 @@ dependencies {
     testImplementation(libs.awaitility)
     testImplementation(mnSerde.micronaut.serde.jackson)
     testRuntimeOnly(mnLogging.logback.classic)
+    testRuntimeOnly(mnTest.junit.platform.suite)
 }
 
 micronaut {

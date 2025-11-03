@@ -1,8 +1,3 @@
 plugins {
     id "io.micronaut.build.internal.mqtt-base"
 }
-
-dependencies {
-    testRuntimeOnly mnTest.junit.jupiter.engine
-    testRuntimeOnly mnTest.junit.platform.launcher
-}

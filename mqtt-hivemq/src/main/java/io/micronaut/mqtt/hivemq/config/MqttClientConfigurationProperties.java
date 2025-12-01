@@ -22,7 +22,7 @@ import com.hivemq.client.mqtt.mqtt3.message.connect.Mqtt3Connect;
 import com.hivemq.client.mqtt.mqtt5.message.connect.Mqtt5Connect;
 import com.hivemq.client.mqtt.mqtt5.message.connect.Mqtt5ConnectRestrictions;
 import io.micronaut.context.annotation.ConfigurationProperties;
-import io.micronaut.core.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 import io.micronaut.mqtt.hivemq.v3.config.Mqtt3ClientConfiguration;
 import io.micronaut.mqtt.hivemq.v5.config.Mqtt5ClientConfiguration;
 import io.micronaut.mqtt.ssl.MqttCertificateConfiguration;

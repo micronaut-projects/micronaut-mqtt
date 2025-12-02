@@ -15,7 +15,7 @@
  */
 package example.micronaut;
 
-import io.micronaut.core.annotation.NonNull;
+import org.jspecify.annotations.NonNull;
 import io.micronaut.mqtt.annotation.MqttSubscriber;
 import io.micronaut.mqtt.annotation.Topic;
 import org.slf4j.Logger;

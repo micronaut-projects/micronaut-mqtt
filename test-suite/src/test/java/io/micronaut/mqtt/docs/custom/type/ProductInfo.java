@@ -1,8 +1,8 @@
 package io.micronaut.mqtt.docs.custom.type;
 
 // tag::clazz[]
-import io.micronaut.core.annotation.NonNull;
-import io.micronaut.core.annotation.Nullable;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 public class ProductInfo {
 

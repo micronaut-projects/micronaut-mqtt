@@ -11,7 +11,6 @@ bcpkix-jdk15on = "1.70"
 
 micronaut-reactor = "4.0.0-M1"
 micronaut-serde = "3.0.0-M1"
-managed-testcontainers = "2.0.2"
 
 micronaut-validation = "5.0.0-M1"
 

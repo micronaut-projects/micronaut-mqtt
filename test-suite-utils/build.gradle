@@ -10,7 +10,8 @@ dependencies {
 
     api(mnTest.micronaut.test.spock)
     api projects.micronautMqttCore
-    testImplementation(platform(libs.boms.testcontainers))
+    api(platform(mnTest.boms.testcontainers))
+    api(libs.testcontainers)
     api(mnReactor.micronaut.reactor)
 }
 

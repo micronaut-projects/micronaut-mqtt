@@ -1,5 +1,6 @@
 [versions]
 micronaut = "5.0.0-M3"
+micronaut-test = "5.0.0-M2"
 micronaut-gradle-plugin = "4.6.1"
 
 managed-mqttv3 = "1.2.5"
@@ -28,6 +29,6 @@ managed-hivemq-client = { module = "com.hivemq:hivemq-mqtt-client", version.ref 
 awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
 bcpkix-jdk15on = { module = "org.bouncycastle:bcpkix-jdk15on", version.ref = "bcpkix-jdk15on" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
-
+testcontainers = { module = "org.testcontainers:testcontainers" }
 
 micronaut-gradle-plugin = { module = "io.micronaut.gradle:micronaut-gradle-plugin", version.ref="micronaut-gradle-plugin" }

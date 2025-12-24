@@ -1,7 +1,6 @@
 plugins {
     id("org.graalvm.buildtools.native")
     id("io.micronaut.library")
-    id("io.micronaut.test-resources")
 }
 
 repositories {
@@ -28,9 +27,6 @@ dependencies {
 
 micronaut {
     importMicronautPlatform = false
-    testResources {
-        enabled = true
-    }
 }
 
 test {

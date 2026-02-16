@@ -4,4 +4,6 @@ plugins {
 
 dependencies {
     api(libs.managed.paho.mqttv3.client)
+    testImplementation(platform(mnTest.boms.testcontainers))
+    testImplementation(libs.testcontainers)
 }

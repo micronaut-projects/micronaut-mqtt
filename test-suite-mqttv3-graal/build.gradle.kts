@@ -4,4 +4,5 @@ plugins {
 
 dependencies {
     testImplementation(projects.micronautMqttv3)
+    testImplementation(projects.testSuiteUtils)
 }

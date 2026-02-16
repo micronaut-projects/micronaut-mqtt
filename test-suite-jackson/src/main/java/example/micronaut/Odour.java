@@ -15,12 +15,16 @@
  */
 package example.micronaut;
 
-import io.micronaut.core.annotation.Introspected;
+import io.micronaut.serde.annotation.Serdeable;
 
-@Introspected
+//need to @Serdeable or i get -> cannot deserialize from Object value (no delegate- or property-based Creator
+@Serdeable
 public class Odour {
 
-    private final String name;
+    private String name;
+
+    public Odour() {
+    }
 
     public Odour(String name) {
         this.name = name;
@@ -28,5 +32,9 @@ public class Odour {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

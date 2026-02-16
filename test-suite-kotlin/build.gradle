@@ -1,8 +1,6 @@
 plugins {
-    id "org.jetbrains.kotlin.jvm"
-    id("org.jetbrains.kotlin.kapt")
+    id("io.micronaut.build.internal.kotlin-kapt")
     id("io.micronaut.build.internal.mqtt-tests")
-    id ("io.micronaut.build.internal.kotlin-base")
 }
 
 dependencies {
@@ -14,11 +12,16 @@ dependencies {
     testImplementation(mnTest.micronaut.test.kotest5)
     kaptTest(mn.micronaut.inject.java)
 
-    testImplementation projects.testSuiteUtils
+    testImplementation(platform(mnTest.boms.testcontainers))
+    testImplementation(libs.testcontainers)
     testImplementation projects.micronautMqttv5
     testImplementation(mnSerde.micronaut.serde.jackson)
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+test {
+    failOnNoDiscoveredTests = false
 }

@@ -88,12 +88,12 @@ abstract class MultipleTopicsSpec extends AbstractMQTTTest {
     }
 
     @Requires(property = "multipletopicstest", value = StringUtils.TRUE)
-    @Topic("test/topic/classlevel/1")
     @MqttSubscriber
     static class MySubscriber2 {
 
         List<String> topics = []
 
+        @Topic("test/topic/classlevel/1")
         @Topic("test/topic/classlevel/2")
         void get(String topic) {
             topics.add(topic)

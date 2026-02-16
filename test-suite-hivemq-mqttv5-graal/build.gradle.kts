@@ -4,4 +4,5 @@ plugins {
 
 dependencies {
     testImplementation(projects.micronautMqttHivemq)
+    testImplementation(projects.testSuiteUtils)
 }

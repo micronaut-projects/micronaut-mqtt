@@ -3,7 +3,7 @@ package io.micronaut.mqtt;
 import io.micronaut.context.ApplicationContext;
 import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.containers.wait.strategy.LogMessageWaitStrategy;
+import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 
 import java.util.HashMap;
@@ -14,7 +14,7 @@ public abstract class AbstractMQTTTest {
 
     protected static GenericContainer mqttContainer = new GenericContainer(DockerImageName.parse("eclipse-mosquitto:1.6.12"))
             .withExposedPorts(1883)
-            .waitingFor(new LogMessageWaitStrategy().withRegEx("(?s).*mosquitto version 1.6.12 running.*"))
+            .waitingFor(Wait.forListeningPort())
             .withClasspathResourceMapping("mosquitto.conf",
                     "/mosquitto/config/mosquitto.conf",
                     BindMode.READ_ONLY);
@@ -31,6 +31,7 @@ public abstract class AbstractMQTTTest {
         Map<String, Object> config = new HashMap<>();
         config.put("mqtt.client.server-uri", "tcp://localhost:" + mqttContainer.getMappedPort(1883));
         config.put("mqtt.client.client-id", UUID.randomUUID().toString());
+        config.put("micronaut.executors.default.name", "AbstractMQTTTest");
         config.put("spec.name", this.getClass().getSimpleName());
         return config;
     }

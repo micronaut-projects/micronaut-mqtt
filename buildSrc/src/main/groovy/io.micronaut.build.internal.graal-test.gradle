@@ -23,6 +23,7 @@ dependencies {
     testRuntimeOnly(mnLogging.logback.classic)
     testRuntimeOnly(mnTest.junit.platform.launcher)
     testRuntimeOnly(mnTest.junit.jupiter.engine)
+    testImplementation(projects.testSuiteUtils)
 }
 
 micronaut {

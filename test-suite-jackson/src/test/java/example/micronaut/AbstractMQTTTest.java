@@ -1,37 +1,41 @@
 package example.micronaut;
 
-import io.micronaut.context.ApplicationContext;
+import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
+import io.micronaut.test.support.TestPropertyProvider;
+import org.junit.jupiter.api.TestInstance;
 import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.containers.wait.strategy.LogMessageWaitStrategy;
+import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public abstract class AbstractMQTTTest {
+@MicronautTest
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public abstract class AbstractMQTTTest implements TestPropertyProvider {
 
-    protected static GenericContainer mqttContainer = new GenericContainer(DockerImageName.parse("eclipse-mosquitto:1.6.12"))
-            .withExposedPorts(1883)
-            .waitingFor(new LogMessageWaitStrategy().withRegEx("(?s).*mosquitto version 1.6.12 running.*"))
-            .withClasspathResourceMapping("mosquitto.conf",
-                    "/mosquitto/config/mosquitto.conf",
-                    BindMode.READ_ONLY);
+    protected static final GenericContainer<?> mqttContainer = new GenericContainer<>(DockerImageName.parse("eclipse-mosquitto:1.6.12"))
+        .withExposedPorts(1883)
+        .waitingFor(Wait.forListeningPort())
+        .withClasspathResourceMapping("mosquitto.conf",
+            "/mosquitto/config/mosquitto.conf", BindMode.READ_ONLY);
 
     static {
         mqttContainer.start();
     }
 
-    protected ApplicationContext startContext() {
-        return ApplicationContext.run(getConfiguration(), "test");
-    }
+    @Override
+    public Map<String, String> getProperties() {
+        String host = mqttContainer.getHost();
+        Integer port = mqttContainer.getMappedPort(1883);
 
-    protected Map<String, Object> getConfiguration() {
-        Map<String, Object> config = new HashMap<>();
-        config.put("mqtt.client.server-uri", "tcp://localhost:" + mqttContainer.getMappedPort(1883));
-        config.put("mqtt.client.client-id", UUID.randomUUID().toString());
-        config.put("spec.name", this.getClass().getSimpleName());
-        return config;
+        return Map.of(
+            "mqtt.client.server-uri", "tcp://" + host + ":" + port,
+            "mqtt.client.client-id", "test-client-" + UUID.randomUUID(),
+            "mqtt.client.ssl.enabled", "false",
+            "spec.name", this.getClass().getSimpleName(),
+            "micronaut.executors.default.name", "AbstractMQTTTest"
+        );
     }
 }

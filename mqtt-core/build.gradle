@@ -1,7 +1,7 @@
 plugins {
     id("io.micronaut.build.internal.mqtt-base")
     id "io.micronaut.build.internal.module"
-    id("io.micronaut.build.internal.kotlin-kapt")
+    id("io.micronaut.build.internal.kotlin-ksp")
 }
 
 dependencies {
@@ -13,3 +13,4 @@ dependencies {
     implementation(mn.micronaut.retry)
     implementation(mn.reactor)
 }
+

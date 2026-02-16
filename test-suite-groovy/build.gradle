@@ -9,6 +9,9 @@ dependencies {
     testCompileOnly(mnValidation.micronaut.validation)
     testImplementation projects.testSuiteUtils
     testImplementation projects.micronautMqttv5
+    testImplementation(platform(mnTest.boms.testcontainers))
+    testImplementation(libs.testcontainers)
+    testImplementation(mnSerde.micronaut.serde.jackson)
     testImplementation(mnSerde.micronaut.serde.jackson)
     testRuntimeOnly(mnTest.junit.platform.launcher)
     testRuntimeOnly(mnTest.junit.jupiter.engine)

@@ -5,6 +5,8 @@ plugins {
 dependencies {
     testImplementation(projects.micronautMqttHivemq)
     testImplementation(mn.snakeyaml)
+    testImplementation(platform(mnTest.boms.testcontainers))
+    testImplementation(libs.testcontainers)
 }
 
 tasks.test {

@@ -15,26 +15,19 @@
  */
 package example.micronaut;
 
-import io.micronaut.serde.annotation.Serdeable;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.micronaut.core.annotation.Introspected;
 
-//need to @Serdeable or i get -> cannot deserialize from Object value (no delegate- or property-based Creator
-@Serdeable
+@Introspected
 public class Odour {
 
-    private String name;
+    private final String name;
 
-    public Odour() {
-    }
-
-    public Odour(String name) {
+    public Odour(@JsonProperty("name") String name) {
         this.name = name;
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

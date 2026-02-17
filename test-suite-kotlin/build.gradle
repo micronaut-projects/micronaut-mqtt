@@ -21,7 +21,3 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
-
-test {
-    failOnNoDiscoveredTests = false
-}

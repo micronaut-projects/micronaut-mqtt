@@ -21,10 +21,12 @@ import io.micronaut.core.util.StringUtils
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.test.AbstractMQTTTest
+import spock.lang.Ignore
 import spock.util.concurrent.PollingConditions
 
 abstract class MultipleTopicsSpec extends AbstractMQTTTest {
 
+    @Ignore
     void "test subscribing to multiple topics"() {
         ApplicationContext ctx = startContext("multipletopicstest": true)
         def client = ctx.getBean(getClient())

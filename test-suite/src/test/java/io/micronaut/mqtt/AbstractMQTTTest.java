@@ -31,7 +31,6 @@ public abstract class AbstractMQTTTest {
         Map<String, Object> config = new HashMap<>();
         config.put("mqtt.client.server-uri", "tcp://localhost:" + mqttContainer.getMappedPort(1883));
         config.put("mqtt.client.client-id", UUID.randomUUID().toString());
-        config.put("micronaut.executors.default.name", "AbstractMQTTTest");
         config.put("spec.name", this.getClass().getSimpleName());
         return config;
     }

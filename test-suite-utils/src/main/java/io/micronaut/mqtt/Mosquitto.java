@@ -32,8 +32,7 @@ public class Mosquitto {
 
     public static Map<String, String> getProperties() {
         return Map.of(
-                "mqtt.client.server-uri", "tcp://" + INSTANCE.getHost() + ":" + INSTANCE.getMappedPort(1883),
-                "micronaut.executors.default.name", "Mosquitto"
+                "mqtt.client.server-uri", "tcp://" + INSTANCE.getHost() + ":" + INSTANCE.getMappedPort(1883)
         );
     }
 }

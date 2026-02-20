@@ -48,7 +48,6 @@ abstract class AbstractMQTTTest extends Specification {
                  "mqtt.client.ssl.certificate": "classpath:certs/client-cert.pem",
                  "mqtt.client.ssl.private-key": "classpath:certs/client-key.pem",
                  "mqtt.client.ssl.password": "test",
-                 "micronaut.executors.default.name": "AbstractMQTTTest",
                  "spec.name": getClass().simpleName] << additionalConfig, "test")
     }
 }

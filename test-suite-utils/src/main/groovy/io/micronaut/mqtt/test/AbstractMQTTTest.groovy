@@ -45,7 +45,6 @@ abstract class AbstractMQTTTest extends Specification {
                  "mqtt.client.client-id"               : UUID.randomUUID().toString(),
                  "mqtt.client.mqtt-version"            : getMqttVersion(),
                  "endpoints.health.mqtt.client.enabled": true,
-                 "micronaut.executors.default.name": "AbstractMQTTTest",
                  "spec.name"                           : getClass().simpleName] << additionalConfig, "test")
     }
 }

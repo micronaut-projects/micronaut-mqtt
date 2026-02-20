@@ -34,8 +34,7 @@ public abstract class AbstractMQTTTest implements TestPropertyProvider {
             "mqtt.client.server-uri", "tcp://" + host + ":" + port,
             "mqtt.client.client-id", "test-client-" + UUID.randomUUID(),
             "mqtt.client.ssl.enabled", "false",
-            "spec.name", this.getClass().getSimpleName(),
-            "micronaut.executors.default.name", "AbstractMQTTTest"
+            "spec.name", this.getClass().getSimpleName()
         );
     }
 }

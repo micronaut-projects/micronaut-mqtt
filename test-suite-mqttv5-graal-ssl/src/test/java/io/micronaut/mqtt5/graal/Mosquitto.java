@@ -34,8 +34,7 @@ public class Mosquitto {
 
         return Map.of(
             "mqtt.client.server-uri", serverUri,
-            "mqtt.client.client-id", "micronaut",
-            "micronaut.executors.default.name", "Mosquitto"
+            "mqtt.client.client-id", "micronaut"
         );
     }
 }

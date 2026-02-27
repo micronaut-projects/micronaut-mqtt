@@ -8,6 +8,7 @@ import io.micronaut.mqtt.hivemq.client.health.MqttHealthIndicator
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.mqtt.test.MQTT5Test
 import reactor.core.publisher.Flux
+import spock.lang.Specification
 
 /*
  * Copyright 2017-2023 original authors
@@ -25,7 +26,7 @@ import reactor.core.publisher.Flux
  * limitations under the License.
  */
 
-class V5HealthIndicatorSpec extends AbstractMQTTTest implements MQTT5Test {
+class V5HealthIndicatorSpec extends Specification implements AbstractMQTTTest, MQTT5Test {
 
     void "mqtt v5 client health indicator"() {
         ApplicationContext ctx = startContext()

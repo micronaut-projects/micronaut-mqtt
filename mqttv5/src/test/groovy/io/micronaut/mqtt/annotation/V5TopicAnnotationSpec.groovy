@@ -6,8 +6,9 @@ import io.micronaut.core.util.StringUtils
 import io.micronaut.messaging.annotation.MessageMapping
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.mqtt.test.MQTT5Test
+import spock.lang.Specification
 
-class V5TopicAnnotationSpec extends AbstractMQTTTest implements MQTT5Test {
+class V5TopicAnnotationSpec extends Specification implements AbstractMQTTTest, MQTT5Test {
 
     void "test that @Topic value aliases to @MessageMapping"() {
         given:

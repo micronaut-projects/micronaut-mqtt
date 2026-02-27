@@ -3,9 +3,10 @@ package io.micronaut.mqtt.docs.custom.annotation
 import io.micronaut.context.ApplicationContext
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.mqtt.test.MQTT5Test
+import spock.lang.Specification
 import spock.util.concurrent.PollingConditions
 
-class CorrelationSpec extends AbstractMQTTTest implements MQTT5Test {
+class CorrelationSpec extends Specification implements MQTT5Test, AbstractMQTTTest {
 
     void "test using a custom annotation binder"() {
         ApplicationContext applicationContext = startContext()

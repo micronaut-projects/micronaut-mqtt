@@ -1,7 +1,7 @@
 package io.micronaut.mqtt.docs.custom.annotation;
 
-import io.micronaut.mqtt.AbstractMQTTTest;
 import io.micronaut.context.ApplicationContext;
+import io.micronaut.mqtt.test.AbstractMQTTTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -10,7 +10,7 @@ import java.util.Set;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
 
-public class CorrelationSpec extends AbstractMQTTTest {
+public class CorrelationSpec implements AbstractMQTTTest {
 
     @Test
     void testUsingACustomAnnotationBinder() {

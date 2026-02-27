@@ -17,6 +17,7 @@ import io.micronaut.context.exceptions.BeanInstantiationException
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.mqtt.test.MQTT5Test
 import jakarta.inject.Singleton
+import spock.lang.Specification
 import org.jetbrains.annotations.NotNull
 
 import java.util.concurrent.CompletableFuture
@@ -37,7 +38,7 @@ import java.util.concurrent.CompletableFuture
  * limitations under the License.
  */
 
-class V5EnhancedAuthenticationSpec extends AbstractMQTTTest implements MQTT5Test {
+class V5EnhancedAuthenticationSpec extends Specification implements AbstractMQTTTest, MQTT5Test {
 
     /**
      * This test tests whether the optional Mqtt5EnhancedAuthenticationMechanism was passed and set correctly.

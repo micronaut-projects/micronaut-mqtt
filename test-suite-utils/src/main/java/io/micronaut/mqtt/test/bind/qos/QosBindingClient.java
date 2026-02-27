@@ -13,13 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.test.intercept
+package io.micronaut.mqtt.test.bind.qos;
 
-import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.Qos;
+import io.micronaut.mqtt.annotation.Topic;
 
-interface SimplePubSubClient {
+@Topic("test/qos")
+@Qos(0)
+public interface QosBindingClient {
 
-    @Topic("test/simple")
-    void publish(String body)
+    void argument(@Qos int qos);
 
+    @Qos(2)
+    void override();
+
+    void classLevel();
 }

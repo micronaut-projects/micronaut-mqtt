@@ -1,15 +1,13 @@
 plugins {
     id 'java-library'
-    id 'groovy'
     id("io.micronaut.build.internal.mqtt-tests")
     id("io.micronaut.build.internal.common")
 }
 
 dependencies {
-    compileOnly(mn.micronaut.inject.groovy)
-
-    api(mnTest.micronaut.test.spock)
-    api projects.micronautMqttCore
+    api(mnTest.micronaut.test.junit5)
+    api(projects.micronautMqttCore)
+    api(libs.awaitility)
     implementation(platform(mnTest.boms.testcontainers))
     implementation(libs.testcontainers)
     implementation(libs.testcontainers.hivemq)

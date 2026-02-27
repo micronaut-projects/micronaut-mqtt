@@ -13,19 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.test.bind.qos
+package io.micronaut.mqtt.test.bind.topic;
 
-import io.micronaut.mqtt.annotation.Qos
-import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.Topic;
 
-@Topic("test/qos")
-@Qos(0)
-interface QosBindingClient {
+@Topic("test/topic/classlevel")
+public interface TopicBindingClient {
 
-    void argument(@Qos int qos)
+    void argument(@Topic String topic);
 
-    @Qos(2)
-    void override()
+    @Topic("test/topic/override")
+    void override();
 
-    void classLevel()
+    void classLevelTopic();
 }

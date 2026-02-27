@@ -3,9 +3,10 @@ package io.micronaut.mqtt.docs.parameters
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.context.ApplicationContext
 import io.micronaut.mqtt.test.MQTT5Test
+import spock.lang.Specification
 import spock.util.concurrent.PollingConditions
 
-class BindingSpec extends AbstractMQTTTest implements MQTT5Test {
+class BindingSpec extends Specification implements MQTT5Test, AbstractMQTTTest {
 
     void "test dynamic binding"() {
         ApplicationContext applicationContext = startContext()

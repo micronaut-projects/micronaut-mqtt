@@ -13,9 +13,7 @@ dependencies {
     testImplementation(mnTest.junit.jupiter.api)
     testRuntimeOnly(mnTest.junit.jupiter.engine)
     testRuntimeOnly(mnTest.junit.platform.launcher)
-    testImplementation(libs.awaitility)
     kaptTest(mn.micronaut.inject.java)
-
     testImplementation(platform(mnTest.boms.testcontainers))
     testImplementation(libs.testcontainers)
     testImplementation projects.testSuiteUtils

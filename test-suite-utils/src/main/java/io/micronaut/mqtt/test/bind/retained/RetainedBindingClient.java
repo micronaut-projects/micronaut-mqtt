@@ -1,7 +1,5 @@
-package io.micronaut.mqtt.test
-
 /*
- * Copyright 2017-2023 original authors
+ * Copyright 2017-2022 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +13,20 @@ package io.micronaut.mqtt.test
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package io.micronaut.mqtt.test.bind.retained;
 
-trait MQTT3Test {
-    public int getMqttVersion() {
-        return 3
-    }
+import io.micronaut.messaging.annotation.MessageBody;
+import io.micronaut.mqtt.annotation.Retained;
+import io.micronaut.mqtt.annotation.Topic;
+
+@Topic("test/retained")
+@Retained(false)
+public interface RetainedBindingClient {
+
+    void argument(@Retained Boolean retained, @MessageBody String payload);
+
+    @Retained(true)
+    void override(String payload);
+
+    void classLevel(String payload);
 }

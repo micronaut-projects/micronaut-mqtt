@@ -13,16 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.test.intercept
+package io.micronaut.mqtt.test.intercept;
 
-import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.Topic;
 
-@Topic("test/topic2")
-interface MultipleTopicsClient {
+public interface SimplePubSubClient {
 
-    void send(@Topic String topic)
-
-    @Topic("test/topic1")
-    void override()
-
+    @Topic("test/simple")
+    void publish(String body);
 }

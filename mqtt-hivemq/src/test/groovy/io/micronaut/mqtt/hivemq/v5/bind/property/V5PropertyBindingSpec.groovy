@@ -9,6 +9,7 @@ import io.micronaut.mqtt.annotation.v5.MqttProperty
 import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.mqtt.test.MQTT5Test
+import spock.lang.Specification
 import spock.util.concurrent.PollingConditions
 
 /*
@@ -27,7 +28,7 @@ import spock.util.concurrent.PollingConditions
  * limitations under the License.
  */
 
-class V5PropertyBindingSpec extends AbstractMQTTTest implements MQTT5Test {
+class V5PropertyBindingSpec extends Specification implements AbstractMQTTTest, MQTT5Test {
 
     void "test property binding"() {
         ApplicationContext ctx = startContext()

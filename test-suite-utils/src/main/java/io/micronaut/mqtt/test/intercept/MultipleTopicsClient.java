@@ -13,20 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.test.bind.retained
+package io.micronaut.mqtt.test.intercept;
 
-import io.micronaut.messaging.annotation.MessageBody
-import io.micronaut.mqtt.annotation.Retained
-import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.Topic;
 
-@Topic("test/retained")
-@Retained(false)
-interface RetainedBindingClient {
+@Topic("test/topic2")
+public interface MultipleTopicsClient {
 
-    void argument(@Retained Boolean retained, @MessageBody String payload)
+    void send(@Topic String topic);
 
-    @Retained(true)
-    void override(String payload)
-
-    void classLevel(String payload)
+    @Topic("test/topic1")
+    void override();
 }

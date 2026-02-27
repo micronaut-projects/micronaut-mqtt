@@ -8,6 +8,7 @@ import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.mqtt.test.MQTT3Test
+import spock.lang.Specification
 
 /*
  * Copyright 2017-2023 original authors
@@ -25,7 +26,7 @@ import io.micronaut.mqtt.test.MQTT3Test
  * limitations under the License.
  */
 
-class V3TopicAnnotationSpec extends AbstractMQTTTest implements MQTT3Test {
+class V3TopicAnnotationSpec extends Specification implements AbstractMQTTTest, MQTT3Test {
 
     void "test that @Topic value aliases to @MessageMapping"() {
         given:

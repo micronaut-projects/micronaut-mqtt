@@ -8,8 +8,9 @@ import io.micronaut.mqtt.test.MQTT3Test
 import io.micronaut.mqtt.v3.client.health.MqttHealthIndicator
 import org.eclipse.paho.client.mqttv3.MqttAsyncClient
 import reactor.core.publisher.Flux
+import spock.lang.Specification
 
-class V3HealthIndicatorSpec extends AbstractMQTTTest implements MQTT3Test {
+class V3HealthIndicatorSpec extends Specification implements AbstractMQTTTest, MQTT3Test {
 
     void "mqtt v3 client health indicator"() {
         ApplicationContext ctx = startContext()

@@ -1,5 +1,7 @@
+package io.micronaut.mqtt.test;
+
 /*
- * Copyright 2017-2022 original authors
+ * Copyright 2017-2023 original authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,17 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.test.bind.topic
 
-import io.micronaut.mqtt.annotation.Topic
-
-@Topic("test/topic/classlevel")
-interface TopicBindingClient {
-
-    void argument(@Topic String topic)
-
-    @Topic("test/topic/override")
-    void override()
-
-    void classLevelTopic()
+public interface MQTT5Test {
+    default int getMqttVersion() {
+        return 5;
+    }
 }

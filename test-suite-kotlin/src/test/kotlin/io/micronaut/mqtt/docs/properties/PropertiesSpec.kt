@@ -1,42 +1,34 @@
 package io.micronaut.mqtt.docs.properties
 
-import io.kotest.assertions.timing.eventually
-import io.kotest.matchers.collections.shouldContain
-import io.kotest.matchers.shouldBe
-import io.micronaut.mqtt.AbstractMqttKotest
-import org.opentest4j.AssertionFailedError
-import kotlin.time.DurationUnit
-import kotlin.time.ExperimentalTime
-import kotlin.time.toDuration
+import io.micronaut.mqtt.AbstractMQTTTest
+import org.awaitility.Awaitility.await
+import org.junit.jupiter.api.Test
+import java.util.concurrent.TimeUnit
 
-@ExperimentalTime
-class PropertiesSpec : AbstractMqttKotest({
+class PropertiesSpec : AbstractMQTTTest() {
 
-    val specName = javaClass.simpleName
+    @Test
+    fun testPublishingAndReceivingProperties() {
+        val applicationContext = startContext()
 
-    given("publishing and receiving properties") {
-        val ctx = startContext(specName)
+        // tag::producer[]
+        val productClient = applicationContext.getBean(ProductClient::class.java)
+        productClient.send("body".toByteArray())
+        productClient.send("guest", "text/html", "body2".toByteArray())
+        productClient.send("guest", null, "body3".toByteArray())
+        // end::producer[]
 
-        `when`("messages with properties are sent") {
-            // tag::producer[]
-            val productClient = ctx.getBean(ProductClient::class.java)
-            productClient.send("body".toByteArray())
-            productClient.send("guest", "text/html", "body2".toByteArray())
-            productClient.send("guest", null, "body3".toByteArray())
-            // end::producer[]
+        val productListener = applicationContext.getBean(ProductListener::class.java)
 
-            then("the messages are received") {
-                val productListener = ctx.getBean(ProductListener::class.java)
-
-                eventually(10.toDuration(DurationUnit.SECONDS), AssertionFailedError::class) {
-                    productListener.messageProperties.size shouldBe 3
-                    productListener.messageProperties shouldContain "guest|application/json|myApp"
-                    productListener.messageProperties shouldContain "guest|text/html|myApp"
-                    productListener.messageProperties shouldContain "guest|null|myApp"
-                }
+        try {
+            await().atMost(5, TimeUnit.SECONDS).until {
+                productListener.messageProperties.size == 3 &&
+                        productListener.messageProperties.contains("guest|application/json|myApp") &&
+                        productListener.messageProperties.contains("guest|text/html|myApp") &&
+                        productListener.messageProperties.contains("guest|null|myApp")
             }
+        } finally {
+            applicationContext.close()
         }
-
-        ctx.stop()
     }
-})
+}

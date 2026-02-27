@@ -1,39 +1,30 @@
 package io.micronaut.mqtt.docs.quickstart
 
-import io.kotest.assertions.timing.eventually
-import io.kotest.matchers.shouldBe
-import io.micronaut.mqtt.AbstractMqttKotest
-import org.opentest4j.AssertionFailedError
-import kotlin.time.DurationUnit
-import kotlin.time.ExperimentalTime
-import kotlin.time.toDuration
+import io.micronaut.mqtt.AbstractMQTTTest
+import org.awaitility.Awaitility.await
+import org.junit.jupiter.api.Test
+import java.util.concurrent.TimeUnit
 
-@ExperimentalTime
-class QuickstartSpec: AbstractMqttKotest({
+class QuickstartSpec : AbstractMQTTTest() {
 
-    val specName = javaClass.simpleName
-
-    given("A basic producer and consumer") {
-        val ctx = startContext(specName)
-
-        `when`("the message is published") {
-            val productListener = ctx.getBean(ProductListener::class.java)
+    @Test
+    fun testProductClientAndListener() {
+        val applicationContext = startContext()
 
 // tag::producer[]
-val productClient = ctx.getBean(ProductClient::class.java)
+val productClient = applicationContext.getBean(ProductClient::class.java)
 productClient.send("quickstart".toByteArray())
 // end::producer[]
 
-            then("the message is consumed") {
-                eventually(10.toDuration(DurationUnit.SECONDS), AssertionFailedError::class) {
-                    productListener.messageLengths.size shouldBe 1
-                    productListener.messageLengths[0] shouldBe "quickstart"
-                }
+        val productListener = applicationContext.getBean(ProductListener::class.java)
+
+        try {
+            await().atMost(5, TimeUnit.SECONDS).until {
+                productListener.messageLengths.size == 1 &&
+                        productListener.messageLengths[0] == "quickstart"
             }
+        } finally {
+            applicationContext.close()
         }
-
-        Thread.sleep(1000)
-        ctx.stop()
     }
-
-})
+}

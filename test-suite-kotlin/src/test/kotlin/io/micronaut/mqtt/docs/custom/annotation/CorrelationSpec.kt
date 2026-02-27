@@ -1,38 +1,31 @@
 package io.micronaut.mqtt.docs.custom.annotation
 
-import io.kotest.assertions.timing.eventually
-import io.kotest.matchers.shouldBe
-import io.micronaut.mqtt.AbstractMqttKotest
-import org.opentest4j.AssertionFailedError
-import kotlin.time.DurationUnit
-import kotlin.time.ExperimentalTime
-import kotlin.time.toDuration
+import io.micronaut.mqtt.AbstractMQTTTest
+import org.awaitility.Awaitility.await
+import org.junit.jupiter.api.Test
+import java.util.concurrent.TimeUnit
 
-@ExperimentalTime
-class CorrelationSpec : AbstractMqttKotest({
+class CorrelationSpec : AbstractMQTTTest() {
 
-    val specName = javaClass.simpleName
+    @Test
+    fun testCustomAnnotationBinder() {
+        val applicationContext = startContext()
 
-    given("Using a custom annotation binder") {
-        val ctx = startContext(specName)
+        // tag::producer[]
+        val productClient = applicationContext.getBean(ProductClient::class.java)
+        productClient.send("a".toByteArray())
+        productClient.send("b".toByteArray())
+        productClient.send("c".toByteArray())
+        // end::producer[]
 
-        `when`("The messages are published") {
-            val productListener = ctx.getBean(ProductListener::class.java)
+        val productListener = applicationContext.getBean(ProductListener::class.java)
 
-            // tag::producer[]
-            val productClient = ctx.getBean(ProductClient::class.java)
-            productClient.send("a".toByteArray())
-            productClient.send("b".toByteArray())
-            productClient.send("c".toByteArray())
-            // end::producer[]
-
-            then("The messages are received") {
-                eventually(10.toDuration(DurationUnit.SECONDS), AssertionFailedError::class) {
-                    productListener.messages.size shouldBe 3
-                }
+        try {
+            await().atMost(5, TimeUnit.SECONDS).until {
+                productListener.messages.size == 3
             }
+        } finally {
+            applicationContext.close()
         }
-
-        ctx.stop()
     }
-})
+}

@@ -1,40 +1,32 @@
 package io.micronaut.mqtt.docs.parameters
 
-import io.kotest.assertions.timing.eventually
-import io.kotest.matchers.collections.shouldContain
-import io.kotest.matchers.shouldBe
-import io.micronaut.mqtt.AbstractMqttKotest
-import org.opentest4j.AssertionFailedError
-import kotlin.time.DurationUnit
-import kotlin.time.ExperimentalTime
-import kotlin.time.toDuration
+import io.micronaut.mqtt.AbstractMQTTTest
+import org.awaitility.Awaitility.await
+import org.junit.jupiter.api.Test
+import java.util.concurrent.TimeUnit
 
-@ExperimentalTime
-class BindingSpec: AbstractMqttKotest({
+class BindingSpec : AbstractMQTTTest() {
 
-    val specName = javaClass.simpleName
+    @Test
+    fun testProducerAndConsumer() {
+        val applicationContext = startContext()
 
-    given("A basic producer and consumer") {
-        val ctx = startContext(specName)
+        // tag::producer[]
+        val productClient = applicationContext.getBean(ProductClient::class.java)
+        productClient.send("message body".toByteArray())
+        productClient.send("product", "message body2".toByteArray())
+        // end::producer[]
 
-        `when`("The messages are published") {
-            val productListener = ctx.getBean(ProductListener::class.java)
+        val productListener = applicationContext.getBean(ProductListener::class.java)
 
-            // tag::producer[]
-            val productClient = ctx.getBean(ProductClient::class.java)
-            productClient.send("message body".toByteArray())
-            productClient.send("product", "message body2".toByteArray())
-            // end::producer[]
-
-            then("The messages are received") {
-                eventually(10.toDuration(DurationUnit.SECONDS), AssertionFailedError::class) {
-                    productListener.messageLengths.size shouldBe 2
-                    productListener.messageLengths shouldContain 12
-                    productListener.messageLengths shouldContain 13
-                }
+        try {
+            await().atMost(5, TimeUnit.SECONDS).until {
+                productListener.messageLengths.size == 2 &&
+                        productListener.messageLengths.contains(12) &&
+                        productListener.messageLengths.contains(13)
             }
+        } finally {
+            applicationContext.close()
         }
-
-        ctx.stop()
     }
-})
+}

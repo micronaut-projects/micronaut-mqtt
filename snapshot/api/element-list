@@ -1,3 +1,4 @@
+io.micronaut.mqtt
 io.micronaut.mqtt.annotation
 io.micronaut.mqtt.annotation.v3
 io.micronaut.mqtt.annotation.v5
@@ -20,9 +21,16 @@ io.micronaut.mqtt.hivemq.v5.bind
 io.micronaut.mqtt.hivemq.v5.client
 io.micronaut.mqtt.hivemq.v5.config
 io.micronaut.mqtt.hivemq.v5.intercept
+io.micronaut.mqtt.info
 io.micronaut.mqtt.intercept
 io.micronaut.mqtt.serdes
 io.micronaut.mqtt.ssl
+io.micronaut.mqtt.test
+io.micronaut.mqtt.test.bind.id
+io.micronaut.mqtt.test.bind.qos
+io.micronaut.mqtt.test.bind.retained
+io.micronaut.mqtt.test.bind.topic
+io.micronaut.mqtt.test.intercept
 io.micronaut.mqtt.v3.bind
 io.micronaut.mqtt.v3.client
 io.micronaut.mqtt.v3.client.health

@@ -15,7 +15,7 @@
     <script>hljs.initHighlightingOnLoad();</script>
     <link rel="stylesheet" href="../css/multi-language-sample.css"/>
     <script src="../js/docs.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
     <script type="text/javascript">
         function addJsClass(el) {
             var classes = document.body.className.split(" ");
@@ -23,7 +23,9 @@
             document.body.className = classes.join(" ");
         }
     </script>
-
+    <style type="text/css">
+        .lang-java { display: block }; .lang-python { display: block }; .lang-kotlin { display: block }; .lang-groovy { display: block }; 
+    </style>
 </head>
 
 <body class="body" id="docs" onload="addJsClass();" onhashchange="highlightMenu()">
@@ -191,13 +193,13 @@
         <h1>Micronaut MQTT</h1>
         <p></p>
         <p>Integration between Micronaut and MQTT</p>
-        <p><strong>Version:</strong> 3.8.0-SNAPSHOT </p>
+        <p><strong>Version:</strong> 4.0.0-SNAPSHOT </p>
     </div>
     
 <h1 id="introduction"><a class="anchor" href="#introduction"></a>1 Introduction</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/introduction.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/introduction.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -213,7 +215,7 @@
 <h1 id="whatsNew"><a class="anchor" href="#whatsNew"></a>2 Release History</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/whatsNew.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/whatsNew.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -231,7 +233,7 @@
 <h1 id="releaseNotes"><a class="anchor" href="#releaseNotes"></a>3 Release Notes</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/releaseNotes.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/releaseNotes.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -247,7 +249,7 @@
 <h1 id="quickStart"><a class="anchor" href="#quickStart"></a>4 MQTT Quick Start</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/quickStart.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/quickStart.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -284,7 +286,7 @@ See the guide for <a href="https://guides.micronaut.io/latest/tag-mqtt.html">Pub
 <h2 id="mqttPublisher"><a class="anchor" href="#mqttPublisher"></a>4.1 Creating an MQTT Publisher with MqttPublisher annotation</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/quickStart/mqttPublisher.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/quickStart/mqttPublisher.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -311,19 +313,6 @@ public interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.annotation.v5.MqttPublisher
-
-@MqttPublisher // <b class="conum">(1)</b>
-interface ProductClient {
-
-    @Topic("product") // <b class="conum">(2)</b>
-    void send(byte[] data) // <b class="conum">(3)</b>
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
 
@@ -332,6 +321,19 @@ interface ProductClient {
 
     @Topic("product") // <b class="conum">(2)</b>
     fun send(data: ByteArray)  // <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
+
+@MqttPublisher // <b class="conum">(1)</b>
+interface ProductClient {
+
+    @Topic("product") // <b class="conum">(2)</b>
+    void send(byte[] data) // <b class="conum">(3)</b>
 }</code></pre>
 </div>
 </div>
@@ -362,14 +364,14 @@ productClient.send("quickstart".getBytes());</code></pre>
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">def productClient = applicationContext.getBean(ProductClient)
-productClient.send("quickstart".getBytes())</code></pre>
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">val productClient = applicationContext.getBean(ProductClient::class.java)
+productClient.send("quickstart".toByteArray())</code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">val productClient = ctx.getBean(ProductClient::class.java)
-productClient.send("quickstart".toByteArray())</code></pre>
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">def productClient = applicationContext.getBean(ProductClient)
+productClient.send("quickstart".getBytes())</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -388,7 +390,7 @@ Because the <code>send</code> method returns <code>void</code> this means the me
 <h2 id="mqttSubscriber"><a class="anchor" href="#mqttSubscriber"></a>4.2 Creating an MQTT Subscriber with MqttSubscriber annotation</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/quickStart/mqttSubscriber.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/quickStart/mqttSubscriber.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -424,24 +426,6 @@ public class ProductListener {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.MqttSubscriber
-import io.micronaut.mqtt.annotation.Topic
-
-@MqttSubscriber // <b class="conum">(1)</b>
-class ProductListener {
-
-    List&lt;String&gt; messageLengths = Collections.synchronizedList([])
-
-    @Topic("product") // <b class="conum">(2)</b>
-    void receive(byte[] data) { // <b class="conum">(3)</b>
-        messageLengths.add(new String(data))
-        println("Groovy received ${data.length} bytes from MQTT")
-    }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 import java.util.*
@@ -456,6 +440,24 @@ class ProductListener {
         val string = String(data)
         messageLengths.add(string)
         println("Kotlin received ${data.size} bytes from MQTT: ${string}")
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
+
+@MqttSubscriber // <b class="conum">(1)</b>
+class ProductListener {
+
+    List&lt;String&gt; messageLengths = Collections.synchronizedList([])
+
+    @Topic("product") // <b class="conum">(2)</b>
+    void receive(byte[] data) { // <b class="conum">(3)</b>
+        messageLengths.add(new String(data))
+        println("Groovy received ${data.length} bytes from MQTT")
     }
 }</code></pre>
 </div>
@@ -480,7 +482,7 @@ class ProductListener {
 <h2 id="mqttHealthChecks"><a class="anchor" href="#mqttHealthChecks"></a>4.3 MQTT Health Checks</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/quickStart/mqttHealthChecks.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/quickStart/mqttHealthChecks.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -499,7 +501,7 @@ class ProductListener {
 <h1 id="hiveMq"><a class="anchor" href="#hiveMq"></a>5 MQTT HiveMQ</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/hiveMq.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/hiveMq.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -512,7 +514,7 @@ class ProductListener {
 <h2 id="dependency"><a class="anchor" href="#dependency"></a>5.1 MQTT Dependency with HiveMQ</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/hiveMq/dependency.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/hiveMq/dependency.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -535,13 +537,14 @@ class ProductListener {
     &lt;artifactId&gt;micronaut-mqtt-hivemq&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
-</div></p>
+</div>
+</p>
 </div>
 
 <h2 id="config"><a class="anchor" href="#config"></a>5.2 Configuration</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/hiveMq/config.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/hiveMq/config.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -718,7 +721,7 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 <h1 id="v3"><a class="anchor" href="#v3"></a>6 MQTT V3 Eclipse Paho</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/v3.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/v3.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -731,7 +734,7 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 <h2 id="v3dependency"><a class="anchor" href="#v3dependency"></a>6.1 MQTT v3 Dependency with Eclipse Paho</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/v3/v3dependency.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/v3/v3dependency.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -757,13 +760,14 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
     &lt;artifactId&gt;micronaut-mqttv3&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
-</div></p>
+</div>
+</p>
 </div>
 
 <h2 id="v3config"><a class="anchor" href="#v3config"></a>6.2 Configuration</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/v3/v3config.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/v3/v3config.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -865,7 +869,7 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 <h1 id="v5"><a class="anchor" href="#v5"></a>7 MQTT V5 Eclipse Paho</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/v5.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/v5.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -878,7 +882,7 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 <h2 id="v5dependency"><a class="anchor" href="#v5dependency"></a>7.1 MQTT v5 Dependency with Eclipse Paho</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/v5/v5dependency.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/v5/v5dependency.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -904,13 +908,14 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
     &lt;artifactId&gt;micronaut-mqttv5&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
-</div></p>
+</div>
+</p>
 </div>
 
 <h2 id="v5config"><a class="anchor" href="#v5config"></a>7.2 Configuration</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/v5/v5config.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/v5/v5config.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1006,7 +1011,7 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 <h2 id="properties"><a class="anchor" href="#properties"></a>7.3 Properties</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/v5/properties.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/v5/properties.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1039,26 +1044,6 @@ public interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.annotation.v5.MqttProperty
-import io.micronaut.mqtt.annotation.v5.MqttPublisher
-
-@MqttPublisher
-@MqttProperty(name = "appId", value = "myApp") // <b class="conum">(1)</b>
-interface ProductClient {
-
-    @Topic("product")
-    @MqttProperty(name = "contentType", value = "application/json") // <b class="conum">(2)</b>
-    @MqttProperty(name = "userId", value = "guest")
-    void send(byte[] data)
-
-    @Topic("product")
-    void send(@MqttProperty("userId") String user, @MqttProperty String contentType, byte[] data) // <b class="conum">(3)</b>
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.v5.MqttProperties
@@ -1077,6 +1062,26 @@ interface ProductClient {
 
     @Topic("product")
     fun send(@MqttProperty("userId") user: String, @MqttProperty contentType: String?, data: ByteArray)  // <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.v5.MqttProperty
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
+
+@MqttPublisher
+@MqttProperty(name = "appId", value = "myApp") // <b class="conum">(1)</b>
+interface ProductClient {
+
+    @Topic("product")
+    @MqttProperty(name = "contentType", value = "application/json") // <b class="conum">(2)</b>
+    @MqttProperty(name = "userId", value = "guest")
+    void send(byte[] data)
+
+    @Topic("product")
+    void send(@MqttProperty("userId") String user, @MqttProperty String contentType, byte[] data) // <b class="conum">(3)</b>
 }</code></pre>
 </div>
 </div>
@@ -1119,7 +1124,7 @@ If the annotation or argument name cannot be matched to a property name in the <
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.core.annotation.Nullable;
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.jspecify.annotations.Nullable;
 import io.micronaut.mqtt.annotation.MqttSubscriber;
 import io.micronaut.mqtt.annotation.Topic;
 import io.micronaut.mqtt.annotation.v5.MqttProperty;
@@ -1146,29 +1151,6 @@ public class ProductListener {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.core.annotation.Nullable
-
-import io.micronaut.mqtt.annotation.MqttSubscriber
-import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.annotation.v5.MqttProperty
-
-@MqttSubscriber
-class ProductListener {
-
-    List&lt;String&gt; messageProperties = Collections.synchronizedList([])
-
-    @Topic("product")
-    void receive(byte[] data,
-                 @MqttProperty("userId") String user,  // <b class="conum">(1)</b>
-                 @Nullable @MqttProperty String contentType,  // <b class="conum">(2)</b>
-                 @MqttProperty String appId) {  // <b class="conum">(3)</b>
-        messageProperties.add(user + "|" + contentType + "|" + appId)
-    }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.v5.MqttProperty
@@ -1185,6 +1167,29 @@ class ProductListener {
                 @MqttProperty contentType: String?, // <b class="conum">(2)</b>
                 @MqttProperty appId: String) { // <b class="conum">(3)</b>
         messageProperties.add("$user|$contentType|$appId")
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import org.jspecify.annotations.Nullable
+
+import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.v5.MqttProperty
+
+@MqttSubscriber
+class ProductListener {
+
+    List&lt;String&gt; messageProperties = Collections.synchronizedList([])
+
+    @Topic("product")
+    void receive(byte[] data,
+                 @MqttProperty("userId") String user,  // <b class="conum">(1)</b>
+                 @Nullable @MqttProperty String contentType,  // <b class="conum">(2)</b>
+                 @MqttProperty String appId) {  // <b class="conum">(3)</b>
+        messageProperties.add(user + "|" + contentType + "|" + appId)
     }
 }</code></pre>
 </div>
@@ -1222,7 +1227,7 @@ Arguments are required by default and an exception will be thrown if they cannot
 <h1 id="ssl"><a class="anchor" href="#ssl"></a>8 SSL Connections</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/ssl.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/ssl.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1245,7 +1250,8 @@ Arguments are required by default and an exception will be thrown if they cannot
     &lt;artifactId&gt;micronaut-mqtt-ssl&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
-</div></p>
+</div>
+</p>
 </div>
 <div class="paragraph">
 <p>After adding the dependency, you must configure the client with the appropriate certificate authority, certificate, key, and password.</p>
@@ -1325,7 +1331,7 @@ The server URI must start with <code>ssl:</code>.
 <h1 id="producer"><a class="anchor" href="#producer"></a>9 MQTT Publishers</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/producer.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/producer.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1341,7 +1347,7 @@ The server URI must start with <code>ssl:</code>.
 <h2 id="producerMethods"><a class="anchor" href="#producerMethods"></a>9.1 Defining Publisher Methods</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/producer/producerMethods.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/producer/producerMethods.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1376,7 +1382,7 @@ If the topic cannot be found, an exception will be thrown. Unless a reactive typ
 <h2 id="producerParameters"><a class="anchor" href="#producerParameters"></a>9.1.1 Publisher Parameters</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/producer/producerMethods/producerParameters.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/producer/producerMethods/producerParameters.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1389,7 +1395,7 @@ If the topic cannot be found, an exception will be thrown. Unless a reactive typ
 <h2 id="producerTopic"><a class="anchor" href="#producerTopic"></a>9.1.1.1 Topic</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/producer/producerMethods/producerParameters/producerTopic.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/producer/producerMethods/producerParameters/producerTopic.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1415,21 +1421,6 @@ public interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.annotation.v5.MqttPublisher
-
-@MqttPublisher
-interface ProductClient {
-
-    @Topic("product") // <b class="conum">(1)</b>
-    void send(byte[] data)
-
-    void send(@Topic String binding, byte[] data) // <b class="conum">(2)</b>
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
 
@@ -1440,6 +1431,21 @@ interface ProductClient {
     fun send(data: ByteArray)
 
     fun send(@Topic binding: String, data: ByteArray)  // <b class="conum">(2)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic("product") // <b class="conum">(1)</b>
+    void send(byte[] data)
+
+    void send(@Topic String binding, byte[] data) // <b class="conum">(2)</b>
 }</code></pre>
 </div>
 </div>
@@ -1459,7 +1465,7 @@ interface ProductClient {
 <h2 id="producerQos"><a class="anchor" href="#producerQos"></a>9.1.1.2 Qos</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/producer/producerMethods/producerParameters/producerQos.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/producer/producerMethods/producerParameters/producerQos.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1487,23 +1493,6 @@ public interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Qos
-import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.annotation.v5.MqttPublisher
-
-@MqttPublisher
-interface ProductClient {
-
-    @Topic(value = "product", qos = 2) // <b class="conum">(1)</b>
-    void send(byte[] data)
-
-    @Topic("product")
-    void send(byte[] data, @Qos int qos) // <b class="conum">(2)</b>
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.Qos
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.v5.MqttPublisher
@@ -1518,6 +1507,23 @@ interface ProductClient {
     fun send(data: ByteArray?, @Qos qos: Int) // <b class="conum">(2)</b>
 }
 // end:clazz[]</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Qos
+import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic(value = "product", qos = 2) // <b class="conum">(1)</b>
+    void send(byte[] data)
+
+    @Topic("product")
+    void send(byte[] data, @Qos int qos) // <b class="conum">(2)</b>
+}</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1536,7 +1542,7 @@ interface ProductClient {
 <h2 id="producerRetained"><a class="anchor" href="#producerRetained"></a>9.1.1.3 Retained</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/producer/producerMethods/producerParameters/producerRetained.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/producer/producerMethods/producerParameters/producerRetained.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1565,24 +1571,6 @@ public interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Retained
-import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.annotation.v5.MqttPublisher
-
-@MqttPublisher
-interface ProductClient {
-
-    @Topic("product")
-    @Retained(true)// <b class="conum">(1)</b>
-    void send(byte[] data)
-
-    @Topic("product")
-    void send(byte[] data, @Retained boolean retained) // <b class="conum">(2)</b>
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.Retained
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.v5.MqttPublisher
@@ -1596,6 +1584,24 @@ interface ProductClient {
 
     @Topic("product")
     fun send(data: ByteArray?, @Retained retained: Boolean) // <b class="conum">(2)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Retained
+import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic("product")
+    @Retained(true)// <b class="conum">(1)</b>
+    void send(byte[] data)
+
+    @Topic("product")
+    void send(byte[] data, @Retained boolean retained) // <b class="conum">(2)</b>
 }</code></pre>
 </div>
 </div>
@@ -1615,7 +1621,7 @@ interface ProductClient {
 <h2 id="producerPayload"><a class="anchor" href="#producerPayload"></a>9.1.1.4 Payload</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/producer/producerMethods/producerParameters/producerPayload.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/producer/producerMethods/producerParameters/producerPayload.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1628,7 +1634,7 @@ interface ProductClient {
 <h2 id="producerAcknowledge"><a class="anchor" href="#producerAcknowledge"></a>9.1.2 Publisher Acknowledgements</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/producer/producerMethods/producerAcknowledge.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/producer/producerMethods/producerAcknowledge.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1662,23 +1668,6 @@ public interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.annotation.v5.MqttPublisher
-import org.reactivestreams.Publisher
-
-@MqttPublisher
-interface ProductClient {
-
-    @Topic("product")
-    Publisher&lt;Void&gt; sendPublisher(byte[] data) // <b class="conum">(1)</b>
-
-    @Topic("product")
-    CompletableFuture&lt;Void&gt; sendFuture(byte[] data) // <b class="conum">(2)</b>
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
 import org.reactivestreams.Publisher
@@ -1694,6 +1683,23 @@ interface ProductClient {
 
     @Topic("product")
     suspend fun sendSuspend(data: ByteArray): Unit //suspend methods work too!
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
+import org.reactivestreams.Publisher
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic("product")
+    Publisher&lt;Void&gt; sendPublisher(byte[] data) // <b class="conum">(1)</b>
+
+    @Topic("product")
+    CompletableFuture&lt;Void&gt; sendFuture(byte[] data) // <b class="conum">(2)</b>
 }</code></pre>
 </div>
 </div>
@@ -1713,7 +1719,7 @@ interface ProductClient {
 <h1 id="consumer"><a class="anchor" href="#consumer"></a>10 MQTT Subscribers</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/consumer.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/consumer.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1729,7 +1735,7 @@ interface ProductClient {
 <h2 id="consumerMethods"><a class="anchor" href="#consumerMethods"></a>10.1 Defining @MqttSubscriber Methods</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/consumer/consumerMethods.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/consumer/consumerMethods.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1764,7 +1770,7 @@ In order for all of the functionality to work as designed in this guide your cla
 <h2 id="consumerParameters"><a class="anchor" href="#consumerParameters"></a>10.1.1 Subscriber Parameters</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/consumer/consumerMethods/consumerParameters.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/consumer/consumerMethods/consumerParameters.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1777,7 +1783,7 @@ In order for all of the functionality to work as designed in this guide your cla
 <h2 id="consumerTopic"><a class="anchor" href="#consumerTopic"></a>10.1.1.1 Topic</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/consumer/consumerMethods/consumerParameters/consumerTopic.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/consumer/consumerMethods/consumerParameters/consumerTopic.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1816,23 +1822,6 @@ public class ProductListener {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.MqttSubscriber
-import io.micronaut.mqtt.annotation.Topic
-
-@MqttSubscriber
-class ProductListener {
-
-    List&lt;Integer&gt; messageLengths = Collections.synchronizedList([])
-
-    @Topic("product") // <b class="conum">(1)</b>
-    void receive(byte[] data) {
-        messageLengths.add(data.length)
-    }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import java.util.*
@@ -1846,6 +1835,23 @@ class ProductListener {
     @Topic("product") // <b class="conum">(1)</b>
     fun receive(data: ByteArray) {
         messageLengths.add(data.size)
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
+
+@MqttSubscriber
+class ProductListener {
+
+    List&lt;Integer&gt; messageLengths = Collections.synchronizedList([])
+
+    @Topic("product") // <b class="conum">(1)</b>
+    void receive(byte[] data) {
+        messageLengths.add(data.length)
     }
 }</code></pre>
 </div>
@@ -1866,7 +1872,7 @@ class ProductListener {
 <h2 id="consumerPayload"><a class="anchor" href="#consumerPayload"></a>10.1.1.2 Payload</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/consumer/consumerMethods/consumerParameters/consumerPayload.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/consumer/consumerMethods/consumerParameters/consumerPayload.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1879,7 +1885,7 @@ class ProductListener {
 <h2 id="consumerAcknowledge"><a class="anchor" href="#consumerAcknowledge"></a>10.1.2 Acknowledging Messages</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/consumer/consumerMethods/consumerAcknowledge.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/consumer/consumerMethods/consumerAcknowledge.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -1916,27 +1922,6 @@ public class ProductListener {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.messaging.Acknowledgement
-import io.micronaut.mqtt.annotation.MqttSubscriber
-import io.micronaut.mqtt.annotation.Topic
-
-import java.util.concurrent.atomic.AtomicInteger
-
-@MqttSubscriber
-class ProductListener {
-
-    AtomicInteger messageCount = new AtomicInteger()
-
-    @Topic("product")
-    void receive(byte[] data, Acknowledgement acknowledgement) { // <b class="conum">(1)</b>
-        messageCount.getAndUpdate({ intValue -&gt; ++intValue })
-        acknowledgement.ack() // <b class="conum">(2)</b>
-    }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.messaging.Acknowledgement
@@ -1951,6 +1936,27 @@ class ProductListener {
     @Topic("product")
     fun receive(data: ByteArray, acknowledgement: Acknowledgement) { // <b class="conum">(1)</b>
         messageCount.getAndUpdate { intValue -&gt; intValue + 1 }
+        acknowledgement.ack() // <b class="conum">(2)</b>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.messaging.Acknowledgement
+import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
+
+import java.util.concurrent.atomic.AtomicInteger
+
+@MqttSubscriber
+class ProductListener {
+
+    AtomicInteger messageCount = new AtomicInteger()
+
+    @Topic("product")
+    void receive(byte[] data, Acknowledgement acknowledgement) { // <b class="conum">(1)</b>
+        messageCount.getAndUpdate({ intValue -&gt; ++intValue })
         acknowledgement.ack() // <b class="conum">(2)</b>
     }
 }</code></pre>
@@ -1973,7 +1979,7 @@ class ProductListener {
 <h2 id="consumerExceptions"><a class="anchor" href="#consumerExceptions"></a>10.2 Handling Subscriber Exceptions</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/consumer/consumerExceptions.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/consumer/consumerExceptions.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -2008,7 +2014,7 @@ class ProductListener {
 <h2 id="consumerExecutor"><a class="anchor" href="#consumerExecutor"></a>10.3 Subscriber Execution</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/consumer/consumerExecutor.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/consumer/consumerExecutor.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -2108,7 +2114,7 @@ The executor type <strong>must</strong> be <code>scheduled</code>.
 <h1 id="customBinding"><a class="anchor" href="#customBinding"></a>11 Customizing Parameter Binding</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/customBinding.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/customBinding.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -2168,6 +2174,18 @@ public @interface Correlation {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.core.bind.annotation.Bindable
+
+
+@MustBeDocumented
+@Retention(AnnotationRetention.RUNTIME)
+@Target(AnnotationTarget.VALUE_PARAMETER)
+@Bindable // <b class="conum">(1)</b>
+annotation class Correlation</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.core.bind.annotation.Bindable
 
 import java.lang.annotation.*
@@ -2178,18 +2196,6 @@ import java.lang.annotation.*
 @Bindable // <b class="conum">(1)</b>
 @interface Correlation {
 }</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.core.bind.annotation.Bindable
-
-
-@MustBeDocumented
-@Retention(AnnotationRetention.RUNTIME)
-@Target(AnnotationTarget.VALUE_PARAMETER)
-@Bindable // <b class="conum">(1)</b>
-annotation class Correlation</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -2239,6 +2245,35 @@ public class CorrelationAnnotationBinder implements AnnotatedMqttBinder&lt;MqttV
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.core.convert.ArgumentConversionContext
+import io.micronaut.core.convert.ConversionService
+import io.micronaut.core.type.Argument
+import io.micronaut.mqtt.bind.AnnotatedMqttBinder
+import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
+import java.util.*
+
+import jakarta.inject.Singleton
+
+@Singleton // <b class="conum">(1)</b>
+class CorrelationAnnotationBinder(private val conversionService: ConversionService)// <b class="conum">(3)</b>
+    : AnnotatedMqttBinder&lt;MqttV5BindingContext, Correlation&gt; { // <b class="conum">(2)</b>
+
+    override fun getAnnotationType(): Class&lt;Correlation&gt; {
+        return Correlation::class.java
+    }
+
+    override fun bindTo(context: MqttV5BindingContext, value: Any, argument: Argument&lt;Any&gt;) {
+       context.properties.correlationData = value as? ByteArray // <b class="conum">(4)</b>
+    }
+
+    override fun bindFrom(context: MqttV5BindingContext, conversionContext: ArgumentConversionContext&lt;Any&gt;): Optional&lt;Any&gt; {
+        return conversionService.convert(context.properties.correlationData, conversionContext) // <b class="conum">(5)</b>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.core.type.Argument
 import io.micronaut.mqtt.bind.AnnotatedMqttBinder
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
@@ -2269,35 +2304,6 @@ class CorrelationAnnotationBinder implements AnnotatedMqttBinder&lt;MqttV5Bindin
     @Override
     Optional&lt;Object&gt; bindFrom(MqttV5BindingContext context, ArgumentConversionContext&lt;Object&gt; conversionContext) {
         conversionService.convert(context.properties.correlationData, conversionContext) // <b class="conum">(5)</b>
-    }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.core.convert.ArgumentConversionContext
-import io.micronaut.core.convert.ConversionService
-import io.micronaut.core.type.Argument
-import io.micronaut.mqtt.bind.AnnotatedMqttBinder
-import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
-import java.util.*
-
-import jakarta.inject.Singleton
-
-@Singleton // <b class="conum">(1)</b>
-class CorrelationAnnotationBinder(private val conversionService: ConversionService)// <b class="conum">(3)</b>
-    : AnnotatedMqttBinder&lt;MqttV5BindingContext, Correlation&gt; { // <b class="conum">(2)</b>
-
-    override fun getAnnotationType(): Class&lt;Correlation&gt; {
-        return Correlation::class.java
-    }
-
-    override fun bindTo(context: MqttV5BindingContext, value: Any, argument: Argument&lt;Any&gt;) {
-       context.properties.correlationData = value as? ByteArray // <b class="conum">(4)</b>
-    }
-
-    override fun bindFrom(context: MqttV5BindingContext, conversionContext: ArgumentConversionContext&lt;Any&gt;): Optional&lt;Any&gt; {
-        return conversionService.convert(context.properties.correlationData, conversionContext) // <b class="conum">(5)</b>
     }
 }</code></pre>
 </div>
@@ -2350,23 +2356,6 @@ public class ProductListener {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.MqttSubscriber
-import io.micronaut.mqtt.annotation.Topic
-
-@MqttSubscriber
-class ProductListener {
-
-    Set&lt;String&gt; messages = Collections.synchronizedSet(new HashSet&lt;&gt;())
-
-    @Topic("product")
-    void receive(@Correlation byte[] correlation) { // <b class="conum">(1)</b>
-        messages.add(new String(correlation))
-    }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 import java.nio.charset.StandardCharsets
@@ -2382,6 +2371,23 @@ class ProductListener {
     @Topic("product")
     fun receive(@Correlation data: ByteArray) { // <b class="conum">(1)</b>
         messages.add(String(data, StandardCharsets.UTF_8))
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.MqttSubscriber
+import io.micronaut.mqtt.annotation.Topic
+
+@MqttSubscriber
+class ProductListener {
+
+    Set&lt;String&gt; messages = Collections.synchronizedSet(new HashSet&lt;&gt;())
+
+    @Topic("product")
+    void receive(@Correlation byte[] correlation) { // <b class="conum">(1)</b>
+        messages.add(new String(correlation))
     }
 }</code></pre>
 </div>
@@ -2404,19 +2410,6 @@ public interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
-import io.micronaut.mqtt.annotation.v5.MqttPublisher
-
-@MqttPublisher
-interface ProductClient {
-
-    @Topic("product")
-    void send(@Correlation byte[] correlation)
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
 
@@ -2428,6 +2421,19 @@ interface ProductClient {
 }</code></pre>
 </div>
 </div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.annotation.Topic
+import io.micronaut.mqtt.annotation.v5.MqttPublisher
+
+@MqttPublisher
+interface ProductClient {
+
+    @Topic("product")
+    void send(@Correlation byte[] correlation)
+}</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_type_binding">Type Binding</h4>
@@ -2436,8 +2442,8 @@ interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.core.annotation.NonNull;
-import io.micronaut.core.annotation.Nullable;
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 public class ProductInfo {
 
@@ -2469,8 +2475,15 @@ public class ProductInfo {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.core.annotation.NonNull
-import io.micronaut.core.annotation.Nullable
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">class ProductInfo(val size: String?, // <b class="conum">(1)</b>
+                  val count: Long, // <b class="conum">(2)</b>
+                  val sealed: Boolean)// <b class="conum">(3)</b></code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import org.jspecify.annotations.NonNull
+import org.jspecify.annotations.Nullable
 
 class ProductInfo {
 
@@ -2498,13 +2511,6 @@ class ProductInfo {
         seal
     }
 }</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">class ProductInfo(val size: String?, // <b class="conum">(1)</b>
-                  val count: Long, // <b class="conum">(2)</b>
-                  val sealed: Boolean)// <b class="conum">(3)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -2587,6 +2593,56 @@ public class ProductInfoTypeBinder implements TypedMqttBinder&lt;MqttV5BindingCo
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.core.convert.ArgumentConversionContext
+import io.micronaut.core.convert.ConversionService
+import io.micronaut.core.type.Argument
+import io.micronaut.mqtt.bind.*
+import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
+import jakarta.inject.Singleton
+import org.eclipse.paho.mqttv5.common.packet.UserProperty
+
+import java.util.Optional
+import java.util.stream.Collectors
+
+@Singleton // <b class="conum">(1)</b>
+class ProductInfoTypeBinder constructor(private val conversionService: ConversionService) //<b class="conum">(3)</b>
+    : TypedMqttBinder&lt;MqttV5BindingContext, ProductInfo&gt; { // <b class="conum">(2)</b>
+
+    override fun bindTo(context: MqttV5BindingContext, value: ProductInfo, argument: Argument&lt;ProductInfo&gt;) {
+        val userPropertiesList = context.properties.userProperties
+        if (value.size != null) {
+            userPropertiesList.add(UserProperty("productSize", value.size)) // <b class="conum">(4)</b>
+        }
+        userPropertiesList.add(UserProperty("productCount", value.count.toString()))
+        userPropertiesList.add(UserProperty("productSealed", value.sealed.toString()))
+    }
+
+    override fun bindFrom(context: MqttV5BindingContext, conversionContext: ArgumentConversionContext&lt;ProductInfo&gt;): Optional&lt;ProductInfo&gt; {
+        val userPropertiesList = context.properties.userProperties
+        val userProperties = userPropertiesList.stream()
+                .collect(Collectors.toMap(UserProperty::getKey, UserProperty::getValue))
+        val size = userProperties.get("productSize")
+        val count = Optional.ofNullable(userProperties.get("productCount"))
+                .flatMap { value -&gt; conversionService.convert(value, Long::class.java) }
+        val sealed = Optional.ofNullable(userProperties.get("productSealed"))
+                .flatMap { value -&gt; conversionService.convert(value, Boolean::class.java) }
+
+        if (count.isPresent &amp;&amp; sealed.isPresent) {
+            return Optional.of(ProductInfo(size, count.get(), sealed.get())) // <b class="conum">(5)</b>
+        } else {
+            return Optional.empty()
+        }
+    }
+
+    override fun getArgumentType(): Argument&lt;ProductInfo&gt; {
+        return Argument.of(ProductInfo::class.java)
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.mqtt.bind.TypedMqttBinder
 import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
 import io.micronaut.core.convert.ArgumentConversionContext
@@ -2641,56 +2697,6 @@ class ProductInfoTypeBinder implements TypedMqttBinder&lt;MqttV5BindingContext, 
 }</code></pre>
 </div>
 </div>
-<div class="listingblock multi-language-sample">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.core.convert.ArgumentConversionContext
-import io.micronaut.core.convert.ConversionService
-import io.micronaut.core.type.Argument
-import io.micronaut.mqtt.bind.*
-import io.micronaut.mqtt.v5.bind.MqttV5BindingContext
-import jakarta.inject.Singleton
-import org.eclipse.paho.mqttv5.common.packet.UserProperty
-
-import java.util.Optional
-import java.util.stream.Collectors
-
-@Singleton // <b class="conum">(1)</b>
-class ProductInfoTypeBinder constructor(private val conversionService: ConversionService) //<b class="conum">(3)</b>
-    : TypedMqttBinder&lt;MqttV5BindingContext, ProductInfo&gt; { // <b class="conum">(2)</b>
-
-    override fun bindTo(context: MqttV5BindingContext, value: ProductInfo, argument: Argument&lt;ProductInfo&gt;) {
-        val userPropertiesList = context.properties.userProperties
-        if (value.size != null) {
-            userPropertiesList.add(UserProperty("productSize", value.size)) // <b class="conum">(4)</b>
-        }
-        userPropertiesList.add(UserProperty("productCount", value.count.toString()))
-        userPropertiesList.add(UserProperty("productSealed", value.sealed.toString()))
-    }
-
-    override fun bindFrom(context: MqttV5BindingContext, conversionContext: ArgumentConversionContext&lt;ProductInfo&gt;): Optional&lt;ProductInfo&gt; {
-        val userPropertiesList = context.properties.userProperties
-        val userProperties = userPropertiesList.stream()
-                .collect(Collectors.toMap(UserProperty::getKey, UserProperty::getValue))
-        val size = userProperties.get("productSize")
-        val count = Optional.ofNullable(userProperties.get("productCount"))
-                .flatMap { value -&gt; conversionService.convert(value, Long::class.java) }
-        val sealed = Optional.ofNullable(userProperties.get("productSealed"))
-                .flatMap { value -&gt; conversionService.convert(value, Boolean::class.java) }
-
-        if (count.isPresent &amp;&amp; sealed.isPresent) {
-            return Optional.of(ProductInfo(size, count.get(), sealed.get())) // <b class="conum">(5)</b>
-        } else {
-            return Optional.empty()
-        }
-    }
-
-    override fun getArgumentType(): Argument&lt;ProductInfo&gt; {
-        return Argument.of(ProductInfo::class.java)
-    }
-
-}</code></pre>
-</div>
-</div>
 <div class="colist arabic">
 <table>
 <tr>
@@ -2721,7 +2727,7 @@ class ProductInfoTypeBinder constructor(private val conversionService: Conversio
 <h1 id="serdes"><a class="anchor" href="#serdes"></a>12 Message Serialization/Deserialization (SerDes)</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/serdes.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/serdes.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -2740,7 +2746,7 @@ class ProductInfoTypeBinder constructor(private val conversionService: Conversio
 <h2 id="custom"><a class="anchor" href="#custom"></a>12.1 Custom SerDes</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/serdes/custom.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/serdes/custom.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -2754,7 +2760,7 @@ class ProductInfoTypeBinder constructor(private val conversionService: Conversio
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.core.annotation.Nullable;
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import org.jspecify.annotations.Nullable;
 import io.micronaut.core.convert.ConversionService;
 import io.micronaut.core.type.Argument;
 import io.micronaut.mqtt.serdes.MqttPayloadSerDes;
@@ -2815,6 +2821,53 @@ public class ProductInfoSerDes implements MqttPayloadSerDes&lt;ProductInfo&gt; {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.core.convert.ConversionService
+import io.micronaut.core.type.Argument
+import io.micronaut.mqtt.serdes.MqttPayloadSerDes
+import jakarta.inject.Singleton
+
+import java.nio.charset.Charset
+
+@Singleton // <b class="conum">(1)</b>
+class ProductInfoSerDes(private val conversionService: ConversionService)// <b class="conum">(3)</b>
+    : MqttPayloadSerDes&lt;ProductInfo&gt; { // <b class="conum">(2)</b>
+
+    override fun deserialize(payload: ByteArray, argument: Argument&lt;ProductInfo&gt;): ProductInfo? {
+        val body = String(payload, CHARSET)
+        val parts = body.split("\\|".toRegex())
+        if (parts.size == 3) {
+            var size: String? = parts[0]
+            if (size == "null") {
+                size = null
+            }
+
+            val count = conversionService.convert(parts[1], Long::class.java)
+            val sealed = conversionService.convert(parts[2], Boolean::class.java)
+
+            if (count.isPresent &amp;&amp; sealed.isPresent) {
+                return ProductInfo(size, count.get(), sealed.get()) // <b class="conum">(4)</b>
+            }
+        }
+        return null
+    }
+
+    override fun serialize(data: ProductInfo?): ByteArray {
+        return (data?.size + "|" + data?.count + "|" + data?.sealed).toByteArray(CHARSET) // <b class="conum">(5)</b>
+    }
+
+    override fun supports(argument: Argument&lt;ProductInfo&gt;): Boolean { // <b class="conum">(6)</b>
+        return argument.type.isAssignableFrom(ProductInfo::class.java)
+    }
+
+    companion object {
+        private val CHARSET = Charset.forName("UTF-8")
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import io.micronaut.core.convert.ConversionService
 import io.micronaut.core.type.Argument
 import jakarta.inject.Singleton
@@ -2869,53 +2922,6 @@ class ProductInfoSerDes implements MqttPayloadSerDes&lt;ProductInfo&gt; { // <b 
 }</code></pre>
 </div>
 </div>
-<div class="listingblock multi-language-sample">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.core.convert.ConversionService
-import io.micronaut.core.type.Argument
-import io.micronaut.mqtt.serdes.MqttPayloadSerDes
-import jakarta.inject.Singleton
-
-import java.nio.charset.Charset
-
-@Singleton // <b class="conum">(1)</b>
-class ProductInfoSerDes(private val conversionService: ConversionService)// <b class="conum">(3)</b>
-    : MqttPayloadSerDes&lt;ProductInfo&gt; { // <b class="conum">(2)</b>
-
-    override fun deserialize(payload: ByteArray, argument: Argument&lt;ProductInfo&gt;): ProductInfo? {
-        val body = String(payload, CHARSET)
-        val parts = body.split("\\|".toRegex())
-        if (parts.size == 3) {
-            var size: String? = parts[0]
-            if (size == "null") {
-                size = null
-            }
-
-            val count = conversionService.convert(parts[1], Long::class.java)
-            val sealed = conversionService.convert(parts[2], Boolean::class.java)
-
-            if (count.isPresent &amp;&amp; sealed.isPresent) {
-                return ProductInfo(size, count.get(), sealed.get()) // <b class="conum">(4)</b>
-            }
-        }
-        return null
-    }
-
-    override fun serialize(data: ProductInfo?): ByteArray {
-        return (data?.size + "|" + data?.count + "|" + data?.sealed).toByteArray(CHARSET) // <b class="conum">(5)</b>
-    }
-
-    override fun supports(argument: Argument&lt;ProductInfo&gt;): Boolean { // <b class="conum">(6)</b>
-        return argument.type.isAssignableFrom(ProductInfo::class.java)
-    }
-
-    companion object {
-        private val CHARSET = Charset.forName("UTF-8")
-    }
-
-}</code></pre>
-</div>
-</div>
 <div class="colist arabic">
 <table>
 <tr>
@@ -2960,7 +2966,7 @@ Because the <code>getOrder</code> method was not overridden, the default order o
 <h1 id="graalvm"><a class="anchor" href="#graalvm"></a>13 GraalVM support</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/graalvm.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/graalvm.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -2991,7 +2997,7 @@ information.
 <h1 id="breaks"><a class="anchor" href="#breaks"></a>14 Breaking Changes</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/breaks.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/breaks.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -3059,7 +3065,7 @@ The new package names are:</p>
 <h1 id="repository"><a class="anchor" href="#repository"></a>15 Repository</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/3.8.x/src/main/docs/guide/repository.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-mqtt/edit/4.0.x/src/main/docs/guide/repository.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>

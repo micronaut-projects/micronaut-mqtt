@@ -35,4 +35,10 @@ test {
 
 graalvmNative {
     toolchainDetection.set(false)
+    binaries {
+        configureEach {
+            logger.quiet("Enabling SharedArenaSupport for GraalVM 25")
+            buildArgs.add("-H:+SharedArenaSupport")
+        }
+    }
 }

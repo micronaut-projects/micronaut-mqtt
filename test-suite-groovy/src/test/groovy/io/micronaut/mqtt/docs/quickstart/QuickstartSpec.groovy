@@ -3,9 +3,10 @@ package io.micronaut.mqtt.docs.quickstart
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.context.ApplicationContext
 import io.micronaut.mqtt.test.MQTT5Test
+import spock.lang.Specification
 import spock.util.concurrent.PollingConditions
 
-class QuickstartSpec extends AbstractMQTTTest implements MQTT5Test {
+class QuickstartSpec extends Specification implements MQTT5Test, AbstractMQTTTest {
 
     void "test product client and listener"() {
         ApplicationContext applicationContext = startContext()

@@ -15,6 +15,7 @@
  */
 package example.micronaut;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.core.annotation.Introspected;
 
 @Introspected
@@ -22,7 +23,7 @@ public class Odour {
 
     private final String name;
 
-    public Odour(String name) {
+    public Odour(@JsonProperty("name") String name) {
         this.name = name;
     }
 

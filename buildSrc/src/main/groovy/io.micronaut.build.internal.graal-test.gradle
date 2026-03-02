@@ -1,7 +1,6 @@
 plugins {
     id("org.graalvm.buildtools.native")
     id("io.micronaut.library")
-    id("io.micronaut.test-resources")
 }
 
 repositories {
@@ -22,13 +21,12 @@ dependencies {
     testImplementation(libs.awaitility)
     testImplementation(mnSerde.micronaut.serde.jackson)
     testRuntimeOnly(mnLogging.logback.classic)
+    testRuntimeOnly(mnTest.junit.platform.launcher)
+    testRuntimeOnly(mnTest.junit.jupiter.engine)
 }
 
 micronaut {
     importMicronautPlatform = false
-    testResources {
-        enabled = true
-    }
 }
 
 test {
@@ -37,4 +35,10 @@ test {
 
 graalvmNative {
     toolchainDetection.set(false)
+    binaries {
+        configureEach {
+            logger.quiet("Enabling SharedArenaSupport for GraalVM 25")
+            buildArgs.add("-H:+SharedArenaSupport")
+        }
+    }
 }

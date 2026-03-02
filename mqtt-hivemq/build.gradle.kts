@@ -7,4 +7,6 @@ dependencies {
 
     implementation(libs.bcpkix.jdk15on)
     api(libs.managed.hivemq.client)
+    testImplementation(platform(mnTest.boms.testcontainers))
+    testImplementation(libs.testcontainers)
 }

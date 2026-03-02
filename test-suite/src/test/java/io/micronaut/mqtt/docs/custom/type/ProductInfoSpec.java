@@ -1,13 +1,13 @@
 package io.micronaut.mqtt.docs.custom.type;
 
-import io.micronaut.mqtt.AbstractMQTTTest;
 import io.micronaut.context.ApplicationContext;
+import io.micronaut.mqtt.test.AbstractMQTTTest;
 import org.junit.jupiter.api.Test;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
 
-public class ProductInfoSpec extends AbstractMQTTTest {
+public class ProductInfoSpec implements AbstractMQTTTest {
 
     @Test
     void testUsingACustomTypeBinder() {

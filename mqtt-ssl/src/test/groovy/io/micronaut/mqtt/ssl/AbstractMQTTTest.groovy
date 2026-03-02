@@ -16,10 +16,9 @@
 package io.micronaut.mqtt.ssl
 
 import io.micronaut.context.ApplicationContext
-import io.micronaut.core.io.Readable
 import org.testcontainers.containers.BindMode
 import org.testcontainers.containers.GenericContainer
-import org.testcontainers.containers.wait.strategy.LogMessageWaitStrategy
+import org.testcontainers.containers.wait.strategy.Wait
 import org.testcontainers.utility.DockerImageName
 import spock.lang.Specification
 
@@ -28,7 +27,7 @@ abstract class AbstractMQTTTest extends Specification {
     static GenericContainer mqttContainer =
             new GenericContainer(DockerImageName.parse("eclipse-mosquitto:1.6.12"))
                     .withExposedPorts(8883)
-                    .waitingFor(new LogMessageWaitStrategy().withRegEx("(?s).*mosquitto version 1.6.12 running.*"))
+                    .waitingFor(Wait.forListeningPort())
                     .withClasspathResourceMapping("mosquitto.conf",
                             "/mosquitto/config/mosquitto.conf",
                             BindMode.READ_ONLY)

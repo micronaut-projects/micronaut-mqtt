@@ -9,9 +9,10 @@ import io.micronaut.mqtt.annotation.MqttSubscriber
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.mqtt.test.MQTT5Test
+import spock.lang.Specification
 import spock.util.concurrent.PollingConditions
 
-class V5WillMessageSpec extends AbstractMQTTTest implements MQTT5Test {
+class V5WillMessageSpec extends Specification implements AbstractMQTTTest, MQTT5Test {
 
     void "test will message"() {
         // we create first application context that is going to disconnect.

@@ -8,8 +8,6 @@ repositories {
 
 dependencies {
     implementation("org.graalvm.buildtools.native:org.graalvm.buildtools.native.gradle.plugin:0.11.4")
-    implementation (libs.gradle.kotlin)
-    implementation (libs.gradle.kotlin.allopen)
-    implementation (libs.gradle.kotlin.noarg)
+    implementation(providers.gradleProperty("micronaut-build-version").map { "io.micronaut.build.internal:micronaut-kotlin-build-plugins:${it}" }.get())
     implementation (libs.micronaut.gradle.plugin)
 }

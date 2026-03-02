@@ -1,13 +1,13 @@
 package io.micronaut.mqtt.docs.quickstart;
 
-import io.micronaut.mqtt.AbstractMQTTTest;
 import io.micronaut.context.ApplicationContext;
+import io.micronaut.mqtt.test.AbstractMQTTTest;
 import org.junit.jupiter.api.Test;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
 
-public class QuickstartSpec extends AbstractMQTTTest {
+public class QuickstartSpec implements AbstractMQTTTest {
 
     @Test
     void testProductClientAndListener() {

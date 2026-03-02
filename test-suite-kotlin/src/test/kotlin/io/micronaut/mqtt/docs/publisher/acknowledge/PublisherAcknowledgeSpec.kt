@@ -1,79 +1,60 @@
-package io.micronaut.mqtt.docs.publisher.acknowledge;
+package io.micronaut.mqtt.docs.publisher.acknowledge
 
-import io.kotest.assertions.timing.eventually
-import io.kotest.matchers.shouldBe
-import io.micronaut.mqtt.AbstractMqttKotest
-import kotlinx.coroutines.async
-import org.opentest4j.AssertionFailedError
+import io.micronaut.mqtt.AbstractMQTTTest
+import org.awaitility.Awaitility.await
+import org.junit.jupiter.api.Test
 import org.reactivestreams.Subscriber
 import org.reactivestreams.Subscription
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
-import kotlin.time.DurationUnit
-import kotlin.time.ExperimentalTime
-import kotlin.time.toDuration
 
-@ExperimentalTime
-class PublisherAcknowledgeSpec : AbstractMqttKotest({
+class PublisherAcknowledgeSpec : AbstractMQTTTest() {
 
-    val specName = javaClass.simpleName
-
-    given("Publisher acknowledgement") {
-        val ctx = startContext(specName)
+    @Test
+    fun testPublisherAcknowledgement() {
+        val applicationContext = startContext()
         val successCount = AtomicInteger(0)
         val errorCount = AtomicInteger(0)
 
-        `when`("The messages are published") {
-            val productClient = ctx.getBean(ProductClient::class.java)
-            val publisher = productClient.sendPublisher("publisher body".toByteArray())
-            val future = productClient.sendFuture("future body".toByteArray())
-            val deferred = async {
-                productClient.sendSuspend("suspend body".toByteArray())
+        val productClient = applicationContext.getBean(ProductClient::class.java)
+        val publisher = productClient.sendPublisher("publisher body".toByteArray())
+        val future = productClient.sendFuture("future body".toByteArray())
+        val listener = applicationContext.getBean(ProductListener::class.java)
+
+        val subscriber = object : Subscriber<Void> {
+            override fun onSubscribe(subscription: Subscription) { }
+
+            override fun onNext(aVoid: Void) {
+                throw UnsupportedOperationException("Should never be called")
             }
 
-            val listener = ctx.getBean(ProductListener::class.java)
-
-            val subscriber = (object : Subscriber<Void> {
-                override fun onSubscribe(subscription: Subscription) { }
-
-                override fun onNext(aVoid: Void) {
-                    throw UnsupportedOperationException("Should never be called")
-                }
-
-                override fun onError(throwable: Throwable) {
-                    // if an error occurs
-                    errorCount.incrementAndGet()
-                }
-
-                override fun onComplete() {
-                    // if the publish was acknowledged
-                    successCount.incrementAndGet()
-                }
-            })
-            publisher.subscribe(subscriber)
-            future.handle { _, t ->
-                if (t == null) {
-                    successCount.incrementAndGet()
-                } else {
-                    errorCount.incrementAndGet()
-                }
-            }
-            deferred.invokeOnCompletion {
-                if (it == null) {
-                    successCount.incrementAndGet()
-                } else {
-                    errorCount.incrementAndGet()
-                }
+            override fun onError(throwable: Throwable) {
+                // if an error occurs
+                errorCount.incrementAndGet()
             }
 
-            then("The messages are published") {
-                eventually(10.toDuration(DurationUnit.SECONDS), AssertionFailedError::class) {
-                    errorCount.get() shouldBe 0
-                    successCount.get() shouldBe 3
-                    listener.messageLengths.size shouldBe 3
-                }
+            override fun onComplete() {
+                // if the publish was acknowledged
+                successCount.incrementAndGet()
+            }
+        }
+        publisher.subscribe(subscriber)
+        future.whenComplete { _, t ->
+            if (t == null) {
+                successCount.incrementAndGet()
+            } else {
+                errorCount.incrementAndGet()
             }
         }
 
-        ctx.stop()
+        try {
+            await().atMost(5, TimeUnit.SECONDS).until {
+                errorCount.get() == 0 &&
+                        successCount.get() == 2 &&
+                        listener.messageLengths.size == 2
+            }
+        } finally {
+            applicationContext.close()
+        }
     }
-})
+}

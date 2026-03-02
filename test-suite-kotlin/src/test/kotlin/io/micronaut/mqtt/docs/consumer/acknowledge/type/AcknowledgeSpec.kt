@@ -1,39 +1,32 @@
 package io.micronaut.mqtt.docs.consumer.acknowledge.type
 
-import io.kotest.assertions.timing.eventually
-import io.kotest.matchers.shouldBe
-import io.micronaut.mqtt.AbstractMqttKotest
-import org.opentest4j.AssertionFailedError
-import kotlin.time.DurationUnit
-import kotlin.time.ExperimentalTime
-import kotlin.time.toDuration
+import io.micronaut.mqtt.AbstractMQTTTest
+import org.awaitility.Awaitility.await
+import org.junit.jupiter.api.Test
+import java.util.concurrent.TimeUnit
 
-@ExperimentalTime
-class AcknowledgeSpec : AbstractMqttKotest({
+class AcknowledgeSpec : AbstractMQTTTest() {
 
-    val specName = javaClass.simpleName
+    @Test
+    fun testAcknowledgeArgument() {
+        val applicationContext = startContext()
 
-    given("An acknowledgement argument") {
-        val ctx = startContext(specName)
+        // tag::producer[]
+        val productClient = applicationContext.getBean(ProductClient::class.java)
+        productClient.send("body".toByteArray())
+        productClient.send("body".toByteArray())
+        productClient.send("body".toByteArray())
+        productClient.send("body".toByteArray())
+        // end::producer[]
 
-        `when`("The messages are published") {
-            val productListener = ctx.getBean(ProductListener::class.java)
+        val productListener = applicationContext.getBean(ProductListener::class.java)
 
-            // tag::producer[]
-            val productClient = ctx.getBean(ProductClient::class.java)
-            productClient.send("body".toByteArray())
-            productClient.send("body".toByteArray())
-            productClient.send("body".toByteArray())
-            productClient.send("body".toByteArray())
-            // end::producer[]
-
-            then("The messages are received") {
-                eventually(10.toDuration(DurationUnit.SECONDS), AssertionFailedError::class) {
-                    productListener.messageCount.get() shouldBe 4
-                }
+        try {
+            await().atMost(5, TimeUnit.SECONDS).until {
+                productListener.messageCount.get() == 4
             }
+        } finally {
+            applicationContext.close()
         }
-
-        ctx.stop()
     }
-})
+}

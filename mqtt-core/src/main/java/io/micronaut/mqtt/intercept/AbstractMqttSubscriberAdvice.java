@@ -68,7 +68,7 @@ public abstract class AbstractMqttSubscriberAdvice<M> implements ExecutableMetho
     }
 
     @Override
-    public void process(BeanDefinition<?> beanDefinition, ExecutableMethod<?, ?> method) {
+    public <B> void process(BeanDefinition<B> beanDefinition, ExecutableMethod<B, ?> method) {
         if (method.hasAnnotation(MqttSubscriber.class)) {
             List<AnnotationValue<Topic>> topicAnnotations = method.getAnnotationValuesByType(Topic.class);
             if (!topicAnnotations.isEmpty()) {

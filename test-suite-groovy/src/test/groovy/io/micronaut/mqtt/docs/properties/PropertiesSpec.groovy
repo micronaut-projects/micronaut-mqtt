@@ -3,9 +3,10 @@ package io.micronaut.mqtt.docs.properties
 import io.micronaut.mqtt.test.AbstractMQTTTest
 import io.micronaut.context.ApplicationContext
 import io.micronaut.mqtt.test.MQTT5Test
+import spock.lang.Specification
 import spock.util.concurrent.PollingConditions
 
-class PropertiesSpec extends AbstractMQTTTest implements MQTT5Test {
+class PropertiesSpec extends Specification implements MQTT5Test, AbstractMQTTTest {
 
     void "test sending and receiving properties"() {
         ApplicationContext applicationContext = startContext()

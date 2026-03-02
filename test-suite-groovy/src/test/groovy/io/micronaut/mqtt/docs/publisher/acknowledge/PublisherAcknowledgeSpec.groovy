@@ -6,12 +6,13 @@ import io.micronaut.mqtt.test.MQTT5Test
 import org.reactivestreams.Publisher
 import org.reactivestreams.Subscriber
 import org.reactivestreams.Subscription
+import spock.lang.Specification
 import spock.util.concurrent.PollingConditions
 
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.atomic.AtomicInteger
 
-class PublisherAcknowledgeSpec extends AbstractMQTTTest implements MQTT5Test {
+class PublisherAcknowledgeSpec extends Specification implements MQTT5Test, AbstractMQTTTest {
 
     void "test publisher acknowledgement"() {
         given:

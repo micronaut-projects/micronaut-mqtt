@@ -3,13 +3,6 @@ plugins {
     id "io.micronaut.build.internal.module"
 }
 
-ossIndexAudit {
-        excludeCoordinates = [
-                "org.bouncycastle:bcprov-jdk15on:1.70", // no version patched https://ossindex.sonatype.org/component/pkg:maven/org.bouncycastle/bcprov-jdk15on
-                "org.bouncycastle:bcpkix-jdk15on:1.70" // no version patched https://ossindex.sonatype.org/component/pkg:maven/org.bouncycastle/bcpkix-jdk15on
-        ]
-}
-
 dependencies {
     annotationProcessor(mnValidation.micronaut.validation.processor)
     implementation(mnValidation.micronaut.validation)

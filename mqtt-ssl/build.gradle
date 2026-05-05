@@ -5,7 +5,7 @@ plugins {
 dependencies {
     implementation(mn.micronaut.http)
     api projects.micronautMqttCore
-    implementation(libs.bcpkix.jdk15on)
+    implementation(libs.bcpkix.jdk18on)
     testImplementation(platform(mnTest.boms.testcontainers))
     testImplementation(libs.testcontainers)
     testImplementation projects.micronautMqttv5

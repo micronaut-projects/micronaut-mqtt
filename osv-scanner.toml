@@ -1,0 +1,3 @@
+[[IgnoredVulns]]
+id = "GHSA-wg6q-6289-32hp"
+reason = "No fix available yet in org.bouncycastle:bcpkix-jdk18on. Fixed in 1.84, latest available is 1.80."

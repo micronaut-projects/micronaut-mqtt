@@ -8,10 +8,10 @@ managed-hivemq-client = "1.3.14"
 awaitility = "4.3.0"
 bcpkix-jdk18on = "1.84"
 
-micronaut-reactor = "4.0.0-RC1"
-micronaut-serde = "3.0.0-RC2"
+micronaut-reactor = "4.0.0"
+micronaut-serde = "3.0.0"
 
-micronaut-validation = "5.0.0-RC2"
+micronaut-validation = "5.0.0"
 
 [libraries]
 # Core

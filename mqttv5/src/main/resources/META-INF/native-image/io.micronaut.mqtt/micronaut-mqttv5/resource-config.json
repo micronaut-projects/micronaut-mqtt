@@ -1,0 +1,9 @@
+{
+  "resources": {
+    "includes": [
+      {
+        "pattern": "org/eclipse/paho/mqttv5/.*/nls/.*\\.properties"
+      }
+    ]
+  }
+}

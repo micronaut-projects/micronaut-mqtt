@@ -1,0 +1,6 @@
+[
+  {
+    "name": "org.bouncycastle.jcajce.provider.asymmetric.x509.CertificateFactory",
+    "allPublicConstructors": true
+  }
+]

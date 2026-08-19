@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.graalvm.buildtools.native:org.graalvm.buildtools.native.gradle.plugin:1.1.9")
+    implementation("org.graalvm.buildtools.native:org.graalvm.buildtools.native.gradle.plugin:1.1.10")
     implementation(providers.gradleProperty("micronaut-build-version").map { "io.micronaut.build.internal:micronaut-kotlin-build-plugins:${it}" }.get())
     implementation (libs.micronaut.gradle.plugin)
 }

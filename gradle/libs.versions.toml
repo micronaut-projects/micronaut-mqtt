@@ -1,5 +1,5 @@
 [versions]
-micronaut = "5.1.10"
+micronaut = "5.1.12"
 micronaut-gradle-plugin = "5.0.2"
 managed-mqttv3 = "1.2.5"
 managed-mqttv5 = "1.2.5"
@@ -9,7 +9,7 @@ awaitility = "4.3.0"
 bcpkix-jdk18on = "1.85"
 
 micronaut-reactor = "4.1.0"
-micronaut-serde = "3.1.0"
+micronaut-serde = "3.1.1"
 
 micronaut-validation = "5.1.0"
 

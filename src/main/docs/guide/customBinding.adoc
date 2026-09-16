@@ -24,6 +24,9 @@ snippet::io.micronaut.mqtt.docs.custom.annotation.Correlation[tags="imports,claz
 
 <1> The link:{apimicronaut}core/bind/annotation/Bindable.html[@Bindable] annotation is required for the annotation to be considered for binding.
 
+[.lang-python]
+NOTE: In Python a custom annotation is a function returning a decorator, meta-annotated like the Java annotation type.
+
 snippet::io.micronaut.mqtt.docs.custom.annotation.CorrelationAnnotationBinder[tags="imports,clazz"]
 
 <1> The class is made a bean by annotating with `@Singleton`.
@@ -31,6 +34,9 @@ snippet::io.micronaut.mqtt.docs.custom.annotation.CorrelationAnnotationBinder[ta
 <3> The conversion service is injected into the instance.
 <4> The correlation data is set from the publisher method value.
 <5> The correlation data is returned to be bound to a subscriber method value.
+
+[.lang-python]
+NOTE: In Python the binder implements `AnnotatedMqttBinder` without type arguments; `getAnnotationType` returns the generated annotation type (a `java.lang.Class`), obtained with `java.type(...)` because the Python annotation function itself is not a Java class.
 
 The annotation can now be used on the argument in a subscriber method.
 
@@ -59,3 +65,6 @@ snippet::io.micronaut.mqtt.docs.custom.type.ProductInfoTypeBinder[tags="imports,
 <3> The conversion service is injected into the instance.
 <4> The properties are populated into user properties when publishing
 <5> The properties are read and converted into a `ProductInfo` to be bound to a subscriber argument
+
+[.lang-python]
+NOTE: In Python the binder implements `TypedMqttBinder` without type arguments; `getArgumentType` returns `Argument.of(ProductInfo)` with the imported Python class.

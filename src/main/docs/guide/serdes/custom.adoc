@@ -11,4 +11,7 @@ snippet::io.micronaut.mqtt.docs.serdes.ProductInfoSerDes[tags="imports,clazz"]
 <5> The serialize method takes the `ProductInfo` and returns the bytes to publish.
 <6> The supports method ensures only the correct body types are processed by this ser-des
 
+[.lang-python]
+NOTE: In Python the ser-des implements `MqttPayloadSerDes` without type arguments; `supports` checks the argument type against the imported Python `ProductInfo` class.
+
 TIP: Because the `getOrder` method was not overridden, the default order of 0 is used. All default ser-des have a lower precedent than the default order which means this ser-des will be checked before the others.

@@ -36,7 +36,7 @@ snippet::io.micronaut.mqtt.docs.custom.annotation.CorrelationAnnotationBinder[ta
 <5> The correlation data is returned to be bound to a subscriber method value.
 
 [.lang-python]
-NOTE: In Python the binder implements `AnnotatedMqttBinder` without type arguments; `getAnnotationType` returns the generated annotation type (a `java.lang.Class`), obtained with `java.type(...)` because the Python annotation function itself is not a Java class.
+NOTE: In Python `getAnnotationType` returns the generated annotation type (a `java.lang.Class`), obtained with `java.type(...)` because the Python annotation function itself is not a Java class.
 
 The annotation can now be used on the argument in a subscriber method.
 
@@ -67,4 +67,4 @@ snippet::io.micronaut.mqtt.docs.custom.type.ProductInfoTypeBinder[tags="imports,
 <5> The properties are read and converted into a `ProductInfo` to be bound to a subscriber argument
 
 [.lang-python]
-NOTE: In Python the binder implements `TypedMqttBinder` without type arguments; `getArgumentType` returns `Argument.of(ProductInfo)` with the imported Python class.
+NOTE: In Python `getArgumentType` returns `Argument.of(ProductInfo)` with the imported Python class.

@@ -6,10 +6,10 @@ for the final migration wave.
 
 ## Reconciliation
 
-- Last generated active `@Disabled` count: 1.
+- Last generated active `@Disabled` count: 0.
 - Last generated command: `rg -n "@Disabled\\(" test-suite-python/src/test/python`.
 - Last full-suite command: `./gradlew :test-suite-python:test -Ppython-ci --max-workers=1` (needs a container runtime for the Mosquitto test container).
-- Last full-suite result: build successful, 8 tests executed, 1 skipped (`CorrelationSpec`, see below), 0 failures.
+- Last full-suite result (micronaut-core 5.2.3, micronaut-build 8.1.2): build successful, 8 tests executed, 0 skipped, 0 failures.
 
 ## Migration Rules
 
@@ -34,14 +34,12 @@ for the final migration wave.
   `@ContextConfigurer` of this project (see below).
 - Prefer normal imports over `java.type(...)`: the imported Python classes work as runtime type arguments
   (`Argument.of(ProductInfo)`, `argument.getType().isAssignableFrom(ProductInfo)`). The only remaining `java.type`
-  call is the annotation type an `AnnotatedMqttBinder` returns to Java as a `java.lang.Class` (see "java.type usages"
-  below).
+  call is the Python-defined annotation type an `AnnotatedMqttBinder` returns to Java as a `java.lang.Class` (see
+  "java.type usages" below).
 
 ## Active `@Disabled` Tests
 
-| Test | Reason |
-| --- | --- |
-| `io.micronaut.mqtt.docs.custom.annotation.CorrelationSpec` | The generated bridge of `AnnotatedMqttBinder.bindFrom` converts the returned `Optional` with `PythonConversion.convertOptional(value, Annotation.class)`: the element type is resolved from the type variable `T extends Annotation` of `AnnotatedMqttBinder<M, T>` instead of the `T` of the inherited `MqttBinder<M, Object>` method (same type variable name), so the bound `byte[]` becomes an `Annotation` proxy and the subscriber fails with `Invalid type [jdk.proxy2.$Proxy] for argument [byte[] correlation]`. The binder itself (`bindTo`, `bindFrom`, `getAnnotationType`) is invoked correctly. |
+None.
 
 ## Commented Unsupported Snippet Ports
 
@@ -51,7 +49,7 @@ None.
 
 | Target | Reason |
 | --- | --- |
-| `io.micronaut.mqtt.docs.PythonRuntimeInitializer` (Java, `src/test/java`) | The MQTT subscriber processor (`ExecutableMethodProcessor<Topic>`) is created by `DefaultBeanContext.processExecutableMethodsProcessAtStartup()` before the `@Context` beans (the GraalPy runtime) are initialized, and its constructor injects the binder and ser-des registries, so a Python `MqttBinder`/`MqttPayloadSerDes` bean would be instantiated before the GraalPy runtime exists (`GraalPy context has not been initialized`). A `BeanCreatedEventListener` (the Kafka workaround) is too late here because the Python beans are constructor dependencies of the processor; `TypeConverter` beans are created before the startup processors (`DefaultApplicationContext.initializeTypeConverters()`), so a no-op Java `TypeConverter<Object, Object>` injecting the `@Named("python") Context` forces the runtime first. |
+| `io.micronaut.mqtt.docs.publisher.acknowledge.PublisherAcknowledgeSpec` | A class defined inside a method cannot extend an imported Java interface (`Subscriber`) with core 5.2.3: instantiating it fails with `TypeError: invalid instantiation of foreign object` (the runtime module keeps the host interface as the base; with the generated import modules of 5.2.2 the local class worked). The subscriber of the Java example's anonymous class is a module-level class taking the counters. `TODO(python)`. |
 | `io.micronaut.mqtt.docs.MqttTestConfigurer` (Java, `src/test/java`) | The `@ContextConfigurer` providing the `mqtt.client.*` configuration of the shared Mosquitto test container to the `mqtt` environment is written in Java because Micronaut Test calls `TestPropertyProvider` before the application context, and with it the GraalPy runtime, exists. It uses the `configure(ApplicationContext)` callback (the builder callback runs before `@MicronautTest` selects the environments) and `environment.addPropertySource(...)`. |
 
 ## Intentionally Unsupported Snippet Targets
@@ -64,4 +62,12 @@ Every remaining `java.type(...)` call carries a `# TODO(python)` comment naming 
 
 | Location | Reason |
 | --- | --- |
-| `custom/annotation/CorrelationAnnotationBinder.py` (`CorrelationClass`) | `AnnotatedMqttBinder.getAnnotationType()` returns the annotation type to Java as a runtime `java.lang.Class`; returning the imported Python annotation function fails with `Cannot convert '<function Correlation>' (language: Python, type: function) to Java type 'java.lang.Class'`. |
+| `custom/annotation/CorrelationAnnotationBinder.py` (`CorrelationClass`) | `AnnotatedMqttBinder.getAnnotationType()` returns the annotation type to Java as a runtime `java.lang.Class`; returning the Python-defined annotation function still fails with core 5.2.3 (`Cannot convert '<function Correlation>' (language: Python, type: function) to Java type 'java.lang.Class': Unsupported target type.`, verified on the identical RabbitMQ binder). Python *classes* passed as `Class` arguments work. |
+
+## Verified with micronaut-core 5.2.3 (workarounds removed)
+
+- `AnnotatedMqttBinder[MqttV5BindingContext, Correlation]` with the Java signatures (`bindFrom(...) -> Optional[object]`):
+  the `Optional` is converted with the right type variable (`CorrelationSpec` re-enabled).
+- `TypedMqttBinder[MqttV5BindingContext, ProductInfo]` and `MqttPayloadSerDes[ProductInfo]` generic bases like in Java.
+- `PythonRuntimeInitializer` (Java `TypeConverter`) removed: the GraalPy runtime is created on demand for the Python
+  binder and ser-des beans the subscriber processor injects.

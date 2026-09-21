@@ -15,12 +15,12 @@ from micronaut.context.annotation import Requires
 @Requires(property="spec.name", value="ProductInfoSerDesSpec")
 # tag::clazz[]
 @Singleton  # <1>
-class ProductInfoSerDes(MqttPayloadSerDes):  # <2>
+class ProductInfoSerDes(MqttPayloadSerDes[ProductInfo]):  # <2>
 
     def __init__(self, conversion_service: ConversionService):  # <3>
         self.conversion_service = conversion_service
 
-    def deserialize(self, payload: bytes, argument: Argument) -> ProductInfo | None:
+    def deserialize(self, payload: bytes, argument: Argument[ProductInfo]) -> ProductInfo | None:
         body = bytes(payload).decode("utf-8")
         parts = body.split("|")
         if len(parts) == 3:
@@ -41,6 +41,6 @@ class ProductInfoSerDes(MqttPayloadSerDes):  # <2>
         size = "null" if data.size is None else data.size
         return f"{size}|{data.count}|{str(data.sealed).lower()}".encode("utf-8")  # <5>
 
-    def supports(self, argument: Argument) -> bool:  # <6>
+    def supports(self, argument: Argument[ProductInfo]) -> bool:  # <6>
         return argument.getType().isAssignableFrom(ProductInfo)
 # end::clazz[]

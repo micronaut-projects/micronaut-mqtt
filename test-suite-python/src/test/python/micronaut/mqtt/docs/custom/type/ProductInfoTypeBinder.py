@@ -18,22 +18,22 @@ from micronaut.context.annotation import Requires
 @Requires(property="spec.name", value="ProductInfoSpec")
 # tag::clazz[]
 @Singleton  # <1>
-class ProductInfoTypeBinder(TypedMqttBinder):  # <2>
+class ProductInfoTypeBinder(TypedMqttBinder[MqttV5BindingContext, ProductInfo]):  # <2>
 
     def __init__(self, conversion_service: ConversionService):  # <3>
         self.conversion_service = conversion_service
 
-    def getArgumentType(self) -> Argument:
+    def getArgumentType(self) -> Argument[ProductInfo]:
         return Argument.of(ProductInfo)
 
-    def bindTo(self, context: MqttV5BindingContext, value: ProductInfo, argument: Argument) -> None:
+    def bindTo(self, context: MqttV5BindingContext, value: ProductInfo, argument: Argument[ProductInfo]) -> None:
         user_properties_list = context.getProperties().getUserProperties()
         if value.size is not None:
             user_properties_list.add(UserProperty("productSize", value.size))
         user_properties_list.add(UserProperty("productCount", str(value.count)))  # <4>
         user_properties_list.add(UserProperty("productSealed", str(value.sealed).lower()))
 
-    def bindFrom(self, context: MqttV5BindingContext, conversion_context: ArgumentConversionContext) -> Optional:
+    def bindFrom(self, context: MqttV5BindingContext, conversion_context: ArgumentConversionContext[ProductInfo]) -> Optional[ProductInfo]:
         user_properties = {p.getKey(): p.getValue() for p in context.getProperties().getUserProperties()}
         size = user_properties.get("productSize")
         count = Optional.ofNullable(user_properties.get("productCount")).flatMap(lambda value: self.conversion_service.convert(value, Long))

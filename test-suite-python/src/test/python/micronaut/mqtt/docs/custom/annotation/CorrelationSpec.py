@@ -4,17 +4,12 @@ from typing import Annotated
 from jakarta.inject import Inject
 from micronaut.context.annotation import Property
 from micronaut.test.extensions.junit5.annotation import MicronautTest
-from org.junit.jupiter.api import Disabled, Test
+from org.junit.jupiter.api import Test
 
 from .ProductClient import ProductClient
 from .ProductListener import ProductListener
 
 
-# TODO(python): the generated bridge of AnnotatedMqttBinder.bindFrom converts the returned Optional with the
-# element type of AnnotatedMqttBinder's type variable T (bound to Annotation) instead of the T of the inherited
-# MqttBinder<M, Object> method, so the bound byte[] becomes an Annotation proxy and the subscriber method fails
-# with "Invalid type [jdk.proxy2.$Proxy] for argument [byte[] correlation]".
-@Disabled("TODO(python): Optional return of AnnotatedMqttBinder.bindFrom is converted with the wrong type variable")
 @Property(name="spec.name", value="CorrelationSpec")
 @MicronautTest(environments=["mqtt"])
 class CorrelationSpec:

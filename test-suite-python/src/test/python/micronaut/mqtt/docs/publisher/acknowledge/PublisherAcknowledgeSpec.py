@@ -11,6 +11,29 @@ from .ProductClient import ProductClient
 from .ProductListener import ProductListener
 
 
+# TODO(python): a class defined inside a method cannot extend an imported Java interface with core 5.2.3
+# ("TypeError: invalid instantiation of foreign object" when it is instantiated; it worked with the generated
+# import modules of 5.2.2), so the subscriber of the Java example's anonymous class is a module-level class.
+class VoidSubscriber(Subscriber):
+
+    def __init__(self, counts: dict[str, int]) -> None:
+        self.counts = counts
+
+    def onSubscribe(self, subscription: Subscription) -> None:
+        subscription.request(1)
+
+    def onNext(self, value: None) -> None:
+        raise RuntimeError("Should never be called")
+
+    def onError(self, throwable: Exception) -> None:
+        # if an error occurs
+        self.counts["error"] += 1
+
+    def onComplete(self) -> None:
+        # if the publish was acknowledged
+        self.counts["success"] += 1
+
+
 @Property(name="spec.name", value="PublisherAcknowledgeSpec")
 @MicronautTest(environments=["mqtt"])
 class PublisherAcknowledgeSpec:
@@ -19,45 +42,25 @@ class PublisherAcknowledgeSpec:
 
     @Test
     def test_publisher_acknowledgement(self):
-        success_count = 0
-        error_count = 0
+        counts = {"success": 0, "error": 0}
 
         publisher = self.product_client.send_publisher(b"publisher body")
         future = self.product_client.send_future(b"future body")
 
-        class VoidSubscriber(Subscriber):
-
-            def onSubscribe(self, subscription: Subscription) -> None:
-                subscription.request(1)
-
-            def onNext(self, value: None) -> None:
-                raise RuntimeError("Should never be called")
-
-            def onError(self, throwable: Exception) -> None:
-                # if an error occurs
-                nonlocal error_count
-                error_count += 1
-
-            def onComplete(self) -> None:
-                # if the publish was acknowledged
-                nonlocal success_count
-                success_count += 1
-
-        publisher.subscribe(VoidSubscriber())
+        publisher.subscribe(VoidSubscriber(counts))
 
         def when_complete(value, throwable):
-            nonlocal success_count, error_count
             if throwable is None:
-                success_count += 1
+                counts["success"] += 1
             else:
-                error_count += 1
+                counts["error"] += 1
 
         future.whenComplete(when_complete)
 
         for _ in range(50):
-            if success_count == 2 and len(self.listener.message_lengths) == 2:
+            if counts["success"] == 2 and len(self.listener.message_lengths) == 2:
                 break
             sleep(0.1)
-        assert error_count == 0
-        assert success_count == 2
+        assert counts["error"] == 0
+        assert counts["success"] == 2
         assert len(self.listener.message_lengths) == 2

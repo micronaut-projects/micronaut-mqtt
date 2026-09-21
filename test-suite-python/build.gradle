@@ -5,7 +5,7 @@ plugins {
 }
 
 dependencies {
-    // The Java helpers in src/test/java (broker test configurer, GraalPy runtime initializer) are processed by javac
+    // The Java helper in src/test/java (broker test configurer) is processed by javac
     testAnnotationProcessor(mn.micronaut.inject.java)
     // Annotation processors of the Python sources MUST be testImplementation (not testAnnotationProcessor):
     // the Python compiler takes the compile classpath as its annotation processor path.

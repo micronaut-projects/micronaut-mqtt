@@ -298,6 +298,18 @@ See the guide for <a href="https://guides.micronaut.io/latest/tag-mqtt.html">Pub
 <div class="paragraph">
 <p>For example the following is a trivial <code>MqttPublisher</code> interface:</p>
 </div>
+<div class="admonitionblock note lang-python">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In Python the publisher is an abstract class (<code>ABC</code>) whose abstract methods have <code>&#8230;&#8203;</code> bodies; Micronaut generates the implementation.
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock multi-language-sample">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import io.micronaut.mqtt.annotation.Topic;
@@ -309,6 +321,20 @@ public interface ProductClient {
     @Topic("product") // <b class="conum">(2)</b>
     void send(byte[] data); // <b class="conum">(3)</b>
 }</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.mqtt.annotation import Topic
+from micronaut.mqtt.annotation.v5 import MqttPublisher
+
+@MqttPublisher  # <b class="conum">(1)</b>
+class ProductClient(ABC):
+
+    @Topic("product")  # <b class="conum">(2)</b>
+    @abstractmethod
+    def send(self, data: bytes) -&gt; None:  # <b class="conum">(3)</b>
+        ...</code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -364,6 +390,11 @@ productClient.send("quickstart".getBytes());</code></pre>
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">        self.product_client.send(b"quickstart")</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">val productClient = applicationContext.getBean(ProductClient::class.java)
 productClient.send("quickstart".toByteArray())</code></pre>
 </div>
@@ -374,7 +405,7 @@ productClient.send("quickstart".toByteArray())</code></pre>
 productClient.send("quickstart".getBytes())</code></pre>
 </div>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock note lang-java lang-kotlin lang-groovy">
 <table>
 <tr>
 <td class="icon">
@@ -382,6 +413,18 @@ productClient.send("quickstart".getBytes())</code></pre>
 </td>
 <td class="content">
 Because the <code>send</code> method returns <code>void</code> this means the method will publish the message and block until the broker acknowledges the message.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note lang-python">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Because the <code>send</code> method returns <code>None</code> this means the method will publish the message and block until the broker acknowledges the message.
 </td>
 </tr>
 </table>
@@ -422,6 +465,22 @@ public class ProductListener {
         System.out.println("Java received " + data.length + " bytes from MQTT");
     }
 }</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.mqtt.annotation import MqttSubscriber, Topic
+
+@MqttSubscriber  # <b class="conum">(1)</b>
+class ProductListener:
+
+    def __init__(self):
+        self.message_lengths: list[str] = []
+
+    @Topic("product")  # <b class="conum">(2)</b>
+    def receive(self, data: bytes) -&gt; None:  # <b class="conum">(3)</b>
+        self.message_lengths.append(bytes(data).decode())
+        print(f"Python received {len(data)} bytes from MQTT")</code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -536,6 +595,15 @@ class ProductListener {
     &lt;groupId&gt;io.micronaut.mqtt&lt;/groupId&gt;
     &lt;artifactId&gt;micronaut-mqtt-hivemq&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="pyronaut">[tool.pyronaut.dependencies]
+runtime = [
+    <span class="hljs-string">"io.micronaut.mqtt:micronaut-mqtt-hivemq"</span>,
+]</code></pre>
 </div>
 </div>
 </p>
@@ -773,6 +841,15 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
+<div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="pyronaut">[tool.pyronaut.dependencies]
+runtime = [
+    <span class="hljs-string">"io.micronaut.mqtt:micronaut-mqttv3"</span>,
+]</code></pre>
+</div>
+</div>
 </p>
 </div>
 
@@ -921,6 +998,15 @@ It is also possible to disable the integration entirely with <code>mqtt.enabled:
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
+<div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="pyronaut">[tool.pyronaut.dependencies]
+runtime = [
+    <span class="hljs-string">"io.micronaut.mqtt:micronaut-mqttv5"</span>,
+]</code></pre>
+</div>
+</div>
 </p>
 </div>
 
@@ -1056,6 +1142,28 @@ public interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.mqtt.annotation import Topic
+from micronaut.mqtt.annotation.v5 import MqttProperty, MqttPublisher
+
+@MqttPublisher
+@MqttProperty(name="appId", value="myApp")  # <b class="conum">(1)</b>
+class ProductClient(ABC):
+
+    @Topic("product")
+    @MqttProperty(name="contentType", value="application/json")  # <b class="conum">(2)</b>
+    @MqttProperty(name="userId", value="guest")
+    @abstractmethod
+    def send(self, data: bytes) -&gt; None:
+        ...
+
+    @Topic("product")
+    @abstractmethod
+    def send_with_properties(self, user: Annotated[str, MqttProperty("userId")], contentType: Annotated[str | None, MqttProperty], data: bytes) -&gt; None:  # <b class="conum">(3)</b>
+        ...</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.v5.MqttProperties
@@ -1113,8 +1221,23 @@ interface ProductClient {
 </tr>
 </table>
 </div>
-<div class="paragraph">
+<div class="admonitionblock note lang-python">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Python has no method overloading, so the method with the per-execution properties gets its own name (<code>send_with_properties</code>); repeatable annotations such as <code>@MqttProperty</code> are stacked as decorators and a nullable argument is typed <code>str | None</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph lang-java lang-kotlin lang-groovy">
 <p>For method arguments, if the value is not supplied to the annotation, the argument name will be used as the property name. For example, <code>@MqttProperty String userId</code> would result in the property <code>userId</code> being set on the properties object before publishing.</p>
+</div>
+<div class="paragraph lang-python">
+<p>For method arguments, if the value is not supplied to the annotation, the argument name will be used as the property name. For example, <code>userId: Annotated[str, MqttProperty]</code> would result in the property <code>userId</code> being set on the properties object before publishing.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1159,6 +1282,25 @@ public class ProductListener {
         messageProperties.add(user + "|" + contentType + "|" + appId);
     }
 }</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.mqtt.annotation import MqttSubscriber, Topic
+from micronaut.mqtt.annotation.v5 import MqttProperty
+
+@MqttSubscriber
+class ProductListener:
+
+    def __init__(self):
+        self.message_properties: list[str] = []
+
+    @Topic("product")
+    def receive(self, data: bytes,
+                user: Annotated[str, MqttProperty("userId")],  # <b class="conum">(1)</b>
+                contentType: Annotated[str | None, MqttProperty],  # <b class="conum">(2)</b>
+                appId: Annotated[str, MqttProperty]) -&gt; None:  # <b class="conum">(3)</b>
+        self.message_properties.append(f"{user}|{contentType}|{appId}")</code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -1261,6 +1403,15 @@ Arguments are required by default and an exception will be thrown if they cannot
     &lt;groupId&gt;io.micronaut.mqtt&lt;/groupId&gt;
     &lt;artifactId&gt;micronaut-mqtt-ssl&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="pyronaut">[tool.pyronaut.dependencies]
+runtime = [
+    <span class="hljs-string">"io.micronaut.mqtt:micronaut-mqtt-ssl"</span>,
+]</code></pre>
 </div>
 </div>
 </p>
@@ -1433,6 +1584,24 @@ public interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.mqtt.annotation import Topic
+from micronaut.mqtt.annotation.v5 import MqttPublisher
+
+@MqttPublisher
+class ProductClient(ABC):
+
+    @Topic("product")  # <b class="conum">(1)</b>
+    @abstractmethod
+    def send(self, data: bytes) -&gt; None:
+        ...
+
+    @abstractmethod
+    def send_to_topic(self, binding: Annotated[str, Topic], data: bytes) -&gt; None:  # <b class="conum">(2)</b>
+        ...</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
 
@@ -1473,6 +1642,18 @@ interface ProductClient {
 </tr>
 </table>
 </div>
+<div class="admonitionblock note lang-python">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Python has no method overloading, so the method with the dynamic topic gets its own name (<code>send_to_topic</code>).
+</td>
+</tr>
+</table>
+</div>
 
 <h2 id="producerQos"><a class="anchor" href="#producerQos"></a>9.1.1.2 Qos</h2>
 
@@ -1501,6 +1682,25 @@ public interface ProductClient {
     @Topic("product")
     void send(byte[] data, @Qos int qos); // <b class="conum">(2)</b>
 }</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.mqtt.annotation import Qos, Topic
+from micronaut.mqtt.annotation.v5 import MqttPublisher
+
+@MqttPublisher
+class ProductClient(ABC):
+
+    @Topic(value="product", qos=2)  # <b class="conum">(1)</b>
+    @abstractmethod
+    def send(self, data: bytes) -&gt; None:
+        ...
+
+    @Topic("product")
+    @abstractmethod
+    def send_with_qos(self, data: bytes, qos: Annotated[int, Qos]) -&gt; None:  # <b class="conum">(2)</b>
+        ...</code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -1550,6 +1750,18 @@ interface ProductClient {
 </tr>
 </table>
 </div>
+<div class="admonitionblock note lang-python">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Python has no method overloading, so the method with the dynamic Qos gets its own name (<code>send_with_qos</code>).
+</td>
+</tr>
+</table>
+</div>
 
 <h2 id="producerRetained"><a class="anchor" href="#producerRetained"></a>9.1.1.3 Retained</h2>
 
@@ -1579,6 +1791,26 @@ public interface ProductClient {
     @Topic("product")
     void send(byte[] data, @Retained boolean retained); // <b class="conum">(2)</b>
 }</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.mqtt.annotation import Retained, Topic
+from micronaut.mqtt.annotation.v5 import MqttPublisher
+
+@MqttPublisher
+class ProductClient(ABC):
+
+    @Topic("product")
+    @Retained(True)  # <b class="conum">(1)</b>
+    @abstractmethod
+    def send(self, data: bytes) -&gt; None:
+        ...
+
+    @Topic("product")
+    @abstractmethod
+    def send_retained(self, data: bytes, retained: Annotated[bool, Retained]) -&gt; None:  # <b class="conum">(2)</b>
+        ...</code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -1626,6 +1858,18 @@ interface ProductClient {
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>The retained flag must be set per execution</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note lang-python">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Python has no method overloading, so the method with the dynamic retained flag gets its own name (<code>send_retained</code>).
+</td>
 </tr>
 </table>
 </div>
@@ -1680,6 +1924,26 @@ public interface ProductClient {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.mqtt.annotation import Topic
+from micronaut.mqtt.annotation.v5 import MqttPublisher
+from org.reactivestreams import Publisher
+
+@MqttPublisher
+class ProductClient(ABC):
+
+    @Topic("product")
+    @abstractmethod
+    def send_publisher(self, data: bytes) -&gt; Publisher[None]:  # <b class="conum">(1)</b>
+        ...
+
+    @Topic("product")
+    @abstractmethod
+    def send_future(self, data: bytes) -&gt; CompletableFuture[None]:  # <b class="conum">(2)</b>
+        ...</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.v5.MqttPublisher
 import io.micronaut.mqtt.annotation.Topic
 import org.reactivestreams.Publisher
@@ -1724,6 +1988,18 @@ interface ProductClient {
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Java futures can also be used</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note lang-python">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In Python the return type hints <code>Publisher[None]</code> and <code>CompletableFuture[None]</code> map to <code>Publisher&lt;Void&gt;</code> and <code>CompletableFuture&lt;Void&gt;</code>.
+</td>
 </tr>
 </table>
 </div>
@@ -1834,6 +2110,27 @@ public class ProductListener {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.mqtt.annotation import MqttSubscriber, Topic
+
+@MqttSubscriber
+class ProductListener:
+
+    def __init__(self):
+        self.message_lengths: list[int] = []
+        self.topics: list[str] = []
+
+    @Topic("product")  # <b class="conum">(1)</b>
+    def receive(self, data: bytes) -&gt; None:
+        self.message_lengths.append(len(data))
+
+    @Topic("product/a")
+    @Topic("product/b")  # <b class="conum">(2)</b>
+    def receive_from_topic(self, data: bytes, topic: Annotated[str, Topic]) -&gt; None:
+        self.topics.append(topic)</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.mqtt.annotation.Topic
 import io.micronaut.mqtt.annotation.MqttSubscriber
 import java.util.*
@@ -1877,6 +2174,18 @@ class ProductListener {
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Multiple topics are subscribed to and the topic received is an argument to the method. The value will change depending on which topic the message was sent to.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note lang-python">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Python has no method overloading, so each subscriber method needs its own name (<code>receive_from_topic</code>); repeatable annotations such as <code>@Topic</code> are stacked as decorators.
+</td>
 </tr>
 </table>
 </div>
@@ -1930,6 +2239,23 @@ public class ProductListener {
         acknowledgement.ack(); // <b class="conum">(2)</b>
     }
 }</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.messaging import Acknowledgement
+from micronaut.mqtt.annotation import MqttSubscriber, Topic
+
+@MqttSubscriber
+class ProductListener:
+
+    def __init__(self):
+        self.message_count = 0
+
+    @Topic("product")
+    def receive(self, data: bytes, acknowledgement: Acknowledgement) -&gt; None:  # <b class="conum">(1)</b>
+        self.message_count += 1
+        acknowledgement.ack()  # <b class="conum">(2)</b></code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -2182,6 +2508,17 @@ public @interface Correlation {
 </div>
 <div class="listingblock multi-language-sample">
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.core.bind.annotation import Bindable
+
+@Bindable  # <b class="conum">(1)</b>
+def Correlation():
+    def decorator(func):
+        return func
+    return decorator</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">import io.micronaut.core.bind.annotation.Bindable
 
 
@@ -2211,6 +2548,18 @@ import java.lang.annotation.*
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>The <a href="https://docs.micronaut.io/latest/api/io/micronaut/core/bind/annotation/Bindable.html">@Bindable</a> annotation is required for the annotation to be considered for binding.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note lang-python">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In Python a custom annotation is a function returning a decorator, meta-annotated like the Java annotation type.
+</td>
 </tr>
 </table>
 </div>
@@ -2249,6 +2598,34 @@ public class CorrelationAnnotationBinder implements AnnotatedMqttBinder&lt;MqttV
         return conversionService.convert(context.getProperties().getCorrelationData(), conversionContext); // <b class="conum">(5)</b>
     }
 }</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from jakarta.inject import Singleton
+from micronaut.core.convert import ArgumentConversionContext, ConversionService
+from micronaut.core.type import Argument
+from micronaut.mqtt.bind import AnnotatedMqttBinder
+from micronaut.mqtt.v5.bind import MqttV5BindingContext
+
+from java.util import Optional
+
+from .Correlation import Correlation
+
+@Singleton  # <b class="conum">(1)</b>
+class CorrelationAnnotationBinder(AnnotatedMqttBinder[MqttV5BindingContext, Correlation]):  # <b class="conum">(2)</b>
+
+    def __init__(self, conversion_service: ConversionService):  # <b class="conum">(3)</b>
+        self.conversion_service = conversion_service
+
+    def getAnnotationType(self) -&gt; type[Correlation]:
+        return CorrelationClass
+
+    def bindTo(self, context: MqttV5BindingContext, value: object, argument: Argument[object]) -&gt; None:
+        context.getProperties().setCorrelationData(value)  # <b class="conum">(4)</b>
+
+    def bindFrom(self, context: MqttV5BindingContext, conversion_context: ArgumentConversionContext[object]) -&gt; Optional[object]:
+        return self.conversion_service.convert(context.getProperties().getCorrelationData(), conversion_context)  # <b class="conum">(5)</b></code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -2340,6 +2717,18 @@ class CorrelationAnnotationBinder implements AnnotatedMqttBinder&lt;MqttV5Bindin
 </tr>
 </table>
 </div>
+<div class="admonitionblock note lang-python">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In Python <code>getAnnotationType</code> returns the generated annotation type (a <code>java.lang.Class</code>), obtained with <code>java.type(&#8230;&#8203;)</code> because the Python annotation function itself is not a Java class.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>The annotation can now be used on the argument in a subscriber method.</p>
 </div>
@@ -2360,6 +2749,23 @@ public class ProductListener {
         messages.add(new String(correlation));
     }
 }</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.mqtt.annotation import MqttSubscriber, Topic
+
+from .Correlation import Correlation
+
+@MqttSubscriber
+class ProductListener:
+
+    def __init__(self):
+        self.messages: set[str] = set()
+
+    @Topic("product")
+    def receive(self, data: bytes, correlation: Annotated[bytes, Correlation]) -&gt; None:  # <b class="conum">(1)</b>
+        self.messages.add(bytes(correlation).decode())</code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -2414,6 +2820,22 @@ public interface ProductClient {
     @Topic("product")
     void send(@Correlation byte[] correlation);
 }</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from micronaut.mqtt.annotation import Topic
+from micronaut.mqtt.annotation.v5 import MqttPublisher
+
+from .Correlation import Correlation
+
+@MqttPublisher
+class ProductClient(ABC):
+
+    @Topic("product")
+    @abstractmethod
+    def send(self, correlation: Annotated[bytes, Correlation]) -&gt; None:
+        ...</code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -2479,6 +2901,19 @@ public class ProductInfo {
         return sealed;
     }
 }</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">class ProductInfo:
+
+    def __init__(self,
+                 size: str | None,  # <b class="conum">(1)</b>
+                 count: int,  # <b class="conum">(2)</b>
+                 sealed: bool):  # <b class="conum">(3)</b>
+        self.size = size
+        self.count = count
+        self.sealed = sealed</code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -2597,6 +3032,48 @@ public class ProductInfoTypeBinder implements TypedMqttBinder&lt;MqttV5BindingCo
         }
     }
 }</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from jakarta.inject import Singleton
+from micronaut.core.convert import ArgumentConversionContext, ConversionService
+from micronaut.core.type import Argument
+from micronaut.mqtt.bind import TypedMqttBinder
+from micronaut.mqtt.v5.bind import MqttV5BindingContext
+from org.eclipse.paho.mqttv5.common.packet import UserProperty
+
+from java.lang import Boolean, Long
+from java.util import Optional
+
+from .ProductInfo import ProductInfo
+
+@Singleton  # <b class="conum">(1)</b>
+class ProductInfoTypeBinder(TypedMqttBinder[MqttV5BindingContext, ProductInfo]):  # <b class="conum">(2)</b>
+
+    def __init__(self, conversion_service: ConversionService):  # <b class="conum">(3)</b>
+        self.conversion_service = conversion_service
+
+    def getArgumentType(self) -&gt; Argument[ProductInfo]:
+        return Argument.of(ProductInfo)
+
+    def bindTo(self, context: MqttV5BindingContext, value: ProductInfo, argument: Argument[ProductInfo]) -&gt; None:
+        user_properties_list = context.getProperties().getUserProperties()
+        if value.size is not None:
+            user_properties_list.add(UserProperty("productSize", value.size))
+        user_properties_list.add(UserProperty("productCount", str(value.count)))  # <b class="conum">(4)</b>
+        user_properties_list.add(UserProperty("productSealed", str(value.sealed).lower()))
+
+    def bindFrom(self, context: MqttV5BindingContext, conversion_context: ArgumentConversionContext[ProductInfo]) -&gt; Optional[ProductInfo]:
+        user_properties = {p.getKey(): p.getValue() for p in context.getProperties().getUserProperties()}
+        size = user_properties.get("productSize")
+        count = Optional.ofNullable(user_properties.get("productCount")).flatMap(lambda value: self.conversion_service.convert(value, Long))
+        sealed = Optional.ofNullable(user_properties.get("productSealed")).flatMap(lambda value: self.conversion_service.convert(value, Boolean))
+
+        if count.isPresent() and sealed.isPresent():
+            return Optional.of(ProductInfo(size, count.get(), sealed.get()))  # <b class="conum">(5)</b>
+        else:
+            return Optional.empty()</code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -2729,6 +3206,18 @@ class ProductInfoTypeBinder implements TypedMqttBinder&lt;MqttV5BindingContext, 
 </tr>
 </table>
 </div>
+<div class="admonitionblock note lang-python">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In Python <code>getArgumentType</code> returns <code>Argument.of(ProductInfo)</code> with the imported Python class.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 
@@ -2825,6 +3314,48 @@ public class ProductInfoSerDes implements MqttPayloadSerDes&lt;ProductInfo&gt; {
         return argument.getType().isAssignableFrom(ProductInfo.class);
     }
 }</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from jakarta.inject import Singleton
+from micronaut.core.convert import ConversionService
+from micronaut.core.type import Argument
+from micronaut.mqtt.serdes import MqttPayloadSerDes
+
+from java.lang import Boolean, Long
+
+from .ProductInfo import ProductInfo
+
+@Singleton  # <b class="conum">(1)</b>
+class ProductInfoSerDes(MqttPayloadSerDes[ProductInfo]):  # <b class="conum">(2)</b>
+
+    def __init__(self, conversion_service: ConversionService):  # <b class="conum">(3)</b>
+        self.conversion_service = conversion_service
+
+    def deserialize(self, payload: bytes, argument: Argument[ProductInfo]) -&gt; ProductInfo | None:
+        body = bytes(payload).decode("utf-8")
+        parts = body.split("|")
+        if len(parts) == 3:
+            size = parts[0]
+            if size == "null":
+                size = None
+
+            count = self.conversion_service.convert(parts[1], Long)
+            sealed = self.conversion_service.convert(parts[2], Boolean)
+
+            if count.isPresent() and sealed.isPresent():
+                return ProductInfo(size, count.get(), sealed.get())  # <b class="conum">(4)</b>
+        return None
+
+    def serialize(self, data: ProductInfo | None) -&gt; bytes | None:
+        if data is None:
+            return None
+        size = "null" if data.size is None else data.size
+        return f"{size}|{data.count}|{str(data.sealed).lower()}".encode("utf-8")  # <b class="conum">(5)</b>
+
+    def supports(self, argument: Argument[ProductInfo]) -&gt; bool:  # <b class="conum">(6)</b>
+        return argument.getType().isAssignableFrom(ProductInfo)</code></pre>
 </div>
 </div>
 <div class="listingblock multi-language-sample">
@@ -2955,6 +3486,18 @@ class ProductInfoSerDes implements MqttPayloadSerDes&lt;ProductInfo&gt; { // <b 
 <tr>
 <td><i class="conum" data-value="6"></i><b>6</b></td>
 <td>The supports method ensures only the correct body types are processed by this ser-des</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note lang-python">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In Python <code>supports</code> checks the argument type against the imported Python <code>ProductInfo</code> class.
+</td>
 </tr>
 </table>
 </div>

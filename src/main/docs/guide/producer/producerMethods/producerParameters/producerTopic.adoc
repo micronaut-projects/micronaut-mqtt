@@ -4,3 +4,6 @@ snippet::io.micronaut.mqtt.docs.parameters.ProductClient[tags="imports,clazz"]
 
 <1> The topic is static
 <2> The topic must be set per execution
+
+[.lang-python]
+NOTE: Python has no method overloading, so the method with the dynamic topic gets its own name (`send_to_topic`).

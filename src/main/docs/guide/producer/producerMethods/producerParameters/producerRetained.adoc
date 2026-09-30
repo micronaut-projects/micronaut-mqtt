@@ -4,3 +4,6 @@ snippet::io.micronaut.mqtt.docs.publisher.retained.ProductClient[tags="imports,c
 
 <1> The retained flag is set via the `Retained` annotation.
 <2> The retained flag must be set per execution
+
+[.lang-python]
+NOTE: Python has no method overloading, so the method with the dynamic retained flag gets its own name (`send_retained`).

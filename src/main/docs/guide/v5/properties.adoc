@@ -8,7 +8,14 @@ snippet::io.micronaut.mqtt.docs.properties.ProductClient[tags="imports,clazz"]
 <2> Multiple annotations can be used to set multiple properties on the method or class level.
 <3> Properties can be set per execution. The name is inferred from the argument if the annotation value is not set. Parameter values override any property value set from method or class level annotations.
 
+[.lang-python]
+NOTE: Python has no method overloading, so the method with the per-execution properties gets its own name (`send_with_properties`); repeatable annotations such as `@MqttProperty` are stacked as decorators and a nullable argument is typed `str | None`.
+
+[.lang-java.lang-kotlin.lang-groovy]
 For method arguments, if the value is not supplied to the annotation, the argument name will be used as the property name. For example, `@MqttProperty String userId` would result in the property `userId` being set on the properties object before publishing.
+
+[.lang-python]
+For method arguments, if the value is not supplied to the annotation, the argument name will be used as the property name. For example, `userId: Annotated[str, MqttProperty]` would result in the property `userId` being set on the properties object before publishing.
 
 IMPORTANT: If the annotation or argument name cannot be matched to a property name in the `MqttProperties` class, a user property will be added instead.
 

@@ -4,3 +4,6 @@ snippet::io.micronaut.mqtt.docs.parameters.ProductListener[tags="imports,clazz"]
 
 <1> The topic annotation is set per method. Multiple methods may be defined with different topics in the same class.
 <2> Multiple topics are subscribed to and the topic received is an argument to the method. The value will change depending on which topic the message was sent to.
+
+[.lang-python]
+NOTE: Python has no method overloading, so each subscriber method needs its own name (`receive_from_topic`); repeatable annotations such as `@Topic` are stacked as decorators.

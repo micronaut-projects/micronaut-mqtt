@@ -8,3 +8,6 @@ snippet::io.micronaut.mqtt.docs.publisher.acknowledge.ProductClient[tags="import
 
 <1> A `Publisher` can be returned to be able to know when the message was acknowledged. Any other reactive type can be used given the appropriate dependencies are in place.
 <2> Java futures can also be used
+
+[.lang-python]
+NOTE: In Python the return type hints `Publisher[None]` and `CompletableFuture[None]` map to `Publisher<Void>` and `CompletableFuture<Void>`.

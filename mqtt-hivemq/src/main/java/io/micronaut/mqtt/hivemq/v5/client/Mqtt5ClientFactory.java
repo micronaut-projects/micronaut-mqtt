@@ -33,6 +33,7 @@ import com.hivemq.client.mqtt.mqtt5.message.connect.Mqtt5ConnectRestrictions;
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
 import io.micronaut.context.annotation.Requires;
+import io.micronaut.context.annotation.Retain;
 import io.micronaut.context.exceptions.BeanInstantiationException;
 import org.jspecify.annotations.Nullable;
 import io.micronaut.core.util.StringUtils;
@@ -68,6 +69,9 @@ public final class Mqtt5ClientFactory implements MqttClientFactory {
      * @return A new instance of {@link Mqtt5AsyncClient}
      */
     @Singleton
+    // development mode keeps the client, and its connection, across a restart of the application; a change under
+    // mqtt.client releases it
+    @Retain(invalidatedBy = "mqtt.client")
     @Bean(preDestroy = "disconnect")
     Mqtt5AsyncClient mqttClient(final Mqtt5ClientConfiguration configuration, @Nullable final Mqtt5EnhancedAuthMechanism enhancedAuthMechanism) {
 

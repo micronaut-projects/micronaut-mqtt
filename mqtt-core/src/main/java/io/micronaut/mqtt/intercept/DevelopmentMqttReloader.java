@@ -92,7 +92,7 @@ import java.util.stream.Stream;
  * that received one is a dependent of it, which recreating it would destroy along with its watches.</p>
  *
  * @author graemerocher
- * @since 4.2.0
+ * @since 4.3.0
  */
 @Internal
 @Context

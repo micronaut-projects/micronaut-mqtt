@@ -15,4 +15,5 @@ dependencies {
     testImplementation(mn.reactor)
     testImplementation(projects.testSuiteUtils)
     testImplementation(mnSerde.micronaut.serde.jackson)
+    testRuntimeOnly(mnTest.junit.jupiter.engine)
 }

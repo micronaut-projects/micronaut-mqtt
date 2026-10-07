@@ -5,6 +5,7 @@ plugins {
 }
 
 dependencies {
+    annotationProcessor(mn.micronaut.inject.java)
     api(mnTest.micronaut.test.junit5)
     api(projects.micronautMqttCore)
     api(libs.awaitility)

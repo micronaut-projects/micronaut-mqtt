@@ -53,6 +53,7 @@ include 'mqtt-ssl'
 include 'mqtt-bom'
 include 'test-suite-dev-reload'
 include 'test-suite-dev-reload-paho'
+include 'test-suite-dev-reload-paho-v5'
 
 include 'test-suite-groovy'
 include 'test-suite'

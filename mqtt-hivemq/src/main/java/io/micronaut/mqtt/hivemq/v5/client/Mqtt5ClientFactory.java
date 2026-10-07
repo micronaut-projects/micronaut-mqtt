@@ -63,31 +63,17 @@ public final class Mqtt5ClientFactory implements MqttClientFactory {
     private static final Logger LOG = LoggerFactory.getLogger(Mqtt5ClientFactory.class);
 
     /**
-     * Creates a new instance of a {@link Mqtt5AsyncClient} with the given configuration, when the application defines
-     * no {@link Mqtt5EnhancedAuthMechanism}. Development mode keeps this client, and its connection, across a restart
-     * of the application, and a change under {@code mqtt.client} releases it. A client with an enhanced authentication
-     * mechanism is not kept, as it holds the mechanism, which can be a class of the application that a restart
-     * replaces.
-     *
-     * @param configuration The configuration to apply.
-     * @return A new instance of {@link Mqtt5AsyncClient}
-     */
-    @Singleton
-    @Requires(missingBeans = Mqtt5EnhancedAuthMechanism.class)
-    @Retain(invalidatedBy = "mqtt.client")
-    @Bean(preDestroy = "disconnect")
-    Mqtt5AsyncClient mqttClient(final Mqtt5ClientConfiguration configuration) {
-        return mqttClient(configuration, null);
-    }
-
-    /**
      * Creates a new instance of a {@link Mqtt5AsyncClient} with the given configuration.
+     * Development mode keeps the client, and its connection, across a restart of the application, until a change under
+     * {@code mqtt.client} releases it. It is not kept when the application defines the enhanced authentication
+     * mechanism, which a restart replaces.
+     *
      * @param configuration The configuration to apply.
      * @param enhancedAuthMechanism An optional implementation of {@link Mqtt5EnhancedAuthMechanism} to add enhanced authentication.
      * @return A new instance of {@link Mqtt5AsyncClient}
      */
     @Singleton
-    @Requires(beans = Mqtt5EnhancedAuthMechanism.class)
+    @Retain(invalidatedBy = "mqtt.client")
     @Bean(preDestroy = "disconnect")
     Mqtt5AsyncClient mqttClient(final Mqtt5ClientConfiguration configuration, @Nullable final Mqtt5EnhancedAuthMechanism enhancedAuthMechanism) {
 

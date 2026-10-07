@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.mqtt.dev.paho;
+package io.micronaut.mqtt.dev.pahov5;
 
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.context.reload.ClassChange;
@@ -21,10 +21,10 @@ import io.micronaut.context.reload.ClassChangeEvent;
 import io.micronaut.context.reload.ReloadStrategy;
 import io.micronaut.dev.tck.ReloadHarness;
 import io.micronaut.dev.tck.ReloadTck;
-import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
-import org.eclipse.paho.client.mqttv3.MqttClient;
-import org.eclipse.paho.client.mqttv3.MqttException;
-import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.eclipse.paho.mqttv5.client.MqttAsyncClient;
+import org.eclipse.paho.mqttv5.client.MqttClient;
+import org.eclipse.paho.mqttv5.client.persist.MemoryPersistence;
+import org.eclipse.paho.mqttv5.common.MqttException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -44,15 +44,15 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Runs an application with an MQTT subscriber, on the Paho v3 client, through the development runtime against a
+ * Runs an application with an MQTT subscriber, on the Paho v5 client, through the development runtime against a
  * broker, and edits the subscriber. A change applied in place subscribes the new subscriber once. A restart keeps the
  * client, its connection and the consumer executor it runs on: the retired generation unsubscribes as its context
  * stops, the new one subscribes on the same connection, and nothing of the retired generation stays reachable. A
  * change under {@code mqtt.client} releases the client.
  */
-class PahoReloadTest {
+class PahoV5ReloadTest {
 
-    private static final String TOPIC = "dev/reload/paho";
+    private static final String TOPIC = "dev/reload/paho-v5";
 
     private static final String SUBSCRIBER = """
         package example;
@@ -203,7 +203,7 @@ class PahoReloadTest {
 
     private static void changedInPlace(ReloadHarness harness, String className) {
         ApplicationContext context = harness.context();
-        context.publishEvent(new ClassChangeEvent(PahoReloadTest.class, harness.generation(), Set.of(), context.getClassLoader(),
+        context.publishEvent(new ClassChangeEvent(PahoV5ReloadTest.class, harness.generation(), Set.of(), context.getClassLoader(),
             List.of(new ClassChange(className, ClassChange.Kind.MODIFIED)), ReloadStrategy.RELOAD));
     }
 

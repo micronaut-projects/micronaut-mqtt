@@ -236,7 +236,7 @@ class MqttReloaderTest {
         properties.put("micronaut.dev.enabled", "true");
         context = ApplicationContext.builder()
             .properties(properties)
-            .trackBeanDependencies(track)
+            .beanDependencyTrackingEnabled(track)
             .start();
         waitForSubscription(context.getBean(ReloadSubscriber.class));
     }
@@ -289,7 +289,7 @@ class MqttReloaderTest {
     }
 
     private ClassChangeEvent classChange(Set<ClassLoader> retired, List<ClassChange> changes, ReloadStrategy strategy) {
-        return new ClassChangeEvent(this, 1, retired, MqttReloaderTest.class.getClassLoader(), changes, strategy);
+        return new ClassChangeEvent(this, retired, MqttReloaderTest.class.getClassLoader(), changes, strategy);
     }
 
     private static Class<?> reloader() throws ClassNotFoundException {

@@ -20,8 +20,7 @@ import io.micronaut.context.BeanRegistration;
 import io.micronaut.context.Qualifier;
 import io.micronaut.context.WatchableBeanContext;
 import io.micronaut.context.annotation.Context;
-import io.micronaut.context.annotation.Requires;
-import io.micronaut.context.env.DevelopmentMode;
+import io.micronaut.context.env.DevelopmentActive;
 import io.micronaut.context.event.BeanPreDestroyEvent;
 import io.micronaut.context.event.BeanPreDestroyEventListener;
 import io.micronaut.context.reload.ClassChange;
@@ -96,7 +95,7 @@ import java.util.stream.Stream;
  */
 @Internal
 @Context
-@Requires(condition = DevelopmentMode.Active.class)
+@DevelopmentActive
 final class DevelopmentMqttReloader implements BeanPreDestroyEventListener<AbstractMqttSubscriberAdvice<?>> {
 
     private static final Logger LOG = LoggerFactory.getLogger(DevelopmentMqttReloader.class);

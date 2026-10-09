@@ -20,9 +20,6 @@ import io.micronaut.core.annotation.Internal;
 import io.micronaut.core.type.Argument;
 import io.micronaut.mqtt.bind.MqttBinder;
 
-import java.util.IdentityHashMap;
-import java.util.Map;
-
 @Internal
 final class MqttPublisherState {
 
@@ -30,7 +27,9 @@ final class MqttPublisherState {
     private Integer qos;
     private Boolean retained;
 
-    private Map<Argument<?>, MqttBinder<Object, Object>> binderCache = new IdentityHashMap<>(5);
+    // by position, not by argument: the state is cached by method equality, and an equal method, such as one of
+    // another instance of the publisher, can have other argument instances
+    private MqttBinder<Object, Object>[] binders;
 
     String getTopic() {
         return topic;
@@ -56,16 +55,17 @@ final class MqttPublisherState {
         this.retained = retained;
     }
 
-    public void setBinder(Argument<?> argument, MqttBinder<Object, Object> binder) {
-        binderCache.put(argument, binder);
+    public void setBinders(MqttBinder<Object, Object>[] binders) {
+        this.binders = binders;
     }
 
     public void bind(Object message, MethodInvocationContext<Object, Object> context) {
-        Map<String, Object> parameterValues = context.getParameterValueMap();
-        for (Argument argument: context.getArguments()) {
-            MqttBinder<Object, Object> binder = binderCache.get(argument);
+        Argument<?>[] arguments = context.getArguments();
+        Object[] parameterValues = context.getParameterValues();
+        for (int i = 0; i < arguments.length; i++) {
+            MqttBinder<Object, Object> binder = binders[i];
             if (binder != null) {
-                binder.bindTo(message, parameterValues.get(argument.getName()), argument);
+                binder.bindTo(message, parameterValues[i], (Argument) arguments[i]);
             }
         }
     }

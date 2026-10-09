@@ -24,3 +24,11 @@ spotless {
 tasks.withType(Checkstyle) {
     enabled = false
 }
+
+// the shared specs run in the test suites, whose coverage is not reported for this project: it is not analysed as
+// production code
+rootProject.pluginManager.withPlugin("org.sonarqube") {
+    sonar {
+        skipProject = true
+    }
+}

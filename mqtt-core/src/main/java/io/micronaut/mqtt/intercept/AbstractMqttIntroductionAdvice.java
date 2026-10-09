@@ -152,9 +152,12 @@ public abstract class AbstractMqttIntroductionAdvice<L, M> implements MethodInte
                     .flatMap(AnnotationValue::booleanValue)
                     .ifPresent(state::setRetained);
 
-            for (Argument<?> argument: context.getArguments()) {
-                state.setBinder(argument, (MqttBinder<Object, Object>) binderRegistry.findArgumentBinder(argument));
+            Argument<?>[] arguments = context.getArguments();
+            MqttBinder<Object, Object>[] binders = new MqttBinder[arguments.length];
+            for (int i = 0; i < arguments.length; i++) {
+                binders[i] = (MqttBinder<Object, Object>) binderRegistry.findArgumentBinder(arguments[i]);
             }
+            state.setBinders(binders);
             return state;
         });
     }

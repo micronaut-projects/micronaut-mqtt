@@ -312,6 +312,8 @@ does not implement <a href="io/micronaut/mqtt/exception/MqttSubscriberExceptionH
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/test/intercept/MultipleTopicsSpec.html#getClient()" class="member-name-link">getClient()</a> - Method in class io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/MultipleTopicsSpec.html" title="class in io.micronaut.mqtt.test.intercept">MultipleTopicsSpec</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.html#getClient()" class="member-name-link">getClient()</a> - Method in class io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.html" title="class in io.micronaut.mqtt.test.intercept">RepeatedPublishSpec</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/test/intercept/SimplePubSubSpec.html#getClient()" class="member-name-link">getClient()</a> - Method in class io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/SimplePubSubSpec.html" title="class in io.micronaut.mqtt.test.intercept">SimplePubSubSpec</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/hivemq/config/MqttClientConfiguration.html#getClientId()" class="member-name-link">getClientId()</a> - Method in interface io.micronaut.mqtt.hivemq.config.<a href="io/micronaut/mqtt/hivemq/config/MqttClientConfiguration.html" title="interface in io.micronaut.mqtt.hivemq.config">MqttClientConfiguration</a></dt>
@@ -440,6 +442,8 @@ does not implement <a href="io/micronaut/mqtt/exception/MqttSubscriberExceptionH
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/v5/bind/MqttV5BindingContext.html#getProperties()" class="member-name-link">getProperties()</a> - Method in class io.micronaut.mqtt.v5.bind.<a href="io/micronaut/mqtt/v5/bind/MqttV5BindingContext.html" title="class in io.micronaut.mqtt.v5.bind">MqttV5BindingContext</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.html#getPrototypeClient()" class="member-name-link">getPrototypeClient()</a> - Method in class io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.html" title="class in io.micronaut.mqtt.test.intercept">RepeatedPublishSpec</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/bind/MqttBindingContext.html#getQos()" class="member-name-link">getQos()</a> - Method in interface io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/MqttBindingContext.html" title="interface in io.micronaut.mqtt.bind">MqttBindingContext</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/hivemq/bind/MqttMessage.html#getQos()" class="member-name-link">getQos()</a> - Method in class io.micronaut.mqtt.hivemq.bind.<a href="io/micronaut/mqtt/hivemq/bind/MqttMessage.html" title="class in io.micronaut.mqtt.hivemq.bind">MqttMessage</a></dt>
@@ -511,6 +515,8 @@ does not implement <a href="io/micronaut/mqtt/exception/MqttSubscriberExceptionH
 <dt><a href="io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html#getSSLProperties()" class="member-name-link">getSSLProperties()</a> - Method in class io.micronaut.mqtt.v5.config.<a href="io/micronaut/mqtt/v5/config/MqttClientConfigurationProperties.html" title="class in io.micronaut.mqtt.v5.config">MqttClientConfigurationProperties</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/serdes/JavaLangMqttPayloadSerDes.html#getStringSerDes()" class="member-name-link">getStringSerDes()</a> - Method in class io.micronaut.mqtt.serdes.<a href="io/micronaut/mqtt/serdes/JavaLangMqttPayloadSerDes.html" title="class in io.micronaut.mqtt.serdes">JavaLangMqttPayloadSerDes</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.html#getSubscriber()" class="member-name-link">getSubscriber()</a> - Method in class io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.html" title="class in io.micronaut.mqtt.test.intercept">RepeatedPublishSpec</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/bind/MqttBindingContext.html#getTopic()" class="member-name-link">getTopic()</a> - Method in interface io.micronaut.mqtt.bind.<a href="io/micronaut/mqtt/bind/MqttBindingContext.html" title="interface in io.micronaut.mqtt.bind">MqttBindingContext</a></dt>
 <dd>&nbsp;</dd>
@@ -1122,7 +1128,18 @@ from Mqtt.</div>
 </dd>
 <dt><a href="io/micronaut/mqtt/intercept/AbstractMqttSubscriberAdvice.html#process(io.micronaut.inject.BeanDefinition,io.micronaut.inject.ExecutableMethod)" class="member-name-link">process(BeanDefinition, ExecutableMethod)</a> - Method in class io.micronaut.mqtt.intercept.<a href="io/micronaut/mqtt/intercept/AbstractMqttSubscriberAdvice.html" title="class in io.micronaut.mqtt.intercept">AbstractMqttSubscriberAdvice</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/PrototypePublishClient.html" class="type-name-link" title="interface in io.micronaut.mqtt.test.intercept">PrototypePublishClient</a> - Interface in <a href="io/micronaut/mqtt/test/intercept/package-summary.html">io.micronaut.mqtt.test.intercept</a></dt>
+<dd>
+<div class="block">A publisher whose argument has an annotation with an expression, for which each instance of the publisher builds
+its own arguments.</div>
+</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/PrototypePublishClient.html#publish(java.lang.String)" class="member-name-link">publish(String)</a> - Method in interface io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/PrototypePublishClient.html" title="interface in io.micronaut.mqtt.test.intercept">PrototypePublishClient</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/RepeatedPublishClient.html#publish(java.lang.String)" class="member-name-link">publish(String)</a> - Method in interface io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/RepeatedPublishClient.html" title="interface in io.micronaut.mqtt.test.intercept">RepeatedPublishClient</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/test/intercept/SimplePubSubClient.html#publish(java.lang.String)" class="member-name-link">publish(String)</a> - Method in interface io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/SimplePubSubClient.html" title="interface in io.micronaut.mqtt.test.intercept">SimplePubSubClient</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/RepeatedPublishClient.html#publish(java.lang.String,byte%5B%5D)" class="member-name-link">publish(String, byte[])</a> - Method in interface io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/RepeatedPublishClient.html" title="interface in io.micronaut.mqtt.test.intercept">RepeatedPublishClient</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/hivemq/v3/intercept/Mqtt3IntroductionAdvice.html#publish(java.lang.String,io.micronaut.mqtt.hivemq.bind.MqttMessage,java.util.function.BiConsumer)" class="member-name-link">publish(String, MqttMessage, BiConsumer)</a> - Method in class io.micronaut.mqtt.hivemq.v3.intercept.<a href="io/micronaut/mqtt/hivemq/v3/intercept/Mqtt3IntroductionAdvice.html" title="class in io.micronaut.mqtt.hivemq.v3.intercept">Mqtt3IntroductionAdvice</a></dt>
 <dd>&nbsp;</dd>
@@ -1165,6 +1182,23 @@ from Mqtt.</div>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
 <dt><a href="io/micronaut/mqtt/hivemq/ssl/CertificateReader.html#readCertificate(io.micronaut.core.io.Readable)" class="member-name-link">readCertificate(Readable)</a> - Static method in class io.micronaut.mqtt.hivemq.ssl.<a href="io/micronaut/mqtt/hivemq/ssl/CertificateReader.html" title="class in io.micronaut.mqtt.hivemq.ssl">CertificateReader</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.RepeatedSubscriber.html#receive(java.lang.String)" class="member-name-link">receive(String)</a> - Method in class io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.RepeatedSubscriber.html" title="class in io.micronaut.mqtt.test.intercept">RepeatedPublishSpec.RepeatedSubscriber</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/RepeatedPublishClient.html" class="type-name-link" title="interface in io.micronaut.mqtt.test.intercept">RepeatedPublishClient</a> - Interface in <a href="io/micronaut/mqtt/test/intercept/package-summary.html">io.micronaut.mqtt.test.intercept</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.html" class="type-name-link" title="class in io.micronaut.mqtt.test.intercept">RepeatedPublishSpec</a> - Class in <a href="io/micronaut/mqtt/test/intercept/package-summary.html">io.micronaut.mqtt.test.intercept</a></dt>
+<dd>
+<div class="block">Every call of a publisher method publishes its own payload, not only the first, and so does every instance of a
+publisher.</div>
+</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.html#%3Cinit%3E()" class="member-name-link">RepeatedPublishSpec()</a> - Constructor for class io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.html" title="class in io.micronaut.mqtt.test.intercept">RepeatedPublishSpec</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.RepeatedSubscriber.html" class="type-name-link" title="class in io.micronaut.mqtt.test.intercept">RepeatedPublishSpec.RepeatedSubscriber</a> - Class in <a href="io/micronaut/mqtt/test/intercept/package-summary.html">io.micronaut.mqtt.test.intercept</a></dt>
+<dd>
+<div class="block">Records the payloads received on <a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.html#TOPIC"><code>RepeatedPublishSpec.TOPIC</code></a>.</div>
+</dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.RepeatedSubscriber.html#%3Cinit%3E()" class="member-name-link">RepeatedSubscriber()</a> - Constructor for class io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.RepeatedSubscriber.html" title="class in io.micronaut.mqtt.test.intercept">RepeatedPublishSpec.RepeatedSubscriber</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/annotation/Retained.html" class="type-name-link" title="annotation interface in io.micronaut.mqtt.annotation">Retained</a> - Annotation Interface in <a href="io/micronaut/mqtt/annotation/package-summary.html">io.micronaut.mqtt.annotation</a></dt>
 <dd>
@@ -1393,6 +1427,8 @@ to MQTT.</div>
 <dd>
 <div class="block">Used for binding the message topic and other parameters.</div>
 </dd>
+<dt><a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.html#TOPIC" class="member-name-link">TOPIC</a> - Static variable in class io.micronaut.mqtt.test.intercept.<a href="io/micronaut/mqtt/test/intercept/RepeatedPublishSpec.html" title="class in io.micronaut.mqtt.test.intercept">RepeatedPublishSpec</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/test/bind/topic/TopicBindingClient.html" class="type-name-link" title="interface in io.micronaut.mqtt.test.bind.topic">TopicBindingClient</a> - Interface in <a href="io/micronaut/mqtt/test/bind/topic/package-summary.html">io.micronaut.mqtt.test.bind.topic</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/micronaut/mqtt/test/bind/topic/TopicBindingSpec.html" class="type-name-link" title="class in io.micronaut.mqtt.test.bind.topic">TopicBindingSpec</a> - Class in <a href="io/micronaut/mqtt/test/bind/topic/package-summary.html">io.micronaut.mqtt.test.bind.topic</a></dt>

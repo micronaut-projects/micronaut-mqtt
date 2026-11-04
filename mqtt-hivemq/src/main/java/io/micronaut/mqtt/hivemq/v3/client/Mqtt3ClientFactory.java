@@ -29,6 +29,7 @@ import com.hivemq.client.mqtt.mqtt3.message.connect.Mqtt3ConnectBuilder;
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
 import io.micronaut.context.annotation.Requires;
+import io.micronaut.context.annotation.Retain;
 import io.micronaut.context.exceptions.BeanInstantiationException;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.mqtt.exception.MqttClientException;
@@ -57,6 +58,9 @@ public final class Mqtt3ClientFactory implements MqttClientFactory {
     private static final Logger LOG = LoggerFactory.getLogger(Mqtt3ClientFactory.class);
 
     @Singleton
+    // development mode keeps the client, and its connection, across a restart of the application; a change under
+    // mqtt.client releases it
+    @Retain(invalidatedBy = "mqtt.client")
     @Bean(preDestroy = "disconnect")
     Mqtt3AsyncClient mqttClient(final Mqtt3ClientConfiguration configuration) {
 

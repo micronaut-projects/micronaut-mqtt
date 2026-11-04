@@ -33,6 +33,7 @@ import com.hivemq.client.mqtt.mqtt5.message.connect.Mqtt5ConnectRestrictions;
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
 import io.micronaut.context.annotation.Requires;
+import io.micronaut.context.annotation.Retain;
 import io.micronaut.context.exceptions.BeanInstantiationException;
 import org.jspecify.annotations.Nullable;
 import io.micronaut.core.util.StringUtils;
@@ -63,11 +64,16 @@ public final class Mqtt5ClientFactory implements MqttClientFactory {
 
     /**
      * Creates a new instance of a {@link Mqtt5AsyncClient} with the given configuration.
+     * Development mode keeps the client, and its connection, across a restart of the application, until a change under
+     * {@code mqtt.client} releases it. It is not kept when the application defines the enhanced authentication
+     * mechanism, which a restart replaces.
+     *
      * @param configuration The configuration to apply.
      * @param enhancedAuthMechanism An optional implementation of {@link Mqtt5EnhancedAuthMechanism} to add enhanced authentication.
      * @return A new instance of {@link Mqtt5AsyncClient}
      */
     @Singleton
+    @Retain(invalidatedBy = "mqtt.client")
     @Bean(preDestroy = "disconnect")
     Mqtt5AsyncClient mqttClient(final Mqtt5ClientConfiguration configuration, @Nullable final Mqtt5EnhancedAuthMechanism enhancedAuthMechanism) {
 

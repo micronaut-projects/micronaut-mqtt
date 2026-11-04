@@ -25,7 +25,7 @@ import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 
 /**
- * Configures a {@link java.util.concurrent.ScheduledExecutorService} for running {@link} instances.
+ * Configures a {@link java.util.concurrent.ScheduledExecutorService} for running the MQTT subscribers.
  *
  * @author James Kleeh
  * @since 1.0.0

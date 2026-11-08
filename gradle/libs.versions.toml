@@ -3,7 +3,7 @@ micronaut = "5.2.21"
 micronaut-gradle-plugin = "5.0.2"
 managed-mqttv3 = "1.2.5"
 managed-mqttv5 = "1.2.5"
-managed-hivemq-client = "1.4.1"
+managed-hivemq-client = "1.4.2"
 
 awaitility = "4.3.0"
 bcpkix-jdk18on = "1.86"

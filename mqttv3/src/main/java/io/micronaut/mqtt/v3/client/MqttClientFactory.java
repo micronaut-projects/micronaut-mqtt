@@ -17,9 +17,11 @@ package io.micronaut.mqtt.v3.client;
 
 import io.micronaut.context.annotation.Bean;
 import io.micronaut.context.annotation.Factory;
+import io.micronaut.context.annotation.Retain;
 import org.jspecify.annotations.Nullable;
 import io.micronaut.mqtt.v3.config.MqttClientConfigurationProperties;
 import io.micronaut.scheduling.TaskExecutors;
+import io.micronaut.scheduling.executor.ExecutorConfiguration;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
@@ -40,7 +42,21 @@ import java.util.concurrent.ScheduledExecutorService;
 @Factory
 public final class MqttClientFactory {
 
+    /**
+     * Creates the client and connects it. Development mode keeps the client, its connection and the consumer executor
+     * service it runs on across a restart of the application, until a change under {@code mqtt.client} or of the
+     * consumer executor releases them: the subscriptions of the stopped application are removed as it stops, and the
+     * next one subscribes on the same connection.
+     *
+     * @param configuration The client configuration
+     * @param clientPersistence The persistence, or null for the default one
+     * @param highResolutionTimer The timer, or null for the default one
+     * @param executorService The consumer executor service, a scheduled one
+     * @return The connected client
+     * @throws MqttException When the client cannot be created or connected
+     */
     @Singleton
+    @Retain(invalidatedBy = {"mqtt.client", ExecutorConfiguration.PREFIX_CONSUMER})
     @Bean(preDestroy = "disconnect")
     MqttAsyncClient mqttClient(MqttClientConfigurationProperties configuration,
                                @Nullable MqttClientPersistence clientPersistence,
